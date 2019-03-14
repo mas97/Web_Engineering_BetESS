@@ -3,44 +3,146 @@
 <WebProject xmlns:gr="http://www.webratio.com/2006/WebML/Graph" xmlns:db="http://www.webratio.com/2006/WebML/Database" xmlns:wrxsd="http://www.webratio.com/2012/WebML/WRXSD" xmlns:layout="http://www.webratio.com/2006/WebML/Layout" xmlns:temp="http://www.webratio.com/2006/WebML/Temp" xmlns:bpm="http://www.webratio.com/2009/WebML/BPM" outputPath="${webapps_loc}/${project_name}" gr:showUnitContent="true" gr:showTooltip="true" httpPort="8080" httpsPort="8443" enableProjectDependencies="false" jobGroupName="WEBRATIO" wrTempNewProject="true" control="amRiYzpteXNxbDovL2xvY2FsaG9zdDozMzA2L2JldGVzcw==">  
   <ServiceDataProviders/>  
   <DataModel> 
-    <Entity id="User" name="User" duration="persistent" gr:x="30" gr:y="25" gr:hideAttributes="false" attributeOrder="userOID userName password email"> 
-      <Attribute name="oid" id="userOID" type="integer" key="true"/>  
-      <Attribute name="username" id="userName" type="string"/>  
-      <Attribute name="password" id="password" type="password"/>  
-      <Attribute name="email" id="email" type="string"/> 
+    <Entity id="User" name="User" duration="persistent" gr:x="30" gr:y="20" gr:hideAttributes="false" attributeOrder="userOID userName att3 email password att1 att2" db:database="db1" db:table="user"> 
+      <Attribute name="oid" id="userOID" type="integer" key="true" db:column="oid"/>  
+      <Attribute name="username" id="userName" type="string" db:column="username"/>  
+      <Attribute name="password" id="password" type="password" db:column="password"/>  
+      <Attribute name="email" id="email" type="string" db:column="email"/>  
+      <Attribute id="att1" name="phoneNo" type="integer" db:column="phoneno"/>  
+      <Attribute id="att2" name="balance" type="decimal" db:column="balance"/>  
+      <Attribute id="att3" name="name" type="string" db:column="name"/> 
     </Entity>  
-    <Entity id="Group" name="Group" duration="persistent" gr:x="265" gr:y="40" gr:hideAttributes="false" attributeOrder="groupOID groupName"> 
-      <Attribute name="oid" id="groupOID" type="integer" key="true"/>  
-      <Attribute name="groupName" id="groupName" type="string"/> 
+    <Entity id="Group" name="Group" duration="persistent" gr:x="275" gr:y="45" gr:hideAttributes="false" attributeOrder="groupOID groupName" db:database="db1" db:table="group"> 
+      <Attribute name="oid" id="groupOID" type="integer" key="true" db:column="oid"/>  
+      <Attribute name="groupName" id="groupName" type="string" db:column="groupname"/> 
     </Entity>  
-    <Entity id="Module" name="Module" duration="persistent" gr:x="505" gr:y="30" gr:hideAttributes="false" attributeOrder="moduleOID moduleID moduleName" db:database="db1" db:table="module"> 
-      <Attribute name="oid" id="moduleOID" type="integer" key="true"/>  
-      <Attribute name="moduleID" id="moduleID" type="string"/>  
-      <Attribute name="moduleName" id="moduleName" type="string"/> 
+    <Entity id="Module" name="Module" duration="persistent" gr:x="505" gr:y="40" gr:hideAttributes="false" attributeOrder="moduleOID moduleID moduleName" db:database="db1" db:table="module"> 
+      <Attribute name="oid" id="moduleOID" type="integer" key="true" db:column="oid"/>  
+      <Attribute name="moduleID" id="moduleID" type="string" db:column="moduleid"/>  
+      <Attribute name="moduleName" id="moduleName" type="string" db:column="modulename"/> 
     </Entity>  
-    <Relationship id="User2Group_Group2User" name="User_Group" sourceEntity="User" targetEntity="Group"> 
-      <RelationshipRole1 id="User2Group" name="groups" maxCard="N"/>  
-      <RelationshipRole2 id="Group2User" name="users" maxCard="N"/> 
+    <Relationship id="User2Group_Group2User" name="User_Group" sourceEntity="User" targetEntity="Group" db:database="db1" db:table="user_group"> 
+      <RelationshipRole1 id="User2Group" name="groups" maxCard="N"> 
+        <db:JoinColumn attribute="userOID" name="user_oid"/> 
+      </RelationshipRole1>  
+      <RelationshipRole2 id="Group2User" name="users" maxCard="N"> 
+        <db:JoinColumn attribute="groupOID" name="group_oid"/> 
+      </RelationshipRole2> 
     </Relationship>  
-    <Relationship id="User2DefaultGroup_DefaultGroup2User" name="User_DefaultGroup" sourceEntity="User" targetEntity="Group" gr:bendpoints="113,42,-112,44"> 
-      <RelationshipRole1 id="User2DefaultGroup" name="defaultGroup" maxCard="1"/>  
-      <RelationshipRole2 id="DefaultGroup2User" name="defaultUsers" maxCard="N"/> 
+    <Relationship id="User2DefaultGroup_DefaultGroup2User" name="User_DefaultGroup" sourceEntity="User" targetEntity="Group" gr:bendpoints="120,36,-120,36" db:database="db1" db:table="user"> 
+      <RelationshipRole1 id="User2DefaultGroup" name="defaultGroup" maxCard="1"> 
+        <db:JoinColumn attribute="userOID" name="oid"/> 
+      </RelationshipRole1>  
+      <RelationshipRole2 id="DefaultGroup2User" name="defaultUsers" maxCard="N"> 
+        <db:JoinColumn attribute="groupOID" name="group_oid"/> 
+      </RelationshipRole2> 
     </Relationship>  
-    <Relationship id="Group2DefaultModule_DefaultModule2Group" sourceEntity="Group" targetEntity="Module" gr:bendpoints="30,89,30,-96"> 
-      <RelationshipRole1 id="Group2DefaultModule" name="defaultModule" maxCard="1"/>  
-      <RelationshipRole2 id="DefaultModule2Group" name="defaultGroups" maxCard="N"/> 
+    <Relationship id="Group2DefaultModule_DefaultModule2Group" sourceEntity="Group" targetEntity="Module" gr:bendpoints="30,89,30,-96" db:database="db1" db:table="group"> 
+      <RelationshipRole1 id="Group2DefaultModule" name="defaultModule" maxCard="1"> 
+        <db:JoinColumn attribute="groupOID" name="oid"/> 
+      </RelationshipRole1>  
+      <RelationshipRole2 id="DefaultModule2Group" name="defaultGroups" maxCard="N"> 
+        <db:JoinColumn attribute="moduleOID" name="module_oid"/> 
+      </RelationshipRole2> 
     </Relationship>  
-    <Relationship id="Group2Module_Module2Group" name="Group_Module" sourceEntity="Group" targetEntity="Module" gr:bendpoints="139,41,-131,41"> 
-      <RelationshipRole1 id="Group2Module" name="modules" maxCard="N"/>  
-      <RelationshipRole2 id="Module2Group" name="groups" maxCard="N"/> 
+    <Relationship id="Group2Module_Module2Group" name="Group_Module" sourceEntity="Group" targetEntity="Module" gr:bendpoints="114,34,-121,29" db:database="db1" db:table="group_module"> 
+      <RelationshipRole1 id="Group2Module" name="modules" maxCard="N"> 
+        <db:JoinColumn attribute="groupOID" name="group_oid"/> 
+      </RelationshipRole1>  
+      <RelationshipRole2 id="Module2Group" name="groups" maxCard="N"> 
+        <db:JoinColumn attribute="moduleOID" name="module_oid"/> 
+      </RelationshipRole2> 
     </Relationship>  
-    <db:Database id="db1" name="betess" type="MySQL" username="root" cryptedPassword="true" password="cGFzc3dvcmQ=" url="jdbc:mysql://localhost:3306/betess"></db:Database>  
-    <Entity id="ent2" name="Bet" db:database="db1" duration="persistent" db:table="bet" gr:x="210" gr:y="290"> 
+    <db:Database id="db1" name="betess" type="MySQL" username="root" cryptedPassword="true" password="cGFzc3dvcmQ=" url="jdbc:mysql://localhost:3306/betess"> 
+      <temp:DBMetaData driverMajorVersion="5" driverMinorVersion="1" driverVersion="mysql-connector-java-5.1.31 ( Revision: alexander.soklakov@oracle.com-20140520065950-groqzzbvxprqdmnz )" productVersion="5.7.23-log" identifierQuoteString="`" transactionLevel="Repeatable read" driverName="MySQL Connector Java" productName="MySQL"> 
+        <temp:Table ignoreIndexes="false" name="bet" type="TABLE" refreshed="true"> 
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="id" primaryKey="true" notNull="true"/>  
+          <temp:Column sqlTypeId="2" indexed="unknown" autoIncrement="false" type="NUMERIC" size="9" decimalDigits="2" webMLType="decimal" name="amount" primaryKey="false" notNull="true"/>  
+          <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="45" decimalDigits="0" name="result" primaryKey="false" notNull="true"/>  
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="Player_id" primaryKey="false" notNull="true"/>  
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="Event_id" primaryKey="false" notNull="true"/>  
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="user_oid" primaryKey="false" notNull="false"/> 
+        </temp:Table>  
+        <temp:Table ignoreIndexes="false" name="event" type="TABLE" refreshed="true"> 
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="id" primaryKey="true" notNull="true"/>  
+          <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="45" decimalDigits="0" name="status" primaryKey="false" notNull="true"/>  
+          <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="45" decimalDigits="0" name="result" primaryKey="false" notNull="true"/>  
+          <temp:Column sqlTypeId="2" indexed="unknown" autoIncrement="false" type="NUMERIC" size="5" decimalDigits="2" webMLType="decimal" name="odd_home" primaryKey="false" notNull="true"/>  
+          <temp:Column sqlTypeId="2" indexed="unknown" autoIncrement="false" type="NUMERIC" size="5" decimalDigits="2" webMLType="decimal" name="odd_away" primaryKey="false" notNull="true"/>  
+          <temp:Column sqlTypeId="2" indexed="unknown" autoIncrement="false" type="NUMERIC" size="5" decimalDigits="2" webMLType="decimal" name="odd_draw" primaryKey="false" notNull="true"/>  
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="Team1_id" primaryKey="false" notNull="true"/>  
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="Team2_id" primaryKey="false" notNull="true"/>  
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="Sport_id" primaryKey="false" notNull="true"/> 
+        </temp:Table>  
+        <temp:Table ignoreIndexes="false" name="group" type="TABLE" refreshed="true"> 
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="oid" primaryKey="true" notNull="true"/>  
+          <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="groupname" primaryKey="false" notNull="false"/>  
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="module_oid" primaryKey="false" notNull="false"/> 
+        </temp:Table>  
+        <temp:Table ignoreIndexes="false" name="group_module" type="TABLE" refreshed="true"> 
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="group_oid" primaryKey="true" notNull="true"/>  
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="module_oid" primaryKey="true" notNull="true"/> 
+        </temp:Table>  
+        <temp:Table ignoreIndexes="false" name="league" type="TABLE" refreshed="true"> 
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="id" primaryKey="true" notNull="true"/>  
+          <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="45" decimalDigits="0" name="name" primaryKey="false" notNull="true"/>  
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="Sport_id" primaryKey="false" notNull="true"/> 
+        </temp:Table>  
+        <temp:Table ignoreIndexes="false" name="module" type="TABLE" refreshed="true"> 
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="oid" primaryKey="true" notNull="true"/>  
+          <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="moduleid" primaryKey="false" notNull="false"/>  
+          <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="modulename" primaryKey="false" notNull="false"/> 
+        </temp:Table>  
+        <temp:Table ignoreIndexes="false" name="notification" type="TABLE" refreshed="true"> 
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="id" primaryKey="true" notNull="true"/>  
+          <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="45" decimalDigits="0" name="status" primaryKey="false" notNull="true"/>  
+          <temp:Column sqlTypeId="2" indexed="unknown" autoIncrement="false" type="NUMERIC" size="9" decimalDigits="2" webMLType="decimal" name="balanceBet" primaryKey="false" notNull="true"/>  
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="Player_id" primaryKey="false" notNull="true"/>  
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="user_oid" primaryKey="false" notNull="false"/> 
+        </temp:Table>  
+        <temp:Table ignoreIndexes="false" name="player" type="TABLE" refreshed="true"> 
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="id" primaryKey="true" notNull="true"/>  
+          <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="45" decimalDigits="0" name="name" primaryKey="false" notNull="true"/>  
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="phoneNo" primaryKey="false" notNull="true"/>  
+          <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="45" decimalDigits="0" name="email" primaryKey="false" notNull="true"/>  
+          <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="20" decimalDigits="0" name="password" primaryKey="false" notNull="true"/>  
+          <temp:Column sqlTypeId="2" indexed="unknown" autoIncrement="false" type="NUMERIC" size="9" decimalDigits="2" webMLType="decimal" name="balance" primaryKey="false" notNull="true"/> 
+        </temp:Table>  
+        <temp:Table ignoreIndexes="false" name="sport" type="TABLE" refreshed="true"> 
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="id" primaryKey="true" notNull="true"/>  
+          <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="45" decimalDigits="0" name="name" primaryKey="false" notNull="true"/> 
+        </temp:Table>  
+        <temp:Table ignoreIndexes="false" name="team" type="TABLE" refreshed="true"> 
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="id" primaryKey="true" notNull="true"/>  
+          <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="45" decimalDigits="0" name="name" primaryKey="false" notNull="true"/> 
+        </temp:Table>  
+        <temp:Table ignoreIndexes="false" name="team_league" type="TABLE" refreshed="true"> 
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="id" primaryKey="true" notNull="true"/>  
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="Team_id" primaryKey="false" notNull="true"/>  
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="League_id" primaryKey="false" notNull="true"/> 
+        </temp:Table>  
+        <temp:Table ignoreIndexes="false" name="user" type="TABLE" refreshed="true"> 
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="oid" primaryKey="true" notNull="true"/>  
+          <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="username" primaryKey="false" notNull="false"/>  
+          <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="password" primaryKey="false" notNull="false"/>  
+          <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="email" primaryKey="false" notNull="false"/>  
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="phoneno" primaryKey="false" notNull="false"/>  
+          <temp:Column sqlTypeId="2" indexed="unknown" autoIncrement="false" type="NUMERIC" size="19" decimalDigits="2" webMLType="decimal" name="balance" primaryKey="false" notNull="false"/>  
+          <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="name" primaryKey="false" notNull="false"/>  
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="group_oid" primaryKey="false" notNull="false"/> 
+        </temp:Table>  
+        <temp:Table ignoreIndexes="false" name="user_group" type="TABLE" refreshed="true"> 
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="user_oid" primaryKey="true" notNull="true"/>  
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="group_oid" primaryKey="true" notNull="true"/> 
+        </temp:Table> 
+      </temp:DBMetaData> 
+    </db:Database>  
+    <Entity id="ent2" name="Bet" db:database="db1" duration="persistent" db:table="bet" gr:x="275" gr:y="230"> 
       <Attribute id="att4" name="id" db:column="id" type="integer" key="true"/>  
       <Attribute id="att5" name="amount" db:column="amount" type="decimal" key="false"/>  
       <Attribute id="att6" name="result" db:column="result" type="string" key="false"/> 
     </Entity>  
-    <Entity id="ent3" name="Event" db:database="db1" duration="persistent" db:table="event" gr:x="410" gr:y="260"> 
+    <Entity id="ent3" name="Event" db:database="db1" duration="persistent" db:table="event" gr:x="470" gr:y="200"> 
       <Attribute id="att7" name="id" db:column="id" type="integer" key="true"/>  
       <Attribute id="att8" name="status" db:column="status" type="string" key="false"/>  
       <Attribute id="att9" name="result" db:column="result" type="string" key="false"/>  
@@ -48,32 +150,24 @@
       <Attribute id="att11" name="oddAway" db:column="odd_away" type="decimal" key="false"/>  
       <Attribute id="att12" name="oddDraw" db:column="odd_draw" type="decimal" key="false"/> 
     </Entity>  
-    <Entity id="ent4" name="League" db:database="db1" duration="persistent" db:table="league" gr:x="930" gr:y="300"> 
+    <Entity id="ent4" name="League" db:database="db1" duration="persistent" db:table="league" gr:x="1010" gr:y="240"> 
       <Attribute id="att13" name="id" db:column="id" type="integer" key="true"/>  
       <Attribute id="att14" name="name" db:column="name" type="string" key="false"/> 
     </Entity>  
-    <Entity id="ent5" name="Notification" db:database="db1" duration="persistent" db:table="notification" gr:x="0" gr:y="460"> 
+    <Entity id="ent5" name="Notification" db:database="db1" duration="persistent" db:table="notification" gr:x="30" gr:y="265"> 
       <Attribute id="att15" name="id" db:column="id" type="integer" key="true"/>  
       <Attribute id="att16" name="status" db:column="status" type="string" key="false"/>  
-      <Attribute id="att17" name="balancebet" db:column="balanceBet" type="decimal" key="false"/> 
+      <Attribute id="att17" name="balanceBet" db:column="balanceBet" type="decimal" key="false"/> 
     </Entity>  
-    <Entity id="ent6" name="Player" db:database="db1" duration="persistent" db:table="player" gr:x="10" gr:y="260"> 
-      <Attribute id="att18" name="id" db:column="id" type="integer" key="true"/>  
-      <Attribute id="att19" name="name" db:column="name" type="string" key="false"/>  
-      <Attribute id="att20" name="phoneno" db:column="phoneNo" type="integer" key="false"/>  
-      <Attribute id="att21" name="email" db:column="email" type="string" key="false"/>  
-      <Attribute id="att22" name="password" db:column="password" type="string" key="false"/>  
-      <Attribute id="att23" name="balance" db:column="balance" type="decimal" key="false"/> 
-    </Entity>  
-    <Entity id="ent7" name="Sport" db:database="db1" duration="persistent" db:table="sport" gr:x="685" gr:y="465"> 
+    <Entity id="ent7" name="Sport" db:database="db1" duration="persistent" db:table="sport" gr:x="760" gr:y="405"> 
       <Attribute id="att24" name="id" db:column="id" type="integer" key="true"/>  
       <Attribute id="att25" name="name" db:column="name" type="string" key="false"/> 
     </Entity>  
-    <Entity id="ent8" name="Team" db:database="db1" duration="persistent" db:table="team" gr:x="610" gr:y="300"> 
+    <Entity id="ent8" name="Team" db:database="db1" duration="persistent" db:table="team" gr:x="675" gr:y="240"> 
       <Attribute id="att26" name="id" db:column="id" type="integer" key="true"/>  
       <Attribute id="att27" name="name" db:column="name" type="string" key="false"/> 
     </Entity>  
-    <Entity id="ent9" name="TeamLeague" db:database="db1" duration="persistent" db:table="team_league" gr:x="775" gr:y="310"> 
+    <Entity id="ent9" name="TeamLeague" db:database="db1" duration="persistent" db:table="team_league" gr:x="850" gr:y="250"> 
       <Attribute id="att28" name="id" db:column="id" type="integer" key="true"/> 
     </Entity>  
     <Relationship id="rel1" name="BetEvent" db:database="db1" db:table="bet" sourceEntity="ent2" targetEntity="ent3"> 
@@ -84,15 +178,7 @@
         <db:JoinColumn attribute="att7" name="Event_id"/> 
       </RelationshipRole2> 
     </Relationship>  
-    <Relationship id="rel2" name="BetPlayer" db:database="db1" db:table="bet" sourceEntity="ent2" targetEntity="ent6"> 
-      <RelationshipRole1 id="role3" name="BetToPlayer" maxCard="1"> 
-        <db:JoinColumn attribute="att4" name="id"/> 
-      </RelationshipRole1>  
-      <RelationshipRole2 id="role4" name="PlayerToBet" maxCard="N"> 
-        <db:JoinColumn attribute="att18" name="Player_id"/> 
-      </RelationshipRole2> 
-    </Relationship>  
-    <Relationship id="rel3" name="EventSport" db:database="db1" db:table="event" sourceEntity="ent3" targetEntity="ent7" gr:bendpoints="-1,164,-261,-1"> 
+    <Relationship id="rel3" name="EventSport" db:database="db1" db:table="event" sourceEntity="ent3" targetEntity="ent7" gr:bendpoints="0,164,-275,-1"> 
       <RelationshipRole1 id="role5" name="EventToSport" maxCard="1"> 
         <db:JoinColumn attribute="att7" name="id"/> 
       </RelationshipRole1>  
@@ -116,7 +202,7 @@
         <db:JoinColumn attribute="att26" name="Team2_id"/> 
       </RelationshipRole2> 
     </Relationship>  
-    <Relationship id="rel6" name="LeagueSport" db:database="db1" db:table="league" sourceEntity="ent4" targetEntity="ent7" gr:bendpoints="-1,166,244,1"> 
+    <Relationship id="rel6" name="LeagueSport" db:database="db1" db:table="league" sourceEntity="ent4" targetEntity="ent7" gr:bendpoints="0,164,250,-1"> 
       <RelationshipRole1 id="role11" name="LeagueToSport" maxCard="1"> 
         <db:JoinColumn attribute="att13" name="id"/> 
       </RelationshipRole1>  
@@ -140,12 +226,20 @@
         <db:JoinColumn attribute="att26" name="Team_id"/> 
       </RelationshipRole2> 
     </Relationship>  
-    <Relationship id="rel9" name="NotificationPlayer" db:database="db1" db:table="notification" sourceEntity="ent5" targetEntity="ent6"> 
-      <RelationshipRole1 id="role17" name="NotificationToPlayer" maxCard="1"> 
-        <db:JoinColumn attribute="att15" name="id"/> 
+    <Relationship id="rel11" name="User_Bet" sourceEntity="User" targetEntity="ent2" db:database="db1" db:table="bet"> 
+      <RelationshipRole1 id="role21" name="UserToBet" maxCard="N"> 
+        <db:JoinColumn attribute="userOID" name="user_oid"/> 
       </RelationshipRole1>  
-      <RelationshipRole2 id="role18" name="PlayerToNotification" maxCard="N"> 
-        <db:JoinColumn attribute="att18" name="Player_id"/> 
+      <RelationshipRole2 id="role22" name="BetToUser" maxCard="1"> 
+        <db:JoinColumn attribute="att4" name="id"/> 
+      </RelationshipRole2> 
+    </Relationship>  
+    <Relationship id="rel12" name="User_Notification" sourceEntity="User" targetEntity="ent5" db:database="db1" db:table="notification"> 
+      <RelationshipRole1 id="role23" name="UserToNotification" maxCard="N"> 
+        <db:JoinColumn attribute="userOID" name="user_oid"/> 
+      </RelationshipRole1>  
+      <RelationshipRole2 id="role24" name="NotificationToUser" maxCard="1"> 
+        <db:JoinColumn attribute="att15" name="id"/> 
       </RelationshipRole2> 
     </Relationship> 
   </DataModel>  
@@ -163,5 +257,5 @@
     <ContextParameter id="GroupCtxParam" name="GroupCtxParam" entity="Group" type="entity"/>  
     <ContextParameter id="LanguageISOCtxParam" name="LanguageISOCtxParam" type="string"/>  
     <ContextParameter id="CountryISOCtxParam" name="CountryISOCtxParam" type="string"/> 
-  </WebModel>
+  </WebModel> 
 </WebProject>
