@@ -3,14 +3,11 @@
 <WebProject xmlns:gr="http://www.webratio.com/2006/WebML/Graph" xmlns:db="http://www.webratio.com/2006/WebML/Database" xmlns:wrxsd="http://www.webratio.com/2012/WebML/WRXSD" xmlns:layout="http://www.webratio.com/2006/WebML/Layout" xmlns:temp="http://www.webratio.com/2006/WebML/Temp" xmlns:bpm="http://www.webratio.com/2009/WebML/BPM" outputPath="${webapps_loc}/${project_name}" gr:showUnitContent="true" gr:showTooltip="true" httpPort="8080" httpsPort="8443" enableProjectDependencies="false" jobGroupName="WEBRATIO" wrTempNewProject="true" control="amRiYzpteXNxbDovL2xvY2FsaG9zdDozMzA2L2JldGVzcw==">  
   <ServiceDataProviders/>  
   <DataModel> 
-    <Entity id="User" name="User" duration="persistent" gr:x="30" gr:y="20" gr:hideAttributes="false" attributeOrder="userOID userName att3 email password att1 att2" db:database="db1" db:table="user"> 
+    <Entity id="User" name="User" duration="persistent" gr:x="30" gr:y="20" gr:hideAttributes="false" attributeOrder="userOID userName email password" db:database="db1" db:table="user"> 
       <Attribute name="oid" id="userOID" type="integer" key="true" db:column="oid"/>  
       <Attribute name="username" id="userName" type="string" db:column="username"/>  
       <Attribute name="password" id="password" type="password" db:column="password"/>  
-      <Attribute name="email" id="email" type="string" db:column="email"/>  
-      <Attribute id="att1" name="phoneNo" type="integer" db:column="phoneno"/>  
-      <Attribute id="att2" name="balance" type="decimal" db:column="balance"/>  
-      <Attribute id="att3" name="name" type="string" db:column="name"/> 
+      <Attribute name="email" id="email" type="string" db:column="email"/> 
     </Entity>  
     <Entity id="Group" name="Group" duration="persistent" gr:x="275" gr:y="45" gr:hideAttributes="false" attributeOrder="groupOID groupName" db:database="db1" db:table="group"> 
       <Attribute name="oid" id="groupOID" type="integer" key="true" db:column="oid"/>  
@@ -61,7 +58,8 @@
           <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="45" decimalDigits="0" name="result" primaryKey="false" notNull="true"/>  
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="Player_id" primaryKey="false" notNull="true"/>  
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="Event_id" primaryKey="false" notNull="true"/>  
-          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="user_oid" primaryKey="false" notNull="false"/> 
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="user_oid" primaryKey="false" notNull="false"/>  
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="player_2_oid" primaryKey="false" notNull="false"/> 
         </temp:Table>  
         <temp:Table ignoreIndexes="false" name="event" type="TABLE" refreshed="true"> 
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="id" primaryKey="true" notNull="true"/>  
@@ -98,7 +96,8 @@
           <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="45" decimalDigits="0" name="status" primaryKey="false" notNull="true"/>  
           <temp:Column sqlTypeId="2" indexed="unknown" autoIncrement="false" type="NUMERIC" size="9" decimalDigits="2" webMLType="decimal" name="balanceBet" primaryKey="false" notNull="true"/>  
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="Player_id" primaryKey="false" notNull="true"/>  
-          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="user_oid" primaryKey="false" notNull="false"/> 
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="user_oid" primaryKey="false" notNull="false"/>  
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="player_2_oid" primaryKey="false" notNull="false"/> 
         </temp:Table>  
         <temp:Table ignoreIndexes="false" name="player" type="TABLE" refreshed="true"> 
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="id" primaryKey="true" notNull="true"/>  
@@ -107,6 +106,13 @@
           <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="45" decimalDigits="0" name="email" primaryKey="false" notNull="true"/>  
           <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="20" decimalDigits="0" name="password" primaryKey="false" notNull="true"/>  
           <temp:Column sqlTypeId="2" indexed="unknown" autoIncrement="false" type="NUMERIC" size="9" decimalDigits="2" webMLType="decimal" name="balance" primaryKey="false" notNull="true"/> 
+        </temp:Table>  
+        <temp:Table ignoreIndexes="false" name="player_2" type="TABLE" refreshed="true"> 
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="oid" primaryKey="true" notNull="true"/>  
+          <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="name" primaryKey="false" notNull="false"/>  
+          <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="phoneno" primaryKey="false" notNull="false"/>  
+          <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="balance" primaryKey="false" notNull="false"/>  
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="user_oid" primaryKey="false" notNull="false"/> 
         </temp:Table>  
         <temp:Table ignoreIndexes="false" name="sport" type="TABLE" refreshed="true"> 
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="id" primaryKey="true" notNull="true"/>  
@@ -137,7 +143,7 @@
         </temp:Table> 
       </temp:DBMetaData> 
     </db:Database>  
-    <Entity id="ent2" name="Bet" db:database="db1" duration="persistent" db:table="bet" gr:x="275" gr:y="230"> 
+    <Entity id="ent2" name="Bet" db:database="db1" duration="persistent" db:table="bet" gr:x="255" gr:y="230"> 
       <Attribute id="att4" name="id" db:column="id" type="integer" key="true"/>  
       <Attribute id="att5" name="amount" db:column="amount" type="decimal" key="false"/>  
       <Attribute id="att6" name="result" db:column="result" type="string" key="false"/> 
@@ -154,7 +160,7 @@
       <Attribute id="att13" name="id" db:column="id" type="integer" key="true"/>  
       <Attribute id="att14" name="name" db:column="name" type="string" key="false"/> 
     </Entity>  
-    <Entity id="ent5" name="Notification" db:database="db1" duration="persistent" db:table="notification" gr:x="30" gr:y="265"> 
+    <Entity id="ent5" name="Notification" db:database="db1" duration="persistent" db:table="notification" gr:x="30" gr:y="390"> 
       <Attribute id="att15" name="id" db:column="id" type="integer" key="true"/>  
       <Attribute id="att16" name="status" db:column="status" type="string" key="false"/>  
       <Attribute id="att17" name="balanceBet" db:column="balanceBet" type="decimal" key="false"/> 
@@ -226,20 +232,34 @@
         <db:JoinColumn attribute="att26" name="Team_id"/> 
       </RelationshipRole2> 
     </Relationship>  
-    <Relationship id="rel11" name="User_Bet" sourceEntity="User" targetEntity="ent2" db:database="db1" db:table="bet"> 
-      <RelationshipRole1 id="role21" name="UserToBet" maxCard="N"> 
-        <db:JoinColumn attribute="userOID" name="user_oid"/> 
+    <Entity gr:x="40" gr:y="220" id="ent1" name="Player" duration="persistent" attributeOrder="att18 att19 att20 att21" db:database="db1" db:table="player_2"> 
+      <Attribute id="att18" key="true" name="oid" type="integer" db:column="oid"/>  
+      <Attribute id="att19" name="name" type="string" db:column="name"/>  
+      <Attribute id="att20" name="phoneNo" type="string" db:column="phoneno"/>  
+      <Attribute id="att21" name="balance" type="string" db:column="balance"/> 
+    </Entity>  
+    <Relationship id="rel2" name="Player_Notification" sourceEntity="ent1" targetEntity="ent5" db:database="db1" db:table="notification"> 
+      <RelationshipRole1 id="role3" name="PlayerToNotification" maxCard="N"> 
+        <db:JoinColumn attribute="att18" name="player_2_oid"/> 
       </RelationshipRole1>  
-      <RelationshipRole2 id="role22" name="BetToUser" maxCard="1"> 
+      <RelationshipRole2 id="role4" name="NotificationToPlayer" maxCard="1"> 
+        <db:JoinColumn attribute="att15" name="id"/> 
+      </RelationshipRole2> 
+    </Relationship>  
+    <Relationship id="rel9" name="Player_Bet" sourceEntity="ent1" targetEntity="ent2" db:database="db1" db:table="bet"> 
+      <RelationshipRole1 id="role17" name="PlayerToBet" maxCard="N"> 
+        <db:JoinColumn attribute="att18" name="player_2_oid"/> 
+      </RelationshipRole1>  
+      <RelationshipRole2 id="role18" name="BetToPlayer" maxCard="1"> 
         <db:JoinColumn attribute="att4" name="id"/> 
       </RelationshipRole2> 
     </Relationship>  
-    <Relationship id="rel12" name="User_Notification" sourceEntity="User" targetEntity="ent5" db:database="db1" db:table="notification"> 
-      <RelationshipRole1 id="role23" name="UserToNotification" maxCard="N"> 
+    <Relationship id="rel10" name="User_Player" sourceEntity="User" targetEntity="ent1" db:database="db1" db:table="player_2"> 
+      <RelationshipRole1 id="role19" name="UserToPlayer" maxCard="1"> 
         <db:JoinColumn attribute="userOID" name="user_oid"/> 
       </RelationshipRole1>  
-      <RelationshipRole2 id="role24" name="NotificationToUser" maxCard="1"> 
-        <db:JoinColumn attribute="att15" name="id"/> 
+      <RelationshipRole2 id="role20" name="PlayerToUser" maxCard="1"> 
+        <db:JoinColumn attribute="att18" name="oid"/> 
       </RelationshipRole2> 
     </Relationship> 
   </DataModel>  

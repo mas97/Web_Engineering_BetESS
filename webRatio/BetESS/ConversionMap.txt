@@ -4,6 +4,7 @@ db1
 DefaultGroup2User
 DefaultModule2Group
 email
+ent1
 ent2
 ent3
 ent4
@@ -29,14 +30,15 @@ moduleName
 moduleOID
 password
 rel1
-rel11
-rel12
+rel10
+rel2
 rel3
 rel4
 rel5
 rel6
 rel7
 rel8
+rel9
 User
 User2DefaultGroup
 User2DefaultGroup_DefaultGroup2User
@@ -47,6 +49,10 @@ userName
 userOID
 
 # SIMPLIFIED IDS
+ent1#att18=att18
+ent1#att19=att19
+ent1#att20=att20
+ent1#att21=att21
 ent2#att4=att4
 ent2#att5=att5
 ent2#att6=att6
@@ -68,10 +74,10 @@ ent8#att27=att27
 ent9#att28=att28
 rel1#role1=role1
 rel1#role2=role2
-rel11#role21=role21
-rel11#role22=role22
-rel12#role23=role23
-rel12#role24=role24
+rel10#role19=role19
+rel10#role20=role20
+rel2#role3=role3
+rel2#role4=role4
 rel3#role5=role5
 rel3#role6=role6
 rel4#role7=role7
@@ -84,6 +90,5 @@ rel7#role13=role13
 rel7#role14=role14
 rel8#role15=role15
 rel8#role16=role16
-User#att1=att1
-User#att2=att2
-User#att3=att3
+rel9#role17=role17
+rel9#role18=role18
