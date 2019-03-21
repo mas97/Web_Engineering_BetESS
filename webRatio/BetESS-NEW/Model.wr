@@ -150,7 +150,7 @@
         <db:JoinColumn attribute="att17" name="league_oid"/> 
       </RelationshipRole2> 
     </Relationship>  
-    <db:Database id="db1" name="betess" type="MySQL" url="jdbc:mysql://localhost:3306/betess" username="root" cryptedPassword="true" password="bWFyY29hbnRvbmlvLjM="></db:Database> 
+    <db:Database id="db1" name="betess" type="MySQL" url="jdbc:mysql://localhost:3306/betess" username="root" cryptedPassword="true" password="bWFyY29hbnRvbmlvLjM="/> 
   </DataModel>  
   <WebModel defaultLocale="lcl1" layout:style="WebRatio" layout:inheritParameters="true" edtLvl="WebRatio Community Platform # 20190320" edtLvlCtrl="V2ViUmF0aW8gQ29tbXVuaXR5IFBsYXRmb3JtICMgMjAxOTAzMjBDb3VudHJ5SVNPQ3R4UGFyYW1Hcm91cEN0eFBhcmFtTGFuZ3VhZ2VJU09DdHhQYXJhbVVzZXJDdHhQYXJhbQ==" homeSiteView="sv1"> 
     <Locale id="lcl1" country="US" language="en"> 
@@ -168,9 +168,9 @@
     <ContextParameter id="CountryISOCtxParam" name="CountryISOCtxParam" type="string"/>  
     <SiteView id="sv1" name="Home" landmarks="area1" homePage="page1"> 
       <OperationUnits> 
-        <CreateUnit gr:x="405" gr:y="390" id="cru1" name="Create1" entity="ent1" skipBlankRecords="true" notBlankAttributes="att1"> 
+        <CreateUnit gr:x="405" gr:y="390" id="cru1" name="Create1" entity="ent1" skipBlankRecords="true"> 
           <OKLink id="oln1" name="OKFlow1" to="dau1" automaticCoupling="true"/>  
-          <KOLink id="kln1" name="KOFlow1" to="enu1" automaticCoupling="true" gr:bendpoints="-41,-94,9,101"/> 
+          <KOLink id="kln1" name="KOFlow1" to="enu1" gr:bendpoints="-41,-94,9,101" automaticCoupling="true"/> 
         </CreateUnit> 
       </OperationUnits>  
       <Area gr:x="185" gr:y="90" id="area1" name="Player_Area" landmark="true" defaultPage="page1"> 
@@ -224,10 +224,10 @@
                     <layout:Row> 
                       <layout:Cell colspan="12"> 
                         <layout:Unit unitId="enu1"> 
+                          <layout:Link link="ln1"/>  
                           <layout:Field field="fld1"/>  
-                          <layout:Field field="fld2"/>  
-                          <layout:Field field="fld3"/>  
-                          <layout:Link link="ln1"/> 
+                          <layout:Field field="fld4"/>  
+                          <layout:Field field="fld5"/> 
                         </layout:Unit> 
                       </layout:Cell>  
                       <layout:Cell/>  
@@ -269,16 +269,16 @@
           </Page>  
           <Page gr:x="125" gr:y="0" id="page3" name="Page 3"> 
             <ContentUnits> 
-              <EntryUnit gr:x="0" gr:y="0" id="enu1" name="Form1" entity="ent1" fieldOrder="fld1 fld2 fld3" linkOrder="ln1"> 
-                <Field id="fld3" name="saldo" type="decimal" modifiable="true"/>  
-                <Field id="fld2" name="phoneNumb" type="string" modifiable="true"/>  
-                <Field id="fld1" name="name" type="string" modifiable="true"/>  
-                <Link id="ln1" name="adicionar" to="cru1" automaticCoupling="true" type="normal" validate="true"/> 
+              <EntryUnit gr:x="0" gr:y="0" id="enu1" name="Form1" entity="ent1" fieldOrder="fld1 fld4 fld5" linkOrder="ln1"> 
+                <Field id="fld1" name="name" type="string" modifiable="true" attribute="att2"/>  
+                <Link id="ln1" name="adicionar" to="cru1" type="normal" validate="true" automaticCoupling="true"/>  
+                <Field id="fld4" name="phoneNo" type="string" modifiable="true" attribute="att3"/>  
+                <Field id="fld5" name="balance" type="decimal" modifiable="true" attribute="att4"/> 
               </EntryUnit> 
             </ContentUnits> 
           </Page> 
         </Page> 
       </Area> 
     </SiteView> 
-  </WebModel>
+  </WebModel> 
 </WebProject>
