@@ -150,9 +150,9 @@
         <db:JoinColumn attribute="att17" name="league_oid"/> 
       </RelationshipRole2> 
     </Relationship>  
-    <db:Database id="db1" name="betess" type="MySQL" url="jdbc:mysql://localhost:3306/betess" username="root" cryptedPassword="true" password="bWFyY29hbnRvbmlvLjM="/> 
+    <db:Database id="db1" name="betess" type="MySQL" url="jdbc:mysql://localhost:3306/betess" username="root" cryptedPassword="true" password="bXlzcWw="/> 
   </DataModel>  
-  <WebModel defaultLocale="lcl1" layout:style="WebRatio" layout:inheritParameters="true" edtLvl="WebRatio Community Platform # 20190320" edtLvlCtrl="V2ViUmF0aW8gQ29tbXVuaXR5IFBsYXRmb3JtICMgMjAxOTAzMjBDb3VudHJ5SVNPQ3R4UGFyYW1Hcm91cEN0eFBhcmFtTGFuZ3VhZ2VJU09DdHhQYXJhbVVzZXJDdHhQYXJhbQ==" homeSiteView="sv1"> 
+  <WebModel defaultLocale="lcl1" layout:style="WebRatio" layout:inheritParameters="true" edtLvl="WebRatio Platform # 20190327" edtLvlCtrl="V2ViUmF0aW8gUGxhdGZvcm0gIyAyMDE5MDMyN0NvdW50cnlJU09DdHhQYXJhbUdyb3VwQ3R4UGFyYW1MYW5ndWFnZUlTT0N0eFBhcmFtVXNlckN0eFBhcmFt" homeSiteView="sv1"> 
     <Locale id="lcl1" country="US" language="en"> 
       <PatternConfiguration type="boolean" pattern="yes|no"/>  
       <PatternConfiguration type="decimal" useNumberPattern="false" maxDecimal="3" minDecimal="0" minInteger="1" useThousandSeparator="true"/>  
@@ -166,119 +166,225 @@
     <ContextParameter id="GroupCtxParam" name="GroupCtxParam" entity="Group" type="entity"/>  
     <ContextParameter id="LanguageISOCtxParam" name="LanguageISOCtxParam" type="string"/>  
     <ContextParameter id="CountryISOCtxParam" name="CountryISOCtxParam" type="string"/>  
-    <SiteView id="sv1" name="Home" landmarks="area1" homePage="page1"> 
+    <SiteView id="sv1" name="Home" homePage="page5"> 
       <OperationUnits> 
-        <CreateUnit gr:x="405" gr:y="390" id="cru1" name="Create1" entity="ent1" skipBlankRecords="true"> 
-          <OKLink id="oln1" name="OKFlow1" to="dau1" automaticCoupling="true"/>  
-          <KOLink id="kln1" name="KOFlow1" to="enu1" gr:bendpoints="-41,-94,9,101" automaticCoupling="true"/> 
-        </CreateUnit> 
+        <CreateUnit gr:x="775" gr:y="375" id="cru1" name="Create1" entity="ent1" skipBlankRecords="true"> 
+          <KOLink id="kln3" name="KOFlow1" to="enu5" automaticCoupling="true" gr:bendpoints="-41,-94,9,101"/>  
+          <OKLink id="oln3" name="OKFlow1" to="dau3" automaticCoupling="true"/> 
+        </CreateUnit>  
+        <ModuleInstanceUnit gr:x="345" gr:y="115" id="miu5" action="true" moduleId="opm2"> 
+          <KOLink id="kln7" name="KOFlow7" to="page5" automaticCoupling="true" gr:bendpoints="-143,134,112,164"/>  
+          <OKLink id="oln4" name="OKFlow4" to="dau3" automaticCoupling="true"/> 
+        </ModuleInstanceUnit> 
       </OperationUnits>  
-      <Area gr:x="185" gr:y="90" id="area1" name="Player_Area" landmark="true" defaultPage="page1"> 
-        <OperationUnits/>  
-        <Page gr:x="0" gr:y="0" id="page1" name="Home"> 
-          <ContentUnits/>  
-          <layout:Grid containerType="grid"> 
-            <layout:Row> 
-              <layout:Cell colspan="12"> 
-                <layout:SubPage pageId="page2"> 
-                  <layout:Grid containerType="grid"> 
-                    <layout:Row> 
-                      <layout:Cell colspan="12"> 
-                        <layout:Unit unitId="dau1"> 
-                          <layout:Attribute attribute="att2"/>  
-                          <layout:Attribute attribute="att3"/>  
-                          <layout:Attribute attribute="att4"/> 
-                        </layout:Unit> 
-                      </layout:Cell>  
-                      <layout:Cell/>  
-                      <layout:Cell/>  
-                      <layout:Cell/>  
-                      <layout:Cell/>  
-                      <layout:Cell/>  
-                      <layout:Cell/>  
-                      <layout:Cell/>  
-                      <layout:Cell/>  
-                      <layout:Cell/>  
-                      <layout:Cell/>  
-                      <layout:Cell/> 
-                    </layout:Row> 
-                  </layout:Grid> 
-                </layout:SubPage> 
-              </layout:Cell>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/> 
-            </layout:Row>  
-            <layout:Row> 
-              <layout:Cell colspan="12"> 
-                <layout:SubPage pageId="page3"> 
-                  <layout:Grid containerType="grid"> 
-                    <layout:Row> 
-                      <layout:Cell colspan="12"> 
-                        <layout:Unit unitId="enu1"> 
-                          <layout:Link link="ln1"/>  
-                          <layout:Field field="fld1"/>  
-                          <layout:Field field="fld4"/>  
-                          <layout:Field field="fld5"/> 
-                        </layout:Unit> 
-                      </layout:Cell>  
-                      <layout:Cell/>  
-                      <layout:Cell/>  
-                      <layout:Cell/>  
-                      <layout:Cell/>  
-                      <layout:Cell/>  
-                      <layout:Cell/>  
-                      <layout:Cell/>  
-                      <layout:Cell/>  
-                      <layout:Cell/>  
-                      <layout:Cell/>  
-                      <layout:Cell/> 
-                    </layout:Row> 
-                  </layout:Grid> 
-                </layout:SubPage> 
-              </layout:Cell>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/> 
-            </layout:Row> 
-          </layout:Grid>  
-          <Page gr:x="0" gr:y="0" id="page2" name="Page 2"> 
-            <ContentUnits> 
-              <DataUnit gr:x="0" gr:y="0" id="dau1" name="Details1" entity="ent1" displayAll="true"> 
-                <Selector id="su1" defaultPolicy="fill" booleanOperator="and"> 
-                  <KeyCondition id="kcond1" name="KeyCondition1" predicate="in" implied="false"/> 
-                </Selector> 
-              </DataUnit> 
-            </ContentUnits> 
-          </Page>  
-          <Page gr:x="125" gr:y="0" id="page3" name="Page 3"> 
-            <ContentUnits> 
-              <EntryUnit gr:x="0" gr:y="0" id="enu1" name="Form1" entity="ent1" fieldOrder="fld1 fld4 fld5" linkOrder="ln1"> 
-                <Field id="fld1" name="name" type="string" modifiable="true" attribute="att2"/>  
-                <Link id="ln1" name="adicionar" to="cru1" type="normal" validate="true" automaticCoupling="true"/>  
-                <Field id="fld4" name="phoneNo" type="string" modifiable="true" attribute="att3"/>  
-                <Field id="fld5" name="balance" type="decimal" modifiable="true" attribute="att4"/> 
-              </EntryUnit> 
-            </ContentUnits> 
-          </Page> 
+      <Page gr:x="600" gr:y="75" id="page9" name="Registo"> 
+        <ContentUnits/>  
+        <layout:Grid containerType="grid"> 
+          <layout:Row> 
+            <layout:Cell colspan="12"> 
+              <layout:Grid containerType="cell"> 
+                <layout:Row> 
+                  <layout:Cell> 
+                    <layout:SubPage pageId="page10"> 
+                      <layout:Grid containerType="grid"> 
+                        <layout:Row> 
+                          <layout:Cell colspan="12"> 
+                            <layout:Unit unitId="enu5"> 
+                              <layout:Link link="ln3"/>  
+                              <layout:Field field="fld8"/>  
+                              <layout:Field field="fld9"/>  
+                              <layout:Field field="fld10"/> 
+                            </layout:Unit> 
+                          </layout:Cell>  
+                          <layout:Cell/>  
+                          <layout:Cell/>  
+                          <layout:Cell/>  
+                          <layout:Cell/>  
+                          <layout:Cell/>  
+                          <layout:Cell/>  
+                          <layout:Cell/>  
+                          <layout:Cell/>  
+                          <layout:Cell/>  
+                          <layout:Cell/>  
+                          <layout:Cell/> 
+                        </layout:Row> 
+                      </layout:Grid> 
+                    </layout:SubPage>  
+                    <layout:SubPage pageId="page11"> 
+                      <layout:Grid containerType="grid"> 
+                        <layout:Row> 
+                          <layout:Cell colspan="12"> 
+                            <layout:Unit unitId="dau3"> 
+                              <layout:Attribute attribute="att2"/>  
+                              <layout:Attribute attribute="att3"/>  
+                              <layout:Attribute attribute="att4"/> 
+                            </layout:Unit> 
+                          </layout:Cell>  
+                          <layout:Cell/>  
+                          <layout:Cell/>  
+                          <layout:Cell/>  
+                          <layout:Cell/>  
+                          <layout:Cell/>  
+                          <layout:Cell/>  
+                          <layout:Cell/>  
+                          <layout:Cell/>  
+                          <layout:Cell/>  
+                          <layout:Cell/>  
+                          <layout:Cell/> 
+                        </layout:Row> 
+                      </layout:Grid> 
+                    </layout:SubPage> 
+                  </layout:Cell> 
+                </layout:Row> 
+              </layout:Grid> 
+            </layout:Cell>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/> 
+          </layout:Row> 
+        </layout:Grid>  
+        <Page id="page10" name="Page 3" gr:x="41" gr:y="38"> 
+          <ContentUnits> 
+            <EntryUnit id="enu5" name="Form1" linkOrder="ln3" gr:x="0" gr:y="0" entity="ent1" fieldOrder="fld8 fld9 fld10"> 
+              <Field id="fld8" name="name" type="string" modifiable="true" attribute="att2"/>  
+              <Link id="ln3" name="adicionar" to="cru1" type="normal" automaticCoupling="true" validate="true"/>  
+              <Field id="fld9" name="phoneNo" type="string" modifiable="true" attribute="att3"/>  
+              <Field id="fld10" name="balance" type="decimal" modifiable="true" attribute="att4"/> 
+            </EntryUnit> 
+          </ContentUnits> 
+        </Page>  
+        <Page id="page11" name="Page 2" gr:x="246" gr:y="68"> 
+          <ContentUnits> 
+            <DataUnit id="dau3" name="Details1" gr:x="0" gr:y="0" entity="ent1" displayAll="true"> 
+              <Selector id="su3" defaultPolicy="fill" booleanOperator="and"> 
+                <KeyCondition id="kcond3" name="KeyCondition1" predicate="in" implied="false"/> 
+              </Selector> 
+            </DataUnit> 
+          </ContentUnits> 
         </Page> 
-      </Area> 
-    </SiteView> 
+      </Page>  
+      <Page id="page5" name="Home" gr:x="100" gr:y="45" linkOrder="ln1"> 
+        <ContentUnits/>  
+        <layout:Grid containerType="grid"> 
+          <layout:Row> 
+            <layout:Cell colspan="12"/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/> 
+          </layout:Row>  
+          <layout:Row> 
+            <layout:Cell colspan="12"/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/> 
+          </layout:Row>  
+          <layout:Row> 
+            <layout:Cell colspan="12"> 
+              <layout:SubPage pageId="page8"> 
+                <layout:Grid containerType="grid"> 
+                  <layout:Row> 
+                    <layout:Cell colspan="12"> 
+                      <layout:Unit unitId="enu4"> 
+                        <layout:Field field="fld6"/>  
+                        <layout:Field field="fld7"/>  
+                        <layout:Link link="ln5"/> 
+                      </layout:Unit> 
+                    </layout:Cell>  
+                    <layout:Cell/>  
+                    <layout:Cell/>  
+                    <layout:Cell/>  
+                    <layout:Cell/>  
+                    <layout:Cell/>  
+                    <layout:Cell/>  
+                    <layout:Cell/>  
+                    <layout:Cell/>  
+                    <layout:Cell/>  
+                    <layout:Cell/>  
+                    <layout:Cell/> 
+                  </layout:Row> 
+                </layout:Grid> 
+              </layout:SubPage> 
+            </layout:Cell>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/> 
+          </layout:Row> 
+        </layout:Grid>  
+        <Page id="page8" name="Login" gr:x="0" gr:y="0"> 
+          <ContentUnits> 
+            <EntryUnit id="enu4" name="Login" gr:x="0" gr:y="0" entity="User" fieldOrder="fld6 fld7" linkOrder="ln5"> 
+              <Field id="fld6" name="username" type="string" modifiable="true"/>  
+              <Field id="fld7" name="password" type="password" modifiable="true"/>  
+              <Link id="ln5" name="Login" to="miu5" type="normal" validate="true"> 
+                <LinkParameter id="par3" name="password_Password" source="fld7" target="miu5.mov1#opm1#icu1#icp1"/>  
+                <LinkParameter id="par4" name="username_Username" source="fld6" target="miu5.mov1#opm1#icu1#icp2"/> 
+              </Link> 
+            </EntryUnit> 
+          </ContentUnits> 
+        </Page>  
+        <Link id="ln1" name="Register" to="page10" automaticCoupling="true" type="normal" validate="true"/> 
+      </Page> 
+    </SiteView>  
+    <ModuleView id="mov2" name="Module Definitions"> 
+      <OperationModule gr:x="90" gr:y="65" id="opm2" name="Login"> 
+        <OperationUnits> 
+          <InputCollectorUnit id="icu2" gr:x="30" gr:y="60"> 
+            <OKLink id="oln1" name="OKFlow1" to="lgu1" automaticCoupling="false"> 
+              <LinkParameter id="par5" name="Password" source="icp3" target="lgu1.password"/>  
+              <LinkParameter id="par6" name="Username" source="icp4" target="lgu1.username"/> 
+            </OKLink>  
+            <InputCollectorParameter id="icp3" name="Password"/>  
+            <InputCollectorParameter id="icp4" name="Username"/> 
+          </InputCollectorUnit>  
+          <LoginUnit gr:x="345" gr:y="70" id="lgu1" name="Login"> 
+            <KOLink id="kln1" name="KOFlow1" to="kocu2" automaticCoupling="true"/> 
+          </LoginUnit>  
+          <KOCollectorUnit gr:x="505" gr:y="55" id="kocu2" name="KO Port2"/> 
+        </OperationUnits> 
+      </OperationModule>  
+      <OperationModule gr:x="95" gr:y="165" id="opm3" name="Logout"> 
+        <OperationUnits> 
+          <InputCollectorUnit id="icu3" name="Input Collector" gr:x="30" gr:y="60"> 
+            <OKLink id="oln2" name="OKFlow2" to="lou1" automaticCoupling="true"/> 
+          </InputCollectorUnit>  
+          <LogoutUnit gr:x="335" gr:y="70" id="lou1" name="Logout" siteView="sv1"> 
+            <KOLink id="kln4" name="KOFlow4" to="kocu4" automaticCoupling="true"/> 
+          </LogoutUnit>  
+          <KOCollectorUnit gr:x="570" gr:y="95" id="kocu4" name="KO Port4"/> 
+        </OperationUnits> 
+      </OperationModule> 
+    </ModuleView> 
   </WebModel> 
 </WebProject>
