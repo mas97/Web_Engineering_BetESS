@@ -66,76 +66,76 @@
         <db:JoinColumn attribute="att4" name="oid"/> 
       </RelationshipRole2> 
     </Relationship>  
-    <db:Database id="db1" name="betess" type="MySQL" url="jdbc:mysql://localhost:3306/betess" cryptedPassword="true" username="root" password="bXlzcWw="> 
-      <temp:DBMetaData driverMajorVersion="5" driverMinorVersion="1" driverVersion="mysql-connector-java-5.1.31 ( Revision: alexander.soklakov@oracle.com-20140520065950-groqzzbvxprqdmnz )" productVersion="5.7.25" identifierQuoteString="`" transactionLevel="Repeatable read" driverName="MySQL Connector Java" productName="MySQL"> 
-        <temp:Table type="TABLE" ignoreIndexes="false" name="bet" refreshed="true"> 
+    <db:Database id="db1" name="betess" type="MySQL" url="jdbc:mysql://localhost:3306/betess" cryptedPassword="true" username="root" password="cGFzc3dvcmQ="> 
+      <temp:DBMetaData driverMajorVersion="5" driverMinorVersion="1" driverVersion="mysql-connector-java-5.1.31 ( Revision: alexander.soklakov@oracle.com-20140520065950-groqzzbvxprqdmnz )" productVersion="5.7.23-log" identifierQuoteString="`" transactionLevel="Repeatable read" driverName="MySQL Connector Java" productName="MySQL"> 
+        <temp:Table ignoreIndexes="false" name="bet" type="TABLE" refreshed="true"> 
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="oid" primaryKey="true" notNull="true"/>  
           <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="result" primaryKey="false" notNull="false"/>  
-          <temp:Column sqlTypeId="2" indexed="unknown" autoIncrement="false" type="NUMERIC" size="19" decimalDigits="2" name="amount" primaryKey="false" webMLType="decimal" notNull="false"/>  
+          <temp:Column sqlTypeId="2" indexed="unknown" autoIncrement="false" type="NUMERIC" size="19" decimalDigits="2" webMLType="decimal" name="amount" primaryKey="false" notNull="false"/>  
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="user_oid" primaryKey="false" notNull="false"/>  
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="event_oid" primaryKey="false" notNull="false"/> 
         </temp:Table>  
-        <temp:Table type="TABLE" ignoreIndexes="false" name="event" refreshed="true"> 
+        <temp:Table ignoreIndexes="false" name="event" type="TABLE" refreshed="true"> 
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="oid" primaryKey="true" notNull="true"/>  
-          <temp:Column sqlTypeId="2" indexed="unknown" autoIncrement="false" type="NUMERIC" size="19" decimalDigits="2" name="odddraw" primaryKey="false" webMLType="decimal" notNull="false"/>  
-          <temp:Column sqlTypeId="2" indexed="unknown" autoIncrement="false" type="NUMERIC" size="19" decimalDigits="2" name="oddaway" primaryKey="false" webMLType="decimal" notNull="false"/>  
-          <temp:Column sqlTypeId="2" indexed="unknown" autoIncrement="false" type="NUMERIC" size="19" decimalDigits="2" name="oddhome" primaryKey="false" webMLType="decimal" notNull="false"/>  
+          <temp:Column sqlTypeId="2" indexed="unknown" autoIncrement="false" type="NUMERIC" size="19" decimalDigits="2" webMLType="decimal" name="odddraw" primaryKey="false" notNull="false"/>  
+          <temp:Column sqlTypeId="2" indexed="unknown" autoIncrement="false" type="NUMERIC" size="19" decimalDigits="2" webMLType="decimal" name="oddaway" primaryKey="false" notNull="false"/>  
+          <temp:Column sqlTypeId="2" indexed="unknown" autoIncrement="false" type="NUMERIC" size="19" decimalDigits="2" webMLType="decimal" name="oddhome" primaryKey="false" notNull="false"/>  
           <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="result" primaryKey="false" notNull="false"/>  
           <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="status" primaryKey="false" notNull="false"/>  
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="sport_oid" primaryKey="false" notNull="false"/> 
         </temp:Table>  
-        <temp:Table type="TABLE" ignoreIndexes="false" name="event_team" refreshed="true"> 
+        <temp:Table ignoreIndexes="false" name="event_team" type="TABLE" refreshed="true"> 
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="event_oid" primaryKey="true" notNull="true"/>  
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="team_oid" primaryKey="true" notNull="true"/> 
         </temp:Table>  
-        <temp:Table type="TABLE" ignoreIndexes="false" name="group" refreshed="true"> 
+        <temp:Table ignoreIndexes="false" name="group" type="TABLE" refreshed="true"> 
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="oid" primaryKey="true" notNull="true"/>  
           <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="groupname" primaryKey="false" notNull="false"/>  
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="module_oid" primaryKey="false" notNull="false"/> 
         </temp:Table>  
-        <temp:Table type="TABLE" ignoreIndexes="false" name="group_module" refreshed="true"> 
+        <temp:Table ignoreIndexes="false" name="group_module" type="TABLE" refreshed="true"> 
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="group_oid" primaryKey="true" notNull="true"/>  
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="module_oid" primaryKey="true" notNull="true"/> 
         </temp:Table>  
-        <temp:Table type="TABLE" ignoreIndexes="false" name="league" refreshed="true"> 
+        <temp:Table ignoreIndexes="false" name="league" type="TABLE" refreshed="true"> 
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="oid" primaryKey="true" notNull="true"/>  
-          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="sport_oid" primaryKey="false" notNull="false"/>  
-          <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="name" primaryKey="false" notNull="false"/> 
+          <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="name" primaryKey="false" notNull="false"/>  
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="sport_oid" primaryKey="false" notNull="false"/> 
         </temp:Table>  
-        <temp:Table type="TABLE" ignoreIndexes="false" name="module" refreshed="true"> 
+        <temp:Table ignoreIndexes="false" name="module" type="TABLE" refreshed="true"> 
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="oid" primaryKey="true" notNull="true"/>  
           <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="moduleid" primaryKey="false" notNull="false"/>  
           <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="modulename" primaryKey="false" notNull="false"/> 
         </temp:Table>  
-        <temp:Table type="TABLE" ignoreIndexes="false" name="notification" refreshed="true"> 
+        <temp:Table ignoreIndexes="false" name="notification" type="TABLE" refreshed="true"> 
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="oid" primaryKey="true" notNull="true"/>  
-          <temp:Column sqlTypeId="2" indexed="unknown" autoIncrement="false" type="NUMERIC" size="19" decimalDigits="2" name="balancebet" primaryKey="false" webMLType="decimal" notNull="false"/>  
+          <temp:Column sqlTypeId="2" indexed="unknown" autoIncrement="false" type="NUMERIC" size="19" decimalDigits="2" webMLType="decimal" name="balancebet" primaryKey="false" notNull="false"/>  
           <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="status" primaryKey="false" notNull="false"/>  
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="user_oid" primaryKey="false" notNull="false"/> 
         </temp:Table>  
-        <temp:Table type="TABLE" ignoreIndexes="false" name="sport" refreshed="true"> 
+        <temp:Table ignoreIndexes="false" name="sport" type="TABLE" refreshed="true"> 
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="oid" primaryKey="true" notNull="true"/>  
           <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="name" primaryKey="false" notNull="false"/> 
         </temp:Table>  
-        <temp:Table type="TABLE" ignoreIndexes="false" name="team" refreshed="true"> 
+        <temp:Table ignoreIndexes="false" name="team" type="TABLE" refreshed="true"> 
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="oid" primaryKey="true" notNull="true"/>  
           <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="name" primaryKey="false" notNull="false"/> 
         </temp:Table>  
-        <temp:Table type="TABLE" ignoreIndexes="false" name="team_league" refreshed="true"> 
+        <temp:Table ignoreIndexes="false" name="team_league" type="TABLE" refreshed="true"> 
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="team_oid" primaryKey="true" notNull="true"/>  
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="league_oid" primaryKey="true" notNull="true"/> 
         </temp:Table>  
-        <temp:Table type="TABLE" ignoreIndexes="false" name="user" refreshed="true"> 
+        <temp:Table ignoreIndexes="false" name="user" type="TABLE" refreshed="true"> 
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="oid" primaryKey="true" notNull="true"/>  
           <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="username" primaryKey="false" notNull="false"/>  
           <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="password" primaryKey="false" notNull="false"/>  
           <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="email" primaryKey="false" notNull="false"/>  
-          <temp:Column sqlTypeId="2" indexed="unknown" autoIncrement="false" type="NUMERIC" size="19" decimalDigits="2" name="balance" primaryKey="false" webMLType="decimal" notNull="false"/>  
+          <temp:Column sqlTypeId="2" indexed="unknown" autoIncrement="false" type="NUMERIC" size="19" decimalDigits="2" webMLType="decimal" name="balance" primaryKey="false" notNull="false"/>  
           <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="phoneno" primaryKey="false" notNull="false"/>  
           <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="name" primaryKey="false" notNull="false"/>  
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="group_oid" primaryKey="false" notNull="false"/> 
         </temp:Table>  
-        <temp:Table type="TABLE" ignoreIndexes="false" name="user_group" refreshed="true"> 
+        <temp:Table ignoreIndexes="false" name="user_group" type="TABLE" refreshed="true"> 
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="user_oid" primaryKey="true" notNull="true"/>  
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="group_oid" primaryKey="true" notNull="true"/> 
         </temp:Table> 
@@ -229,50 +229,37 @@
     <ContextParameter id="GroupCtxParam" name="GroupCtxParam" entity="Group" type="entity"/>  
     <ContextParameter id="LanguageISOCtxParam" name="LanguageISOCtxParam" type="string"/>  
     <ContextParameter id="CountryISOCtxParam" name="CountryISOCtxParam" type="string"/>  
-    <SiteView id="sv1" name="Main" homePage="page1" landmarks="area1" layout:style="Multiflex"> 
+    <SiteView id="sv1" name="Main" landmarks="area1 area4" layout:style="Multiflex" homePage="page6"> 
       <OperationUnits> 
-        <LoginUnit gr:x="535" gr:y="135" id="lgu1" name="Login1"/> 
+        <LoginUnit gr:x="535" gr:y="135" id="lgu1" name="Login1"> 
+          <KOLink id="kln4" name="badLogin" to="mssu12" automaticCoupling="true"/> 
+        </LoginUnit> 
       </OperationUnits>  
-      <Page gr:x="80" gr:y="50" id="page1" name="Home" linkOrder="ln2"> 
-        <ContentUnits> 
-          <MultiMessageUnit gr:x="0" gr:y="0" id="mssu1" name="Welcome!"> 
-            <Message xml:space="preserve">Welcome to the betting platform BetESS.</Message> 
-          </MultiMessageUnit> 
-        </ContentUnits>  
-        <layout:Grid containerType="grid"> 
-          <layout:Row> 
-            <layout:Cell colspan="12"> 
-              <layout:Unit unitId="mssu1"/> 
-            </layout:Cell>  
-            <layout:Cell/>  
-            <layout:Cell/>  
-            <layout:Cell/>  
-            <layout:Cell/>  
-            <layout:Cell/>  
-            <layout:Cell/>  
-            <layout:Cell/>  
-            <layout:Cell/>  
-            <layout:Cell/>  
-            <layout:Cell/>  
-            <layout:Cell/> 
-          </layout:Row> 
-        </layout:Grid>  
-        <Link id="ln2" name="Sign in" to="area1" automaticCoupling="true" type="normal" validate="true"/> 
-      </Page>  
-      <Area gr:x="290" gr:y="55" id="area1" name="Login" landmark="true" defaultPage="page2"> 
-        <OperationUnits/>  
-        <Page gr:x="0" gr:y="0" id="page2" name="Sign in"> 
+      <Area gr:x="285" gr:y="40" id="area1" name="Sign in/up" landmark="true" defaultPage="page2" linkVisibilityPolicy="inactive" landmarks="page15"> 
+        <OperationUnits> 
+          <CreateUnit gr:x="480" gr:y="270" id="cru4" name="Add user" entity="User"> 
+            <OKLink id="oln6" name="OKFlow6" to="mssu13" automaticCoupling="true"/>  
+            <KOLink id="kln9" name="KOFlow9" to="mssu17" automaticCoupling="true"/> 
+          </CreateUnit> 
+        </OperationUnits>  
+        <Page gr:x="0" gr:y="0" id="page2" name="Login"> 
           <ContentUnits> 
             <EntryUnit gr:x="0" gr:y="0" id="enu1" name="Login" linkOrder="ln1" entity="User"> 
               <Link id="ln1" name="Login" to="lgu1" type="normal" validate="true"> 
                 <LinkParameter id="par1" name="userName_Username" source="fld1" target="lgu1.username"/>  
                 <LinkParameter id="par2" name="password_Password" source="fld2" target="lgu1.password"/> 
               </Link>  
-              <Field id="fld1" name="userName" type="string" modifiable="true" attribute="userName"/>  
-              <Field id="fld2" name="password" type="password" modifiable="true" attribute="password"/>  
-              <VRules> 
-                <FormNotEmptyValidationRule id="fnevr1" name="Form Not Empty1"/> 
-              </VRules> 
+              <Field id="fld1" name="Username" type="string" modifiable="true" attribute="userName"> 
+                <VRules> 
+                  <MandatoryValidationRule id="mnd7" name="Mandatory"/> 
+                </VRules> 
+              </Field>  
+              <Field id="fld2" name="Password" type="password" modifiable="true" attribute="password"> 
+                <VRules> 
+                  <MandatoryValidationRule id="mnd6" name="Mandatory"/> 
+                </VRules> 
+              </Field>  
+              <VRules/> 
             </EntryUnit> 
           </ContentUnits>  
           <layout:Grid containerType="grid"> 
@@ -293,6 +280,285 @@
               <layout:Cell/>  
               <layout:Cell/>  
               <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row>  
+            <layout:Row> 
+              <layout:Cell colspan="12"/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row> 
+          </layout:Grid> 
+        </Page>  
+        <Page gr:x="0" gr:y="140" id="page14"> 
+          <ContentUnits> 
+            <MultiMessageUnit gr:x="0" gr:y="0" id="mssu12"> 
+              <Message xml:space="preserve">Wrong username or password !</Message> 
+            </MultiMessageUnit> 
+          </ContentUnits>  
+          <layout:Grid containerType="grid"> 
+            <layout:Row> 
+              <layout:Cell colspan="12"> 
+                <layout:Unit unitId="mssu12"/> 
+              </layout:Cell>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row> 
+          </layout:Grid> 
+        </Page>  
+        <Page gr:x="460" gr:y="0" id="page15" name="Register" landmark="true"> 
+          <ContentUnits> 
+            <EntryUnit gr:x="0" gr:y="0" id="enu2" name="Register" entity="User" fieldOrder="fld5 fld4 fld6 fld7 fld8" customDescriptor="false" linkOrder="ln8"> 
+              <Field id="fld4" name="Username" type="string" modifiable="true" attribute="userName"> 
+                <VRules> 
+                  <MandatoryValidationRule id="mnd5" name="Mandatory"/> 
+                </VRules> 
+              </Field>  
+              <Field id="fld5" name="Name" type="string" modifiable="true" attribute="att1"> 
+                <VRules> 
+                  <MandatoryValidationRule id="mnd2" name="Mandatory"/> 
+                </VRules> 
+              </Field>  
+              <Field id="fld6" name="Email" type="string" modifiable="true" attribute="email"> 
+                <VRules> 
+                  <EMailValidationRule id="email1" name="EMail1"/>  
+                  <MandatoryValidationRule id="mnd1" name="Mandatory"/> 
+                </VRules> 
+              </Field>  
+              <Field id="fld7" name="Phone Number" type="integer" modifiable="true" attribute="att2"> 
+                <VRules> 
+                  <MandatoryValidationRule id="mnd4" name="Mandatory"/> 
+                </VRules> 
+              </Field>  
+              <Field id="fld8" name="New Password" type="password" modifiable="true" attribute="password"> 
+                <VRules> 
+                  <MandatoryValidationRule id="mnd3" name="Mandatory"/> 
+                </VRules> 
+              </Field>  
+              <VRules/>  
+              <Link id="ln8" name="Register" to="cru4" type="normal" validate="true"> 
+                <LinkParameter id="par55" name="5_balance" sourceValue="5" target="cru4.att3"/>  
+                <LinkParameter id="par56" name="Email_email" source="fld6" target="cru4.email"/>  
+                <LinkParameter id="par57" name="Name_name" source="fld5" target="cru4.att1"/>  
+                <LinkParameter id="par58" name="Key [oid]_oid" source="key.userOID" target="cru4.userOID"/>  
+                <LinkParameter id="par59" name="New Password_password" source="fld8" target="cru4.password"/>  
+                <LinkParameter id="par60" name="Phone Number_phoneNo" source="fld7" target="cru4.att2"/>  
+                <LinkParameter id="par61" name="User Object_User Object" source="entityBean" target="cru4.entityBeans"/>  
+                <LinkParameter id="par62" name="Username_userName" source="fld4" target="cru4.userName"/> 
+              </Link> 
+            </EntryUnit> 
+          </ContentUnits>  
+          <layout:Grid containerType="grid"> 
+            <layout:Row> 
+              <layout:Cell colspan="12"> 
+                <layout:Unit unitId="enu2"> 
+                  <layout:Field field="fld5"/>  
+                  <layout:Field field="fld4"/>  
+                  <layout:Field field="fld6"/>  
+                  <layout:Field field="fld7"/>  
+                  <layout:Field field="fld8"/>  
+                  <layout:Link link="ln8"/> 
+                </layout:Unit> 
+              </layout:Cell>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row> 
+          </layout:Grid> 
+        </Page>  
+        <Page gr:x="325" gr:y="185" id="page17"> 
+          <ContentUnits> 
+            <MultiMessageUnit gr:x="0" gr:y="0" id="mssu13" name="Success! "> 
+              <Message xml:space="preserve">You can go to login page now and start playing &#9733;</Message> 
+            </MultiMessageUnit> 
+          </ContentUnits>  
+          <layout:Grid containerType="grid"> 
+            <layout:Row> 
+              <layout:Cell colspan="12"> 
+                <layout:Unit unitId="mssu13"/> 
+              </layout:Cell>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row> 
+          </layout:Grid> 
+        </Page>  
+        <Page id="page21" gr:x="325" gr:y="310"> 
+          <ContentUnits> 
+            <MultiMessageUnit id="mssu17" name="Oops!" gr:x="0" gr:y="0"> 
+              <Message xml:space="preserve">Something went wrong... Try register again.</Message> 
+            </MultiMessageUnit> 
+          </ContentUnits>  
+          <layout:Grid containerType="grid"> 
+            <layout:Row> 
+              <layout:Cell colspan="12"> 
+                <layout:Unit unitId="mssu17"/> 
+              </layout:Cell>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row> 
+          </layout:Grid> 
+        </Page> 
+      </Area>  
+      <Area id="area4" name="About Us" defaultPage="page6" landmark="true" gr:x="30" gr:y="40"> 
+        <OperationUnits/>  
+        <Page id="page6" name="About Us" layout:style="Multiflex" gr:x="0" gr:y="0"> 
+          <ContentUnits> 
+            <MultiMessageUnit id="mssu8" name="Welcome to BetESS website" gr:x="0" gr:y="0" customDescriptor="false"> 
+              <Message xml:space="preserve"> Here you can find the best bets, with the best odds and the best sports!</Message> 
+            </MultiMessageUnit>  
+            <MultiMessageUnit gr:x="0" gr:y="70" id="mssu9" name="How to play"> 
+              <Message xml:space="preserve">Deposit, see your balance and you can start playing.</Message> 
+            </MultiMessageUnit>  
+            <MultiMessageUnit gr:x="0" gr:y="140" id="mssu10"> 
+              <Message xml:space="preserve">	&#9733; Happy betting! &#9733;</Message> 
+            </MultiMessageUnit> 
+          </ContentUnits>  
+          <layout:Grid containerType="grid"> 
+            <layout:Row> 
+              <layout:Cell colspan="8" rowspan="4"> 
+                <layout:Unit unitId="mssu8"/> 
+              </layout:Cell>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell colspan="4"/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row>  
+            <layout:Row> 
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell colspan="4"/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row>  
+            <layout:Row> 
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell colspan="4"/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row>  
+            <layout:Row> 
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell colspan="4"/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row>  
+            <layout:Row> 
+              <layout:Cell colspan="8"> 
+                <layout:Unit unitId="mssu9"/> 
+              </layout:Cell>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell colspan="4"/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row>  
+            <layout:Row> 
+              <layout:Cell colspan="12"/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row>  
+            <layout:Row> 
+              <layout:Cell colspan="9"/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell colspan="2"> 
+                <layout:Unit unitId="mssu10"/> 
+              </layout:Cell>  
               <layout:Cell/>  
               <layout:Cell/> 
             </layout:Row> 
