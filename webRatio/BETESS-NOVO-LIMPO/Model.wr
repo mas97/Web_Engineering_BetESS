@@ -66,7 +66,7 @@
         <db:JoinColumn attribute="att4" name="oid"/> 
       </RelationshipRole2> 
     </Relationship>  
-    <db:Database id="db1" name="betess" type="MySQL" url="jdbc:mysql://localhost:3306/betess" cryptedPassword="true" username="root" password="cGFzc3dvcmQ="></db:Database>  
+    <db:Database id="db1" name="betess" type="MySQL" url="jdbc:mysql://localhost:3306/betess" cryptedPassword="true" username="root" password="cGFzc3dvcmQ="/>  
     <Entity gr:x="15" gr:y="440" id="ent2" name="Notification" duration="persistent" attributeOrder="att7 att8 att9" db:database="db1" db:table="notification"> 
       <Attribute id="att7" key="true" name="oid" type="integer" db:column="oid"/>  
       <Attribute id="att9" name="balancebet" type="decimal" db:column="balancebet"/>  
@@ -655,15 +655,27 @@
     </SiteView>  
     <SiteView id="sv3" name="Users" protected="true" landmarks="area3 area7 area9 area10 area11 area12" homePage="page27"> 
       <OperationUnits> 
-        <ModifyUnit gr:x="595" gr:y="295" id="mfu1" name="Update User Info" entity="User"> 
+        <ModifyUnit gr:x="1100" gr:y="295" id="mfu1" name="Update User Info" entity="User"> 
           <Selector id="su3" defaultPolicy="fill" booleanOperator="and"> 
             <KeyCondition id="kcond3" name="KeyCondition3" predicate="in" implied="false"/> 
           </Selector>  
           <OKLink id="oln7" name="OKFlow7" to="dau1" automaticCoupling="true" gr:bendpoints="-1,181,374,181;-208,183,187,183;-377,183,-2,183"/>  
           <KOLink id="kln10" name="KOFlow10" to="mssu19" automaticCoupling="true"/> 
+        </ModifyUnit>  
+        <ModifyUnit gr:x="220" gr:y="510" id="mfu2" name="Somar valor" entity="User"> 
+          <Selector id="su5" defaultPolicy="fill" booleanOperator="and"> 
+            <KeyCondition id="kcond5" name="KeyCondition5" predicate="in" implied="false"/>  
+            <AttributesCondition id="acond4" name="AttCondition4" predicate="eq" booleanOperator="or" implied="false"/> 
+          </Selector> 
+        </ModifyUnit>  
+        <ModifyUnit gr:x="425" gr:y="510" id="mfu3" name="Subtrair valor"> 
+          <Selector id="su6" defaultPolicy="fill" booleanOperator="and"> 
+            <KeyCondition id="kcond6" name="KeyCondition6" predicate="in" implied="false"/>  
+            <AttributesCondition id="acond3" name="saldo&gt;levantamento" predicate="eq" booleanOperator="or" implied="false"/> 
+          </Selector> 
         </ModifyUnit> 
       </OperationUnits>  
-      <Page id="page29" gr:x="765" gr:y="280"> 
+      <Page id="page29" gr:x="1270" gr:y="280"> 
         <ContentUnits> 
           <MultiMessageUnit id="mssu19" name="Oops..." gr:x="0" gr:y="0"> 
             <Message xml:space="preserve">Something went wrong. Please try again.</Message> 
@@ -688,13 +700,127 @@
           </layout:Row> 
         </layout:Grid> 
       </Page>  
-      <Area id="area10" name="Credits" defaultPage="page22" landmark="true" gr:x="25" gr:y="225"> 
+      <Area id="area10" name="Credits" defaultPage="page22" landmark="true" gr:x="25" gr:y="225" landmarks="page22 page1 page4"> 
         <OperationUnits/>  
-        <Page id="page22" name="Cr&#233;ditos" layout:style="Multiflex" gr:x="0" gr:y="0"> 
-          <ContentUnits/>  
+        <Page id="page22" name="My Credits" layout:style="Multiflex" gr:x="0" gr:y="0" landmark="true"> 
+          <ContentUnits> 
+            <DataUnit gr:x="0" gr:y="0" id="dau2" name="Balance" entity="User" displayAttributes="att3"> 
+              <Selector id="su4" defaultPolicy="fill" booleanOperator="and"> 
+                <KeyCondition id="kcond4" name="KeyCondition4" predicate="in" implied="false"/> 
+              </Selector> 
+            </DataUnit> 
+          </ContentUnits>  
           <layout:Grid containerType="grid"> 
             <layout:Row> 
-              <layout:Cell colspan="12"/>  
+              <layout:Cell colspan="12"> 
+                <layout:Unit unitId="dau2"> 
+                  <layout:Attribute attribute="att3"/> 
+                </layout:Unit> 
+              </layout:Cell>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row> 
+          </layout:Grid> 
+        </Page>  
+        <Page gr:x="150" gr:y="0" id="page1" name="Deposit" landmark="true"> 
+          <ContentUnits> 
+            <EntryUnit gr:x="0" gr:y="0" id="enu6" name="Insert amount to deposit" entity="User" linkOrder="ln2"> 
+              <Field id="fld9" name="Quantia" type="decimal" modifiable="true" preloaded="false" attribute="att3"> 
+                <VRules> 
+                  <MandatoryValidationRule id="mnd8" name="Mandatory"/> 
+                </VRules> 
+              </Field>  
+              <Link id="ln2" name="Deposit" to="mfu2" automaticCoupling="true" type="normal" validate="true"/> 
+            </EntryUnit>  
+            <MultiMessageUnit gr:x="5" gr:y="90" id="mssu1"> 
+              <Message xml:space="preserve">The amount will be automatically withdrawn from your account</Message> 
+            </MultiMessageUnit> 
+          </ContentUnits>  
+          <layout:Grid containerType="grid"> 
+            <layout:Row> 
+              <layout:Cell colspan="12"> 
+                <layout:Unit unitId="enu6"> 
+                  <layout:Field field="fld9"/>  
+                  <layout:Link link="ln2"/> 
+                </layout:Unit> 
+              </layout:Cell>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row>  
+            <layout:Row> 
+              <layout:Cell colspan="12"> 
+                <layout:Unit unitId="mssu1"/> 
+              </layout:Cell>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row> 
+          </layout:Grid> 
+        </Page>  
+        <Page gr:x="360" gr:y="0" id="page4" name="Draw" landmark="true"> 
+          <ContentUnits> 
+            <EntryUnit gr:x="0" gr:y="0" id="enu7" name="Insert amount to draw" entity="User" fieldOrder="fld11" linkOrder="ln3"> 
+              <Field id="fld11" name="Quantia" type="decimal" modifiable="true" attribute="att3"> 
+                <VRules> 
+                  <MandatoryValidationRule id="mnd9" name="Mandatory"/> 
+                </VRules> 
+              </Field>  
+              <Link id="ln3" name="Draw" to="mfu3" automaticCoupling="true" type="normal" validate="true"/> 
+            </EntryUnit>  
+            <MultiMessageUnit id="mssu3" gr:x="5" gr:y="95"> 
+              <Message xml:space="preserve">(The amount will be automatically returned to your account)</Message> 
+            </MultiMessageUnit> 
+          </ContentUnits>  
+          <layout:Grid containerType="grid"> 
+            <layout:Row> 
+              <layout:Cell colspan="12"> 
+                <layout:Unit unitId="enu7"> 
+                  <layout:Field field="fld11"/>  
+                  <layout:Link link="ln3"/> 
+                </layout:Unit> 
+              </layout:Cell>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row>  
+            <layout:Row> 
+              <layout:Cell colspan="12"> 
+                <layout:Unit unitId="mssu3"/> 
+              </layout:Cell>  
               <layout:Cell/>  
               <layout:Cell/>  
               <layout:Cell/>  
@@ -736,7 +862,7 @@
           </layout:Grid> 
         </Page> 
       </Area>  
-      <Area id="area12" name="Profile" defaultPage="page24" landmark="true" gr:x="190" gr:y="225" landmarks="page24 page25"> 
+      <Area id="area12" name="Profile" defaultPage="page24" landmark="true" gr:x="695" gr:y="225" landmarks="page24 page25"> 
         <OperationUnits/>  
         <Page id="page25" name="Edit Profile" layout:style="Multiflex" gr:x="150" gr:y="0" landmark="true"> 
           <ContentUnits> 
@@ -878,5 +1004,5 @@
         </Page> 
       </Area> 
     </SiteView> 
-  </WebModel>
+  </WebModel> 
 </WebProject>
