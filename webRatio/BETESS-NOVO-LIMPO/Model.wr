@@ -744,7 +744,8 @@
         <StoredProcedureUnit gr:x="455" gr:y="415" id="spu2" name="if ( draw &lt;= balance ) subtract balance" resultType="plain" db="db1" procedure="subt_balance"> 
           <OKLink id="oln3" name="OKFlow3" to="page22" automaticCoupling="true" gr:bendpoints="-1,61,384,281;-456,50,-1,300"/>  
           <KOLink id="kln3" name="KOFlow3" to="page5" automaticCoupling="true"/> 
-        </StoredProcedureUnit> 
+        </StoredProcedureUnit>  
+        <StoredProcedureUnit gr:x="510" gr:y="935" id="spu3" name="Store Procedure3" resultType="plain" db="db1" procedure="get_lista"/> 
       </OperationUnits>  
       <Page id="page5" gr:x="415" gr:y="560"> 
         <ContentUnits> 
@@ -976,7 +977,7 @@
           </layout:Grid> 
         </Page> 
       </Area>  
-      <Area id="area11" name="Notifications" defaultPage="page23" landmark="true" gr:x="35" gr:y="830"> 
+      <Area id="area11" name="Notifications" defaultPage="page23" landmark="true" gr:x="735" gr:y="790"> 
         <OperationUnits/>  
         <Page id="page23" name="Read Notifications" layout:style="WebRatio" gr:x="0" gr:y="0"> 
           <ContentUnits> 
@@ -1012,7 +1013,7 @@
                   <MandatoryValidationRule id="mnd11" name="Mandatory"/> 
                 </VRules> 
               </Field>  
-              <Link id="ln11" name="Save Changes" to="mfu1" automaticCoupling="true" type="normal" validate="true"/> 
+              <Link id="ln11" name="Save Changes" to="mfu1" type="normal" validate="true" automaticCoupling="true"/> 
             </EntryUnit>  
             <EntryUnit gr:x="0" gr:y="95" id="enu5" name="Change Phone Number" entity="User" linkOrder="ln12"> 
               <Link id="ln12" name="Save Changes" to="mfu1" type="normal" validate="true" automaticCoupling="true"/>  
@@ -1115,16 +1116,66 @@
           </layout:Grid> 
         </Page> 
       </Area>  
-      <Area gr:x="700" gr:y="835" id="area3" name="Exit" landmark="true" defaultPage="lou2"> 
+      <Area gr:x="1185" gr:y="810" id="area3" name="Exit" landmark="true" defaultPage="lou2"> 
         <OperationUnits> 
           <LogoutUnit gr:x="0" gr:y="0" id="lou2" name="Exit" siteView="sv1"/> 
         </OperationUnits> 
       </Area>  
-      <Area id="area7" name="Bet" landmark="true" gr:x="505" gr:y="830" defaultPage="page27"> 
+      <Area id="area7" name="Bet" landmark="true" gr:x="0" gr:y="710" defaultPage="page27"> 
         <OperationUnits/>  
         <Page id="page27" name="Bet" gr:x="0" gr:y="0" layout:style="WebRatio"> 
-          <ContentUnits/>  
+          <ContentUnits> 
+            <MultiChoiceIndexUnit gr:x="285" gr:y="145" id="mciu1" name="Lista de Eventos" entity="ent3"/>  
+            <SelectorUnit gr:x="0" gr:y="0" id="seu2" name="Selector2" entity="ent3" distinctAttributes="att10 att13 att14 att15"/>  
+            <SelectorUnit gr:x="0" gr:y="110" id="seu3" name="Selector3" entity="ent4" distinctAttributes="att17"/>  
+            <SelectorUnit gr:x="0" gr:y="220" id="seu4" name="Selector4" entity="ent6" distinctAttributes="att21"/>  
+            <SelectorUnit gr:x="0" gr:y="330" id="seu5" name="Selector5" entity="ent5" distinctAttributes="att19"/> 
+          </ContentUnits>  
           <layout:Grid containerType="grid"> 
+            <layout:Row> 
+              <layout:Cell colspan="12"/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row>  
+            <layout:Row> 
+              <layout:Cell colspan="12"/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row>  
+            <layout:Row> 
+              <layout:Cell colspan="12"> 
+                <layout:Unit unitId="mciu1"/> 
+              </layout:Cell>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row>  
             <layout:Row> 
               <layout:Cell colspan="12"/>  
               <layout:Cell/>  
@@ -1142,7 +1193,7 @@
           </layout:Grid> 
         </Page> 
       </Area>  
-      <Area gr:x="300" gr:y="830" id="area9" name="My Bets" landmark="true" defaultPage="page12"> 
+      <Area gr:x="970" gr:y="790" id="area9" name="My Bets" landmark="true" defaultPage="page12"> 
         <OperationUnits/>  
         <Page gr:x="0" gr:y="0" id="page12" name="My Bets" layout:style="WebRatio"> 
           <ContentUnits> 
