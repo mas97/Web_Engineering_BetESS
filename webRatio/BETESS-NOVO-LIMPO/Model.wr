@@ -229,13 +229,13 @@
     <ContextParameter id="GroupCtxParam" name="GroupCtxParam" entity="Group" type="entity"/>  
     <ContextParameter id="LanguageISOCtxParam" name="LanguageISOCtxParam" type="string"/>  
     <ContextParameter id="CountryISOCtxParam" name="CountryISOCtxParam" type="string"/>  
-    <SiteView id="sv1" name="Main" landmarks="area1 area4" layout:style="Multiflex" homePage="page6"> 
+    <SiteView id="sv1" name="Main" landmarks="area1 area4" layout:style="WebRatio" homePage="page6"> 
       <OperationUnits> 
         <LoginUnit gr:x="535" gr:y="135" id="lgu1" name="Login" customDescriptor="false"> 
           <KOLink id="kln4" name="badLogin" to="mssu12" automaticCoupling="true"/> 
         </LoginUnit> 
       </OperationUnits>  
-      <Area gr:x="285" gr:y="40" id="area1" name="Sign in/up" landmark="true" linkVisibilityPolicy="inactive" defaultPage="page2" landmarks="page15 page2"> 
+      <Area gr:x="285" gr:y="40" id="area1" name="Sign in/up" landmark="true" linkVisibilityPolicy="inactive" defaultPage="page2" landmarks="page15 page2" layout:style="WebRatio"> 
         <OperationUnits> 
           <CreateUnit gr:x="480" gr:y="270" id="cru4" name="Add user" entity="User"> 
             <OKLink id="oln6" name="OKFlow6" to="mssu13" automaticCoupling="true"/>  
@@ -337,7 +337,8 @@
                 <LinkParameter id="par59" name="New Password_password" source="fld8" target="cru4.password"/>  
                 <LinkParameter id="par60" name="Phone Number_phoneNo" source="fld7" target="cru4.att2"/>  
                 <LinkParameter id="par61" name="User Object_User Object" source="entityBean" target="cru4.entityBeans"/>  
-                <LinkParameter id="par62" name="Username_userName" source="fld4" target="cru4.userName"/> 
+                <LinkParameter id="par62" name="Username_userName" source="fld4" target="cru4.userName"/>  
+                <LinkParameter id="par9" name="2_Group.oid(defaultGroup)" sourceValue="2" target="cru4.User2DefaultGroup.groupOID"/> 
               </Link> 
             </EntryUnit> 
           </ContentUnits>  
@@ -443,9 +444,9 @@
           </layout:Grid> 
         </Page> 
       </Area>  
-      <Area id="area4" name="About Us" defaultPage="page6" landmark="true" gr:x="35" gr:y="40"> 
+      <Area id="area4" name="About Us" defaultPage="page6" landmark="true" gr:x="35" gr:y="40" layout:style="WebRatio"> 
         <OperationUnits/>  
-        <Page id="page6" name="About Us" layout:style="Multiflex" gr:x="0" gr:y="0"> 
+        <Page id="page6" name="About Us" layout:style="WebRatio" gr:x="0" gr:y="0"> 
           <ContentUnits> 
             <MultiMessageUnit id="mssu8" name="Welcome to BetESS website" gr:x="0" gr:y="0" customDescriptor="false"> 
               <Message xml:space="preserve"> Here you can find the best bets, with the best odds and the best sports!</Message> 
@@ -454,7 +455,7 @@
               <Message xml:space="preserve">Deposit, see your balance and you can start playing.</Message> 
             </MultiMessageUnit>  
             <MultiMessageUnit gr:x="0" gr:y="140" id="mssu10"> 
-              <Message xml:space="preserve">	&#9733; Happy betting! &#9733;</Message> 
+              <Message xml:space="preserve">&#9733;Happy betting!&#9733;</Message> 
             </MultiMessageUnit> 
           </ContentUnits>  
           <layout:Grid containerType="grid"> 
@@ -547,10 +548,7 @@
               <layout:Cell/> 
             </layout:Row>  
             <layout:Row> 
-              <layout:Cell colspan="9"/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
+              <layout:Cell colspan="6"/>  
               <layout:Cell/>  
               <layout:Cell/>  
               <layout:Cell/>  
@@ -560,13 +558,16 @@
                 <layout:Unit unitId="mssu10"/> 
               </layout:Cell>  
               <layout:Cell/>  
+              <layout:Cell colspan="4"/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
               <layout:Cell/> 
             </layout:Row> 
           </layout:Grid> 
         </Page> 
       </Area> 
     </SiteView>  
-    <SiteView id="sv2" name="Admin" protected="true" landmarks="area5 area6 area8" layout:style="Multiflex" homePage="page3"> 
+    <SiteView id="sv2" name="Admin" protected="true" landmarks="area5 area6 area8" layout:style="WebRatio" homePage="page3"> 
       <OperationUnits> 
         <CreateUnit gr:x="795" gr:y="175" id="cru2" name="Create Sport" entity="ent5"> 
           <OKLink id="oln1" name="OKFlow1" to="mssu5" automaticCoupling="true"/>  
@@ -727,25 +728,50 @@
         </OperationUnits> 
       </Area> 
     </SiteView>  
-    <SiteView id="sv3" name="Users" protected="true" landmarks="area3 area7 area9 area10 area11 area12" homePage="page27"> 
+    <SiteView id="sv3" name="Users" protected="true" landmarks="area3 area7 area9 area10 area11 area12" homePage="page27" layout:style="WebRatio"> 
       <OperationUnits> 
-        <ModifyUnit gr:x="1100" gr:y="295" id="mfu1" name="Update User Info" entity="User"> 
+        <ModifyUnit gr:x="1260" gr:y="160" id="mfu1" name="Update User Info" entity="User"> 
           <Selector id="su3" defaultPolicy="fill" booleanOperator="and"> 
             <KeyCondition id="kcond3" name="KeyCondition3" predicate="in" implied="false"/> 
           </Selector>  
           <OKLink id="oln7" name="OKFlow7" to="dau1" automaticCoupling="true" gr:bendpoints="-1,181,374,181;-208,183,187,183;-377,183,-2,183"/>  
           <KOLink id="kln10" name="KOFlow10" to="mssu19" automaticCoupling="true"/> 
         </ModifyUnit>  
-        <StoredProcedureUnit gr:x="240" gr:y="515" id="spu1" name="sum balance" resultType="plain" db="db1" procedure="sum_balance"> 
-          <OKLink id="oln2" name="OKFlow2" to="page22" automaticCoupling="true" gr:bendpoints="-180,-1,0,219"/>  
+        <StoredProcedureUnit gr:x="310" gr:y="415" id="spu1" name="sum balance" resultType="plain" db="db1" procedure="sum_balance"> 
+          <OKLink id="oln2" name="OKFlow2" to="page22" automaticCoupling="true" gr:bendpoints="-246,0,-1,250"/>  
           <KOLink id="kln2" name="KOFlow2" to="page5" automaticCoupling="true"/> 
         </StoredProcedureUnit>  
-        <StoredProcedureUnit gr:x="380" gr:y="515" id="spu2" name="if ( draw &lt;= balance ) subtract balance" resultType="plain" db="db1" procedure="subt_balance"> 
-          <OKLink id="oln3" name="OKFlow3" to="page22" automaticCoupling="true" gr:bendpoints="-1,61,384,281;-386,61,-1,281"/>  
+        <StoredProcedureUnit gr:x="455" gr:y="415" id="spu2" name="if ( draw &lt;= balance ) subtract balance" resultType="plain" db="db1" procedure="subt_balance"> 
+          <OKLink id="oln3" name="OKFlow3" to="page22" automaticCoupling="true" gr:bendpoints="-1,61,384,281;-456,50,-1,300"/>  
           <KOLink id="kln3" name="KOFlow3" to="page5" automaticCoupling="true"/> 
         </StoredProcedureUnit> 
       </OperationUnits>  
-      <Page id="page29" gr:x="1270" gr:y="280"> 
+      <Page id="page5" gr:x="415" gr:y="560"> 
+        <ContentUnits> 
+          <MultiMessageUnit id="mssu4" name="Oops!" gr:x="0" gr:y="0"> 
+            <Message xml:space="preserve">Something went wrong... Try again.</Message> 
+          </MultiMessageUnit> 
+        </ContentUnits>  
+        <layout:Grid containerType="grid"> 
+          <layout:Row> 
+            <layout:Cell colspan="12"> 
+              <layout:Unit unitId="mssu4"/> 
+            </layout:Cell>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/> 
+          </layout:Row> 
+        </layout:Grid> 
+      </Page>  
+      <Page id="page29" gr:x="1420" gr:y="145"> 
         <ContentUnits> 
           <MultiMessageUnit id="mssu19" name="Oops..." gr:x="0" gr:y="0"> 
             <Message xml:space="preserve">Something went wrong. Please try again.</Message> 
@@ -770,15 +796,18 @@
           </layout:Row> 
         </layout:Grid> 
       </Page>  
-      <Area id="area10" name="Credits" defaultPage="page22" landmark="true" gr:x="25" gr:y="225" landmarks="page22 page1 page4"> 
+      <Area id="area10" name="Credits" defaultPage="page22" landmark="true" gr:x="-30" gr:y="95" landmarks="page22 page1 page4"> 
         <OperationUnits/>  
-        <Page id="page22" name="My Credits" layout:style="Multiflex" gr:x="0" gr:y="0" landmark="true"> 
+        <Page id="page22" name="My Credits" layout:style="WebRatio" gr:x="0" gr:y="0" landmark="true"> 
           <ContentUnits> 
-            <DataUnit gr:x="0" gr:y="0" id="dau2" name="Balance" entity="User" displayAttributes="att3"> 
-              <Selector id="su4" defaultPolicy="fill" booleanOperator="and"> 
-                <KeyCondition id="kcond4" name="KeyCondition4" predicate="in" implied="false"/> 
+            <DataUnit gr:x="145" gr:y="0" id="dau2" name="Balance" entity="User" displayAttributes="att3"> 
+              <Selector id="su5" defaultPolicy="fill" booleanOperator="and"> 
+                <KeyCondition id="kcond5" name="KeyCondition5" predicate="in" implied="false"/> 
               </Selector> 
-            </DataUnit> 
+            </DataUnit>  
+            <GetUnit gr:x="0" gr:y="10" id="gtu3" name="GetCurrentUser" contextParameters="UserCtxParam"> 
+              <Link id="ln9" name="Flow9" to="dau2" automaticCoupling="true" type="transport" validate="true"/> 
+            </GetUnit> 
           </ContentUnits>  
           <layout:Grid containerType="grid"> 
             <layout:Row> 
@@ -798,10 +827,24 @@
               <layout:Cell/>  
               <layout:Cell/>  
               <layout:Cell/> 
+            </layout:Row>  
+            <layout:Row> 
+              <layout:Cell colspan="12"/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
             </layout:Row> 
           </layout:Grid> 
         </Page>  
-        <Page gr:x="150" gr:y="0" id="page1" name="Deposit" landmark="true"> 
+        <Page gr:x="275" gr:y="0" id="page1" name="Deposit" landmark="true"> 
           <ContentUnits> 
             <EntryUnit gr:x="0" gr:y="0" id="enu6" name="Insert amount to deposit" entity="User" linkOrder="ln2"> 
               <Field id="fld9" name="Quantia" type="decimal" modifiable="true" preloaded="false" attribute="att3"> 
@@ -857,7 +900,7 @@
             </layout:Row> 
           </layout:Grid> 
         </Page>  
-        <Page gr:x="360" gr:y="0" id="page4" name="Draw" landmark="true"> 
+        <Page gr:x="490" gr:y="0" id="page4" name="Draw" landmark="true"> 
           <ContentUnits> 
             <EntryUnit gr:x="0" gr:y="0" id="enu7" name="Insert amount to draw*" entity="User" fieldOrder="fld11" linkOrder="ln6"> 
               <Field id="fld11" name="Quantia" type="decimal" modifiable="true" attribute="att3"> 
@@ -933,11 +976,11 @@
           </layout:Grid> 
         </Page> 
       </Area>  
-      <Area id="area11" name="Notifications" defaultPage="page23" landmark="true" gr:x="355" gr:y="25"> 
+      <Area id="area11" name="Notifications" defaultPage="page23" landmark="true" gr:x="35" gr:y="830"> 
         <OperationUnits/>  
-        <Page id="page23" name="Who we are" layout:style="Multiflex" gr:x="0" gr:y="0"> 
+        <Page id="page23" name="Read Notifications" layout:style="WebRatio" gr:x="0" gr:y="0"> 
           <ContentUnits> 
-            <IndexUnit id="inu4" name="Notidications' list" gr:x="0" gr:y="0" entity="ent2"/> 
+            <IndexUnit id="inu4" name="Notifications' list" gr:x="0" gr:y="0" entity="ent2"/> 
           </ContentUnits>  
           <layout:Grid containerType="grid"> 
             <layout:Row> 
@@ -959,9 +1002,9 @@
           </layout:Grid> 
         </Page> 
       </Area>  
-      <Area id="area12" name="Profile" defaultPage="page24" landmark="true" gr:x="695" gr:y="225" landmarks="page24 page25"> 
+      <Area id="area12" name="Profile" defaultPage="page24" landmark="true" gr:x="705" gr:y="85" landmarks="page24 page25"> 
         <OperationUnits/>  
-        <Page id="page25" name="Edit Profile" layout:style="Multiflex" gr:x="150" gr:y="0" landmark="true"> 
+        <Page id="page25" name="Edit Profile" layout:style="WebRatio" gr:x="310" gr:y="0" landmark="true"> 
           <ContentUnits> 
             <EntryUnit gr:x="0" gr:y="0" id="enu4" name="Change Password" entity="User" customDescriptor="false" linkOrder="ln11"> 
               <Field id="fld10" name="New Password" type="password" modifiable="true" attribute="password"> 
@@ -1021,13 +1064,16 @@
             </layout:Row> 
           </layout:Grid> 
         </Page>  
-        <Page id="page24" name="My Profile" layout:style="Multiflex" gr:x="0" gr:y="0" landmark="true"> 
+        <Page id="page24" name="My Profile" layout:style="WebRatio" gr:x="0" gr:y="0" landmark="true"> 
           <ContentUnits> 
-            <DataUnit gr:x="0" gr:y="0" id="dau1" name="My Personal Info" entity="User" displayAttributes="att1 userName email att2 att3"> 
+            <DataUnit gr:x="150" gr:y="0" id="dau1" name="My Personal Info" entity="User" displayAttributes="att1 userName email att2 att3"> 
               <Selector id="su2" defaultPolicy="fill" booleanOperator="and"> 
                 <KeyCondition id="kcond2" name="KeyCondition2" predicate="in" implied="false"/> 
               </Selector> 
-            </DataUnit> 
+            </DataUnit>  
+            <GetUnit gr:x="0" gr:y="10" id="gtu4" name="GetCurrentUser" contextParameters="UserCtxParam"> 
+              <Link id="ln10" name="Flow10" to="dau1" automaticCoupling="true" type="transport" validate="true"/> 
+            </GetUnit> 
           </ContentUnits>  
           <layout:Grid containerType="grid"> 
             <layout:Row> 
@@ -1051,18 +1097,32 @@
               <layout:Cell/>  
               <layout:Cell/>  
               <layout:Cell/> 
+            </layout:Row>  
+            <layout:Row> 
+              <layout:Cell colspan="12"/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
             </layout:Row> 
           </layout:Grid> 
         </Page> 
       </Area>  
-      <Area gr:x="745" gr:y="45" id="area3" name="Exit" landmark="true" defaultPage="lou2"> 
+      <Area gr:x="700" gr:y="835" id="area3" name="Exit" landmark="true" defaultPage="lou2"> 
         <OperationUnits> 
           <LogoutUnit gr:x="0" gr:y="0" id="lou2" name="Exit" siteView="sv1"/> 
         </OperationUnits> 
       </Area>  
-      <Area id="area7" name="Bet" landmark="true" gr:x="25" gr:y="25" defaultPage="page27"> 
+      <Area id="area7" name="Bet" landmark="true" gr:x="505" gr:y="830" defaultPage="page27"> 
         <OperationUnits/>  
-        <Page id="page27" name="Bet" gr:x="0" gr:y="0"> 
+        <Page id="page27" name="Bet" gr:x="0" gr:y="0" layout:style="WebRatio"> 
           <ContentUnits/>  
           <layout:Grid containerType="grid"> 
             <layout:Row> 
@@ -1082,9 +1142,9 @@
           </layout:Grid> 
         </Page> 
       </Area>  
-      <Area gr:x="180" gr:y="25" id="area9" name="My Bets" landmark="true" defaultPage="page12"> 
+      <Area gr:x="300" gr:y="830" id="area9" name="My Bets" landmark="true" defaultPage="page12"> 
         <OperationUnits/>  
-        <Page gr:x="0" gr:y="0" id="page12" name="My Bets"> 
+        <Page gr:x="0" gr:y="0" id="page12" name="My Bets" layout:style="WebRatio"> 
           <ContentUnits> 
             <IndexUnit gr:x="0" gr:y="0" id="inu2" name="My Bets' list" entity="ent1"/> 
           </ContentUnits>  
@@ -1107,32 +1167,7 @@
             </layout:Row> 
           </layout:Grid> 
         </Page> 
-      </Area>  
-      <Page id="page5" gr:x="315" gr:y="665"> 
-        <ContentUnits> 
-          <MultiMessageUnit id="mssu4" name="Oops!" gr:x="0" gr:y="0"> 
-            <Message xml:space="preserve">Something went wrong... Try again.</Message> 
-          </MultiMessageUnit> 
-        </ContentUnits>  
-        <layout:Grid containerType="grid"> 
-          <layout:Row> 
-            <layout:Cell colspan="12"> 
-              <layout:Unit unitId="mssu4"/> 
-            </layout:Cell>  
-            <layout:Cell/>  
-            <layout:Cell/>  
-            <layout:Cell/>  
-            <layout:Cell/>  
-            <layout:Cell/>  
-            <layout:Cell/>  
-            <layout:Cell/>  
-            <layout:Cell/>  
-            <layout:Cell/>  
-            <layout:Cell/>  
-            <layout:Cell/> 
-          </layout:Row> 
-        </layout:Grid> 
-      </Page> 
+      </Area> 
     </SiteView> 
   </WebModel> 
 </WebProject>
