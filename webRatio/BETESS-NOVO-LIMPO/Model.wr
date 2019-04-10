@@ -66,7 +66,7 @@
         <db:JoinColumn attribute="att4" name="oid"/> 
       </RelationshipRole2> 
     </Relationship>  
-    <db:Database id="db1" name="betess" type="MySQL" url="jdbc:mysql://localhost:3306/betess" cryptedPassword="true" username="root" password="cGFzc3dvcmQ="> 
+    <db:Database id="db1" name="betess" type="MySQL" url="jdbc:mysql://localhost:3306/betess" cryptedPassword="true" username="root" password="bXlzcWw="> 
       <temp:DBMetaData driverMajorVersion="5" driverMinorVersion="1" driverVersion="mysql-connector-java-5.1.31 ( Revision: alexander.soklakov@oracle.com-20140520065950-groqzzbvxprqdmnz )" productVersion="5.7.23-log" identifierQuoteString="`" transactionLevel="Repeatable read" driverName="MySQL Connector Java" productName="MySQL"> 
         <temp:Table ignoreIndexes="false" name="bet" type="TABLE" refreshed="true"> 
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="oid" primaryKey="true" notNull="true"/>  
@@ -730,7 +730,7 @@
     </SiteView>  
     <SiteView id="sv3" name="Users" protected="true" landmarks="area3 area7 area9 area10 area11 area12" homePage="page27" layout:style="WebRatio"> 
       <OperationUnits> 
-        <ModifyUnit gr:x="1260" gr:y="160" id="mfu1" name="Update User Info" entity="User"> 
+        <ModifyUnit gr:x="1385" gr:y="160" id="mfu1" name="Update User Info" entity="User"> 
           <Selector id="su3" defaultPolicy="fill" booleanOperator="and"> 
             <KeyCondition id="kcond3" name="KeyCondition3" predicate="in" implied="false"/> 
           </Selector>  
@@ -772,7 +772,7 @@
           </layout:Row> 
         </layout:Grid> 
       </Page>  
-      <Page id="page29" gr:x="1420" gr:y="145"> 
+      <Page id="page29" gr:x="1545" gr:y="145"> 
         <ContentUnits> 
           <MultiMessageUnit id="mssu19" name="Oops..." gr:x="0" gr:y="0"> 
             <Message xml:space="preserve">Something went wrong. Please try again.</Message> 
@@ -1003,9 +1003,9 @@
           </layout:Grid> 
         </Page> 
       </Area>  
-      <Area id="area12" name="Profile" defaultPage="page24" landmark="true" gr:x="705" gr:y="85" landmarks="page24 page25"> 
+      <Area id="area12" name="Profile" defaultPage="page24" landmark="true" gr:x="765" gr:y="85" landmarks="page24 page25"> 
         <OperationUnits/>  
-        <Page id="page25" name="Edit Profile" layout:style="WebRatio" gr:x="310" gr:y="0" landmark="true"> 
+        <Page id="page25" name="Edit Profile" layout:style="WebRatio" gr:x="325" gr:y="0" landmark="true"> 
           <ContentUnits> 
             <EntryUnit gr:x="0" gr:y="0" id="enu4" name="Change Password" entity="User" customDescriptor="false" linkOrder="ln11"> 
               <Field id="fld10" name="New Password" type="password" modifiable="true" attribute="password"> 
@@ -1013,16 +1013,26 @@
                   <MandatoryValidationRule id="mnd11" name="Mandatory"/> 
                 </VRules> 
               </Field>  
-              <Link id="ln11" name="Save Changes" to="mfu1" type="normal" validate="true" automaticCoupling="true"/> 
+              <Link id="ln11" name="Save Changes" to="mfu1" type="normal" validate="true"> 
+                <LinkParameter id="par10" name="Key [oid]_KeyCondition3 [oid]" source="key.userOID" target="kcond3.userOID"/>  
+                <LinkParameter id="par18" name="New Password_password" source="fld10" target="mfu1.password"/> 
+              </Link> 
             </EntryUnit>  
-            <EntryUnit gr:x="0" gr:y="95" id="enu5" name="Change Phone Number" entity="User" linkOrder="ln12"> 
-              <Link id="ln12" name="Save Changes" to="mfu1" type="normal" validate="true" automaticCoupling="true"/>  
+            <EntryUnit gr:x="5" gr:y="235" id="enu5" name="Change Phone Number" entity="User" linkOrder="ln12"> 
+              <Link id="ln12" name="Save Changes" to="mfu1" type="normal" validate="true"> 
+                <LinkParameter id="par14" name="Key [oid]_KeyCondition3 [oid]" source="key.userOID" target="kcond3.userOID"/>  
+                <LinkParameter id="par19" name="New Phone Number_phoneNo" source="fld13" target="mfu1.att2"/> 
+              </Link>  
               <Field id="fld13" name="New Phone Number" type="string" modifiable="true"> 
                 <VRules> 
                   <MandatoryValidationRule id="mnd12" name="Mandatory"/> 
                 </VRules> 
               </Field> 
-            </EntryUnit> 
+            </EntryUnit>  
+            <GetUnit gr:x="35" gr:y="110" id="gtu2" name="GetUser" contextParameters="UserCtxParam"> 
+              <Link id="ln14" name="Flow14" to="enu4" automaticCoupling="true" type="transport" validate="true"/>  
+              <Link id="ln15" name="Flow15" to="enu5" automaticCoupling="true" type="transport" validate="true"/> 
+            </GetUnit> 
           </ContentUnits>  
           <layout:Grid containerType="grid"> 
             <layout:Row> 
@@ -1062,6 +1072,20 @@
               <layout:Cell/>  
               <layout:Cell/>  
               <layout:Cell/> 
+            </layout:Row>  
+            <layout:Row> 
+              <layout:Cell colspan="12"/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
             </layout:Row> 
           </layout:Grid> 
         </Page>  
@@ -1073,7 +1097,7 @@
               </Selector> 
             </DataUnit>  
             <GetUnit gr:x="0" gr:y="10" id="gtu4" name="GetCurrentUser" contextParameters="UserCtxParam"> 
-              <Link id="ln10" name="Flow10" to="dau1" automaticCoupling="true" type="transport" validate="true"/> 
+              <Link id="ln7" name="Flow7" to="dau1" automaticCoupling="true" type="transport" validate="true"/> 
             </GetUnit> 
           </ContentUnits>  
           <layout:Grid containerType="grid"> 
