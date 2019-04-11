@@ -138,7 +138,7 @@
         </temp:Table> 
       </temp:DBMetaData> 
     </db:Database>  
-    <Entity gr:x="20" gr:y="400" id="ent2" name="Notification" duration="persistent" attributeOrder="att7 att8 att9" db:database="db1" db:table="notification"> 
+    <Entity gr:x="15" gr:y="440" id="ent2" name="Notification" duration="persistent" attributeOrder="att7 att8 att9" db:database="db1" db:table="notification"> 
       <Attribute id="att7" key="true" name="oid" type="integer" db:column="oid"/>  
       <Attribute id="att9" name="balancebet" type="decimal" db:column="balancebet"/>  
       <Attribute id="att8" name="status" type="string" db:column="status"/> 
@@ -1275,7 +1275,8 @@
           <StoredProcedureParameter id="spp4" name="amount" type="decimal" direction="input" position="1"/>  
           <StoredProcedureParameter id="spp5" name="id_user" type="integer" direction="input" position="2"/> 
         </StoredProcedureUnit>  
-        <StoredProcedureUnit gr:x="510" gr:y="935" id="spu3" name="Store Procedure3" resultType="plain" db="db1" procedure="get_lista"/> 
+        <StoredProcedureUnit gr:x="510" gr:y="935" id="spu3" name="Store Procedure3" resultType="plain" db="db1" procedure="get_lista"/>  
+        <QueryUnit gr:x="510" gr:y="1065" id="qu2" name="Query2" mode="select" language="HQL" db="db1"/> 
       </OperationUnits>  
       <Page id="page5" gr:x="405" gr:y="630"> 
         <ContentUnits> 

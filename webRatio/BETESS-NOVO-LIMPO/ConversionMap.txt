@@ -338,6 +338,7 @@ sv3#page29#mssu19=mssu19
 sv3#page29=page29
 sv3#page5#mssu4=mssu4
 sv3#page5=page5
+sv3#qu2=qu2
 sv3#spu1#kln2=kln2
 sv3#spu1#oln15=oln15
 sv3#spu1#spp1=spp1
