@@ -53,7 +53,7 @@
         <db:JoinColumn attribute="moduleOID" name="module_oid"/> 
       </RelationshipRole2> 
     </Relationship>  
-    <Entity gr:x="265" gr:y="380" id="ent1" name="Bet" duration="persistent" attributeOrder="att4 att5 att6" db:database="db1" db:table="bet"> 
+    <Entity gr:x="265" gr:y="315" id="ent1" name="Bet" duration="persistent" attributeOrder="att4 att5 att6" db:database="db1" db:table="bet"> 
       <Attribute id="att4" key="true" name="oid" type="integer" db:column="oid"/>  
       <Attribute id="att6" name="result" type="string" db:column="result"/>  
       <Attribute id="att5" name="amount" type="decimal" db:column="amount"/> 
@@ -66,82 +66,80 @@
         <db:JoinColumn attribute="att4" name="oid"/> 
       </RelationshipRole2> 
     </Relationship>  
-    <db:Database id="db1" name="betess" type="MySQL" url="jdbc:mysql://localhost:3306/betess" cryptedPassword="true" username="root" password="bXlzcWw="> 
-      <temp:DBMetaData driverMajorVersion="5" driverMinorVersion="1" driverVersion="mysql-connector-java-5.1.31 ( Revision: alexander.soklakov@oracle.com-20140520065950-groqzzbvxprqdmnz )" productVersion="5.7.23-log" identifierQuoteString="`" transactionLevel="Repeatable read" driverName="MySQL Connector Java" productName="MySQL"> 
-        <temp:Table ignoreIndexes="false" name="bet" type="TABLE" refreshed="true"> 
+    <db:Database id="db1" name="betess" type="MySQL" url="jdbc:mysql://localhost:3306/betess" cryptedPassword="true" username="root" password="bXlzcWw=" readProcedures="true"> 
+      <temp:DBMetaData driverMajorVersion="5" driverMinorVersion="1" driverVersion="mysql-connector-java-5.1.31 ( Revision: alexander.soklakov@oracle.com-20140520065950-groqzzbvxprqdmnz )" productVersion="5.7.25" identifierQuoteString="`" transactionLevel="Repeatable read" driverName="MySQL Connector Java" productName="MySQL"> 
+        <temp:Table type="TABLE" ignoreIndexes="false" name="bet" refreshed="true"> 
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="oid" primaryKey="true" notNull="true"/>  
           <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="result" primaryKey="false" notNull="false"/>  
-          <temp:Column sqlTypeId="2" indexed="unknown" autoIncrement="false" type="NUMERIC" size="19" decimalDigits="2" webMLType="decimal" name="amount" primaryKey="false" notNull="false"/>  
+          <temp:Column sqlTypeId="2" indexed="unknown" autoIncrement="false" type="NUMERIC" size="19" decimalDigits="2" name="amount" primaryKey="false" webMLType="decimal" notNull="false"/>  
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="user_oid" primaryKey="false" notNull="false"/>  
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="event_oid" primaryKey="false" notNull="false"/> 
         </temp:Table>  
-        <temp:Table ignoreIndexes="false" name="event" type="TABLE" refreshed="true"> 
+        <temp:Table type="TABLE" ignoreIndexes="false" name="event" refreshed="true"> 
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="oid" primaryKey="true" notNull="true"/>  
-          <temp:Column sqlTypeId="2" indexed="unknown" autoIncrement="false" type="NUMERIC" size="19" decimalDigits="2" webMLType="decimal" name="odddraw" primaryKey="false" notNull="false"/>  
-          <temp:Column sqlTypeId="2" indexed="unknown" autoIncrement="false" type="NUMERIC" size="19" decimalDigits="2" webMLType="decimal" name="oddaway" primaryKey="false" notNull="false"/>  
-          <temp:Column sqlTypeId="2" indexed="unknown" autoIncrement="false" type="NUMERIC" size="19" decimalDigits="2" webMLType="decimal" name="oddhome" primaryKey="false" notNull="false"/>  
+          <temp:Column sqlTypeId="2" indexed="unknown" autoIncrement="false" type="NUMERIC" size="19" decimalDigits="2" name="odddraw" primaryKey="false" webMLType="decimal" notNull="false"/>  
+          <temp:Column sqlTypeId="2" indexed="unknown" autoIncrement="false" type="NUMERIC" size="19" decimalDigits="2" name="oddaway" primaryKey="false" webMLType="decimal" notNull="false"/>  
+          <temp:Column sqlTypeId="2" indexed="unknown" autoIncrement="false" type="NUMERIC" size="19" decimalDigits="2" name="oddhome" primaryKey="false" webMLType="decimal" notNull="false"/>  
           <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="result" primaryKey="false" notNull="false"/>  
           <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="status" primaryKey="false" notNull="false"/>  
-          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="sport_oid" primaryKey="false" notNull="false"/> 
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="sport_oid" primaryKey="false" notNull="false"/>  
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="league_oid" primaryKey="false" notNull="false"/> 
         </temp:Table>  
-        <temp:Table ignoreIndexes="false" name="event_team" type="TABLE" refreshed="true"> 
+        <temp:Table type="TABLE" ignoreIndexes="false" name="event_team" refreshed="true"> 
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="event_oid" primaryKey="true" notNull="true"/>  
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="team_oid" primaryKey="true" notNull="true"/> 
         </temp:Table>  
-        <temp:Table ignoreIndexes="false" name="group" type="TABLE" refreshed="true"> 
+        <temp:Table type="TABLE" ignoreIndexes="false" name="group" refreshed="true"> 
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="oid" primaryKey="true" notNull="true"/>  
           <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="groupname" primaryKey="false" notNull="false"/>  
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="module_oid" primaryKey="false" notNull="false"/> 
         </temp:Table>  
-        <temp:Table ignoreIndexes="false" name="group_module" type="TABLE" refreshed="true"> 
+        <temp:Table type="TABLE" ignoreIndexes="false" name="group_module" refreshed="true"> 
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="group_oid" primaryKey="true" notNull="true"/>  
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="module_oid" primaryKey="true" notNull="true"/> 
         </temp:Table>  
-        <temp:Table ignoreIndexes="false" name="league" type="TABLE" refreshed="true"> 
+        <temp:Table type="TABLE" ignoreIndexes="false" name="league" refreshed="true"> 
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="oid" primaryKey="true" notNull="true"/>  
-          <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="name" primaryKey="false" notNull="false"/>  
-          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="sport_oid" primaryKey="false" notNull="false"/> 
+          <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="name" primaryKey="false" notNull="false"/> 
         </temp:Table>  
-        <temp:Table ignoreIndexes="false" name="module" type="TABLE" refreshed="true"> 
+        <temp:Table type="TABLE" ignoreIndexes="false" name="module" refreshed="true"> 
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="oid" primaryKey="true" notNull="true"/>  
           <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="moduleid" primaryKey="false" notNull="false"/>  
           <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="modulename" primaryKey="false" notNull="false"/> 
         </temp:Table>  
-        <temp:Table ignoreIndexes="false" name="notification" type="TABLE" refreshed="true"> 
+        <temp:Table type="TABLE" ignoreIndexes="false" name="notification" refreshed="true"> 
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="oid" primaryKey="true" notNull="true"/>  
-          <temp:Column sqlTypeId="2" indexed="unknown" autoIncrement="false" type="NUMERIC" size="19" decimalDigits="2" webMLType="decimal" name="balancebet" primaryKey="false" notNull="false"/>  
+          <temp:Column sqlTypeId="2" indexed="unknown" autoIncrement="false" type="NUMERIC" size="19" decimalDigits="2" name="balancebet" primaryKey="false" webMLType="decimal" notNull="false"/>  
           <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="status" primaryKey="false" notNull="false"/>  
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="user_oid" primaryKey="false" notNull="false"/> 
         </temp:Table>  
-        <temp:Table ignoreIndexes="false" name="sport" type="TABLE" refreshed="true"> 
+        <temp:Table type="TABLE" ignoreIndexes="false" name="sport" refreshed="true"> 
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="oid" primaryKey="true" notNull="true"/>  
           <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="name" primaryKey="false" notNull="false"/> 
         </temp:Table>  
-        <temp:Table ignoreIndexes="false" name="team" type="TABLE" refreshed="true"> 
+        <temp:Table type="TABLE" ignoreIndexes="false" name="team" refreshed="true"> 
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="oid" primaryKey="true" notNull="true"/>  
           <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="name" primaryKey="false" notNull="false"/> 
         </temp:Table>  
-        <temp:Table ignoreIndexes="false" name="team_league" type="TABLE" refreshed="true"> 
-          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="team_oid" primaryKey="true" notNull="true"/>  
-          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="league_oid" primaryKey="true" notNull="true"/> 
-        </temp:Table>  
-        <temp:Table ignoreIndexes="false" name="user" type="TABLE" refreshed="true"> 
+        <temp:Table type="TABLE" ignoreIndexes="false" name="user" refreshed="true"> 
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="oid" primaryKey="true" notNull="true"/>  
           <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="username" primaryKey="false" notNull="false"/>  
           <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="password" primaryKey="false" notNull="false"/>  
           <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="email" primaryKey="false" notNull="false"/>  
-          <temp:Column sqlTypeId="2" indexed="unknown" autoIncrement="false" type="NUMERIC" size="19" decimalDigits="2" webMLType="decimal" name="balance" primaryKey="false" notNull="false"/>  
+          <temp:Column sqlTypeId="2" indexed="unknown" autoIncrement="false" type="NUMERIC" size="19" decimalDigits="2" name="balance" primaryKey="false" webMLType="decimal" notNull="false"/>  
           <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="phoneno" primaryKey="false" notNull="false"/>  
           <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="name" primaryKey="false" notNull="false"/>  
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="group_oid" primaryKey="false" notNull="false"/> 
         </temp:Table>  
-        <temp:Table ignoreIndexes="false" name="user_group" type="TABLE" refreshed="true"> 
+        <temp:Table type="TABLE" ignoreIndexes="false" name="user_group" refreshed="true"> 
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="user_oid" primaryKey="true" notNull="true"/>  
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="group_oid" primaryKey="true" notNull="true"/> 
-        </temp:Table> 
+        </temp:Table>  
+        <temp:StoredProcedure catalog="betess" name="subt_balance" resultType="noResult"/>  
+        <temp:StoredProcedure catalog="betess" name="sum_balance" resultType="noResult"/> 
       </temp:DBMetaData> 
     </db:Database>  
-    <Entity gr:x="15" gr:y="440" id="ent2" name="Notification" duration="persistent" attributeOrder="att7 att8 att9" db:database="db1" db:table="notification"> 
+    <Entity gr:x="20" gr:y="400" id="ent2" name="Notification" duration="persistent" attributeOrder="att7 att8 att9" db:database="db1" db:table="notification"> 
       <Attribute id="att7" key="true" name="oid" type="integer" db:column="oid"/>  
       <Attribute id="att9" name="balancebet" type="decimal" db:column="balancebet"/>  
       <Attribute id="att8" name="status" type="string" db:column="status"/> 
@@ -154,7 +152,7 @@
         <db:JoinColumn attribute="att7" name="oid"/> 
       </RelationshipRole2> 
     </Relationship>  
-    <Entity gr:x="515" gr:y="380" id="ent3" name="Event" duration="persistent" attributeOrder="att10 att11 att12 att13 att14 att15" db:database="db1" db:table="event"> 
+    <Entity gr:x="505" gr:y="285" id="ent3" name="Event" duration="persistent" attributeOrder="att10 att11 att12 att13 att14 att15" db:database="db1" db:table="event"> 
       <Attribute id="att10" key="true" name="oid" type="integer" db:column="oid"/>  
       <Attribute id="att15" name="oddDraw" type="decimal" db:column="odddraw"/>  
       <Attribute id="att14" name="oddAway" type="decimal" db:column="oddaway"/>  
@@ -170,15 +168,15 @@
         <db:JoinColumn attribute="att10" name="event_oid"/> 
       </RelationshipRole2> 
     </Relationship>  
-    <Entity gr:x="830" gr:y="395" id="ent4" name="Team" duration="persistent" attributeOrder="att16 att17" db:database="db1" db:table="team"> 
+    <Entity gr:x="820" gr:y="290" id="ent4" name="Team" duration="persistent" attributeOrder="att16 att17" db:database="db1" db:table="team"> 
       <Attribute id="att16" key="true" name="oid" type="integer" db:column="oid"/>  
       <Attribute id="att17" name="name" type="string" db:column="name"/> 
     </Entity>  
-    <Entity gr:x="830" gr:y="565" id="ent5" name="Sport" duration="persistent" attributeOrder="att18 att19" db:database="db1" db:table="sport"> 
+    <Entity gr:x="820" gr:y="395" id="ent5" name="Sport" duration="persistent" attributeOrder="att18 att19" db:database="db1" db:table="sport"> 
       <Attribute id="att18" key="true" name="oid" type="integer" db:column="oid"/>  
       <Attribute id="att19" name="name" type="string" db:column="name"/> 
     </Entity>  
-    <Entity gr:x="1040" gr:y="405" id="ent6" name="League" duration="persistent" db:database="db1" db:table="league" attributeOrder="att20 att21"> 
+    <Entity gr:x="525" gr:y="495" id="ent6" name="League" duration="persistent" db:database="db1" db:table="league" attributeOrder="att20 att21"> 
       <Attribute id="att20" key="true" name="oid" type="integer" db:column="oid"/>  
       <Attribute id="att21" name="name" type="string" db:column="name"/> 
     </Entity>  
@@ -190,14 +188,6 @@
         <db:JoinColumn attribute="att16" name="team_oid"/> 
       </RelationshipRole2> 
     </Relationship>  
-    <Relationship id="rel5" name="Team_League" sourceEntity="ent4" targetEntity="ent6" db:database="db1" db:table="team_league"> 
-      <RelationshipRole1 id="role9" name="TeamToLeague" maxCard="N"> 
-        <db:JoinColumn attribute="att16" name="team_oid"/> 
-      </RelationshipRole1>  
-      <RelationshipRole2 id="role10" name="LeagueToTeam" maxCard="N"> 
-        <db:JoinColumn attribute="att20" name="league_oid"/> 
-      </RelationshipRole2> 
-    </Relationship>  
     <Relationship id="rel6" name="Event_Sport" sourceEntity="ent3" targetEntity="ent5" db:database="db1" db:table="event"> 
       <RelationshipRole1 id="role11" name="EventToSport" maxCard="1"> 
         <db:JoinColumn attribute="att10" name="oid"/> 
@@ -206,12 +196,12 @@
         <db:JoinColumn attribute="att18" name="sport_oid"/> 
       </RelationshipRole2> 
     </Relationship>  
-    <Relationship id="rel7" name="Sport_League" sourceEntity="ent5" targetEntity="ent6" gr:bendpoints="181,-24,-24,146" db:database="db1" db:table="league"> 
-      <RelationshipRole1 id="role13" name="SportToLeague" maxCard="N"> 
-        <db:JoinColumn attribute="att18" name="sport_oid"/> 
+    <Relationship id="rel8" name="Event_League" sourceEntity="ent3" targetEntity="ent6" db:database="db1" db:table="event"> 
+      <RelationshipRole1 id="role15" name="EventToLeague" maxCard="1"> 
+        <db:JoinColumn attribute="att10" name="oid"/> 
       </RelationshipRole1>  
-      <RelationshipRole2 id="role14" name="LeagueToSport" maxCard="1"> 
-        <db:JoinColumn attribute="att20" name="oid"/> 
+      <RelationshipRole2 id="role16" name="LeagueToEvent" maxCard="N"> 
+        <db:JoinColumn attribute="att20" name="league_oid"/> 
       </RelationshipRole2> 
     </Relationship> 
   </DataModel>  
@@ -235,7 +225,7 @@
           <KOLink id="kln4" name="badLogin" to="mssu12" automaticCoupling="true"/> 
         </LoginUnit> 
       </OperationUnits>  
-      <Area gr:x="285" gr:y="40" id="area1" name="Sign in/up" landmark="true" linkVisibilityPolicy="inactive" defaultPage="page2" landmarks="page15 page2" layout:style="WebRatio"> 
+      <Area gr:x="330" gr:y="40" id="area1" name="Sign in/up" landmark="true" linkVisibilityPolicy="inactive" defaultPage="page2" landmarks="page15 page2" layout:style="WebRatio"> 
         <OperationUnits> 
           <CreateUnit gr:x="480" gr:y="270" id="cru4" name="Add user" entity="User"> 
             <OKLink id="oln6" name="OKFlow6" to="mssu13" automaticCoupling="true"/>  
@@ -567,19 +557,61 @@
         </Page> 
       </Area> 
     </SiteView>  
-    <SiteView id="sv2" name="Admin" protected="true" landmarks="area5 area6 area8" layout:style="WebRatio" homePage="page3"> 
+    <SiteView id="sv2" name="Admin" protected="true" landmarks="area5 area8 area2 area13 area14 area6" layout:style="WebRatio" homePage="page3"> 
       <OperationUnits> 
-        <CreateUnit gr:x="795" gr:y="175" id="cru2" name="Create Sport" entity="ent5"> 
+        <CreateUnit gr:x="705" gr:y="75" id="cru2" name="Create Sport" entity="ent5"> 
           <OKLink id="oln1" name="OKFlow1" to="mssu5" automaticCoupling="true"/>  
           <KOLink id="kln1" name="KOFlow1" to="mssu6" automaticCoupling="true"/> 
         </CreateUnit>  
-        <DeleteUnit gr:x="795" gr:y="340" id="dlu1" name="Delete Sport" entity="ent5"> 
+        <DeleteUnit gr:x="705" gr:y="215" id="dlu1" name="Delete Sport" entity="ent5"> 
           <Selector id="su1" defaultPolicy="fill" booleanOperator="and"> 
             <KeyCondition id="kcond1" name="KeyCondition1" predicate="in" implied="false"/> 
-          </Selector> 
+          </Selector>  
+          <OKLink id="oln5" name="OKFlow5" to="mssu18" automaticCoupling="true"/>  
+          <KOLink id="kln6" name="KOFlow6" to="mssu20" automaticCoupling="true"/> 
+        </DeleteUnit>  
+        <CreateUnit gr:x="700" gr:y="435" id="cru1" name="Create League" entity="ent6"> 
+          <OKLink id="oln4" name="OKFlow4" to="mssu5" automaticCoupling="true"/>  
+          <KOLink id="kln5" name="KOFlow5" to="mssu16" automaticCoupling="true"/> 
+        </CreateUnit>  
+        <CreateUnit gr:x="710" gr:y="800" id="cru3" name="Create Team" entity="ent4"> 
+          <OKLink id="oln8" name="OKFlow8" to="mssu5" automaticCoupling="true"/>  
+          <KOLink id="kln8" name="KOFlow8" to="mssu21" automaticCoupling="true"/> 
+        </CreateUnit>  
+        <DeleteUnit gr:x="705" gr:y="575" id="dlu2" name="Delete League" entity="ent6"> 
+          <Selector id="su4" defaultPolicy="fill" booleanOperator="and"> 
+            <KeyCondition id="kcond4" name="KeyCondition4" predicate="in" implied="false"/> 
+          </Selector>  
+          <OKLink id="oln9" name="OKFlow9" to="mssu18" automaticCoupling="true"/>  
+          <KOLink id="kln11" name="KOFlow11" to="mssu22" automaticCoupling="true"/> 
+        </DeleteUnit>  
+        <DeleteUnit gr:x="710" gr:y="940" id="dlu3" name="Delete Team" entity="ent4"> 
+          <Selector id="su6" defaultPolicy="fill" booleanOperator="and"> 
+            <KeyCondition id="kcond6" name="KeyCondition6" predicate="in" implied="false"/> 
+          </Selector>  
+          <OKLink id="oln10" name="OKFlow10" to="mssu18" automaticCoupling="true"/>  
+          <KOLink id="kln12" name="KOFlow12" to="mssu23" automaticCoupling="true"/> 
+        </DeleteUnit>  
+        <CreateUnit gr:x="1230" gr:y="135" id="cru5" name="Add Event" entity="ent3"> 
+          <OKLink id="oln11" name="OKFlow11" to="mssu5" automaticCoupling="true"/>  
+          <KOLink id="kln13" name="KOFlow13" to="mssu25" automaticCoupling="true"/> 
+        </CreateUnit>  
+        <DeleteUnit gr:x="1235" gr:y="400" id="dlu4" name="Delete Event" entity="ent3"> 
+          <Selector id="su7" defaultPolicy="fill" booleanOperator="and"> 
+            <KeyCondition id="kcond7" name="KeyCondition7" predicate="in" implied="false"/> 
+          </Selector>  
+          <OKLink id="oln12" name="OKFlow12" to="mssu18" automaticCoupling="true"/>  
+          <KOLink id="kln14" name="KOFlow14" to="mssu24" automaticCoupling="true"/> 
+        </DeleteUnit>  
+        <DeleteUnit gr:x="1230" gr:y="635" id="dlu5" name="Delete Bet" entity="ent1"> 
+          <Selector id="su8" defaultPolicy="fill" booleanOperator="and"> 
+            <KeyCondition id="kcond8" name="KeyCondition8" predicate="in" implied="false"/> 
+          </Selector>  
+          <OKLink id="oln13" name="OKFlow13" to="mssu18" automaticCoupling="true"/>  
+          <KOLink id="kln7" name="KOFlow7" to="mssu11" automaticCoupling="true"/> 
         </DeleteUnit> 
       </OperationUnits>  
-      <Page gr:x="50" gr:y="40" id="page3" name="Home"> 
+      <Page gr:x="45" gr:y="75" id="page3" name="Home"> 
         <ContentUnits> 
           <MultiMessageUnit gr:x="0" gr:y="0" id="mssu2" name="Welcome!"> 
             <Message xml:space="preserve">Welcome to the betting platform Betess administration zone .</Message> 
@@ -604,9 +636,10 @@
           </layout:Row> 
         </layout:Grid> 
       </Page>  
-      <Page gr:x="980" gr:y="85" id="page9" name="Successfully Added"> 
+      <Page gr:x="895" gr:y="60" id="page9" name="Successfully Added"> 
         <ContentUnits> 
-          <MultiMessageUnit gr:x="0" gr:y="0" id="mssu5" name="Successfully Added"/> 
+          <MultiMessageUnit gr:x="0" gr:y="0" id="mssu5" name="Successfully Added"/>  
+          <MultiMessageUnit gr:x="0" gr:y="80" id="mssu18" name="Successfully Removed"/> 
         </ContentUnits>  
         <layout:Grid containerType="grid"> 
           <layout:Row> 
@@ -624,13 +657,53 @@
             <layout:Cell/>  
             <layout:Cell/>  
             <layout:Cell/> 
+          </layout:Row>  
+          <layout:Row> 
+            <layout:Cell colspan="12"> 
+              <layout:Unit unitId="mssu18"/> 
+            </layout:Cell>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/> 
           </layout:Row> 
         </layout:Grid> 
       </Page>  
-      <Page gr:x="980" gr:y="230" id="page10" name="Error When adding sport"> 
+      <Page gr:x="905" gr:y="385" id="page10" name="Error When adding sport"> 
         <ContentUnits> 
-          <MultiMessageUnit gr:x="0" gr:y="0" id="mssu6" name="Error when adding sport"> 
-            <Message xml:space="preserve">Something went wrong while adding sports</Message> 
+          <MultiMessageUnit gr:x="0" gr:y="0" id="mssu6" name="Error when adding Sport"> 
+            <Message xml:space="preserve">Something went wrong while adding sport.</Message> 
+          </MultiMessageUnit>  
+          <MultiMessageUnit gr:x="0" gr:y="75" id="mssu16" name="Error when adding League"> 
+            <Message xml:space="preserve">Something went wrong while adding league.</Message> 
+          </MultiMessageUnit>  
+          <MultiMessageUnit gr:x="0" gr:y="150" id="mssu20" name="Error when removing Sport"> 
+            <Message xml:space="preserve">Something went wrong while removing sport</Message> 
+          </MultiMessageUnit>  
+          <MultiMessageUnit gr:x="0" gr:y="225" id="mssu21" name="Error when adding Team"> 
+            <Message xml:space="preserve">Something went wrong while adding team</Message> 
+          </MultiMessageUnit>  
+          <MultiMessageUnit gr:x="0" gr:y="300" id="mssu22" name="Error when removing League"> 
+            <Message xml:space="preserve">Something went wrong while removing league</Message> 
+          </MultiMessageUnit>  
+          <MultiMessageUnit gr:x="0" gr:y="375" id="mssu23" name="Error when removing Team"> 
+            <Message xml:space="preserve">Something went wrong while removing team</Message> 
+          </MultiMessageUnit>  
+          <MultiMessageUnit gr:x="0" gr:y="455" id="mssu24" name="Error when removing Event"> 
+            <Message xml:space="preserve">Something went wrong while removing event</Message> 
+          </MultiMessageUnit>  
+          <MultiMessageUnit id="mssu25" name="Error when adding Event" gr:x="0" gr:y="540"> 
+            <Message xml:space="preserve">Something went wrong while adding event</Message> 
+          </MultiMessageUnit>  
+          <MultiMessageUnit gr:x="0" gr:y="615" id="mssu11" name="Error when removing Bet"> 
+            <Message xml:space="preserve">Something went wrong while removing bet</Message> 
           </MultiMessageUnit> 
         </ContentUnits>  
         <layout:Grid containerType="grid"> 
@@ -649,12 +722,426 @@
             <layout:Cell/>  
             <layout:Cell/>  
             <layout:Cell/> 
+          </layout:Row>  
+          <layout:Row> 
+            <layout:Cell colspan="12"> 
+              <layout:Unit unitId="mssu16"/> 
+            </layout:Cell>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/> 
+          </layout:Row>  
+          <layout:Row> 
+            <layout:Cell colspan="12"> 
+              <layout:Unit unitId="mssu20"/> 
+            </layout:Cell>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/> 
+          </layout:Row>  
+          <layout:Row> 
+            <layout:Cell colspan="12"> 
+              <layout:Unit unitId="mssu21"/> 
+            </layout:Cell>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/> 
+          </layout:Row>  
+          <layout:Row> 
+            <layout:Cell colspan="12"> 
+              <layout:Unit unitId="mssu22"/> 
+            </layout:Cell>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/> 
+          </layout:Row>  
+          <layout:Row> 
+            <layout:Cell colspan="12"> 
+              <layout:Unit unitId="mssu23"/> 
+            </layout:Cell>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/> 
+          </layout:Row>  
+          <layout:Row> 
+            <layout:Cell colspan="12"> 
+              <layout:Unit unitId="mssu24"/> 
+            </layout:Cell>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/> 
+          </layout:Row>  
+          <layout:Row> 
+            <layout:Cell colspan="12"> 
+              <layout:Unit unitId="mssu25"/> 
+            </layout:Cell>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/> 
+          </layout:Row>  
+          <layout:Row> 
+            <layout:Cell colspan="12"> 
+              <layout:Unit unitId="mssu11"/> 
+            </layout:Cell>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/> 
           </layout:Row> 
         </layout:Grid> 
       </Page>  
-      <Area gr:x="525" gr:y="110" id="area5" name="Create Sport" landmark="true" defaultPage="page7"> 
+      <Area gr:x="440" gr:y="730" id="area13" name="Teams" landmark="true" landmarks="page19 page30" defaultPage="page30"> 
         <OperationUnits/>  
-        <Page gr:x="0" gr:y="0" id="page7" name="Create Sport"> 
+        <Page gr:x="0" gr:y="0" id="page19" name="Create Team" landmark="true"> 
+          <ContentUnits> 
+            <EntryUnit gr:x="0" gr:y="0" id="enu10" name="Create Team" entity="ent4" fieldOrder="fld14" linkOrder="ln19"> 
+              <Field id="fld14" name="Name" type="string" modifiable="true"/>  
+              <Link id="ln19" name="Create" to="cru3" type="normal" validate="true"> 
+                <LinkParameter id="par28" name="Name_name" source="fld14" target="cru3.att17"/> 
+              </Link> 
+            </EntryUnit> 
+          </ContentUnits>  
+          <layout:Grid containerType="grid"> 
+            <layout:Row> 
+              <layout:Cell colspan="12"> 
+                <layout:Unit unitId="enu10"> 
+                  <layout:Field field="fld14"/>  
+                  <layout:Link link="ln19"/> 
+                </layout:Unit> 
+              </layout:Cell>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row> 
+          </layout:Grid> 
+        </Page>  
+        <Page gr:x="0" gr:y="145" id="page30" name="Teams list" landmark="true"> 
+          <ContentUnits> 
+            <IndexUnit gr:x="0" gr:y="0" id="inu6" name="Teams list" entity="ent4" linkOrder="ln22" displayAttributes="att16 att17"> 
+              <Link id="ln22" name="Delete" to="dlu3" type="normal" validate="true"> 
+                <LinkParameter id="par31" name="oid_KeyCondition6 [oid]" source="data[].att16" target="kcond6.att16"/> 
+              </Link> 
+            </IndexUnit> 
+          </ContentUnits>  
+          <layout:Grid containerType="grid"> 
+            <layout:Row> 
+              <layout:Cell colspan="12"> 
+                <layout:Unit unitId="inu6"> 
+                  <layout:Link link="ln22"/>  
+                  <layout:Attribute attribute="att16"/>  
+                  <layout:Attribute attribute="att17"/> 
+                </layout:Unit> 
+              </layout:Cell>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row> 
+          </layout:Grid> 
+        </Page> 
+      </Area>  
+      <Area gr:x="1390" gr:y="65" id="area14" name="Events" landmark="true" defaultPage="page31" landmarks="page31 page20 page13"> 
+        <OperationUnits/>  
+        <Page gr:x="0" gr:y="270" id="page31" name="Events list" landmark="true"> 
+          <ContentUnits> 
+            <IndexUnit gr:x="0" gr:y="0" id="inu7" name="Events list" linkOrder="ln23" entity="ent3" displayAttributes="att10 att11 att12 att13 att14 att15"> 
+              <Link id="ln23" name="Delete" to="dlu4" type="normal" validate="true"> 
+                <LinkParameter id="par32" name="oid_KeyCondition7 [oid]" source="data[].att10" target="kcond7.att10"/> 
+              </Link> 
+            </IndexUnit> 
+          </ContentUnits>  
+          <layout:Grid containerType="grid"> 
+            <layout:Row> 
+              <layout:Cell colspan="12"> 
+                <layout:Unit unitId="inu7"> 
+                  <layout:Link link="ln23"/>  
+                  <layout:Attribute attribute="att10"/>  
+                  <layout:Attribute attribute="att11"/>  
+                  <layout:Attribute attribute="att12"/>  
+                  <layout:Attribute attribute="att13"/>  
+                  <layout:Attribute attribute="att14"/>  
+                  <layout:Attribute attribute="att15"/> 
+                </layout:Unit> 
+              </layout:Cell>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row> 
+          </layout:Grid> 
+        </Page>  
+        <Page gr:x="0" gr:y="0" id="page20" name="Create Event" landmark="true"> 
+          <ContentUnits> 
+            <EntryUnit gr:x="0" gr:y="0" id="enu11" name="Create Event" entity="ent3" linkOrder="ln24" fieldOrder="sfld3 sfld5 fld15 fld16 fld17 msfld1"> 
+              <Link id="ln24" name="Create" to="cru5" type="normal" validate="true"> 
+                <LinkParameter id="par6" name="Event Object_Event Object" source="fld16" target="cru5.entityBeans"/>  
+                <LinkParameter id="par11" name="aberto_status" sourceValue="aberto" target="cru5.att11"/>  
+                <LinkParameter id="par17" name="NA_result" sourceValue="NA" target="cru5.att12"/>  
+                <LinkParameter id="par20" name="EventToLeague_League.oid(EventToLeague)" source="sfld3" target="cru5.role15.att20"/>  
+                <LinkParameter id="par21" name="Away odd_oddAway" source="fld16" target="cru5.att14"/>  
+                <LinkParameter id="par22" name="Draw odd_oddDraw" source="fld17" target="cru5.att15"/>  
+                <LinkParameter id="par23" name="Home odd_oddHome" source="fld15" target="cru5.att13"/>  
+                <LinkParameter id="par24" name="EventToSport_Sport.oid(EventToSport)" source="sfld5" target="cru5.role11.att18"/> 
+              </Link>  
+              <SelectionField id="sfld3" name="EventToLeague" type="string" role="role15"/>  
+              <SelectionField id="sfld5" name="EventToSport" type="string"/>  
+              <Field id="fld17" name="Draw odd" type="decimal" modifiable="true"/>  
+              <Field id="fld16" name="Away odd" type="decimal" modifiable="true"/>  
+              <Field id="fld15" name="Home odd" type="decimal" modifiable="true"/>  
+              <MultiSelectionField id="msfld1" name="Teams" type="string" modifiable="true" role="role7"/> 
+            </EntryUnit>  
+            <SelectorUnit gr:x="205" gr:y="0" id="seu6" name="Select Teams" entity="ent4" distinctAttributes="att16 att17"> 
+              <Link id="ln3" name="Flow3" to="enu11" type="transport" validate="true"> 
+                <LinkParameter id="par25" name="1_Teams - Preselection" sourceValue="1" target="msfld1_presel"/>  
+                <LinkParameter id="par27" name="name_Teams [label]" source="att17Array" target="msfld1_label"/>  
+                <LinkParameter id="par33" name="oid_Teams [output]" source="att16Array" target="msfld1_output"/> 
+              </Link> 
+            </SelectorUnit>  
+            <SelectorUnit gr:x="205" gr:y="120" id="seu7" name="Select Sport" entity="ent5"> 
+              <Link id="ln30" name="Flow30" to="enu11" type="transport" validate="true"> 
+                <LinkParameter id="par54" name="1_EventToSport - Preselection" sourceValue="1" target="sfld5_presel"/>  
+                <LinkParameter id="par63" name="name_EventToSport [label]" source="att19Array" target="sfld5_label"/>  
+                <LinkParameter id="par64" name="oid_EventToSport [output]" source="att18Array" target="sfld5_output"/> 
+              </Link>  
+              <SortAttribute attribute="att19" order="ascending"/> 
+            </SelectorUnit>  
+            <SelectorUnit gr:x="0" gr:y="120" id="seu8" name="Select League" entity="ent6"> 
+              <Link id="ln29" name="Flow29" to="enu11" type="transport" validate="true"> 
+                <LinkParameter id="par50" name="name_EventToLeague [label]" source="att21Array" target="sfld3_label"/>  
+                <LinkParameter id="par51" name="oid_EventToLeague [output]" source="att20Array" target="sfld3_output"/>  
+                <LinkParameter id="par53" name="1_EventToLeague - Preselection" sourceValue="1" target="sfld3_presel"/> 
+              </Link>  
+              <SortAttribute attribute="att21" order="ascending"/> 
+            </SelectorUnit> 
+          </ContentUnits>  
+          <layout:Grid containerType="grid"> 
+            <layout:Row> 
+              <layout:Cell colspan="12"> 
+                <layout:Unit unitId="enu11"> 
+                  <layout:Link link="ln24"/>  
+                  <layout:Field field="sfld3"/>  
+                  <layout:Field field="sfld5"/>  
+                  <layout:Field field="fld15"/>  
+                  <layout:Field field="fld16"/>  
+                  <layout:Field field="fld17"/>  
+                  <layout:Field field="msfld1"/> 
+                </layout:Unit> 
+              </layout:Cell>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row>  
+            <layout:Row> 
+              <layout:Cell colspan="12"/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row> 
+          </layout:Grid> 
+        </Page>  
+        <Page gr:x="185" gr:y="270" id="page13" name="Close Events" landmark="true"> 
+          <ContentUnits/>  
+          <layout:Grid containerType="grid"> 
+            <layout:Row> 
+              <layout:Cell colspan="12"/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row> 
+          </layout:Grid> 
+        </Page> 
+      </Area>  
+      <Area gr:x="440" gr:y="365" id="area2" name="Leagues" landmark="true" defaultPage="page28" landmarks="page28 page11"> 
+        <OperationUnits/>  
+        <Page gr:x="0" gr:y="0" id="page11" name="Create League" landmark="true"> 
+          <ContentUnits> 
+            <EntryUnit gr:x="0" gr:y="0" id="enu9" name="Create League" fieldOrder="fld12" entity="ent6" linkOrder="ln18"> 
+              <Field id="fld12" name="Name" type="string" modifiable="true"/>  
+              <Link id="ln18" name="Create" to="cru1" type="normal" validate="true"> 
+                <LinkParameter id="par26" name="Name_name" source="fld12" target="cru1.att21"/> 
+              </Link> 
+            </EntryUnit> 
+          </ContentUnits>  
+          <layout:Grid containerType="grid"> 
+            <layout:Row> 
+              <layout:Cell colspan="12"> 
+                <layout:Unit unitId="enu9"> 
+                  <layout:Link link="ln18"/>  
+                  <layout:Field field="fld12"/> 
+                </layout:Unit> 
+              </layout:Cell>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row>  
+            <layout:Row> 
+              <layout:Cell colspan="12"/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row> 
+          </layout:Grid> 
+        </Page>  
+        <Page gr:x="0" gr:y="145" id="page28" name="Leagues list" landmark="true"> 
+          <ContentUnits> 
+            <IndexUnit gr:x="0" gr:y="0" id="inu5" name="Leagues list" entity="ent6" linkOrder="ln21" displayAttributes="att21 att20"> 
+              <Link id="ln21" name="Delete" to="dlu2" type="normal" validate="true"> 
+                <LinkParameter id="par30" name="oid_KeyCondition4 [oid]" source="data[].att20" target="kcond4.att20"/> 
+              </Link> 
+            </IndexUnit> 
+          </ContentUnits>  
+          <layout:Grid containerType="grid"> 
+            <layout:Row> 
+              <layout:Cell colspan="12"> 
+                <layout:Unit unitId="inu5"> 
+                  <layout:Link link="ln21"/>  
+                  <layout:Attribute attribute="att21"/>  
+                  <layout:Attribute attribute="att20"/> 
+                </layout:Unit> 
+              </layout:Cell>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row> 
+          </layout:Grid> 
+        </Page> 
+      </Area>  
+      <Area gr:x="440" gr:y="5" id="area5" name="Sports" landmark="true" defaultPage="page26" landmarks="page7 page26"> 
+        <OperationUnits/>  
+        <Page gr:x="0" gr:y="0" id="page7" name="Create Sport" landmark="true"> 
           <ContentUnits> 
             <EntryUnit gr:x="0" gr:y="0" id="enu3" name="Create Sport" linkOrder="ln4" entity="ent5"> 
               <Link id="ln4" name="Create" to="cru2" type="normal" validate="true"> 
@@ -686,25 +1173,22 @@
               <layout:Cell/> 
             </layout:Row> 
           </layout:Grid> 
-        </Page> 
-      </Area>  
-      <Area gr:x="520" gr:y="325" id="area6" name="Sports" landmark="true" defaultPage="page8"> 
-        <OperationUnits/>  
-        <Page gr:x="0" gr:y="0" id="page8" name="Sports"> 
+        </Page>  
+        <Page gr:x="0" gr:y="145" id="page26" name="Sports list" landmark="true"> 
           <ContentUnits> 
-            <IndexUnit gr:x="0" gr:y="0" id="inu1" name="Sports list" entity="ent5" displayAttributes="att18 att19" linkOrder="ln5"> 
-              <Link id="ln5" name="Delete" to="dlu1" type="normal" validate="true"> 
-                <LinkParameter id="par6" name="oid_KeyCondition1 [oid]" source="data[].att18" target="kcond1.att18"/> 
+            <IndexUnit gr:x="0" gr:y="0" id="inu3" name="Sports list" entity="ent5" displayAttributes="att18 att19" linkOrder="ln20"> 
+              <Link id="ln20" name="Delete" to="dlu1" type="normal" validate="true"> 
+                <LinkParameter id="par29" name="oid_KeyCondition1 [oid]" source="data[].att18" target="kcond1.att18"/> 
               </Link> 
             </IndexUnit> 
           </ContentUnits>  
           <layout:Grid containerType="grid"> 
             <layout:Row> 
               <layout:Cell colspan="12"> 
-                <layout:Unit unitId="inu1"> 
+                <layout:Unit unitId="inu3"> 
                   <layout:Attribute attribute="att18"/>  
                   <layout:Attribute attribute="att19"/>  
-                  <layout:Link link="ln5"/> 
+                  <layout:Link link="ln20"/> 
                 </layout:Unit> 
               </layout:Cell>  
               <layout:Cell/>  
@@ -722,10 +1206,45 @@
           </layout:Grid> 
         </Page> 
       </Area>  
-      <Area gr:x="200" gr:y="400" id="area8" name="Area 8" landmark="true" defaultPage="lou3"> 
+      <Area gr:x="45" gr:y="-95" id="area8" name="Logout" landmark="true" defaultPage="lou3"> 
         <OperationUnits> 
           <LogoutUnit gr:x="0" gr:y="0" id="lou3" name="Logout3" siteView="sv1"/> 
         </OperationUnits> 
+      </Area>  
+      <Area gr:x="1390" gr:y="550" id="area6" name="Bets" landmark="true" defaultPage="page8"> 
+        <OperationUnits/>  
+        <Page gr:x="0" gr:y="0" id="page8" name="Bets"> 
+          <ContentUnits> 
+            <IndexUnit gr:x="0" gr:y="0" id="inu1" name="Bets list" entity="ent1" displayAttributes="att4 att5 att6" linkOrder="ln5"> 
+              <Link id="ln5" name="Flow5" to="dlu5" type="normal" validate="true"> 
+                <LinkParameter id="par34" name="oid_KeyCondition8 [oid]" source="data[].att4" target="kcond8.att4"/> 
+              </Link> 
+            </IndexUnit> 
+          </ContentUnits>  
+          <layout:Grid containerType="grid"> 
+            <layout:Row> 
+              <layout:Cell colspan="12"> 
+                <layout:Unit unitId="inu1"> 
+                  <layout:Attribute attribute="att4"/>  
+                  <layout:Attribute attribute="att5"/>  
+                  <layout:Attribute attribute="att6"/>  
+                  <layout:Link link="ln5"/> 
+                </layout:Unit> 
+              </layout:Cell>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row> 
+          </layout:Grid> 
+        </Page> 
       </Area> 
     </SiteView>  
     <SiteView id="sv3" name="Users" protected="true" landmarks="area3 area7 area9 area10 area11 area12" homePage="page27" layout:style="WebRatio"> 
@@ -737,17 +1256,21 @@
           <OKLink id="oln7" name="OKFlow7" to="dau1" automaticCoupling="true" gr:bendpoints="-1,181,374,181;-208,183,187,183;-377,183,-2,183"/>  
           <KOLink id="kln10" name="KOFlow10" to="mssu19" automaticCoupling="true"/> 
         </ModifyUnit>  
-        <StoredProcedureUnit gr:x="310" gr:y="415" id="spu1" name="sum balance" resultType="plain" db="db1" procedure="sum_balance"> 
-          <OKLink id="oln2" name="OKFlow2" to="page22" automaticCoupling="true" gr:bendpoints="-246,0,-1,250"/>  
-          <KOLink id="kln2" name="KOFlow2" to="page5" automaticCoupling="true"/> 
+        <StoredProcedureUnit gr:x="300" gr:y="520" id="spu1" name="sum balance" resultType="plain" db="db1" procedure="sum_balance"> 
+          <KOLink id="kln2" name="KOFlow2" to="page5" automaticCoupling="true"/>  
+          <StoredProcedureParameter id="spp1" name="amount" type="decimal" direction="input" position="1"/>  
+          <StoredProcedureParameter id="spp2" name="id_user" type="integer" direction="input" position="2"/>  
+          <OKLink id="oln15" name="OKFlow15" to="page22" automaticCoupling="true"/> 
         </StoredProcedureUnit>  
-        <StoredProcedureUnit gr:x="455" gr:y="415" id="spu2" name="if ( draw &lt;= balance ) subtract balance" resultType="plain" db="db1" procedure="subt_balance"> 
-          <OKLink id="oln3" name="OKFlow3" to="page22" automaticCoupling="true" gr:bendpoints="-1,61,384,281;-456,50,-1,300"/>  
-          <KOLink id="kln3" name="KOFlow3" to="page5" automaticCoupling="true"/> 
+        <StoredProcedureUnit gr:x="470" gr:y="520" id="spu2" name="if ( draw &lt;= balance ) subtract balance" resultType="plain" db="db1" procedure="subt_balance"> 
+          <OKLink id="oln3" name="OKFlow3" to="page22" automaticCoupling="true" gr:bendpoints="-228,-95,387,260;-470,-94,145,261"/>  
+          <KOLink id="kln3" name="KOFlow3" to="page5" automaticCoupling="true"/>  
+          <StoredProcedureParameter id="spp4" name="amount" type="decimal" direction="input" position="1"/>  
+          <StoredProcedureParameter id="spp5" name="id_user" type="integer" direction="input" position="2"/> 
         </StoredProcedureUnit>  
         <StoredProcedureUnit gr:x="510" gr:y="935" id="spu3" name="Store Procedure3" resultType="plain" db="db1" procedure="get_lista"/> 
       </OperationUnits>  
-      <Page id="page5" gr:x="415" gr:y="560"> 
+      <Page id="page5" gr:x="405" gr:y="630"> 
         <ContentUnits> 
           <MultiMessageUnit id="mssu4" name="Oops!" gr:x="0" gr:y="0"> 
             <Message xml:space="preserve">Something went wrong... Try again.</Message> 
@@ -797,9 +1320,9 @@
           </layout:Row> 
         </layout:Grid> 
       </Page>  
-      <Area id="area10" name="Credits" defaultPage="page22" landmark="true" gr:x="-30" gr:y="95" landmarks="page22 page1 page4"> 
+      <Area id="area10" name="Credits" defaultPage="page22" landmark="true" gr:x="-155" gr:y="60" landmarks="page22 page1 page4"> 
         <OperationUnits/>  
-        <Page id="page22" name="My Credits" layout:style="WebRatio" gr:x="0" gr:y="0" landmark="true"> 
+        <Page id="page22" name="My Credits" layout:style="WebRatio" gr:x="0" gr:y="35" landmark="true"> 
           <ContentUnits> 
             <DataUnit gr:x="145" gr:y="0" id="dau2" name="Balance" entity="User" displayAttributes="att3"> 
               <Selector id="su5" defaultPolicy="fill" booleanOperator="and"> 
@@ -845,9 +1368,9 @@
             </layout:Row> 
           </layout:Grid> 
         </Page>  
-        <Page gr:x="275" gr:y="0" id="page1" name="Deposit" landmark="true"> 
+        <Page gr:x="280" gr:y="0" id="page1" name="Deposit" landmark="true"> 
           <ContentUnits> 
-            <EntryUnit gr:x="0" gr:y="0" id="enu6" name="Insert amount to deposit" entity="User" linkOrder="ln2"> 
+            <EntryUnit gr:x="0" gr:y="115" id="enu6" name="Insert amount to deposit" entity="User" linkOrder="ln2"> 
               <Field id="fld9" name="Quantia" type="decimal" modifiable="true" preloaded="false" attribute="att3"> 
                 <VRules> 
                   <MandatoryValidationRule id="mnd8" name="Mandatory"/> 
@@ -856,12 +1379,17 @@
               <Link id="ln2" name="Finish Operation" to="spu1" type="normal" validate="true"> 
                 <LinkParameter id="par7" name="Key [oid]_PASSING" source="key.userOID" passing="true"/>  
                 <LinkParameter id="par8" name="Quantia_PASSING" source="fld9" passing="true"/>  
-                <LinkParameter id="par15" name="User Object_PASSING" source="entityBean" passing="true"/> 
+                <LinkParameter id="par15" name="User Object_PASSING" source="entityBean" passing="true"/>  
+                <LinkParameter id="par35" name="Quantia_amount" source="fld9" target="spu1.spp1"/>  
+                <LinkParameter id="par36" name="Key [oid]_id_user" source="key.userOID" target="spu1.spp2"/> 
               </Link> 
             </EntryUnit>  
-            <MultiMessageUnit gr:x="0" gr:y="90" id="mssu1"> 
+            <MultiMessageUnit gr:x="10" gr:y="215" id="mssu1"> 
               <Message xml:space="preserve">(The amount will be automatically withdrawn from your bank account)</Message> 
-            </MultiMessageUnit> 
+            </MultiMessageUnit>  
+            <GetUnit gr:x="35" gr:y="0" id="gtu1" name="GetCurrentUser" contextParameters="UserCtxParam"> 
+              <Link id="ln10" name="Flow10" to="enu6" automaticCoupling="true" type="transport" validate="true"/> 
+            </GetUnit> 
           </ContentUnits>  
           <layout:Grid containerType="grid"> 
             <layout:Row> 
@@ -898,12 +1426,26 @@
               <layout:Cell/>  
               <layout:Cell/>  
               <layout:Cell/> 
+            </layout:Row>  
+            <layout:Row> 
+              <layout:Cell colspan="12"/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
             </layout:Row> 
           </layout:Grid> 
         </Page>  
-        <Page gr:x="490" gr:y="0" id="page4" name="Draw" landmark="true"> 
+        <Page gr:x="560" gr:y="0" id="page4" name="Draw" landmark="true"> 
           <ContentUnits> 
-            <EntryUnit gr:x="0" gr:y="0" id="enu7" name="Insert amount to draw*" entity="User" fieldOrder="fld11" linkOrder="ln6"> 
+            <EntryUnit gr:x="0" gr:y="115" id="enu7" name="Insert amount to draw*" entity="User" fieldOrder="fld11" linkOrder="ln6"> 
               <Field id="fld11" name="Quantia" type="decimal" modifiable="true" attribute="att3"> 
                 <VRules> 
                   <MandatoryValidationRule id="mnd9" name="Mandatory"/> 
@@ -912,15 +1454,20 @@
               <Link id="ln6" name="Finish Operation" to="spu2" type="normal" validate="true"> 
                 <LinkParameter id="par12" name="Key [oid]_PASSING" source="key.userOID" passing="true"/>  
                 <LinkParameter id="par13" name="Quantia_PASSING" source="fld11" passing="true"/>  
-                <LinkParameter id="par16" name="User Object_PASSING" source="entityBean" passing="true"/> 
+                <LinkParameter id="par16" name="User Object_PASSING" source="entityBean" passing="true"/>  
+                <LinkParameter id="par40" name="Quantia_amount" source="fld11" target="spu2.spp4"/>  
+                <LinkParameter id="par41" name="Key [oid]_id_user" source="key.userOID" target="spu2.spp5"/> 
               </Link> 
             </EntryUnit>  
-            <MultiMessageUnit id="mssu3" gr:x="0" gr:y="95"> 
+            <MultiMessageUnit id="mssu3" gr:x="0" gr:y="215"> 
               <Message xml:space="preserve">*The amount will be automatically returned to your bank account</Message> 
             </MultiMessageUnit>  
-            <MultiMessageUnit gr:x="90" gr:y="95" id="mssu7"> 
+            <MultiMessageUnit gr:x="105" gr:y="210" id="mssu7"> 
               <Message xml:space="preserve">*If you try to withdraw a larger amount that the one that you have, the operation will be canceled</Message> 
-            </MultiMessageUnit> 
+            </MultiMessageUnit>  
+            <GetUnit id="gtu6" name="GetCurrentUser" gr:x="30" gr:y="0" contextParameters="UserCtxParam"> 
+              <Link id="ln16" name="Flow16" to="enu7" automaticCoupling="true" type="transport" validate="true"/> 
+            </GetUnit> 
           </ContentUnits>  
           <layout:Grid containerType="grid"> 
             <layout:Row> 
@@ -1145,7 +1692,7 @@
           <LogoutUnit gr:x="0" gr:y="0" id="lou2" name="Exit" siteView="sv1"/> 
         </OperationUnits> 
       </Area>  
-      <Area id="area7" name="Bet" landmark="true" gr:x="0" gr:y="710" defaultPage="page27"> 
+      <Area id="area7" name="Bet" landmark="true" gr:x="-95" gr:y="790" defaultPage="page27"> 
         <OperationUnits/>  
         <Page id="page27" name="Bet" gr:x="0" gr:y="0" layout:style="WebRatio"> 
           <ContentUnits> 
