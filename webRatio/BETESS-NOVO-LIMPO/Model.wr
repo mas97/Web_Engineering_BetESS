@@ -111,7 +111,8 @@
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="oid" primaryKey="true" notNull="true"/>  
           <temp:Column sqlTypeId="2" indexed="unknown" autoIncrement="false" type="NUMERIC" size="19" decimalDigits="2" name="balancebet" primaryKey="false" webMLType="decimal" notNull="false"/>  
           <temp:Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="status" primaryKey="false" notNull="false"/>  
-          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="user_oid" primaryKey="false" notNull="false"/> 
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="user_oid" primaryKey="false" notNull="false"/>  
+          <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="event_oid" primaryKey="false" notNull="false"/> 
         </temp:Table>  
         <temp:Table type="TABLE" ignoreIndexes="false" name="sport" refreshed="true"> 
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="oid" primaryKey="true" notNull="true"/>  
@@ -134,9 +135,7 @@
         <temp:Table type="TABLE" ignoreIndexes="false" name="user_group" refreshed="true"> 
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="user_oid" primaryKey="true" notNull="true"/>  
           <temp:Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="group_oid" primaryKey="true" notNull="true"/> 
-        </temp:Table>  
-        <temp:StoredProcedure catalog="betess" name="subt_balance" resultType="noResult"/>  
-        <temp:StoredProcedure catalog="betess" name="sum_balance" resultType="noResult"/> 
+        </temp:Table> 
       </temp:DBMetaData> 
     </db:Database>  
     <Entity gr:x="20" gr:y="400" id="ent2" name="Notification" duration="persistent" attributeOrder="att7 att8 att9" db:database="db1" db:table="notification"> 
@@ -202,6 +201,14 @@
       </RelationshipRole1>  
       <RelationshipRole2 id="role16" name="LeagueToEvent" maxCard="N"> 
         <db:JoinColumn attribute="att20" name="league_oid"/> 
+      </RelationshipRole2> 
+    </Relationship>  
+    <Relationship id="rel5" name="Notification_Event" sourceEntity="ent2" targetEntity="ent3" gr:bendpoints="257,6,-223,91" db:database="db1" db:table="notification"> 
+      <RelationshipRole1 id="role9" name="NotificationToEvent" maxCard="1"> 
+        <db:JoinColumn attribute="att7" name="oid"/> 
+      </RelationshipRole1>  
+      <RelationshipRole2 id="role10" name="EventToNotification" maxCard="N"> 
+        <db:JoinColumn attribute="att10" name="event_oid"/> 
       </RelationshipRole2> 
     </Relationship> 
   </DataModel>  
@@ -1211,7 +1218,7 @@
           <LogoutUnit gr:x="0" gr:y="0" id="lou3" name="Logout3" siteView="sv1"/> 
         </OperationUnits> 
       </Area>  
-      <Area gr:x="1390" gr:y="550" id="area6" name="Bets" landmark="true" defaultPage="page8"> 
+      <Area gr:x="1390" gr:y="565" id="area6" name="Bets" landmark="true" defaultPage="page8"> 
         <OperationUnits/>  
         <Page gr:x="0" gr:y="0" id="page8" name="Bets"> 
           <ContentUnits> 
