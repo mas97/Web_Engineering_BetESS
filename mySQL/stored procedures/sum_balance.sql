@@ -18,7 +18,7 @@ $$
 DELIMITER ;
 
 -- TEST: ADD MORE 5c TO USER WITH OID=1
- CALL sum_balance(5, 1);
+ CALL sum_balance(5, 2);
  SELECT * FROM user;
 
 SET SQL_SAFE_UPDATES = 0;
