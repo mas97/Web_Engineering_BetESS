@@ -17,7 +17,7 @@ END
 $$
 DELIMITER ;
 
--- TEST: ADD MORE 5c TO USER WITH OID=1
+-- TEST: ADD MORE 5c TO USER WITH OID=2
  CALL sum_balance(5, 2);
  SELECT * FROM user;
 

@@ -1331,19 +1331,33 @@
           <StoredProcedureParameter id="spp4" name="amount" type="decimal" direction="input" position="1"/>  
           <StoredProcedureParameter id="spp5" name="id_user" type="integer" direction="input" position="2"/> 
         </StoredProcedureUnit>  
-        <GetUnit gr:x="405" gr:y="960" id="gtu7" name="Get User" contextParameters="UserCtxParam"> 
-          <Link id="ln42" name="Flow42" to="spu6" type="transport" validate="true"> 
-            <LinkParameter id="par93" name="UserCtxParam.oid_id_user" source="gtu7.UserCtxParam" target="spu6.spp8"/> 
+        <GetUnit gr:x="325" gr:y="1105" id="gtu7" name="Get User" contextParameters="UserCtxParam" linkOrder="ln44"> 
+          <Link id="ln44" name="Flow44" to="pcu1" type="transport" validate="true"> 
+            <LinkParameter id="par100" name="UserCtxParam.oid_iduser" source="gtu7.UserCtxParam" target="pcp4"/> 
           </Link> 
         </GetUnit>  
-        <StoredProcedureUnit gr:x="285" gr:y="800" id="spu6" name="if ( amount betted &lt;= balance ) add bet &amp; subtract balance" resultType="plain" db="db1" procedure="add_bet"> 
-          <OKLink id="oln17" name="OKFlow17" to="qu9" automaticCoupling="true"/>  
-          <StoredProcedureParameter id="spp7" name="bet_id" type="integer" direction="input"/>  
-          <StoredProcedureParameter id="spp8" name="id_user" type="integer" direction="input"/>  
-          <StoredProcedureParameter id="spp9" name="amountIN" type="decimal" direction="input"/>  
-          <StoredProcedureParameter id="spp10" name="resultIN" type="string" direction="input"/>  
-          <StoredProcedureParameter id="spp11" name="event_id" type="integer" direction="input"/>  
-          <KOLink id="kln17" name="KOFlow17" to="page5" automaticCoupling="true"/> 
+        <ParameterCollectorUnit gr:x="310" gr:y="925" id="pcu1" name="Parameter Collector1" linkOrder="ln45"> 
+          <CollectorParameter id="pcp1" name="amount"/>  
+          <CollectorParameter id="pcp2" name="event"/>  
+          <CollectorParameter id="pcp3" name="result"/>  
+          <CollectorParameter id="pcp4" name="iduser"/>  
+          <CollectorParameter id="pcp5" name="idbet"/>  
+          <Link id="ln45" name="Flow45" to="spu7" type="transport" validate="true"> 
+            <LinkParameter id="par105" name="amount_amountIN" source="pcp1" target="spu7.spp14"/>  
+            <LinkParameter id="par106" name="idbet_bet_id" source="pcp5" target="spu7.spp12"/>  
+            <LinkParameter id="par107" name="event_event_id" source="pcp2" target="spu7.spp16"/>  
+            <LinkParameter id="par108" name="iduser_id_user" source="pcp4" target="spu7.spp13"/>  
+            <LinkParameter id="par109" name="result_resultIN" source="pcp3" target="spu7.spp15"/> 
+          </Link> 
+        </ParameterCollectorUnit>  
+        <StoredProcedureUnit gr:x="420" gr:y="790" id="spu7" name="add bet" resultType="plain" db="db1" procedure="add_bet"> 
+          <OKLink id="oln18" name="OKFlow18" to="page12" automaticCoupling="true"/>  
+          <StoredProcedureParameter id="spp12" name="bet_id" type="string" direction="input"/>  
+          <StoredProcedureParameter id="spp13" name="id_user" type="string" direction="input"/>  
+          <StoredProcedureParameter id="spp14" name="amountIN" type="string" direction="input"/>  
+          <StoredProcedureParameter id="spp15" name="resultIN" type="string" direction="input"/>  
+          <StoredProcedureParameter id="spp16" name="event_id" type="string" direction="input"/>  
+          <KOLink id="kln19" name="KOFlow19" to="page5" automaticCoupling="true"/> 
         </StoredProcedureUnit> 
       </OperationUnits>  
       <Page id="page5" gr:x="405" gr:y="630"> 
@@ -1453,9 +1467,6 @@
                 </VRules> 
               </Field>  
               <Link id="ln2" name="Finish Operation" to="spu1" type="normal" validate="true"> 
-                <LinkParameter id="par7" name="Key [oid]_PASSING" source="key.userOID" passing="true"/>  
-                <LinkParameter id="par8" name="Quantia_PASSING" source="fld9" passing="true"/>  
-                <LinkParameter id="par15" name="User Object_PASSING" source="entityBean" passing="true"/>  
                 <LinkParameter id="par35" name="Quantia_amount" source="fld9" target="spu1.spp1"/>  
                 <LinkParameter id="par36" name="Key [oid]_id_user" source="key.userOID" target="spu1.spp2"/> 
               </Link> 
@@ -1528,9 +1539,6 @@
                 </VRules> 
               </Field>  
               <Link id="ln6" name="Finish Operation" to="spu2" type="normal" validate="true"> 
-                <LinkParameter id="par12" name="Key [oid]_PASSING" source="key.userOID" passing="true"/>  
-                <LinkParameter id="par13" name="Quantia_PASSING" source="fld11" passing="true"/>  
-                <LinkParameter id="par16" name="User Object_PASSING" source="entityBean" passing="true"/>  
                 <LinkParameter id="par40" name="Quantia_amount" source="fld11" target="spu2.spp4"/>  
                 <LinkParameter id="par41" name="Key [oid]_id_user" source="key.userOID" target="spu2.spp5"/> 
               </Link> 
@@ -1600,16 +1608,29 @@
           </layout:Grid> 
         </Page> 
       </Area>  
-      <Area id="area11" name="Notifications" defaultPage="page23" landmark="true" gr:x="1155" gr:y="670"> 
+      <Area id="area11" name="Notifications" defaultPage="page23" landmark="true" gr:x="1175" gr:y="785"> 
         <OperationUnits/>  
         <Page id="page23" name="Read Notifications" layout:style="WebRatio" gr:x="0" gr:y="0"> 
           <ContentUnits> 
-            <IndexUnit id="inu4" name="Notifications' list" gr:x="0" gr:y="0" entity="ent2"/> 
+            <QueryUnit gr:x="0" gr:y="0" id="qu10" name="My Notifications" mode="select" language="SQL" db="db1" outputsOrder="qo54 qo55 qo58 qo57 qo56"> 
+              <QueryOutput id="qo54" name="Bet" type="integer"/>  
+              <QueryOutput id="qo55" name="Event" type="string"/>  
+              <QueryOutput id="qo56" name="Status" type="string"/>  
+              <QueryOutput id="qo57" name="Balance" type="decimal"/>  
+              <QueryOutput id="qo58" name="Result" type="string"/>  
+              <QueryText xml:space="preserve">SELECT b.oid, n.event_oid, e.result, n.balancebet, n.status 
+FROM Notification n
+INNER JOIN Event e ON n.event_oid = e.oid
+INNER JOIN Bet b ON e.oid = b.event_oid
+INNER JOIN Event_Team et ON e.oid = et.event_oid
+INNER JOIN Team t ON et.team_oid = t.oid
+GROUP BY n.oid;</QueryText> 
+            </QueryUnit> 
           </ContentUnits>  
           <layout:Grid containerType="grid"> 
             <layout:Row> 
               <layout:Cell colspan="12"> 
-                <layout:Unit unitId="inu4"/> 
+                <layout:Unit unitId="qu10"/> 
               </layout:Cell>  
               <layout:Cell/>  
               <layout:Cell/>  
@@ -1628,12 +1649,13 @@
       </Area>  
       <Area id="area12" name="Profile" defaultPage="page24" landmark="true" gr:x="765" gr:y="85" landmarks="page24 page25"> 
         <OperationUnits/>  
-        <Page id="page25" name="Edit Profile" layout:style="WebRatio" gr:x="325" gr:y="0" landmark="true"> 
+        <Page id="page25" name="Edit Profile" layout:style="WebRatio" gr:x="330" gr:y="0" landmark="true"> 
           <ContentUnits> 
-            <EntryUnit gr:x="0" gr:y="0" id="enu4" name="Change Password" entity="User" customDescriptor="false" linkOrder="ln11"> 
+            <EntryUnit gr:x="15" gr:y="0" id="enu4" name="Change Password" entity="User" customDescriptor="false" linkOrder="ln11"> 
               <Field id="fld10" name="New Password" type="password" modifiable="true" attribute="password"> 
                 <VRules> 
-                  <MandatoryValidationRule id="mnd11" name="Mandatory"/> 
+                  <MandatoryValidationRule id="mnd11" name="Mandatory"/>  
+                  <PasswordStrengthValidationRule id="psvr1" name="Password Strength1" securityLevel="custom" errorMessage="Password too weak! (minimun 4 characters)" minLength="4" maxLength="10" useNumbers="true"/> 
                 </VRules> 
               </Field>  
               <Link id="ln11" name="Save Changes" to="mfu1" type="normal" validate="true"> 
@@ -1641,7 +1663,7 @@
                 <LinkParameter id="par18" name="New Password_password" source="fld10" target="mfu1.password"/> 
               </Link> 
             </EntryUnit>  
-            <EntryUnit gr:x="5" gr:y="235" id="enu5" name="Change Phone Number" entity="User" linkOrder="ln12"> 
+            <EntryUnit gr:x="0" gr:y="255" id="enu5" name="Change Phone Number" entity="User" linkOrder="ln12"> 
               <Link id="ln12" name="Save Changes" to="mfu1" type="normal" validate="true"> 
                 <LinkParameter id="par14" name="Key [oid]_KeyCondition3 [oid]" source="key.userOID" target="kcond3.userOID"/>  
                 <LinkParameter id="par19" name="New Phone Number_phoneNo" source="fld13" target="mfu1.att2"/> 
@@ -1652,7 +1674,7 @@
                 </VRules> 
               </Field> 
             </EntryUnit>  
-            <GetUnit gr:x="35" gr:y="110" id="gtu2" name="GetUser" contextParameters="UserCtxParam"> 
+            <GetUnit gr:x="30" gr:y="110" id="gtu2" name="GetUser" contextParameters="UserCtxParam"> 
               <Link id="ln14" name="Flow14" to="enu4" automaticCoupling="true" type="transport" validate="true"/>  
               <Link id="ln15" name="Flow15" to="enu5" automaticCoupling="true" type="transport" validate="true"/> 
             </GetUnit> 
@@ -1768,11 +1790,11 @@
           <LogoutUnit gr:x="0" gr:y="0" id="lou2" name="Exit" siteView="sv1"/> 
         </OperationUnits> 
       </Area>  
-      <Area id="area7" name="Bet" landmark="true" gr:x="-190" gr:y="700" defaultPage="page27"> 
+      <Area id="area7" name="Bet" landmark="true" gr:x="-195" gr:y="790" defaultPage="page27"> 
         <OperationUnits/>  
         <Page id="page27" name="Bet" gr:x="0" gr:y="0" layout:style="WebRatio"> 
           <ContentUnits> 
-            <QueryUnit gr:x="5" gr:y="0" id="qu8" name="Available Events" mode="select" language="SQL" db="db1" outputsOrder="qo42 qo43 qo44 qo45 qo46 qo47 qo48"> 
+            <QueryUnit gr:x="0" gr:y="0" id="qu8" name="Available Events" mode="select" language="SQL" db="db1" outputsOrder="qo42 qo43 qo44 qo45 qo46 qo47 qo48"> 
               <QueryText xml:space="preserve">SELECT CONCAT("Event n&#186;",e.oid), 
 	   l.name, 
 	   GROUP_CONCAT(t.name), 
@@ -1792,7 +1814,7 @@ GROUP BY e.oid</QueryText>
               <QueryOutput id="qo47" name="Odd Draw" type="decimal"/>  
               <QueryOutput id="qo48" name="Sport"/> 
             </QueryUnit>  
-            <EntryUnit gr:x="250" gr:y="125" id="enu8" name="Bet*" entity="ent1" fieldOrder="sfld10 fld20 fld21" linkOrder="ln37"> 
+            <EntryUnit gr:x="255" gr:y="95" id="enu8" name="Bet*" entity="ent1" fieldOrder="sfld10 fld20 fld21" linkOrder="ln43"> 
               <Field id="fld20" name="Result" type="string" modifiable="true" attribute="att6" preloaded="true" contentType="text/plain"> 
                 <VRules> 
                   <MandatoryValidationRule id="mnd13" name="Mandatory"/> 
@@ -1808,21 +1830,21 @@ GROUP BY e.oid</QueryText>
                   <MandatoryValidationRule id="mnd15" name="Mandatory"/> 
                 </VRules> 
               </SelectionField>  
-              <Link id="ln37" name="Bet" to="spu6" type="normal" validate="true"> 
-                <LinkParameter id="par89" name="Amount_amountIN" source="fld21" target="spu6.spp9"/>  
-                <LinkParameter id="par90" name="Key [oid]_bet_id" source="key.att4" target="spu6.spp7"/>  
-                <LinkParameter id="par91" name="Event_event_id" source="sfld10" target="spu6.spp11"/>  
-                <LinkParameter id="par92" name="Result_resultIN" source="fld20" target="spu6.spp10"/> 
+              <Link id="ln43" name="Bet" to="pcu1" type="normal" validate="true"> 
+                <LinkParameter id="par101" name="Amount_amount" source="fld21" target="pcp1"/>  
+                <LinkParameter id="par102" name="Event_event" source="sfld10" target="pcp2"/>  
+                <LinkParameter id="par103" name="Key [oid]_idbet" source="key.att4" target="pcp5"/>  
+                <LinkParameter id="par104" name="Result_result" source="fld20" target="pcp3"/> 
               </Link> 
             </EntryUnit>  
-            <SelectorUnit gr:x="0" gr:y="125" id="seu1" name="Event" entity="ent3" distinct="false" distinctAttributes="att10"> 
+            <SelectorUnit gr:x="5" gr:y="95" id="seu1" name="Event" entity="ent3" distinct="false" distinctAttributes="att10"> 
               <Link id="ln26" name="Flow26" to="enu8" type="transport" validate="true"> 
                 <LinkParameter id="par77" name="oid_Event - Preselection" source="att10Array" target="sfld10_presel"/>  
                 <LinkParameter id="par78" name="oid_Event [label]" source="att10Array" target="sfld10_label"/>  
                 <LinkParameter id="par79" name="oid_Event [output]" source="att10Array" target="sfld10_output"/> 
               </Link> 
             </SelectorUnit>  
-            <MultiMessageUnit gr:x="250" gr:y="230" id="mssu15"> 
+            <MultiMessageUnit gr:x="255" gr:y="200" id="mssu15"> 
               <Message xml:space="preserve">*If you try to bet a larger amount that the one that you have, the operation will be canceled</Message> 
             </MultiMessageUnit> 
           </ContentUnits>  
@@ -1877,7 +1899,7 @@ GROUP BY e.oid</QueryText>
                   <layout:Field field="sfld10"/>  
                   <layout:Field field="fld20"/>  
                   <layout:Field field="fld21"/>  
-                  <layout:Link link="ln37"/> 
+                  <layout:Link link="ln43"/> 
                 </layout:Unit> 
               </layout:Cell>  
               <layout:Cell/>  
@@ -1924,11 +1946,11 @@ INNER JOIN Event_Team et ON e.oid = et.event_oid
 INNER JOIN Team t ON et.team_oid = t.oid
 INNER JOIN Bet b ON e.oid = b.event_oid
 GROUP BY b.oid</QueryText>  
-              <QueryOutput id="qo49" name="Bet"/>  
-              <QueryOutput id="qo50" name="Event"/>  
-              <QueryOutput id="qo51" name="Teams"/>  
-              <QueryOutput id="qo52" name="Betted Amount"/>  
-              <QueryOutput id="qo53" name="Expected Result"/> 
+              <QueryOutput id="qo49" name="Bet" type="integer"/>  
+              <QueryOutput id="qo50" name="Event" type="string"/>  
+              <QueryOutput id="qo51" name="Teams" type="string"/>  
+              <QueryOutput id="qo52" name="Betted Amount" type="decimal"/>  
+              <QueryOutput id="qo53" name="Expected Result" type="string"/> 
             </QueryUnit> 
           </ContentUnits>  
           <layout:Grid containerType="grid"> 
