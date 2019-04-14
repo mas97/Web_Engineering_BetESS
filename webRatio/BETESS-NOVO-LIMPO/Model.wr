@@ -1358,7 +1358,14 @@
           <StoredProcedureParameter id="spp15" name="resultIN" type="string" direction="input"/>  
           <StoredProcedureParameter id="spp16" name="event_id" type="string" direction="input"/>  
           <KOLink id="kln19" name="KOFlow19" to="page5" automaticCoupling="true"/> 
-        </StoredProcedureUnit> 
+        </StoredProcedureUnit>  
+        <ModifyUnit gr:x="1665" gr:y="835" id="mfu2" name="update notific status" entity="ent2"> 
+          <Selector id="su9" defaultPolicy="fill" booleanOperator="and"> 
+            <KeyCondition id="kcond9" name="KeyCondition9" predicate="in" implied="false"/> 
+          </Selector>  
+          <OKLink id="oln19" name="OKFlow19" to="qu10" automaticCoupling="true" gr:bendpoints="-271,-168,229,-168"/>  
+          <KOLink id="kln20" name="KOFlow20" to="page16" automaticCoupling="true"/> 
+        </ModifyUnit> 
       </OperationUnits>  
       <Page id="page5" gr:x="405" gr:y="630"> 
         <ContentUnits> 
@@ -1608,11 +1615,11 @@
           </layout:Grid> 
         </Page> 
       </Area>  
-      <Area id="area11" name="Notifications" defaultPage="page23" landmark="true" gr:x="1175" gr:y="785"> 
+      <Area id="area11" name="Notifications" defaultPage="page23" landmark="true" gr:x="1145" gr:y="765"> 
         <OperationUnits/>  
         <Page id="page23" name="Read Notifications" layout:style="WebRatio" gr:x="0" gr:y="0"> 
           <ContentUnits> 
-            <QueryUnit gr:x="0" gr:y="0" id="qu10" name="My Notifications" mode="select" language="SQL" db="db1" outputsOrder="qo54 qo55 qo58 qo57 qo56"> 
+            <QueryUnit gr:x="0" gr:y="20" id="qu10" name="My Notifications" mode="select" language="SQL" db="db1" outputsOrder="qo54 qo55 qo58 qo57 qo56"> 
               <QueryOutput id="qo54" name="Bet" type="integer"/>  
               <QueryOutput id="qo55" name="Event" type="string"/>  
               <QueryOutput id="qo56" name="Status" type="string"/>  
@@ -1625,13 +1632,52 @@ INNER JOIN Bet b ON e.oid = b.event_oid
 INNER JOIN Event_Team et ON e.oid = et.event_oid
 INNER JOIN Team t ON et.team_oid = t.oid
 GROUP BY n.oid;</QueryText> 
-            </QueryUnit> 
+            </QueryUnit>  
+            <PowerIndexUnit gr:x="140" gr:y="0" id="pwu2" name="Mark notification as 'seen'" sortable="true" checkable="true" useCountQuery="false" entity="ent2" displayAttributes="att7" linkOrder="ln49"> 
+              <Link id="ln49" name="Mark" to="mfu2" type="normal" validate="true"> 
+                <LinkParameter id="par119" name="oid_KeyCondition9 [oid]" source="data[].att7" target="kcond9.att7"/>  
+                <LinkParameter id="par120" name="seen_status" sourceValue="seen" target="mfu2.att8"/> 
+              </Link> 
+            </PowerIndexUnit> 
           </ContentUnits>  
           <layout:Grid containerType="grid"> 
             <layout:Row> 
               <layout:Cell colspan="12"> 
                 <layout:Unit unitId="qu10"/> 
               </layout:Cell>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row>  
+            <layout:Row> 
+              <layout:Cell colspan="12"> 
+                <layout:Unit unitId="pwu2"> 
+                  <layout:Attribute attribute="att7"/>  
+                  <layout:Link link="ln49"/> 
+                </layout:Unit> 
+              </layout:Cell>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row>  
+            <layout:Row> 
+              <layout:Cell colspan="12"/>  
               <layout:Cell/>  
               <layout:Cell/>  
               <layout:Cell/>  
@@ -1986,7 +2032,32 @@ GROUP BY b.oid</QueryText>
             </layout:Row> 
           </layout:Grid> 
         </Page> 
-      </Area> 
+      </Area>  
+      <Page id="page16" gr:x="1685" gr:y="980"> 
+        <ContentUnits> 
+          <MultiMessageUnit id="mssu26" name="Oops..." gr:x="0" gr:y="0"> 
+            <Message xml:space="preserve">Something went wrong. Please try again.</Message> 
+          </MultiMessageUnit> 
+        </ContentUnits>  
+        <layout:Grid containerType="grid"> 
+          <layout:Row> 
+            <layout:Cell colspan="12"> 
+              <layout:Unit unitId="mssu26"/> 
+            </layout:Cell>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/>  
+            <layout:Cell/> 
+          </layout:Row> 
+        </layout:Grid> 
+      </Page> 
     </SiteView>  
     <SiteView id="sv4" name="Premium Users" protected="true"> 
       <OperationUnits/> 
