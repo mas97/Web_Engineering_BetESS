@@ -1,4 +1,4 @@
-SET SQL_SAFE_UPDATES = 0;
+SET SQL_SAFE_UPDATES = 1;
 
 DROP PROCEDURE IF EXISTS subt_balance;
 DELIMITER $$
@@ -10,14 +10,13 @@ BEGIN
 	DECLARE CONTINUE HANDLER FOR SQLEXCEPTION SET erro = 1;
     START TRANSACTION;
 
-    SET aux = (SELECT (user.balance - amount) 
-			   FROM user 
-			   WHERE user.oid = id_user
-               );
+	SELECT (user.balance - amount) INTO aux
+    FROM user
+    WHERE user.oid = id_user;
 	
     
-	IF (aux >= 0) THEN
-		UPDATE user SET balance = (SELECT (balance - amount) WHERE oid = id_user);
+	IF aux >= 0 THEN
+		UPDATE user SET balance = aux WHERE user.oid = id_user;
     END IF;
     
     
