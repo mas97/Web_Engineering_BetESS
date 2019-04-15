@@ -2,7 +2,7 @@ SET SQL_SAFE_UPDATES = 0;
 
 DROP PROCEDURE IF EXISTS add_bet;
 DELIMITER $$
-CREATE PROCEDURE add_bet(IN bet_id INT, IN id_user INT, 
+CREATE PROCEDURE add_bet(IN id_user INT, 
 						      IN amountIN DECIMAL(19,2),
 							  IN resultIN VARCHAR(255), 
                               IN event_id INT)
@@ -18,9 +18,9 @@ BEGIN
                );
 	
 	IF (aux >= 0) THEN 
-		INSERT INTO bet (oid, result, amount, user_oid, event_oid)
-					VALUES (bet_id, resultIN, amountIN, id_user, event_id);
-		UPDATE user SET user.balance = (SELECT (balance - amountIN) WHERE oid = id_user);
+		INSERT INTO bet (result, amount, user_oid, event_oid)
+					VALUES (resultIN, amountIN, id_user, event_id);
+		UPDATE user SET user.balance = (SELECT (balance - amountIN) WHERE user.oid = id_user);
     END IF;
     
     
