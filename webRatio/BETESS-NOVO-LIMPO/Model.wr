@@ -1332,23 +1332,11 @@
           <StoredProcedureParameter id="spp4" name="amount" type="decimal" direction="input" position="1"/>  
           <StoredProcedureParameter id="spp5" name="id_user" type="integer" direction="input" position="2"/> 
         </StoredProcedureUnit>  
-        <GetUnit gr:x="35" gr:y="855" id="gtu7" name="Get User" contextParameters="UserCtxParam" linkOrder="ln25"> 
-          <Link id="ln25" name="Flow25" to="pcu1" type="transport" validate="true"> 
-            <LinkParameter id="par7" name="UserCtxParam.oid_iduser" source="gtu7.UserCtxParam" target="pcp4"/> 
+        <GetUnit gr:x="35" gr:y="855" id="gtu7" name="Get User" contextParameters="UserCtxParam"> 
+          <Link id="ln35" name="Flow35" to="spu7" type="transport" validate="true"> 
+            <LinkParameter id="par70" name="UserCtxParam.oid_id_user" source="gtu7.UserCtxParam" target="spu7.spp13"/> 
           </Link> 
         </GetUnit>  
-        <ParameterCollectorUnit gr:x="310" gr:y="935" id="pcu1" name="Parameter Collector"> 
-          <CollectorParameter id="pcp1" name="amount"/>  
-          <CollectorParameter id="pcp2" name="event"/>  
-          <CollectorParameter id="pcp3" name="result"/>  
-          <CollectorParameter id="pcp4" name="iduser"/>  
-          <Link id="ln45" name="Flow45" to="spu7" type="transport" validate="true"> 
-            <LinkParameter id="par105" name="amount_amountIN" source="pcp1" target="spu7.spp14"/>  
-            <LinkParameter id="par107" name="event_event_id" source="pcp2" target="spu7.spp16"/>  
-            <LinkParameter id="par108" name="iduser_id_user" source="pcp4" target="spu7.spp13"/>  
-            <LinkParameter id="par109" name="result_resultIN" source="pcp3" target="spu7.spp15"/> 
-          </Link> 
-        </ParameterCollectorUnit>  
         <StoredProcedureUnit gr:x="420" gr:y="790" id="spu7" name="add bet" resultType="plain" db="db1" procedure="add_bet"> 
           <OKLink id="oln18" name="OKFlow18" to="page12" automaticCoupling="true"/>  
           <StoredProcedureParameter id="spp13" name="id_user" type="integer" direction="input" position="1"/>  
@@ -1369,15 +1357,7 @@
           <StoredProcedureParameter id="spp8" name="id_user" type="integer" direction="input" position="2"/>  
           <OKLink id="oln14" name="OKFlow14" to="page12" automaticCoupling="true" gr:bendpoints="-1,150,354,0"/>  
           <KOLink id="kln15" name="KOFlow15" to="page5" automaticCoupling="true"/> 
-        </StoredProcedureUnit>  
-        <ParameterCollectorUnit gr:x="855" gr:y="945" id="pcu2" name="Parameter Collector"> 
-          <Link id="ln34" name="Flow34" to="spu3" type="transport" validate="true"> 
-            <LinkParameter id="par66" name="idBet_id_bet" source="pcp5" target="spu3.spp7"/>  
-            <LinkParameter id="par67" name="idUser_id_user" source="pcp6" target="spu3.spp8"/> 
-          </Link>  
-          <CollectorParameter id="pcp5" name="idBet"/>  
-          <CollectorParameter id="pcp6" name="idUser"/> 
-        </ParameterCollectorUnit> 
+        </StoredProcedureUnit> 
       </OperationUnits>  
       <Page id="page5" gr:x="405" gr:y="630"> 
         <ContentUnits> 
@@ -1867,17 +1847,12 @@ GROUP BY e.oid</QueryText>
               <QueryOutput id="qo47" name="Odd Draw" type="decimal"/>  
               <QueryOutput id="qo48" name="Sport"/> 
             </QueryUnit>  
-            <EntryUnit gr:x="215" gr:y="95" id="enu8" name="Bet*" entity="ent1" fieldOrder="fld21 sfld1 sfld2" linkOrder="ln43"> 
+            <EntryUnit gr:x="215" gr:y="95" id="enu8" name="Bet*" entity="ent1" fieldOrder="fld21 sfld1 sfld2" linkOrder="ln36"> 
               <Field id="fld21" name="Amount" type="decimal" modifiable="true" attribute="att5"> 
                 <VRules> 
                   <MandatoryValidationRule id="mnd14" name="Mandatory"/> 
                 </VRules> 
               </Field>  
-              <Link id="ln43" name="Bet" to="pcu1" type="normal" validate="true"> 
-                <LinkParameter id="par101" name="Amount_amount" source="fld21" target="pcp1"/>  
-                <LinkParameter id="par104" name="Result_result" source="sfld1" target="pcp3"/>  
-                <LinkParameter id="par16" name="Evento_event" source="sfld2" target="pcp2"/> 
-              </Link>  
               <SelectionField id="sfld1" name="Result" type="string" modifiable="true" slotOrder="slot1"> 
                 <Slot id="slot1" name="Possible Results" label="true" output="true" value="winAway|winHome|draw"/>  
                 <VRules> 
@@ -1888,7 +1863,12 @@ GROUP BY e.oid</QueryText>
                 <VRules> 
                   <MandatoryValidationRule id="mnd13" name="Mandatory"/> 
                 </VRules> 
-              </SelectionField> 
+              </SelectionField>  
+              <Link id="ln36" name="Bet" to="spu7" type="normal" validate="true"> 
+                <LinkParameter id="par71" name="Amount_amountIN" source="fld21" target="spu7.spp14"/>  
+                <LinkParameter id="par72" name="Evento_event_id" source="sfld2" target="spu7.spp16"/>  
+                <LinkParameter id="par73" name="Result_resultIN" source="sfld1" target="spu7.spp15"/> 
+              </Link> 
             </EntryUnit>  
             <SelectorUnit gr:x="5" gr:y="95" id="seu1" name="Event" entity="ent3" distinct="false" distinctAttributes="att10"> 
               <Link id="ln26" name="Flow26" to="enu8" type="transport" validate="true"> 
@@ -1949,10 +1929,10 @@ GROUP BY e.oid</QueryText>
             <layout:Row> 
               <layout:Cell colspan="12"> 
                 <layout:Unit unitId="enu8"> 
-                  <layout:Link link="ln43"/>  
                   <layout:Field field="fld21"/>  
                   <layout:Field field="sfld1"/>  
-                  <layout:Field field="sfld2"/> 
+                  <layout:Field field="sfld2"/>  
+                  <layout:Link link="ln36"/> 
                 </layout:Unit> 
               </layout:Cell>  
               <layout:Cell/>  
@@ -2004,16 +1984,16 @@ GROUP BY b.oid</QueryText>
               <QueryOutput id="qo51" name="Teams" type="string"/>  
               <QueryOutput id="qo52" name="Betted Amount" type="decimal"/>  
               <QueryOutput id="qo53" name="Expected Result" type="string"/>  
-              <Link id="ln32" name="Cashout" to="pcu2" type="normal" validate="true"> 
-                <LinkParameter id="par69" name="Bet_idBet" source="data[].bet" target="pcp5"/> 
+              <Link id="ln32" name="Cashout" to="spu3" type="normal" validate="true"> 
+                <LinkParameter id="par75" name="Bet_id_bet" source="data[].bet" target="spu3.spp7"/> 
               </Link> 
             </QueryUnit>  
             <MultiMessageUnit id="mssu27" gr:x="0" gr:y="170"> 
               <Message xml:space="preserve">*(If you try to cashout, you'll only receive half of your betted amount)</Message> 
             </MultiMessageUnit>  
             <GetUnit gr:x="0" gr:y="75" id="gtu5" name="Get User" contextParameters="UserCtxParam"> 
-              <Link id="ln33" name="Flow33" to="pcu2" type="transport" validate="true"> 
-                <LinkParameter id="par68" name="UserCtxParam.oid_idUser" source="gtu5.UserCtxParam" target="pcp6"/> 
+              <Link id="ln33" name="Flow33" to="spu3" type="transport" validate="true"> 
+                <LinkParameter id="par74" name="UserCtxParam.oid_id_user" source="gtu5.UserCtxParam" target="spu3.spp8"/> 
               </Link> 
             </GetUnit> 
           </ContentUnits>  
