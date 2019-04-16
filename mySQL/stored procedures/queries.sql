@@ -20,26 +20,13 @@ INNER JOIN Bet b ON e.oid = b.event_oid
 GROUP BY b.oid;
 
 
--- SELECT b.oid, CONCAT("Event nº",e.oid), 
--- 	   GROUP_CONCAT(t.name),
---       b.amount, e.result,
--- 	   n.balancebet, n.status
--- FROM Event e
--- INNER JOIN Event_Team et ON e.oid = et.event_oid
--- INNER JOIN Team t ON et.team_oid = t.oid
--- INNER JOIN Bet b ON e.oid = b.event_oid
--- INNER JOIN User u ON b.user_oid = u.oid
--- INNER JOIN Notification n ON u.oid = n.event_oid
--- WHERE e.status = 'fechado'
--- GROUP BY b.oid;
-
 
 -- query "My Notifications"
 
 SELECT b.oid AS betNumber,
 	(SELECT name FROM team t where e.team_oid = t.oid) AS 'Home Team', (SELECT name FROM team t where e.team_oid_2 = t.oid) AS 'Away Team',
-	n.event_oid, e.result, n.balancebet, n.status 
-FROM Notification n
-INNER JOIN Event e ON n.event_oid = e.oid
+	e.oid, e.result, n.balancebet, n.status 
+FROM Event e
+INNER JOIN Notification n ON e.oid = n.event_oid
 INNER JOIN Bet b ON e.oid = b.event_oid
 GROUP BY n.oid;

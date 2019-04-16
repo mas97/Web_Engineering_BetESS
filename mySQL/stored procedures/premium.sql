@@ -7,7 +7,7 @@ BEGIN
 	DECLARE CONTINUE HANDLER FOR SQLEXCEPTION SET erro = 1;
     START TRANSACTION;
 
-	SELECT (user.balance - 10) INTO aux
+	SELECT (user.balance - 50) INTO aux
     FROM user
     WHERE user.oid = id_user;
 	
