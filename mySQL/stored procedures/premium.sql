@@ -15,6 +15,9 @@ BEGIN
 	IF aux >= 0 THEN
 		UPDATE user SET balance = aux WHERE user.oid = id_user;
 		UPDATE user SET premium = 1 WHERE user.oid = id_user;
+		INSERT INTO user_group (user_oid, group_oid)
+			VALUES
+			(id_user, 3);
     END IF;
     
     
