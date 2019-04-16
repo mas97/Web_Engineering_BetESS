@@ -1660,8 +1660,7 @@
 	e.oid, e.result, n.balancebet, n.status 
 FROM Event e
 INNER JOIN Notification n ON e.oid = n.event_oid
-INNER JOIN Bet b ON e.oid = b.event_oid
-GROUP BY n.oid</QueryText>  
+INNER JOIN Bet b ON e.oid = b.event_oid</QueryText>  
               <Link id="ln27" name="Mark as 'seen'" to="mfu2" type="normal" validate="true"> 
                 <LinkParameter id="par27" name="seen_status" sourceValue="seen" target="mfu2.att8"/>  
                 <LinkParameter id="par33" name="Bet_KeyCondition9 [oid]" source="data[].bet" target="kcond9.att7"/> 
@@ -1966,12 +1965,13 @@ GROUP BY n.oid</QueryText>
               <QueryOutput id="qo13" name="League" type="string"/>  
               <QueryOutput id="qo14" name="Sport" type="string"/>  
               <QueryText xml:space="preserve">SELECT CONCAT("Event n&#186;",e.oid), 
-	   (SELECT name FROM team t where e.team_oid = t.oid) AS 'Home Team', (SELECT name FROM team t where e.team_oid_2 = t.oid) AS 'Away Team',
-       e.oddhome, e.oddaway, e.odddraw, l.name, s.name
+	   (SELECT name FROM team t where e.team_oid = t.oid) AS 'Home Team', 
+	   (SELECT name FROM team t where e.team_oid_2 = t.oid) AS 'Away Team',
+       e.oddhome, e.oddaway, e.odddraw, l.name, 
+       s.name
 FROM Event e
 INNER JOIN League l ON e.league_oid = l.oid
-INNER JOIN Sport s ON e.sport_oid = s.oid
-GROUP BY(e.oid);</QueryText> 
+INNER JOIN Sport s ON e.sport_oid = s.oid;</QueryText> 
             </QueryUnit> 
           </ContentUnits>  
           <layout:Grid containerType="grid"> 
@@ -2069,6 +2069,20 @@ GROUP BY(e.oid);</QueryText>
               <layout:Cell/>  
               <layout:Cell/>  
               <layout:Cell/> 
+            </layout:Row>  
+            <layout:Row> 
+              <layout:Cell colspan="12"/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
             </layout:Row> 
           </layout:Grid> 
         </Page> 
@@ -2082,8 +2096,7 @@ GROUP BY(e.oid);</QueryText>
 	   (SELECT name FROM team t where e.team_oid = t.oid) AS 'Home Team', (SELECT name FROM team t where e.team_oid_2 = t.oid) AS 'Away Team',
        b.amount, b.result
 FROM Event e
-INNER JOIN Bet b ON e.oid = b.event_oid
-GROUP BY b.oid</QueryText>  
+INNER JOIN Bet b ON e.oid = b.event_oid</QueryText>  
               <QueryOutput id="qo49" name="Bet" type="integer"/>  
               <QueryOutput id="qo50" name="Event" type="string"/>  
               <QueryOutput id="qo51" name="Away Team" type="string"/>  
