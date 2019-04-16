@@ -18,7 +18,7 @@ BEGIN
     WHERE user.oid = id_user;
 	
 	IF aux >= 0 THEN
-		INSERT INTO bet (result, amount, user_oid, event_oid) VALUES (resultIN, amountIN, id_user, event_id);
+		INSERT INTO bet (result, amount, paid, user_oid, event_oid) VALUES (resultIN, amountIN, TRUE, id_user, event_id);
 		UPDATE user SET balance = aux WHERE user.oid = id_user;
     END IF;
   

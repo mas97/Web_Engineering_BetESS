@@ -23,9 +23,10 @@ DROP TABLE IF EXISTS `bet`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `bet` (
-  `oid` int(11) NOT NULL,
+  `oid` int(11) NOT NULL AUTO_INCREMENT,
   `result` varchar(255) DEFAULT NULL,
   `amount` decimal(19,2) DEFAULT NULL,
+  `paid` bit(1) DEFAULT NULL,
   `user_oid` int(11) DEFAULT NULL,
   `event_oid` int(11) DEFAULT NULL,
   PRIMARY KEY (`oid`),
@@ -33,7 +34,7 @@ CREATE TABLE `bet` (
   KEY `fk_bet_event` (`event_oid`),
   CONSTRAINT `fk_bet_event` FOREIGN KEY (`event_oid`) REFERENCES `event` (`oid`),
   CONSTRAINT `fk_bet_user` FOREIGN KEY (`user_oid`) REFERENCES `user` (`oid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,6 +43,7 @@ CREATE TABLE `bet` (
 
 LOCK TABLES `bet` WRITE;
 /*!40000 ALTER TABLE `bet` DISABLE KEYS */;
+INSERT INTO `bet` VALUES (1,'winHome',2.00,'',2,1);
 /*!40000 ALTER TABLE `bet` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -82,7 +84,7 @@ CREATE TABLE `event` (
 
 LOCK TABLES `event` WRITE;
 /*!40000 ALTER TABLE `event` DISABLE KEYS */;
-INSERT INTO `event` VALUES (1,1.00,1.40,1.20,'NA','Open','\0',1,2,1,1),(2,2.00,2.00,2.00,'NA','Open','\0',1,1,1,2);
+INSERT INTO `event` VALUES (1,2.00,2.00,2.00,'winHome','Closed','\0',1,2,1,1);
 /*!40000 ALTER TABLE `event` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -198,7 +200,7 @@ DROP TABLE IF EXISTS `notification`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `notification` (
-  `oid` int(11) NOT NULL,
+  `oid` int(11) NOT NULL AUTO_INCREMENT,
   `balancebet` decimal(19,2) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
   `user_oid` int(11) DEFAULT NULL,
@@ -208,7 +210,7 @@ CREATE TABLE `notification` (
   KEY `fk_notification_event` (`event_oid`),
   CONSTRAINT `fk_notification_event` FOREIGN KEY (`event_oid`) REFERENCES `event` (`oid`),
   CONSTRAINT `fk_notification_user` FOREIGN KEY (`user_oid`) REFERENCES `user` (`oid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -217,6 +219,7 @@ CREATE TABLE `notification` (
 
 LOCK TABLES `notification` WRITE;
 /*!40000 ALTER TABLE `notification` DISABLE KEYS */;
+INSERT INTO `notification` VALUES (1,4.00,'seen',2,1);
 /*!40000 ALTER TABLE `notification` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -297,7 +300,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'admin','admin','admin@hotmail.com',0.00,'admin','admin',NULL,1),(2,'user','user','user@hotmail.com',55.00,'252900867','user','',2),(3,'marco','marco35','marant_silva@hotmail.com',5.00,'123','marco','\0',2);
+INSERT INTO `user` VALUES (1,'admin','admin','admin@hotmail.com',0.00,'admin','admin',NULL,1),(2,'user','user','user@hotmail.com',11.00,'252900867','user',NULL,2);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -332,7 +335,7 @@ UNLOCK TABLES;
 --
 -- Dumping routines for database 'betess'
 --
-/*!50003 DROP PROCEDURE IF EXISTS `close_events` */;
+/*!50003 DROP PROCEDURE IF EXISTS `add_bet` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -342,7 +345,47 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `close_events`(IN id_event INT,
+CREATE DEFINER=`root`@`localhost` PROCEDURE `add_bet`(IN id_user INT, 
+						 IN amountIN DECIMAL(19,2),
+						 IN resultIN VARCHAR(255), 
+						 IN event_id INT)
+BEGIN
+	DECLARE erro BOOL DEFAULT 0;
+    DECLARE aux DECIMAL DEFAULT 0;
+	DECLARE CONTINUE HANDLER FOR SQLEXCEPTION SET erro = 1;
+    START TRANSACTION;
+
+	SELECT (user.balance - amountIN) INTO aux
+    FROM user
+    WHERE user.oid = id_user;
+	
+	IF aux >= 0 THEN
+		INSERT INTO bet (result, amount, paid, user_oid, event_oid) VALUES (resultIN, amountIN, TRUE, id_user, event_id);
+		UPDATE user SET balance = aux WHERE user.oid = id_user;
+    END IF;
+  
+    
+	IF erro 
+		THEN ROLLBACK;
+		ELSE COMMIT;
+	END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `close_event` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `close_event`(IN id_event INT,
 							  IN result VARCHAR(255))
 BEGIN
 	DECLARE erro BOOL DEFAULT 0;
@@ -353,61 +396,45 @@ BEGIN
   	DECLARE odd_draw INT DEFAULT 0;
     DECLARE bet_amount INT DEFAULT 0;
 	DECLARE user_id INT DEFAULT 0;
+	DECLARE result_bet VARCHAR(255) DEFAULT '';
 	DECLARE CONTINUE HANDLER FOR SQLEXCEPTION SET erro = 1;
 	START TRANSACTION;
     
     SELECT COUNT(*) FROM bet INTO n;
-	SET i=0;
+	SET i=1;
 
-	UPDATE event set event.status = result WHERE event.oid = id_event;
+	UPDATE event set event.status = 'Closed' WHERE event.oid = id_event;
+	UPDATE event set event.result = result WHERE event.oid = id_event;
 
 	SELECT event.oddhome FROM event WHERE event.oid = id_event INTO odd_home;
   	SELECT event.oddaway FROM event WHERE event.oid = id_event INTO odd_away;
   	SELECT event.odddraw FROM event WHERE event.oid = id_event INTO odd_draw;
+    
 
-	WHILE i<n DO 
-  		IF ((SELECT bet.result FROM bet WHERE bet.oid = i) = result) THEN
-  			SELECT bet.amount FROM bet WHERE event.oid = id_event INTO bet_amount;
-  			SELECT bet.user_oid FROM bet WHERE event.oid = id_event INTO user_id; 
+	WHILE i<=n DO 
+  		IF ((SELECT event_oid FROM bet WHERE oid = i AND !paid) = id_event) THEN
+        
+  			SELECT bet.amount FROM bet WHERE bet.oid = i INTO bet_amount;
+  			SELECT bet.user_oid FROM bet WHERE bet.oid = i INTO user_id;
+  			SELECT bet.result FROM bet WHERE bet.oid = i INTO result_bet;
+            
+            -- select amount from bet where oid = i;
 
-			IF (bet.result = result) THEN
+			IF (result_bet = result) THEN
 				IF (result = 'winHome') THEN
-					INSERT INTO notification (balancebet, status, user_oid, event_oid)
-  						VALUES 
-  						( (bet.amount * odd_home), "New", user_id, id_event );
-  					UPDATE user SET user.balance = (SELECT(balance + ((bet.amount * odd_home)))) WHERE user.oid = user_id;
+					INSERT INTO notification (balancebet, status, user_oid, event_oid) VALUES ( (bet_amount * odd_home), "New", user_id, id_event );
+  					UPDATE user SET balance = (SELECT(balance + ((bet_amount * odd_home)))) WHERE user.oid = user_id;
+                    UPDATE bet SET bet.paid = 1 WHERE bet.oid = i;
 				END IF;
 				IF (result = 'winAway') THEN
-					INSERT INTO notification (balancebet, status, user_oid, event_oid)
-  						VALUES 
-  						( (bet.amount * odd_away), "New", user_id, id_event );
-  					UPDATE user SET user.balance = (SELECT(balance + ((bet.amount * odd_away)))) WHERE user.oid = user_id;
+					INSERT INTO notification (balancebet, status, user_oid, event_oid) VALUES ( (bet_amount * odd_away), "New", user_id, id_event );
+  					UPDATE user SET balance = (SELECT(balance + ((bet_amount * odd_away)))) WHERE user.oid = user_id;
+                    UPDATE bet SET bet.paid = 1 WHERE bet.oid = i;
 				END IF;
 				IF (result = 'draw') THEN
-					INSERT INTO notification (balancebet, status, user_oid, event_oid)
-  						VALUES 
-  						( (bet.amount * odd_draw), "New", user_id, id_event );
-  					UPDATE user SET user.balance = (SELECT(balance + ((bet.amount * odd_draw)))) WHERE user.oid = user_id;
-				END IF;
-			END IF;
-			IF (bet.result != result) THEN
-				IF (result = 'winHome') THEN
-					INSERT INTO notification (balancebet, status, user_oid, event_oid)
-  						VALUES 
-  						( -(bet.amount * odd_home), "New", user_id, id_event );
-  					UPDATE user SET user.balance = (SELECT(balance - ((bet.amount * odd_home)))) WHERE user.oid = user_id;
-				END IF;
-				IF (result = 'winAway') THEN
-					INSERT INTO notification (balancebet, status, user_oid, event_oid)
-  						VALUES 
-  						( -(bet.amount * odd_away), "New", user_id, id_event );
-  					UPDATE user SET user.balance = (SELECT(balance - ((bet.amount * odd_away)))) WHERE user.oid = user_id;
-				END IF;
-				IF (result = 'draw') THEN
-					INSERT INTO notification (balancebet, status, user_oid, event_oid)
-  						VALUES 
-  						( -(bet.amount * odd_draw), "New", user_id, id_event );
-  					UPDATE user SET user.balance = (SELECT(balance - ((bet.amount * odd_draw)))) WHERE user.oid = user_id;
+					INSERT INTO notification (balancebet, status, user_oid, event_oid) VALUES ( (bet_amount * odd_draw), "New", user_id, id_event );
+  					UPDATE user SET balance = (SELECT(balance + ((bet_amount * odd_draw)))) WHERE user.oid = user_id;
+                    UPDATE bet SET bet.paid = 1 WHERE bet.oid = i;
 				END IF;
 			END IF;
   		END IF;
@@ -543,4 +570,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-16 16:29:33
+-- Dump completed on 2019-04-16 23:29:29
