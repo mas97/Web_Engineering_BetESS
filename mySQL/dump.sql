@@ -34,7 +34,7 @@ CREATE TABLE `bet` (
   KEY `fk_bet_event` (`event_oid`),
   CONSTRAINT `fk_bet_event` FOREIGN KEY (`event_oid`) REFERENCES `event` (`oid`),
   CONSTRAINT `fk_bet_user` FOREIGN KEY (`user_oid`) REFERENCES `user` (`oid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,6 @@ CREATE TABLE `bet` (
 
 LOCK TABLES `bet` WRITE;
 /*!40000 ALTER TABLE `bet` DISABLE KEYS */;
-INSERT INTO `bet` VALUES (1,'winHome',2.00,'',2,1);
 /*!40000 ALTER TABLE `bet` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,7 +83,6 @@ CREATE TABLE `event` (
 
 LOCK TABLES `event` WRITE;
 /*!40000 ALTER TABLE `event` DISABLE KEYS */;
-INSERT INTO `event` VALUES (1,2.00,2.00,2.00,'winHome','Closed','\0',1,2,1,1);
 /*!40000 ALTER TABLE `event` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -163,7 +161,6 @@ CREATE TABLE `league` (
 
 LOCK TABLES `league` WRITE;
 /*!40000 ALTER TABLE `league` DISABLE KEYS */;
-INSERT INTO `league` VALUES (1,'Liga Portuguesa');
 /*!40000 ALTER TABLE `league` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -210,7 +207,7 @@ CREATE TABLE `notification` (
   KEY `fk_notification_event` (`event_oid`),
   CONSTRAINT `fk_notification_event` FOREIGN KEY (`event_oid`) REFERENCES `event` (`oid`),
   CONSTRAINT `fk_notification_user` FOREIGN KEY (`user_oid`) REFERENCES `user` (`oid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -219,7 +216,6 @@ CREATE TABLE `notification` (
 
 LOCK TABLES `notification` WRITE;
 /*!40000 ALTER TABLE `notification` DISABLE KEYS */;
-INSERT INTO `notification` VALUES (1,4.00,'seen',2,1);
 /*!40000 ALTER TABLE `notification` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -243,7 +239,6 @@ CREATE TABLE `sport` (
 
 LOCK TABLES `sport` WRITE;
 /*!40000 ALTER TABLE `sport` DISABLE KEYS */;
-INSERT INTO `sport` VALUES (1,'Futebol');
 /*!40000 ALTER TABLE `sport` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -267,7 +262,6 @@ CREATE TABLE `team` (
 
 LOCK TABLES `team` WRITE;
 /*!40000 ALTER TABLE `team` DISABLE KEYS */;
-INSERT INTO `team` VALUES (1,'Fc Porto'),(2,'SL Benfica');
 /*!40000 ALTER TABLE `team` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -300,10 +294,9 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'admin','admin','admin@hotmail.com',0.00,'admin','admin',NULL,1),(2,'user','user','user@hotmail.com',11.00,'252900867','user',NULL,2);
+INSERT INTO `user` VALUES (1,'admin','admin','admin@hotmail.com',0.00,'admin','admin',NULL,1),(2,'user','user','user@hotmail.com',5.00,'252900867','user','\0',2);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
-UPDATE `betess`.`user` SET `premium` = b'0' WHERE (`oid` = '2');
 
 --
 -- Table structure for table `user_group`
@@ -361,7 +354,7 @@ BEGIN
     WHERE user.oid = id_user;
 	
 	IF aux >= 0 THEN
-		INSERT INTO bet (result, amount, paid, user_oid, event_oid) VALUES (resultIN, amountIN, TRUE, id_user, event_id);
+		INSERT INTO bet (result, amount, paid, user_oid, event_oid) VALUES (resultIN, amountIN, 0, id_user, event_id);
 		UPDATE user SET balance = aux WHERE user.oid = id_user;
     END IF;
   
@@ -400,7 +393,7 @@ BEGIN
     
 	UPDATE user SET user.balance = (user.balance + aux) WHERE user.oid = id_user;
     
-    DELETE FROM bet WHERE oid = id_bet;
+    UPDATE bet SET bet.paid = 1 WHERE bet.oid = id_bet;
 
 	IF erro 
 		THEN ROLLBACK;
@@ -607,4 +600,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-17 10:10:43
+-- Dump completed on 2019-04-17 18:56:28
