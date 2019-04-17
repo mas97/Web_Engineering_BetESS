@@ -303,6 +303,7 @@ LOCK TABLES `user` WRITE;
 INSERT INTO `user` VALUES (1,'admin','admin','admin@hotmail.com',0.00,'admin','admin',NULL,1),(2,'user','user','user@hotmail.com',11.00,'252900867','user',NULL,2);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
+UPDATE `betess`.`user` SET `premium` = b'0' WHERE (`oid` = '2');
 
 --
 -- Table structure for table `user_group`
@@ -328,7 +329,7 @@ CREATE TABLE `user_group` (
 
 LOCK TABLES `user_group` WRITE;
 /*!40000 ALTER TABLE `user_group` DISABLE KEYS */;
-INSERT INTO `user_group` VALUES (1,1),(2,2),(2,3);
+INSERT INTO `user_group` VALUES (1,1),(2,2);
 /*!40000 ALTER TABLE `user_group` ENABLE KEYS */;
 UNLOCK TABLES;
 

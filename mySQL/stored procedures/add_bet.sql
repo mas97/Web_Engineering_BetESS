@@ -18,7 +18,7 @@ BEGIN
     WHERE user.oid = id_user;
 	
 	IF aux >= 0 THEN
-		INSERT INTO bet (result, amount, paid, user_oid, event_oid) VALUES (resultIN, amountIN, TRUE, id_user, event_id);
+		INSERT INTO bet (result, amount, paid, user_oid, event_oid) VALUES (resultIN, amountIN, 0, id_user, event_id);
 		UPDATE user SET balance = aux WHERE user.oid = id_user;
     END IF;
   
@@ -33,8 +33,8 @@ DELIMITER ;
 
 
 -- TESTS
-CALL add_bet(2, 50, 'winHome', 2);
-CALL add_bet(2, 500, 'winHome', 2);
+CALL add_bet(2, 50, 'winHome', 0, 2);
+CALL add_bet(2, 500, 'winHome', 0, 2);
 
 SELECT * FROM User;
 SELECT * FROM Bet;

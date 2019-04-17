@@ -28,3 +28,5 @@ BEGIN
 END
 $$
 DELIMITER ;
+
+-- UPDATE user SET premium = 0 WHERE user.oid = 2;

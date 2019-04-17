@@ -14,7 +14,7 @@ BEGIN
     
 	UPDATE user SET user.balance = (user.balance + aux) WHERE user.oid = id_user;
     
-    DELETE FROM bet WHERE oid = id_bet;
+    UPDATE bet SET bet.paid = 1 WHERE bet.oid = id_bet;
 
 	IF erro 
 		THEN ROLLBACK;

@@ -1959,6 +1959,181 @@ WHERE b.user_oid = (:userId);</QueryText>
           </layout:Grid> 
         </Page> 
       </Area>  
+      <Area id="area16" name="Premium" defaultPage="page32" landmark="true" protected="true" gr:x="0" gr:y="1195"> 
+        <OperationUnits/>  
+        <Page id="page32" name="Bet" layout:style="WebRatio" gr:x="0" gr:y="0"> 
+          <ContentUnits> 
+            <EntryUnit id="enu14" name="Bet*" gr:x="210" gr:y="90" entity="ent1" fieldOrder="fld22 sfld11 sfld12" linkOrder="ln39"> 
+              <Field id="fld22" name="Amount" type="decimal" modifiable="true" attribute="att5"> 
+                <VRules> 
+                  <MandatoryValidationRule id="mnd18" name="Mandatory"/> 
+                </VRules> 
+              </Field>  
+              <SelectionField id="sfld11" name="Result" type="string" modifiable="true" slotOrder="slot4"> 
+                <Slot id="slot4" name="Possible Results" label="true" output="true" value="winAway|winHome|draw"/>  
+                <VRules> 
+                  <MandatoryValidationRule id="mnd19" name="Mandatory"/> 
+                </VRules> 
+              </SelectionField>  
+              <SelectionField id="sfld12" name="Evento" type="string"> 
+                <VRules> 
+                  <MandatoryValidationRule id="mnd20" name="Mandatory"/> 
+                </VRules> 
+              </SelectionField>  
+              <Link id="ln39" name="Bet" to="spu6" type="normal" validate="true"> 
+                <LinkParameter id="par8" name="Amount_amountIN" source="fld22" target="spu6.spp19"/>  
+                <LinkParameter id="par32" name="Evento_event_id" source="sfld12" target="spu6.spp21"/>  
+                <LinkParameter id="par34" name="Result_resultIN" source="sfld11" target="spu6.spp20"/> 
+              </Link> 
+            </EntryUnit>  
+            <SelectorUnit id="seu3" name="Event" gr:x="0" gr:y="90" entity="ent3" distinct="false" distinctAttributes="att10"> 
+              <Link id="ln37" name="Flow26" to="enu14" type="transport" validate="true"> 
+                <LinkParameter id="par69" name="1_Evento - Preselection" target="sfld12_presel" sourceValue="1"/>  
+                <LinkParameter id="par70" name="oid_Evento [label]" source="att10Array" target="sfld12_label"/>  
+                <LinkParameter id="par76" name="oid_Evento [output]" source="att10Array" target="sfld12_output"/> 
+              </Link> 
+            </SelectorUnit>  
+            <MultiMessageUnit id="mssu31" gr:x="210" gr:y="195"> 
+              <Message xml:space="preserve">*If you try to bet a larger amount that the one that you have, the operation will be canceled</Message> 
+            </MultiMessageUnit>  
+            <QueryUnit id="qu3" name="Available Events" gr:x="0" gr:y="0" mode="select" language="SQL" db="db1" outputsOrder="qo20 qo21 qo22 qo23 qo24 qo25 qo26 qo27"> 
+              <QueryOutput id="qo20" name="Evento" type="string"/>  
+              <QueryOutput id="qo21" name="Home Team" type="string"/>  
+              <QueryOutput id="qo22" name="Away Team" type="string"/>  
+              <QueryOutput id="qo23" name="Odd Home" type="decimal"/>  
+              <QueryOutput id="qo24" name="Odd Away" type="decimal"/>  
+              <QueryOutput id="qo25" name="Odd Draw" type="decimal"/>  
+              <QueryOutput id="qo26" name="League" type="string"/>  
+              <QueryOutput id="qo27" name="Sport" type="string"/>  
+              <QueryText xml:space="preserve">SELECT CONCAT("Event n&#186;",e.oid), 
+	   (SELECT name FROM team t where e.team_oid = t.oid) AS 'Home Team', 
+	   (SELECT name FROM team t where e.team_oid_2 = t.oid) AS 'Away Team',
+       e.oddhome, e.oddaway, e.odddraw, l.name, 
+       s.name
+FROM Event e
+INNER JOIN League l ON e.league_oid = l.oid
+INNER JOIN Sport s ON e.sport_oid = s.oid
+WHERE e.premium = 1 AND e.status = 'Open';</QueryText> 
+            </QueryUnit>  
+            <GetUnit id="gtu9" name="Get User" gr:x="180" gr:y="5" contextParameters="UserCtxParam"> 
+              <Link id="ln38" name="Flow38" to="spu6" type="transport" validate="true"> 
+                <LinkParameter id="par7" name="UserCtxParam.oid_id_user" source="gtu9.UserCtxParam" target="spu6.spp18"/> 
+              </Link> 
+            </GetUnit> 
+          </ContentUnits>  
+          <layout:Grid containerType="grid"> 
+            <layout:Row> 
+              <layout:Cell colspan="12"/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row>  
+            <layout:Row> 
+              <layout:Cell colspan="12"/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row>  
+            <layout:Row> 
+              <layout:Cell colspan="12"/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row>  
+            <layout:Row> 
+              <layout:Cell colspan="12"> 
+                <layout:Unit unitId="enu14"> 
+                  <layout:Field field="fld22"/>  
+                  <layout:Field field="sfld11"/>  
+                  <layout:Field field="sfld12"/>  
+                  <layout:Link link="ln39"/> 
+                </layout:Unit> 
+              </layout:Cell>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row>  
+            <layout:Row> 
+              <layout:Cell colspan="12"> 
+                <layout:Unit unitId="mssu31"/> 
+              </layout:Cell>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row>  
+            <layout:Row> 
+              <layout:Cell colspan="12"> 
+                <layout:Unit unitId="qu3"/> 
+              </layout:Cell>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row>  
+            <layout:Row> 
+              <layout:Cell colspan="12"/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/>  
+              <layout:Cell/> 
+            </layout:Row> 
+          </layout:Grid> 
+        </Page> 
+      </Area>  
       <Area gr:x="1425" gr:y="1155" id="area3" name="Exit" landmark="true" defaultPage="lou2"> 
         <OperationUnits> 
           <LogoutUnit gr:x="0" gr:y="0" id="lou2" name="Exit" siteView="sv1"/> 
@@ -2209,175 +2384,6 @@ WHERE b.paid = FALSE;</QueryText>
             <layout:Row> 
               <layout:Cell colspan="12"> 
                 <layout:Unit unitId="mssu27"/> 
-              </layout:Cell>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/> 
-            </layout:Row>  
-            <layout:Row> 
-              <layout:Cell colspan="12"/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/> 
-            </layout:Row> 
-          </layout:Grid> 
-        </Page> 
-      </Area>  
-      <Area id="area16" name="Premium" defaultPage="page32" landmark="true" protected="true" gr:x="0" gr:y="1195"> 
-        <OperationUnits/>  
-        <Page id="page32" name="Bet" layout:style="WebRatio" gr:x="0" gr:y="0"> 
-          <ContentUnits> 
-            <EntryUnit id="enu14" name="Bet*" gr:x="210" gr:y="90" entity="ent1" fieldOrder="fld22 sfld11 sfld12" linkOrder="ln39"> 
-              <Field id="fld22" name="Amount" type="decimal" modifiable="true" attribute="att5"> 
-                <VRules> 
-                  <MandatoryValidationRule id="mnd18" name="Mandatory"/> 
-                </VRules> 
-              </Field>  
-              <SelectionField id="sfld11" name="Result" type="string" modifiable="true" slotOrder="slot4"> 
-                <Slot id="slot4" name="Possible Results" label="true" output="true" value="winAway|winHome|draw"/>  
-                <VRules> 
-                  <MandatoryValidationRule id="mnd19" name="Mandatory"/> 
-                </VRules> 
-              </SelectionField>  
-              <SelectionField id="sfld12" name="Evento" type="string"> 
-                <VRules> 
-                  <MandatoryValidationRule id="mnd20" name="Mandatory"/> 
-                </VRules> 
-              </SelectionField>  
-              <Link id="ln39" name="Flow39" to="spu6" type="normal" validate="true"/> 
-            </EntryUnit>  
-            <SelectorUnit id="seu3" name="Event" gr:x="0" gr:y="90" entity="ent3" distinct="false" distinctAttributes="att10"> 
-              <Link id="ln37" name="Flow26" to="enu14" type="transport" validate="true"> 
-                <LinkParameter id="par69" name="1_Evento - Preselection" target="sfld12_presel" sourceValue="1"/>  
-                <LinkParameter id="par70" name="oid_Evento [label]" source="att10Array" target="sfld12_label"/>  
-                <LinkParameter id="par76" name="oid_Evento [output]" source="att10Array" target="sfld12_output"/> 
-              </Link> 
-            </SelectorUnit>  
-            <MultiMessageUnit id="mssu31" gr:x="210" gr:y="195"> 
-              <Message xml:space="preserve">*If you try to bet a larger amount that the one that you have, the operation will be canceled</Message> 
-            </MultiMessageUnit>  
-            <QueryUnit id="qu3" name="Available Events" gr:x="0" gr:y="0" mode="select" language="SQL" db="db1" outputsOrder="qo20 qo21 qo22 qo23 qo24 qo25 qo26 qo27"> 
-              <QueryOutput id="qo20" name="Evento" type="string"/>  
-              <QueryOutput id="qo21" name="Home Team" type="string"/>  
-              <QueryOutput id="qo22" name="Away Team" type="string"/>  
-              <QueryOutput id="qo23" name="Odd Home" type="decimal"/>  
-              <QueryOutput id="qo24" name="Odd Away" type="decimal"/>  
-              <QueryOutput id="qo25" name="Odd Draw" type="decimal"/>  
-              <QueryOutput id="qo26" name="League" type="string"/>  
-              <QueryOutput id="qo27" name="Sport" type="string"/>  
-              <QueryText xml:space="preserve">SELECT CONCAT("Event n&#186;",e.oid), 
-	   (SELECT name FROM team t where e.team_oid = t.oid) AS 'Home Team', 
-	   (SELECT name FROM team t where e.team_oid_2 = t.oid) AS 'Away Team',
-       e.oddhome, e.oddaway, e.odddraw, l.name, 
-       s.name
-FROM Event e
-INNER JOIN League l ON e.league_oid = l.oid
-INNER JOIN Sport s ON e.sport_oid = s.oid
-WHERE e.premium = 1 AND e.status = 'Open';</QueryText> 
-            </QueryUnit>  
-            <GetUnit id="gtu9" name="Get User" gr:x="180" gr:y="5" contextParameters="UserCtxParam"> 
-              <Link id="ln38" name="Flow38" to="spu6" type="transport" validate="true"/> 
-            </GetUnit> 
-          </ContentUnits>  
-          <layout:Grid containerType="grid"> 
-            <layout:Row> 
-              <layout:Cell colspan="12"/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/> 
-            </layout:Row>  
-            <layout:Row> 
-              <layout:Cell colspan="12"/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/> 
-            </layout:Row>  
-            <layout:Row> 
-              <layout:Cell colspan="12"/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/> 
-            </layout:Row>  
-            <layout:Row> 
-              <layout:Cell colspan="12"> 
-                <layout:Unit unitId="enu14"> 
-                  <layout:Field field="fld22"/>  
-                  <layout:Field field="sfld11"/>  
-                  <layout:Field field="sfld12"/>  
-                  <layout:Link link="ln39"/> 
-                </layout:Unit> 
-              </layout:Cell>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/> 
-            </layout:Row>  
-            <layout:Row> 
-              <layout:Cell colspan="12"> 
-                <layout:Unit unitId="mssu31"/> 
-              </layout:Cell>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/>  
-              <layout:Cell/> 
-            </layout:Row>  
-            <layout:Row> 
-              <layout:Cell colspan="12"> 
-                <layout:Unit unitId="qu3"/> 
               </layout:Cell>  
               <layout:Cell/>  
               <layout:Cell/>  
