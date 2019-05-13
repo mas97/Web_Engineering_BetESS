@@ -4,8 +4,8 @@
   "description": "BetESS betting platform.",
   "main": "src/index.js",
   "scripts": {
-    "start-node": "node src/index.js",
-    "start": "nodemon src/index.js",
+    "start": "node src/index.js",
+    "nodemon": "nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -14,6 +14,7 @@
     "body-parser": "^1.19.0",
     "express": "^4.16.4",
     "mongoose": "^5.5.7",
+    "mongoose-sequence": "^5.0.1",
     "validator": "^10.11.0"
   },
   "devDependencies": {

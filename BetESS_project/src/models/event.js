@@ -1,4 +1,5 @@
 let mongoose = require('mongoose');
+let AutoIncrement = require('mongoose-sequence')(mongoose);
 
 let eventSchema = new mongoose.Schema({
     id: {
@@ -30,5 +31,7 @@ let eventSchema = new mongoose.Schema({
         required: true
     }
 });
+
+eventSchema.plugin(AutoIncrement, {inc_field: 'id'});
 
 module.exports = mongoose.model('Event', eventSchema);
