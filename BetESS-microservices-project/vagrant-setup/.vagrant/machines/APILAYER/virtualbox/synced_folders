@@ -1,0 +1,1 @@
+{"virtualbox":{"/files":{"guestpath":"/files","hostpath":"/Users/marcosilva/Repositories/Web_Engineering_BetESS/BetESS-microservices-project/shared-files","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/marcosilva/Repositories/Web_Engineering_BetESS/BetESS-microservices-project/vagrant-setup","disabled":false,"__vagrantfile":true}}}
