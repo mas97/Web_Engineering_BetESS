@@ -2,10 +2,6 @@ let mongoose = require('mongoose');
 let AutoIncrement = require('mongoose-sequence')(mongoose);
 
 let eventSchema = new mongoose.Schema({
-    id: {
-        type: Number,
-        unique: true
-    },
     status: {
         type: String,
         required: true
