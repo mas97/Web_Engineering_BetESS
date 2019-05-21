@@ -28,6 +28,6 @@ let eventSchema = new mongoose.Schema({
     }
 });
 
-eventSchema.plugin(AutoIncrement, {inc_field: 'id'});
+eventSchema.plugin(AutoIncrement, {inc_field: 'event_id'});
 
 module.exports = mongoose.model('Event', eventSchema);
