@@ -1,14 +1,13 @@
 let mongoose = require('mongoose');
+let AutoIncrement = require('mongoose-sequence')(mongoose);
 
 let sportSchema = new mongoose.Schema({
-    id: {
-        type: Number,
-        unique: true
-    },
     name: {
         type: String,
         required: true
     }
 });
+
+sportSchema.plugin(AutoIncrement, {inc_field: 'id'});
 
 module.exports = mongoose.model('Sport', sportSchema);
