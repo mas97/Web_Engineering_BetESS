@@ -25,7 +25,7 @@ router.get('/leagues', (req, res) => {
     var query = JSON.stringify(req.body);
 
     // list all leagues
-    if (!req.body) {
+    if (Object.keys(req.body).length == 0) {
         LeagueModel.find({}, { _id: 0, __v:0})
             .then(doc => {
                 return res.json(doc);
@@ -33,7 +33,7 @@ router.get('/leagues', (req, res) => {
     }
 
     // list leagues by id
-    if (req.body.hasOwnProperty('id')) {
+    if (req.body.hasOwnProperty('league_id')) {
         LeagueModel.find({ id: req.body.id }, { _id: 0, __v:0})
             .then(doc => {
                 return res.json(doc);

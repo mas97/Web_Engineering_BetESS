@@ -4,6 +4,7 @@ let app = express();
 let usersRoute = require('./routes/users');
 let betsRoute = require('./routes/bets');
 let notificationsRoute = require('./routes/notifications');
+let close_eventsRoute = require('./routes/close_event');
 let bodyParser = require('body-parser');
 require('./db');
 
@@ -19,6 +20,7 @@ app.use((req, res, next) => {
 app.use(usersRoute);
 app.use(betsRoute);
 app.use(notificationsRoute);
+app.use(close_eventsRoute);
 app.use(express.static('public'));
 
 // Handler for 404 Error - Resource Not Found

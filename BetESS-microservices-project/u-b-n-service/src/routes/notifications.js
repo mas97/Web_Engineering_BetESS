@@ -25,7 +25,7 @@ router.get('/notifications', (req, res) => {
     var query = JSON.stringify(req.body);
 
     // list all notifications
-    if (!req.body) {
+    if (Object.keys(req.body).length == 0) {
         NotificationModel.find({}, { _id: 0, __v:0})
             .then(doc => {
                 return res.json(doc);
@@ -33,7 +33,7 @@ router.get('/notifications', (req, res) => {
     }
 
     // list notifications by id
-    if (req.body.hasOwnProperty('id')) {
+    if (req.body.hasOwnProperty('notification_id')) {
         NotificationModel.find({ id: req.body.id }, { _id: 0, __v:0})
             .then(doc => {
                 return res.json(doc);

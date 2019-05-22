@@ -25,7 +25,7 @@ router.get('/events', (req, res) => {
     var query = JSON.stringify(req.body);
 
     // list all events
-    if (!req.body) {
+    if (Object.keys(req.body).length == 0) {
         EventModel.find({}, { _id: 0, __v:0})
             .then(doc => {
                 return res.json(doc);
@@ -33,7 +33,7 @@ router.get('/events', (req, res) => {
     }
 
     // list events by id
-    if (req.body.hasOwnProperty('id')) {
+    if (req.body.hasOwnProperty('event_id')) {
         EventModel.find({ id: req.body.id }, { _id: 0, __v:0})
             .then(doc => {
                 return res.json(doc);

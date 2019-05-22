@@ -25,7 +25,7 @@ router.get('/bets', (req, res) => {
     var query = JSON.stringify(req.body);
 
     // list all bets
-    if (!req.body) {
+    if (Object.keys(req.body).length == 0) {
         BetModel.find({}, { _id: 0, __v:0})
             .then(doc => {
                 return res.json(doc);
@@ -33,7 +33,7 @@ router.get('/bets', (req, res) => {
     }
 
     // list bets by id
-    if (req.body.hasOwnProperty('id')) {
+    if (req.body.hasOwnProperty('bet_id')) {
         BetModel.find({ id: req.body.id }, { _id: 0, __v:0})
             .then(doc => {
                 return res.json(doc);

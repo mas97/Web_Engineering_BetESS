@@ -25,7 +25,7 @@ router.get('/users', (req, res) => {
     var query = JSON.stringify(req.body);
 
     // list all users
-    if (!req.body) {
+    if (Object.keys(req.body).length == 0) {
         UserModel.find({}, { _id: 0, __v:0})
             .then(doc => {
                 return res.json(doc);
@@ -33,7 +33,7 @@ router.get('/users', (req, res) => {
     }
 
     // list users by id
-    if (req.body.hasOwnProperty('id')) {
+    if (req.body.hasOwnProperty('user_id')) {
         UserModel.find({ id: req.body.id }, { _id: 0, __v:0})
             .then(doc => {
                 return res.json(doc);
