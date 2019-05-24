@@ -13,6 +13,10 @@ let betSchema = new mongoose.Schema({
    paid: {
         type: Boolean,
         required: true
+    },
+    user_id: {
+        type: Number,
+        required: true
     }
 });
 
