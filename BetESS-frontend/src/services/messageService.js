@@ -1,16 +1,16 @@
-import cuida24 from '@/services/cuida24'
+import betess from '@/services/betess'
 
 export default {
   fetchMessages() {
-    return cuida24.get(`messages/`)
+    return betess.get(`messages/`)
               .then(response => response.data)
   },
   postMessage(payload) {
-    return cuida24.post(`messages/`, payload)
+    return betess.post(`messages/`, payload)
               .then(response => response.data)
   },
   deleteMessage(msgId) {
-    return cuida24.delete(`messages/${msgId}`)
+    return betess.delete(`messages/${msgId}`)
               .then(response => response.data)
   }
 }
