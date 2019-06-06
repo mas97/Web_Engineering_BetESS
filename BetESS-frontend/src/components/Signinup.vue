@@ -22,19 +22,18 @@
             <div class="group">
               <input type="submit" class="button" value="Sign In">
             </div>
-            <div class="hr"></div>
           </div>
           <div class="sign-up-htm">
             <div class="group">
-              <label for="user" class="label">Username</label>
+              <label for="user" class="label">Name</label>
               <input id="user" type="text" class="input">
             </div>
             <div class="group">
-              <label for="pass" class="label">Password</label>
+              <label for="pass" class="label">Usermame</label>
               <input id="pass" type="password" class="input" data-type="password">
             </div>
             <div class="group">
-              <label for="pass" class="label">Repeat Password</label>
+              <label for="pass" class="label">Password</label>
               <input id="pass" type="password" class="input" data-type="password">
             </div>
             <div class="group">
@@ -42,9 +41,12 @@
               <input id="pass" type="text" class="input">
             </div>
             <div class="group">
+              <label for="pass" class="label">Phone Number</label>
+              <input id="pass" type="text" class="input">
+            </div>
+            <div class="group">
               <input type="submit" class="button" value="Sign Up">
             </div>
-            <div class="hr"></div>
           </div>
         </div>
       </div>
@@ -84,15 +86,15 @@ body{
 .clearfix:after{clear:both;display:block}
 a{color:inherit;text-decoration:none}
 
-
+/* ORIGINAL: max-width:525px*/
 .login-wrap{  
 	width:100%;
 	margin:auto;
-	max-width:525px;
+	max-width:450px;
 	min-height:670px;
 	position:relative;
 	background:url("../assets/logo.png") no-repeat center;
-	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+	box-shadow:0 12px 15px 0 rgba(0, 0, 0, 0.068),0 17px 50px 0 rgba(0, 0, 0, 0.075);
 } 
 .login-html{
 	width:100%;
