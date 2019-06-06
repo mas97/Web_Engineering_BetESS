@@ -6,7 +6,23 @@ let betsRoute = require('./routes/bets');
 let notificationsRoute = require('./routes/notifications');
 let close_eventsRoute = require('./routes/close_event');
 let bodyParser = require('body-parser');
+let amqp = require('amqplib/callback_api');
 require('./db');
+
+amqp.connect('amqp://admin:StrongPassword@192.168.33.13:5672', function(error0, connection) {
+    if (error0) {
+        throw error0;
+    }
+
+    connection.createChannel((err, ch) => {
+        let queue = 'queue';
+
+        ch.assertQueue(queue, { durable: false });
+        ch.consume(queue, (message) => {
+            console.log('Received message: ' + message.content);
+        }, {noAck: true});
+    });
+});
 
 app.use(bodyParser.json());
 

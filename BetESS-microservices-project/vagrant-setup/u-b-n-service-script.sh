@@ -15,11 +15,13 @@ sudo apt-get install -y build-essential
 
 apt install -y mongodb
 
+npm install
+
 npm install forever -g
 
 cd files
 
-forever start src/index.js
+forever start src/index.js -l log.txt
 
 echo '---------- CHECKING PORTS ----------'
 sleep 3
