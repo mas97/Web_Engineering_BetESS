@@ -6,10 +6,9 @@ let betsRoute = require('./routes/bets');
 let notificationsRoute = require('./routes/notifications');
 let close_eventsRoute = require('./routes/close_event');
 let bodyParser = require('body-parser');
-let amqp = require('amqplib/callback_api');
 require('./db');
 
-amqp.connect('amqp://admin:StrongPassword@192.168.33.13:5672', function(error0, connection) {
+/*amqp.connect('amqp://admin:StrongPassword@192.168.33.13:5672', function(error0, connection) {
     if (error0) {
         throw error0;
     }
@@ -22,7 +21,7 @@ amqp.connect('amqp://admin:StrongPassword@192.168.33.13:5672', function(error0, 
             console.log('Received message: ' + message.content);
         }, {noAck: true});
     });
-});
+});*/
 
 app.use(bodyParser.json());
 
@@ -51,5 +50,3 @@ app.use((err, req, res, next) => {
 
 const PORT = 3000;
 app.listen(PORT, () => console.info(`Server has started on port ${PORT}`));
-
-

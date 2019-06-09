@@ -3,6 +3,7 @@ let router = express.Router();
 let UserModel = require('../models/user');
 let NotificationModel = require('../models/notification');
 let BetModel = require('../models/bet');
+let amqp = require('amqplib');
 
 /* Returns doc w/ unpaid bets */
 function getBetsCount() {
@@ -14,12 +15,39 @@ function getBetsCount() {
     });
 }
 
-router.patch('/close_event', (req, res) => {
+router.post('/close_event', async (req, res) => {
+
+    try {
+        let requests_queue = 'requests_to_e_t_s_l_service';
+        let responses_queue = 'responses_to_e_t_s_l_service';
+
+        // connect to Rabbit MQ and create a channel
+        const connection = await amqp.connect('amqp://admin:StrongPassword@192.168.33.13:5672');
+
+        const channel = await connection.createChannel();
+
+        await channel.assertQueue(requests_queue, {
+            durable: false
+        });
+
+        await channel.sendToQueue(requests_queue, Buffer.from('teste!!!!!!!!!!!!!'));
+        console.log('message sent!');
+
+        await channel.consume(responses_queue, (msg) => {
+            console.log(" [x] Received %s", msg.content.toString());
+        }, {
+            noAck: true
+        });
+    } catch (e) {
+        console.log(e);
+    }
+
     if (Object.keys(req.body).length == 0) {
         return res.status(400).send('Request body is missing');
     }
 
    if(req.body.hasOwnProperty('id_event') && req.body.hasOwnProperty('result')) {
+
         // corpo da msg param id_event
         var ev_id = body['id_event'];
         var ev_result = body['result'];
@@ -35,14 +63,15 @@ router.patch('/close_event', (req, res) => {
         var user_balance = 0;
     
         getBetsCount().then(doc => {
-             bets_unpaid = doc;
-             return res.json({'count': n}); 
+            bets_unpaid = doc;
+            return res.json({'count': n});
 
-             // mandar msg outro serviço para alterar estado evento (status e result)
+            // mandar msg outro serviço para alterar estado evento (status e result)
+            // await publishToChannel()
              
-             // pedir outro serviço as odds do evento em questão
+            // pedir outro serviço as odds do evento em questão
 
-             for (var bet in bets_unpaid) {
+            for (var bet in bets_unpaid) {
                 if(bet['event_id'] = ev_id) {
                     amount = bet['amount'];
                     user_id = bet['user_id'];

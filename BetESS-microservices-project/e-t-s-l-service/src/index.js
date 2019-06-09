@@ -6,26 +6,7 @@ let leaguesRoute = require('./routes/leagues');
 let sportsRoute = require('./routes/sports');
 let teamsRoute = require('./routes/teams');
 let bodyParser = require('body-parser');
-let amqp = require('amqplib/callback_api');
 require('./db');
-
-amqp.connect('amqp://admin:StrongPassword@192.168.33.13:5672', function(error0, connection) {
-    if (error0) {
-        throw error0;
-    }
-
-    connection.createChannel((err, ch) => {
-        var queue = 'queue';
-        var message = { type: '2', content: 'test' };
-
-        ch.assertQueue(queue, { durable: false });
-        ch.sendToQueue(queue, Buffer.from(JSON.stringify(message)));
-    });
-    setTimeout(() => {
-        connection.close();
-        process.exit(0);
-    }, 500);
-});
 
 app.use(bodyParser.json());
 

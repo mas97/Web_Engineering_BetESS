@@ -1,6 +1,36 @@
 let express = require('express');
 let router = express.Router();
 let EventModel = require('../models/event');
+let amqp = require('amqplib');
+
+async function consume_requests(){
+    try {
+        let requests_queue = 'requests_to_e_t_s_l_service';
+        let responses_queue = 'responses_to_e_t_s_l_service';
+        // connect to Rabbit MQ and create a channel
+        const connection = await amqp.connect('amqp://admin:StrongPassword@192.168.33.13:5672');
+
+        const channel = await connection.createChannel();
+
+        await channel.assertQueue(requests_queue, {
+            durable: false
+        });
+
+        channel.consume(requests_queue, (msg) => {
+            console.log(" [x] Received %s", msg.content.toString());
+        }, {
+            noAck: true
+        });
+
+        channel.assertQueue(responses_queue, {
+            durable: false
+        });
+
+        channel.sendToQueue(responses_queue, Buffer.from('resposta ao teste!!!'));
+    } catch (e) {
+        console.log(e);
+    }
+}
 
 router.post('/events', (req, res) => {
     if (!req.body) {
@@ -48,5 +78,7 @@ router.get('/events', (req, res) => {
             });
     }
 });
+
+consume_requests();
 
 module.exports = router;
