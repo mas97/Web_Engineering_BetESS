@@ -1,19 +1,17 @@
 <template>
-  <div class="container">
-    <NavBaroffCanvas/>
+  <div>
+    <NavbarToOffcanvas v-if="['calendario'].indexOf($route.name) < 0" ></NavbarToOffcanvas>
   </div>
 </template>
 
 <script>
-import NavBaroffCanvas from '../components/NavBaroffCanvas.vue'
+import NavbarToOffcanvas from '../components/NavBarToOffcanvas'
 export default {
   name: 'user',
   components: {
-    NavBaroffCanvas  
+    NavbarToOffcanvas
   }
 }
-
-
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

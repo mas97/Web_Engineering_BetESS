@@ -1,10 +1,10 @@
 <template>
 
   <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
-    <!--button class="navbar-toggler p-0 border-0" type="button" @click="toggleoffcanvas">
+    <button class="navbar-toggler p-0 border-0" type="button" @click="toggleoffcanvas">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <router-link class="navbar-brand" :to="{ name: 'home' }" @click.native="offoffcanvas() + currentUpdate('')">BetESS</router-link-->
+    <router-link class="navbar-brand" :to="{ name: 'home' }" @click.native="offoffcanvas() + currentUpdate('')">BetESS</router-link>
     <img src="@/assets/logo-vue.png" width="30" height="30" alt="">
   
     <div class="navbar-collapse offcanvas-collapse" v-bind:class="{ open: collapse }" id="navbarsExampleDefault">
@@ -54,7 +54,7 @@
 
 <script>
 export default {
-  name: 'NavBaroffCanvas',
+  name: 'NavBarToOffcanvas',
   data () {
     return {
       collapse: false,
@@ -98,5 +98,5 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 </style>
