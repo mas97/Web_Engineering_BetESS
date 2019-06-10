@@ -9,6 +9,7 @@ import Mybets from '@/components/Mybets'
 import Notifications from '@/components/Notifications'
 import Profile from '@/components/Profile'
 import Credits from '@/components/Credits'
+import NavBaroffCanvas from '@/components/NavBaroffCanvas'
 
 Vue.use(Router)
 
@@ -32,32 +33,37 @@ export default new Router({
     {
       path: '/home',
       name: 'home',
-      component: User
+      component: Home
     },
     {
       path: '/bet',
       name: 'bet',
-      component: User
+      component: Bet
     },
     {
       path: '/mybets',
       name: 'mybets',
-      component: User
+      component: Mybets
     },
     {
       path: '/notifications',
       name: 'notifications',
-      component: User
+      component: Notifications
     },
     {
       path: '/credits',
       name: 'credits',
-      component: User
+      component: Credits
     },
     {
       path: '/profile',
       name: 'profile',
-      component: User
+      component: Profile
+    },
+    {
+      path: '/navbaroffcanvas',
+      name: 'navbaroffcanvas',
+      component: NavBaroffCanvas
     }
   ]
 })
