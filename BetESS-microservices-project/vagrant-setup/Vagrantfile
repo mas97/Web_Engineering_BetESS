@@ -94,6 +94,28 @@ Vagrant.configure("2") do |config|
 
   # end
 
+  config.vm.define :auth_service do |auth_service|
+
+    auth_service.vm.box = "ubuntu/xenial64"
+    auth_service.vm.hostname = "AUTHservice"
+
+    auth_service.vm.network "private_network", ip: "192.168.33.14"
+
+    auth_service.vm.provider "virtualbox" do |vb|
+      # Display the VirtualBox GUI when booting the machine
+      vb.gui = false
+      vb.name = "auth-service"
+    
+      # Customize the amount of memory on the VM:
+      vb.memory = "1024"
+    end
+
+    auth_service.vm.synced_folder "../auth-service", "/home/vagrant/files"
+
+    auth_service.vm.provision "shell", path: "auth-service-script.sh"
+
+  end
+
   # config.vm.define :e_t_s_l_service do |e_t_s_l_service|
 
   #   e_t_s_l_service.vm.box = "ubuntu/xenial64"

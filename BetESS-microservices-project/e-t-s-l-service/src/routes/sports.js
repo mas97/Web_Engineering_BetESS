@@ -1,6 +1,9 @@
 let express = require('express');
 let router = express.Router();
 let SportModel = require('../models/sport');
+var jwt = require('jsonwebtoken');
+const fs   = require('fs');
+var publicKEY  = fs.readFileSync( __dirname + '/public.key');
 
 router.post('/sports', (req, res) => {
     if (!req.body) {

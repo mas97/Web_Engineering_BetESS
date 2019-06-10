@@ -1,7 +1,11 @@
 let express = require('express');
 let router = express.Router();
 let UserModel = require('../models/user');
+var jwt = require('jsonwebtoken');
+const fs   = require('fs');
+var publicKEY  = fs.readFileSync( __dirname + '/public.key');
 
+// VER SE ESTE VAI SER NECESSÁRIO JÁ QUE AGORA TEMOS O NOVO SERVIÇO DE AUTENTICAÇÃO
 router.post('/users', (req, res) => {
     if (!req.body) {
         return res.status(400).send('Request body is missing');

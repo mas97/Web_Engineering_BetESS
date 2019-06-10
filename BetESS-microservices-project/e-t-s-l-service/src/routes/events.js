@@ -2,6 +2,9 @@ let express = require('express');
 let router = express.Router();
 let EventModel = require('../models/event');
 let amqp = require('amqplib');
+var jwt = require('jsonwebtoken');
+const fs   = require('fs');
+var publicKEY  = fs.readFileSync( __dirname + '/public.key');
 
 async function consume_requests(){
     try {

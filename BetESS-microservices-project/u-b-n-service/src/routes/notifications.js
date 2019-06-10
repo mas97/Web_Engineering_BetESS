@@ -1,6 +1,9 @@
 let express = require('express');
 let router = express.Router();
 let NotificationModel = require('../models/notification');
+var jwt = require('jsonwebtoken');
+const fs   = require('fs');
+var publicKEY  = fs.readFileSync( __dirname + '/public.key');
 
 router.post('/notifications', (req, res) => {
     if (!req.body) {

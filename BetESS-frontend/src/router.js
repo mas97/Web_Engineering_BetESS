@@ -3,12 +3,12 @@ import Router from 'vue-router'
 import Admin from '@/components/Admin'
 import User from '@/components/User'
 import Signinup from '@/components/Signinup'
-import Home from '@/components/Home'
-import Bet from '@/components/Bet'
-import Mybets from '@/components/Mybets'
-import Notifications from '@/components/Notifications'
-import Profile from '@/components/Profile'
-import Credits from '@/components/Credits'
+// import Home from '@/components/Home'
+// import Bet from '@/components/Bet'
+// import Mybets from '@/components/Mybets'
+// import Notifications from '@/components/Notifications'
+// import Profile from '@/components/Profile'
+// import Credits from '@/components/Credits'
 
 Vue.use(Router)
 

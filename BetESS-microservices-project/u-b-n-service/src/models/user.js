@@ -2,10 +2,6 @@ let mongoose = require('mongoose');
 let AutoIncrement = require('mongoose-sequence')(mongoose);
 
 let userSchema = new mongoose.Schema({
-    userName: {
-        type: String,
-        required: true
-    },
     password: {
         type: String,
         required: true

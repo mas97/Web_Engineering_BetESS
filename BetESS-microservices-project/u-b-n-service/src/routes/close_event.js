@@ -4,6 +4,9 @@ let UserModel = require('../models/user');
 let NotificationModel = require('../models/notification');
 let BetModel = require('../models/bet');
 let amqp = require('amqplib');
+var jwt = require('jsonwebtoken');
+const fs   = require('fs');
+var publicKEY  = fs.readFileSync( __dirname + '/public.key');
 
 /* Returns doc w/ unpaid bets */
 function getBetsCount() {

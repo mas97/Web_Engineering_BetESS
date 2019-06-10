@@ -1,6 +1,9 @@
 let express = require('express');
 let router = express.Router();
 let LeagueModel = require('../models/league');
+var jwt = require('jsonwebtoken');
+const fs   = require('fs');
+var publicKEY  = fs.readFileSync( __dirname + '/public.key');
 
 router.post('/leagues', (req, res) => {
     if (!req.body) {
