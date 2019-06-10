@@ -17,6 +17,10 @@ let betSchema = new mongoose.Schema({
     user_id: {
         type: Number,
         required: true
+    },
+    event_id: {
+        type: Number,
+        required: true
     }
 });
 

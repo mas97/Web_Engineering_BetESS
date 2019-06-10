@@ -25,6 +25,22 @@ let eventSchema = new mongoose.Schema({
     premium: {
         type: Boolean,
         required: true
+    },
+    sport_id: {
+        type: Number,
+        required: true
+    },
+    league_id: {
+        type: Number,
+        required: true
+    },
+    team_home_id: {
+        type: Number,
+        required: true
+    },
+    team_away_id: {
+        type: Number,
+        required: true
     }
 });
 

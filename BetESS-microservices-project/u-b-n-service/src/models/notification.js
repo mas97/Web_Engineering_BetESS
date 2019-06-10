@@ -9,6 +9,14 @@ let notificationSchema = new mongoose.Schema({
     balancebet: {
         type: Number,
         required: true
+    },
+    user_id: {
+        type: Number,
+        required: true
+    },
+    event_id: {
+        type: Number,
+        required: true
     }
 });
 
