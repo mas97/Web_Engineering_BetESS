@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 import Admin from '@/components/Admin'
 import User from '@/components/User'
 import Signinup from '@/components/Signinup'
@@ -32,32 +33,32 @@ export default new Router({
     {
       path: '/home',
       name: 'home',
-      component: User
+      component: Home
     },
     {
       path: '/bet',
       name: 'bet',
-      component: User
+      component: Bet
     },
     {
       path: '/mybets',
       name: 'mybets',
-      component: User
+      component: Mybets
     },
     {
       path: '/notifications',
       name: 'notifications',
-      component: User
+      component: Notifications
     },
     {
       path: '/credits',
       name: 'credits',
-      component: User
+      component: Credits
     },
     {
       path: '/profile',
       name: 'profile',
-      component: User
+      component: Profile
     }
   ]
 })
