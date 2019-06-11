@@ -1,12 +1,7 @@
 <template>
 
-  <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
-    <button class="navbar-toggler p-0 border-0" type="button" @click="toggleoffcanvas">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <router-link class="navbar-brand" :to="{ name: 'home' }" @click.native="offoffcanvas() + currentUpdate('')">BetESS</router-link>
-    <img src="@/assets/logo-vue.png" width="30" height="30" alt="">
-  
+  <nav class="navbar navbar-expand-md fixed-top navbar-dark" style="background-color: #000000;">  
+    <img src="@/assets/logo-full.png" width="110" height="50" alt="">
     <div class="navbar-collapse offcanvas-collapse" v-bind:class="{ open: collapse }" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item" v-bind:class="{ active: betCurrent }">
@@ -47,6 +42,7 @@
           </b-dropdown-item>
         </b-nav-item-dropdown>
       </ul>
+      <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Logout</button>
     </div>
   </nav>
 
@@ -99,4 +95,6 @@ export default {
 </script>
 
 <style>
+
+
 </style>

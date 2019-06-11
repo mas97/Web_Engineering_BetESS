@@ -78,6 +78,7 @@ body{
   width: 100%;
   background-image: url("../assets/background-main.jpg");
   background-size: cover;
+	overflow: hidden;
 }
 
 
@@ -89,7 +90,7 @@ a{color:inherit;text-decoration:none}
 /* ORIGINAL: max-width:525px*/
 .login-wrap{  
 	width:100%;
-	margin:auto;
+	margin: auto;
 	max-width:450px;
 	min-height:670px;
 	position:relative;
