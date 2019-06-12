@@ -1,7 +1,11 @@
 <template>
 
   <nav class="navbar navbar-expand-md fixed-top navbar-dark" style="background-color: #000000;">  
-    <img src="@/assets/logo-full.png" width="110" height="50" alt="">
+        <a class="navbar-brand" href="/#/user">
+        <img src="@/assets/logo-full.png" width="110" height="50" alt="">
+    </a>
+    <router-link class="navbar-brand" :to="{ name: 'home' }" @click.native="offoffcanvas() + currentUpdate('')"></router-link>
+
     <div class="navbar-collapse offcanvas-collapse" v-bind:class="{ open: collapse }" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item" v-bind:class="{ active: betCurrent }">
@@ -22,7 +26,7 @@
             <span class="sr-only">(current)</span>
           </router-link>
         </li>
-        <b-nav-item-dropdown id="credits-dropdown" text="credits" v-bind:class="{ active: creditsCurrent }">
+        <b-nav-item-dropdown id="credits-dropdown" text="Credits" v-bind:class="{ active: creditsCurrent }">
           <b-dropdown-item :to="{ name: 'mycredits' }" @click.native="currentUpdate('credits') + toggleoffcanvas()">
             My Credits
           </b-dropdown-item>
@@ -33,7 +37,7 @@
             Draw
           </b-dropdown-item>
         </b-nav-item-dropdown>
-        <b-nav-item-dropdown id="profile-dropdown" text="profile" v-bind:class="{ active: profileCurrent }">
+        <b-nav-item-dropdown id="profile-dropdown" text="Profile" v-bind:class="{ active: profileCurrent }">
           <b-dropdown-item :to="{ name: 'myprofile' }" @click.native="currentUpdate('profile') + toggleoffcanvas()">
             My Profile
           </b-dropdown-item>

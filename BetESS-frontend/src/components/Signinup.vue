@@ -1,6 +1,6 @@
 <template>
 
-  <div class="container">
+  <div class="container-full">
     <div class="login-wrap">
       <div class="login-html">
         <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
@@ -72,7 +72,7 @@ body{
 	font:600 16px/18px 'Open Sans',sans-serif;
 }
 
-.container { 
+.container-full { 
   padding: 1px 0;
   height: 100%;
   width: 100%;
