@@ -1,4 +1,5 @@
 <template>
+
   <div id="app">
      <router-view/>
   </div>
@@ -16,12 +17,12 @@ export default {
 </script> 
 
 <style>
-html {
-  min-height: 100%;
-}
-
 body {
   padding-top: 0px;
+}
+
+html {
+  min-height: 100%;
 }
 
 #app {

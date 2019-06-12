@@ -24,6 +24,12 @@
                 </select>
                 </div>
 
+    
+                <div class="group">
+                  <input type="number" required="required" min="1"/><span class="highlight"></span><span class="bar"></span>
+                  <label>Insert the event nº from the next list</label>
+                </div>
+
 
                 <div class="btn-box">
                   <button class="btn btn-submit" type="submit">Submit</button>
@@ -34,43 +40,152 @@
           </div>
 
           <div class="col-8">
+          <br/>
+          <br/>
+          <div class="container-full">
 
-            <div class="container-full">
-              <h2>Responsive Tables Using LI <small>Triggers on 767px</small></h2>
-              <ul class="responsive-table">
-                <li class="table-header">
-                  <div class="col col-1">Job Id</div>
-                  <div class="col col-2">Customer Name</div>
-                  <div class="col col-3">Amount Due</div>
-                  <div class="col col-4">Payment Status</div>
-                </li>
-                <li class="table-row">
-                  <div class="col col-1" data-label="Job Id">42235</div>
-                  <div class="col col-2" data-label="Customer Name">John Doe</div>
-                  <div class="col col-3" data-label="Amount">$350</div>
-                  <div class="col col-4" data-label="Payment Status">Pending</div>
-                </li>
-                <li class="table-row">
-                  <div class="col col-1" data-label="Job Id">42442</div>
-                  <div class="col col-2" data-label="Customer Name">Jennifer Smith</div>
-                  <div class="col col-3" data-label="Amount">$220</div>
-                  <div class="col col-4" data-label="Payment Status">Pending</div>
-                </li>
-                <li class="table-row">
-                  <div class="col col-1" data-label="Job Id">42257</div>
-                  <div class="col col-2" data-label="Customer Name">John Smith</div>
-                  <div class="col col-3" data-label="Amount">$341</div>
-                  <div class="col col-4" data-label="Payment Status">Pending</div>
-                </li>
-                <li class="table-row">
-                  <div class="col col-1" data-label="Job Id">42311</div>
-                  <div class="col col-2" data-label="Customer Name">John Carpenter</div>
-                  <div class="col col-3" data-label="Amount">$115</div>
-                  <div class="col col-4" data-label="Payment Status">Pending</div>
-                </li>
-              </ul>
+              <div class="table-wrapper-scroll-y my-custom-scrollbar">
+
+                <table class="table table-bordered thead-light table-sm table-striped mb-0">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Home Team</th>
+                      <th scope="col">Away Team</th>
+                      <th scope="col">Odd Home</th>
+                      <th scope="col">Odd Away</th>
+                      <th scope="col">Odd Draw</th>
+                      <th scope="col">League</th>
+                      <th scope="col">Sport</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                      <td>@mdo</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>   
+                      <td>@fat</td>                 
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td>@twitter</td>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                      <td>@fat</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">4</th>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                      <td>@fat</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">5</th>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                      <td>@fat</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">6</th>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td>@twitter</td>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                      <td>@fat</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">7</th>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td>@twitter</td>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                      <td>@fat</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">8</th>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td>@twitter</td>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                      <td>@fat</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">9</th>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td>@twitter</td>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                      <td>@fat</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">10</th>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td>@twitter</td>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                      <td>@fat</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">11</th>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td>@twitter</td>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                      <td>@fat</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">12</th>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td>@twitter</td>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                      <td>@fat</td>
+                    </tr>
+                  </tbody>
+                </table>
+
             </div>
-            
+
+          </div>  
           </div>
         </div>
       </div>
@@ -285,75 +400,25 @@ label {
 
 /* ------------------------------------- */ 
 
-
-.container {
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 10px;
-  padding-right: 10px;
+.table {
+  background-color: white;
+  opacity:0.9;
 }
 
-h2 {
-  font-size: 26px;
-  margin: 20px 0;
-  text-align: center;
-}
-h2 small {
-  font-size: 0.5em;
+table.table-bordered > thead > tr > th{
+  border:1px solid orange;
 }
 
-.responsive-table li {
-  border-radius: 3px;
-  padding: 25px 30px;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 25px;
+.my-custom-scrollbar {
+position: relative;
+height: 310px;
+overflow: auto;
 }
-.responsive-table .table-header {
-  background-color: #95A5A6;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
+.table-wrapper-scroll-y {
+display: block;
 }
-.responsive-table .table-row {
-  background-color: #ffffff;
-  box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
-}
-.responsive-table .col-1 {
-  flex-basis: 10%;
-}
-.responsive-table .col-2 {
-  flex-basis: 40%;
-}
-.responsive-table .col-3 {
-  flex-basis: 25%;
-}
-.responsive-table .col-4 {
-  flex-basis: 25%;
-}
-@media all and (max-width: 767px) {
-  .responsive-table .table-header {
-    display: none;
-  }
-  .responsive-table li {
-    display: block;
-  }
-  .responsive-table .col {
-    flex-basis: 100%;
-  }
-  .responsive-table .col {
-    display: flex;
-    padding: 10px 0;
-  }
-  .responsive-table .col:before {
-    color: #6C7A89;
-    padding-right: 10px;
-    content: attr(data-label);
-    flex-basis: 50%;
-    text-align: right;
-  }
-}
+
+
 
 
 </style>

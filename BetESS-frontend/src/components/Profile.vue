@@ -1,12 +1,19 @@
 <template>
+  <div>
+    <NavbarToOffcanvas v-if="['calendario'].indexOf($route.name) < 0" ></NavbarToOffcanvas>
+    <div class="container-full">
 
-<h1> perfil </h1>
-
+    </div>
+  </div>
 </template>
 
 <script>
+import NavbarToOffcanvas from '../components/NavBarToOffcanvas'
 export default {
   name: 'profile',
+  components: {
+    NavbarToOffcanvas
+  }  
 
 }
 
@@ -15,6 +22,17 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+.container-full { 
+  background-color: black;
+  margin: 0 auto;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  overflow: hidden;
+  height: 95vh;
+}
+
 /*
 usar no html dps
  <form>

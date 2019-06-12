@@ -26,25 +26,18 @@
             <span class="sr-only">(current)</span>
           </router-link>
         </li>
-        <b-nav-item-dropdown id="credits-dropdown" text="Credits" v-bind:class="{ active: creditsCurrent }">
-          <b-dropdown-item :to="{ name: 'mycredits' }" @click.native="currentUpdate('credits') + toggleoffcanvas()">
-            My Credits
-          </b-dropdown-item>
-          <b-dropdown-item :to="{ name: 'deposit' }" @click.native="currentUpdate('credits') + toggleoffcanvas()">
-            Deposit
-          </b-dropdown-item>
-          <b-dropdown-item :to="{ name: 'draw' }" @click.native="currentUpdate('credits') + toggleoffcanvas()">
-            Draw
-          </b-dropdown-item>
-        </b-nav-item-dropdown>
-        <b-nav-item-dropdown id="profile-dropdown" text="Profile" v-bind:class="{ active: profileCurrent }">
-          <b-dropdown-item :to="{ name: 'myprofile' }" @click.native="currentUpdate('profile') + toggleoffcanvas()">
-            My Profile
-          </b-dropdown-item>
-          <b-dropdown-item :to="{ name: 'editprofile' }" @click.native="currentUpdate('profile') + toggleoffcanvas()">
-            Edit Profile
-          </b-dropdown-item>
-        </b-nav-item-dropdown>
+        <li class="nav-item" v-bind:class="{ active: creditsCurrent }">
+          <router-link class="nav-link" :to="{ name: 'credits' }" @click.native="toggleoffcanvas() + currentUpdate('credits')">
+            Credits
+            <span class="sr-only">(current)</span>
+          </router-link>
+        </li>
+        <li class="nav-item" v-bind:class="{ active: profileCurrent }">
+          <router-link class="nav-link" :to="{ name: 'profile' }" @click.native="toggleoffcanvas() + currentUpdate('profile')">
+            Profile
+            <span class="sr-only">(current)</span>
+          </router-link>
+        </li>
       </ul>
       <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Logout</button>
     </div>
