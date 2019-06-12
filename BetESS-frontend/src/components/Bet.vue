@@ -3,33 +3,20 @@
 
     <NavbarToOffcanvas v-if="['calendario'].indexOf($route.name) < 0" ></NavbarToOffcanvas>
     <div class="container-full">
-      <div class="row">
-          <div class="col-4">
+        <div style="width: 25%; float:left">
             <div class="wrapper">
               <form>
 
                 <div class="group">
                   <input type="number" required="required" min="1"/><span class="highlight"></span><span class="bar"></span>
-                  <label>Insert the amount to bet</label>
+                  <label>1º Insert the amount to bet</label>
                 </div>
 
                 <div class="group">
-                <label> Choose the result:</label>
-                <br/>
-                <br/>
-                <select class="select-css">
-                  <option value="winhome">Win Home</option>
-                  <option value="winAway">Win Away</option>
-                  <option value="draw">Draw</option>
-                </select>
+                  <label>2º Choose the odd from the desired event</label>
                 </div>
 
-    
-                <div class="group">
-                  <input type="number" required="required" min="1"/><span class="highlight"></span><span class="bar"></span>
-                  <label>Insert the event nº from the next list</label>
-                </div>
-
+                <br/>
 
                 <div class="btn-box">
                   <button class="btn btn-submit" type="submit">Submit</button>
@@ -39,156 +26,75 @@
             </div>
           </div>
 
-          <div class="col-8">
-          <br/>
-          <br/>
-          <div class="container-full">
+          <div style="width: 75%; float:right" id="events">
 
-              <div class="table-wrapper-scroll-y my-custom-scrollbar">
+            <div class="row">
+              <div class="col-sm-4 mb-3 mb-md-0">
+                <div class="card border-warning">
+                  <div class="card-body">
+                    <h5 class="card-title">FCPorto - SLBenfica</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Soccer, Primeira Liga</h6>
+                    <p class="card-text mb-2 text-muted">Possible Gains: 20 ESScoins</p>
+                   <div class="btn-group" role="group" aria-label="Basic example">
+                      <button type="button" class="btn btn-warning">Odd1</button>
+                      <button type="button" class="btn btn-warning">Odd2</button>
+                      <button type="button" class="btn btn-warning">Odd3</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-                <table class="table table-bordered thead-light table-sm table-striped mb-0">
-                  <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Home Team</th>
-                      <th scope="col">Away Team</th>
-                      <th scope="col">Odd Home</th>
-                      <th scope="col">Odd Away</th>
-                      <th scope="col">Odd Draw</th>
-                      <th scope="col">League</th>
-                      <th scope="col">Sport</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                      <td>@mdo</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>   
-                      <td>@fat</td>                 
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">4</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">5</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">6</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">7</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">8</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">9</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">10</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">11</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">12</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                      <td>@fat</td>
-                    </tr>
-                  </tbody>
-                </table>
-
+              <div class="col-sm-4">
+                <div class="card border-warning">
+                  <div class="card-body">
+                    <h5 class="card-title">GS Warriors - TOR Raptors</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Basketball, EUA - NBA</h6>
+                    <p class="card-text mb-2 text-muted">Possible Gains: 10 ESScoins</p>
+                   <div class="btn-group" role="group" aria-label="Basic example">
+                      <button type="button" class="btn btn-warning">Odd1</button>
+                      <button type="button" class="btn btn-warning">Odd2</button>
+                      <button type="button" class="btn btn-warning">Odd3</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          
+              <div class="col-sm-4">
+                <div class="card border-warning">
+                  <div class="card-body">
+                    <h5 class="card-title">ChelseaFC - ArsenalFC</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Soccer, Premier League</h6>
+                    <p class="card-text mb-2 text-muted">Possible Gains: 12 ESScoins</p> 
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                      <button type="button" class="btn btn-warning">Odd1</button>
+                      <button type="button" class="btn btn-warning">Odd2</button>
+                      <button type="button" class="btn btn-warning">Odd3</button>
+                    </div>
+                  </div>
+                </div>
+              </div>      
+            
             </div>
 
-          </div>  
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="card border-warning">
+                  <div class="card-body">
+                    <h5 class="card-title">EvertonFC - ManchesterUFC</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Soccer, Premier League</h6>
+                    <p class="card-text mb-2 text-muted">Possible Gains: 222 ESScoins</p> 
+                   <div class="btn-group" role="group" aria-label="Basic example">
+                      <button type="button" class="btn btn-warning">Odd1</button>
+                      <button type="button" class="btn btn-warning">Odd2</button>
+                      <button type="button" class="btn btn-warning">Odd3</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
-      </div>
   </div>
 </template>
 
@@ -216,6 +122,19 @@ export default {
   background-size: cover;
   overflow: hidden;
   height: 92vh;
+  padding-top: 10px;
+}
+
+#events {
+  padding: 15px;
+}
+
+.card-body {
+  color: black
+}
+
+.col-sm-4 {
+  padding: 7px;
 }
 
 *,
@@ -400,23 +319,6 @@ label {
 
 /* ------------------------------------- */ 
 
-.table {
-  background-color: white;
-  opacity:0.9;
-}
-
-table.table-bordered > thead > tr > th{
-  border:1px solid orange;
-}
-
-.my-custom-scrollbar {
-position: relative;
-height: 310px;
-overflow: auto;
-}
-.table-wrapper-scroll-y {
-display: block;
-}
 
 
 

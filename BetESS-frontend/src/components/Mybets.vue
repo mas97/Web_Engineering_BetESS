@@ -3,7 +3,6 @@
     <NavbarToOffcanvas v-if="['calendario'].indexOf($route.name) < 0" ></NavbarToOffcanvas>
     
     <div class="container-full">
-      <br/>
 
       <div class="row">
         <div class="col-sm-4 mb-3 mb-md-0">
