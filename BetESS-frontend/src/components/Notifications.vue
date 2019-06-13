@@ -6,7 +6,7 @@
     <NavbarToOffcanvas v-if="['calendario'].indexOf($route.name) < 0" ></NavbarToOffcanvas>
     
     <div class="container-full">
-      <h3 style="text-align: left;"> Your notifications </h3>
+      <h3 style="text-align: left;"> Your Notifications </h3>
       <hr/>
       
 

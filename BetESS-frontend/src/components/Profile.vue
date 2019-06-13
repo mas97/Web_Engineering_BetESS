@@ -5,7 +5,7 @@
     <div class="container-full">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
 
-      <h3 style="text-align: left;"> Your profile </h3>
+      <h3 style="text-align: left;"> Your Profile </h3>
       <hr/>
 
       <article class="cssui-usercard">
