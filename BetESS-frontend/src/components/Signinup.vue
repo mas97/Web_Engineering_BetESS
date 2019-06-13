@@ -26,23 +26,19 @@
           <div class="sign-up-htm">
             <div class="group">
               <label for="user" class="label">Name</label>
-              <input id="user" type="text" class="input">
+              <input id="user" type="text" class="input" style="padding:10px;">
             </div>
             <div class="group">
               <label for="pass" class="label">Usermame</label>
-              <input id="pass" type="password" class="input" data-type="password">
+              <input id="pass" type="password" class="input" data-type="password" style="padding:10px;">
             </div>
             <div class="group">
               <label for="pass" class="label">Password</label>
-              <input id="pass" type="password" class="input" data-type="password">
+              <input id="pass" type="password" class="input" data-type="password" style="padding:10px;">
             </div>
             <div class="group">
               <label for="pass" class="label">Email Address</label>
-              <input id="pass" type="text" class="input">
-            </div>
-            <div class="group">
-              <label for="pass" class="label">Phone Number</label>
-              <input id="pass" type="text" class="input">
+              <input id="pass" type="text" class="input" style="padding:10px;">
             </div>
             <div class="group">
               <input type="submit" class="button" value="Sign Up">

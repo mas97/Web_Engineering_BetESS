@@ -10,7 +10,7 @@
             <div class="card-body">
               <h5 class="card-title">FCPorto - SLBenfica</h5>
               <h6 class="card-subtitle mb-2 text-muted">Soccer, Primeira Liga</h6>
-              <p class="card-text mb-2 text-muted">Possible Gains: 20 ESScoins</p>
+              <p class="card-text mb-2 text-muted"><small>Possible Gains: 20 ESScoins</small></p>
               <a href="#!" class="btn btn-outline-warning my-2 my-sm-0">Cashout</a>
             </div>
           </div>
@@ -21,7 +21,7 @@
             <div class="card-body">
               <h5 class="card-title">GS Warriors - TOR Raptors</h5>
               <h6 class="card-subtitle mb-2 text-muted">Basketball, EUA - NBA</h6>
-              <p class="card-text mb-2 text-muted">Possible Gains: 10 ESScoins</p>
+              <p class="card-text mb-2 text-muted"><small>Possible Gains: 10 ESScoins</small></p>
               <a href="#!" class="btn btn-outline-warning my-2 my-sm-0">Cashout</a>
             </div>
           </div>
@@ -32,7 +32,7 @@
             <div class="card-body">
               <h5 class="card-title">ChelseaFC - ArsenalFC</h5>
               <h6 class="card-subtitle mb-2 text-muted">Soccer, Premier League</h6>
-              <p class="card-text mb-2 text-muted">Possible Gains: 12 ESScoins</p> 
+              <p class="card-text mb-2 text-muted"><small>Possible Gains: 12 ESScoins</small></p> 
               <a href="#!" class="btn btn-outline-warning my-2 my-sm-0">Cashout</a>
             </div>
           </div>
@@ -46,7 +46,7 @@
             <div class="card-body">
               <h5 class="card-title">EvertonFC - ManchesterUFC</h5>
               <h6 class="card-subtitle mb-2 text-muted">Soccer, Premier League</h6>
-              <p class="card-text mb-2 text-muted">Possible Gains: 222 ESScoins</p> 
+              <p class="card-text mb-2 text-muted"><small>Possible Gains: 222 ESScoins</small></p> 
               <a href="#!" class="btn btn-outline-warning my-2 my-sm-0">Cashout</a>
             </div>
           </div>
@@ -81,8 +81,9 @@ export default {
   width: 100%;
   background-size: cover;
   overflow: hidden;
-  height: 92vh;
+  height: 100vh;
   padding: 15px;
+  padding-top: 5%;
 }
 
 .card-body {

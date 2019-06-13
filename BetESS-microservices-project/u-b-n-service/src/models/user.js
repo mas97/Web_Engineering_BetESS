@@ -16,7 +16,7 @@ let userSchema = new mongoose.Schema({
     },
     phoneno: {
         type: String,
-        required: true
+        required: false
     },
     balance: {
         type: Number,

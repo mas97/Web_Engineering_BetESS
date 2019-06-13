@@ -30,7 +30,8 @@ export default {
   width: 100%;
   background-size: cover;
   overflow: hidden;
-  height: 92vh;
+  height: 100vh;
+  padding-top: 5%;
 }
 
 /*

@@ -18,7 +18,7 @@ export default {
 
 <style>
 body {
-  padding-top: 0px;
+  padding-top: 0px !important;
 }
 
 html {

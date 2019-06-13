@@ -10,6 +10,10 @@ let notificationSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    time: {
+        type: Date,
+        required: true
+    },
     user_id: {
         type: Number,
         required: true

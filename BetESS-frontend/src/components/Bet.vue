@@ -121,8 +121,8 @@ export default {
   width: 100%;
   background-size: cover;
   overflow: hidden;
-  height: 92vh;
-  padding-top: 10px;
+  height: 100vh;
+  padding-top: 5%;
 }
 
 #events {
@@ -135,6 +135,10 @@ export default {
 
 .col-sm-4 {
   padding: 7px;
+}
+
+.border-warning {
+    border-width:3px !important;
 }
 
 *,

@@ -106,6 +106,7 @@ export default {
   width: 100%;
   background-size: cover;
   overflow: hidden;
+  height: 100vh;
 }
 
 
