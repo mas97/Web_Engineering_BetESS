@@ -2,8 +2,6 @@
   <div>
     <NavbarToOffcanvas v-if="['calendario'].indexOf($route.name) < 0" ></NavbarToOffcanvas>
     <Home/>
-
-    
   </div>
 </template>
 

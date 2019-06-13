@@ -413,8 +413,8 @@ a{
 }
 
 button {
-    border: none;
-    background-color: transparent;
+  border: none;
+  background-color: transparent;
 }
 
 </style>
