@@ -46,7 +46,8 @@
             <div class="card-body">
               <h5 class="card-title">EvertonFC - ManchesterUFC</h5>
               <h6 class="card-subtitle mb-2 text-muted">Soccer, Premier League</h6>
-              <p class="card-text mb-2 text-muted"><small>Possible Gains: 222 ESScoins</small></p> 
+              <p class="card-text mb-2 text-muted"><small>Possible Gains: 222 ESScoins</small></p>
+              <p class="card-text mb-2" style="color:orange;"><small>**** Premium ****</small></p>
               <a href="#!" class="btn btn-outline-warning my-2 my-sm-0">Cashout</a>
             </div>
           </div>

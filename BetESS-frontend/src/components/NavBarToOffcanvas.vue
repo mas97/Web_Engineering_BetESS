@@ -34,7 +34,7 @@
         </li>
       </ul>
 
-      <!--   MUDAR AQUELE 1 PARA DINAMICO CONFORME NOTIFICAÇOES   -->
+      <!--   MUDAR AQUELE "2" PARA DINAMICO CONFORME NOTIFICAÇOES   -->
       <li class="nav-item">
           <span class="badge badge-pill badge-warning" style="float:right;margin-bottom:-15px;">2</span>
           

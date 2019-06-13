@@ -82,7 +82,8 @@
                   <div class="card-body">
                     <h5 class="card-title">EvertonFC - ManchesterUFC</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Soccer, Premier League</h6>
-                    <p class="card-text mb-2 text-muted">Possible Gains: 222 ESScoins</p> 
+                    <p class="card-text mb-2 text-muted">Possible Gains: 222 ESScoins</p>
+                    <p class="card-text mb-2" style="color:orange;"><small>**** Premium ****</small></p> 
                    <div class="btn-group" role="group" aria-label="Basic example">
                       <button type="button" class="btn btn-warning">Odd1</button>
                       <button type="button" class="btn btn-warning">Odd2</button>

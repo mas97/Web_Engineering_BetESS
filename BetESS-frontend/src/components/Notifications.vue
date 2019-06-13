@@ -101,7 +101,7 @@ body{
 }
  /* Style buttons */
 .btn {
-  background-color: green; /* Blue background */
+  background-color: gray; /* Blue background */
   border: none; /* Remove borders */
   color: white; /* White text */
   padding: 12px 16px; /* Some padding */
@@ -111,7 +111,7 @@ body{
 
 /* Darker background on mouse-over */
 .btn:hover {
-  background-color: gray !important;
+  background-color: orange !important;
 } 
 
 .list-group{
@@ -119,7 +119,7 @@ body{
     background-color: white;
     max-height: 400px;
     margin-bottom: 10px;
-    overflow:scroll;
+    ooverflow: auto;
     -webkit-overflow-scrolling: touch;
 }
 </style>
