@@ -4,7 +4,7 @@
         <a class="navbar-brand" href="/#/user">
         <img src="@/assets/logo-full.png" width="110" height="50" alt="">
     </a>
-    <router-link class="navbar-brand" :to="{ name: 'home' }" @click.native="offoffcanvas() + currentUpdate('')"></router-link>
+    <router-link class="navbar-brand" :to="{ name: 'user' }" @click.native="offoffcanvas() + currentUpdate('')"></router-link>
 
     <div class="navbar-collapse offcanvas-collapse" v-bind:class="{ open: collapse }" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">

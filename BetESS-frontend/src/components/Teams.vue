@@ -1,68 +1,62 @@
 <template>
   <div>
-    <NavbarToOffcanvas v-if="['calendario'].indexOf($route.name) < 0" ></NavbarToOffcanvas>
+    <NavbarToOffcanvasAdmin v-if="['calendario'].indexOf($route.name) < 0" ></NavbarToOffcanvasAdmin>
     <div class="container-full">
-      
-      <h3 style="text-align: left;"> Credits Management </h3>
-      <hr/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        <div style="width: 25%; float:left">
+            <div class="wrapper">
+              <form>
 
-        <div class="row" style="background-color: white; border-style:solid; border-color: orange; margin-bottom:10px; margin-left:6px; margin-right:6px;">
-          <div class="col-md" style="border-right: 3px solid gray">
-            <div class="container" style="padding: 16px; border-style: none;">
-              <h3 style="text-align: left; color: gray"> Draw </h3>
-              <br/>
-              <div class="group"> <!-- se desse, punhamos o max para o saldo q ele tivesse -->
-                <input type="number" required="required" min="1"/><span class="highlight"></span><span class="bar"></span>
-                <label>Insert the amount to draw:</label>
-              </div>
+                <div class="group">
+                  <input type="text" required="required"/><span class="highlight"></span><span class="bar"></span>
+                  <label>Insert New Team</label>
+                </div>
+
+                <br/>
+
+                <div class="btn-box">
+                  <button class="btn btn-submit" type="submit">Submit</button>
+                </div>
+
+              </form>
             </div>
-          <br/>
-          <h6 style="color:gray;"><small>* The amount will be automatically returned to your bank account.</small></h6>
           </div>
 
-
-          <div class="col-md">
-            <div class="container" style="padding: 16px; border-style: none;">
-              <h3 style="text-align: left; color: gray"> Deposit </h3>
-              <br/>
-              <div class="group"> 
-                <input type="number" required="required" min="1"/><span class="highlight"></span><span class="bar"></span>
-                <label>Insert the amount to deposit:</label>
+          <div style="width: 75%; float:right;" id="events">
+            <div class="container" style="padding-top:3%">
+              <div class="row">
+                <div class="col-12 col-sm-8 col-lg-5" style="min-width: 70%; margin:auto;">
+                  <ul class="list-group">
+                    
+                    <li class="list-group-item d-flex justify-content-between align-items-center" style="color: gray; text-align: center;">
+                      <center>1</center>
+                      <center>FCPorto</center>
+                      <button class="btn"><i class="fa fa-times"></i></button>
+                    </li>
+                  
+                  </ul>
+                </div>
               </div>
             </div>
-          <br/>
-          <h6 style="color:gray;"><small>* The amount will be automatically withdrawn from your bank account.</small></h6>
-          </div> 
+          </div>
         
-        </div>
-
-        <div class="group">
-          <label>Current Balance: 460 ESScoins</label>
-        </div>
-
-
-
-
-    </div>
+    </div> 
   </div>
 </template>
 
 <script>
-import NavbarToOffcanvas from '../components/NavBarToOffcanvas'
+import NavbarToOffcanvasAdmin from '../components/NavBarToOffcanvasAdmin'
 export default {
-  name: 'credits',
+  name: 'teams',
   components: {
-    NavbarToOffcanvas
-  }  
-
+    NavbarToOffcanvasAdmin
+  }
 }
-
-
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
 .container-full { 
   background-color: black;
   margin: 0 auto;
@@ -71,25 +65,32 @@ export default {
   background-size: cover;
   overflow: hidden;
   height: 100vh;
-  padding-top: 8%;
-  padding-left: 18%;
-  padding-right: 18%;
-  overflow: auto;
+  padding-top: 5%;
 }
 
-hr { display: block; height: 1px;
-    border: 0; border-top: 1px solid #ccc;
-    margin: 1em 0; padding: 0; }
-
-.alignleft {
-	float: left;
+ /* Style buttons */
+.btn {
+  background-color: gray; /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 16px; /* Some padding */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
 }
-.alignright {
-	float: right;
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: orange !important;
+} 
+
+#events {
+  padding: 15px;
+  margin: auto;
 }
 
 .card-body {
   color: black
+  
 }
 
 .col-sm-4 {
@@ -128,7 +129,7 @@ form h5 {
 
 .group {
   position: relative;
-  margin: 0px 0;
+  margin: 45px 0;
 }
 
 textarea {
@@ -138,7 +139,7 @@ textarea {
 input,
 textarea {
   background: none;
-  color: black;
+  color: #c6c6c6;
   font-size: 18px;
   padding: 10px 10px 10px 5px;
   display: block;
@@ -242,5 +243,13 @@ label {
   margin: 50px 0;
 }
 
+.list-group{
+    min-height: 400px;
+    background-color: white;
+    max-height: 400px;
+    margin-bottom: 10px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
 
 </style>

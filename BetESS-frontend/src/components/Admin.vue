@@ -1,20 +1,19 @@
 <template>
-
-<div> 
- <ul>
-  <li><a href="default.asp">Home</a></li>
-  <li><a href="news.asp">News</a></li>
-  <li><a href="contact.asp">Contact</a></li>
-  <li><a href="about.asp">About</a></li>
-</ul> 
-</div>
-
+  <div>
+    <NavbarToOffcanvasAdmin v-if="['calendario'].indexOf($route.name) < 0" ></NavbarToOffcanvasAdmin>
+    <Home/>
+  </div>
 </template>
 
 <script>
+import NavbarToOffcanvasAdmin from '../components/NavBarToOffcanvasAdmin'
+import Home from '../components/Home'
 export default {
   name: 'Admin',
-
+  components: {
+    NavbarToOffcanvasAdmin,
+    Home
+  }
 }
 
 
