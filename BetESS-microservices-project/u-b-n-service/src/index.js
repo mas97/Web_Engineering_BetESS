@@ -48,5 +48,5 @@ app.use((err, req, res, next) => {
     console.error(err.stack);
 });
 
-const PORT = 3000;
+const PORT = 3001;
 app.listen(PORT, () => console.info(`Server has started on port ${PORT}`));

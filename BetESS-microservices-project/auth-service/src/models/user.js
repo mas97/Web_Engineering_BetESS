@@ -1,7 +1,7 @@
 let mongoose = require('mongoose');
 let AutoIncrement = require('mongoose-sequence')(mongoose);
 
-let userSchema = new mongoose.Schema({
+let authSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
@@ -13,6 +13,6 @@ let userSchema = new mongoose.Schema({
     }
 });
 
-userSchema.plugin(AutoIncrement, {inc_field: 'user_id'});
+authSchema.plugin(AutoIncrement, {inc_field: 'user_id'});
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('Auth', authSchema);

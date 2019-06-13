@@ -19,7 +19,8 @@ Vagrant.configure("2") do |config|
       vb.name = "rabbitmq"
     
       # Customize the amount of memory on the VM:
-      vb.memory = "1024"
+      vb.memory = "512"
+      vb.cpus = 1
     end
 
     rabbitmq.vm.provision "shell", path: "rabbitmq.sh"
@@ -77,7 +78,8 @@ Vagrant.configure("2") do |config|
   #     vb.name = "API-layer machine"
     
   #     # Customize the amount of memory on the VM:
-  #     vb.memory = "1024"
+  #     vb.memory = "512"
+  #     vb.cpus = 1
   #   end
   #   #
   #   # View the documentation for the provider you are using for more
@@ -94,47 +96,26 @@ Vagrant.configure("2") do |config|
 
   # end
 
-  config.vm.define :auth_service do |auth_service|
+  # config.vm.define :auth_service do |auth_service|
 
-    auth_service.vm.box = "ubuntu/xenial64"
-    auth_service.vm.hostname = "AUTHservice"
+  #   auth_service.vm.box = "ubuntu/xenial64"
+  #   auth_service.vm.hostname = "AUTHservice"
 
-    auth_service.vm.network "private_network", ip: "192.168.33.14"
+  #   auth_service.vm.network "private_network", ip: "192.168.33.14"
 
-    auth_service.vm.provider "virtualbox" do |vb|
-      # Display the VirtualBox GUI when booting the machine
-      vb.gui = false
-      vb.name = "auth-service"
-    
-      # Customize the amount of memory on the VM:
-      vb.memory = "1024"
-    end
-
-    auth_service.vm.synced_folder "../auth-service", "/home/vagrant/files"
-
-    auth_service.vm.provision "shell", path: "auth-service-script.sh"
-
-  end
-
-  # config.vm.define :e_t_s_l_service do |e_t_s_l_service|
-
-  #   e_t_s_l_service.vm.box = "ubuntu/xenial64"
-  #   e_t_s_l_service.vm.hostname = "ETSLservice"
-
-  #   e_t_s_l_service.vm.network "private_network", ip: "192.168.33.11"
-
-  #   e_t_s_l_service.vm.provider "virtualbox" do |vb|
+  #   auth_service.vm.provider "virtualbox" do |vb|
   #     # Display the VirtualBox GUI when booting the machine
   #     vb.gui = false
-  #     vb.name = "e-t-s-l-service"
+  #     vb.name = "auth-service"
     
   #     # Customize the amount of memory on the VM:
-  #     vb.memory = "1024"
+  #     vb.memory = "512"
+  #     vb.cpus = 1
   #   end
 
-  #   e_t_s_l_service.vm.synced_folder "../e-t-s-l-service", "/home/vagrant/files"
+  #   auth_service.vm.synced_folder "../auth-service", "/home/vagrant/files"
 
-  #   e_t_s_l_service.vm.provision "shell", path: "e-t-s-l-service-script.sh"
+  #   auth_service.vm.provision "shell", path: "auth-service-script.sh"
 
   # end
 
@@ -151,12 +132,36 @@ Vagrant.configure("2") do |config|
   #     vb.name = "u-b-n-service"
     
   #     # Customize the amount of memory on the VM:
-  #     vb.memory = "1024"
+  #     vb.memory = "512"
+  #     vb.cpus = 1
   #   end
 
   #   u_b_n_service.vm.synced_folder "../u-b-n-service", "/home/vagrant/files"
 
   #   u_b_n_service.vm.provision "shell", path: "u-b-n-service-script.sh"
+
+  # end
+
+  # config.vm.define :e_t_s_l_service do |e_t_s_l_service|
+
+  #   e_t_s_l_service.vm.box = "ubuntu/xenial64"
+  #   e_t_s_l_service.vm.hostname = "ETSLservice"
+
+  #   e_t_s_l_service.vm.network "private_network", ip: "192.168.33.11"
+
+  #   e_t_s_l_service.vm.provider "virtualbox" do |vb|
+  #     # Display the VirtualBox GUI when booting the machine
+  #     vb.gui = false
+  #     vb.name = "e-t-s-l-service"
+    
+  #     # Customize the amount of memory on the VM:
+  #     vb.memory = "512"
+  #     vb.cpus = 1
+  #   end
+
+  #   e_t_s_l_service.vm.synced_folder "../e-t-s-l-service", "/home/vagrant/files"
+
+  #   e_t_s_l_service.vm.provision "shell", path: "e-t-s-l-service-script.sh"
 
   # end
 end

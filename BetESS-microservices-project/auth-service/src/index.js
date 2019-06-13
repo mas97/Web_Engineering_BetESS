@@ -1,11 +1,13 @@
 let express = require('express');
 let app = express();
 let bodyParser = require('body-parser');
-let auth = require('./auth');
-var jwt = require('jsonwebtoken');
+// let auth = require('./auth');
+let jwt = require('jsonwebtoken');
 const fs   = require('fs');
-let userModel = require('./models/user');
-var privateKEY  = fs.readFileSync( __dirname + '/private.key');
+let amqp = require('amqplib');
+let authModel = require('./models/user');
+let privateKEY  = fs.readFileSync( __dirname + '/private.key');
+let publicKEY  = fs.readFileSync( __dirname + '/public.key');
 require('./db');
 
 app.use(bodyParser.json());
@@ -29,7 +31,7 @@ app.post('/token', (req, res) => {
 
     let reqData = req.body;
 
-    userModel.findOne({email: reqData.email}, {_id: 0, __v: 0})
+    authModel.findOne({email: reqData.email}, {_id: 0, __v: 0})
         .then(doc => {
             if (doc.length === 0) {
                 return res.status(500).send(doc);
@@ -37,32 +39,52 @@ app.post('/token', (req, res) => {
                 let password = reqData.password;
 
                 if (!validPassword(doc, password)) {
-                    res.status(401).send('Password not valid.');
+                    return res.status(401).send('Password not valid.');
                 } else {
-                    let token = jwt.sign({ foo: 'bar' }, privateKEY, { algorithm: 'RS256'});
-                    res.status(200).send({token: token});
+                    let token = jwt.sign({ user_id: doc.user_id }, privateKEY, { algorithm: 'RS256'});
+                    return res.status(200).send({token: token});
                 }
             }
         })
 });
 
-app.post('/users', (req, res) => {
+app.post('/users', async (req, res) => {
+
     if (!req.body) {
         return res.status(400).send('Request body is missing');
     }
 
-    let model = new userModel(req.body);
+    let model = new authModel(req.body);
     model.save()
         .then(doc => {
             if (!doc || doc.length === 0) {
                 return res.status(500).send(doc);
             }
-
             return res.status(201).send(doc);
         })
         .catch(err => {
             return res.status(500).json(err);
-        })
+            });
+
+    try {
+        let requests_queue = 'requests_u_b_n_service';
+
+        // connect to Rabbit MQ and create a channel
+        const connection = await amqp.connect('amqp://admin:StrongPassword@192.168.33.13:5672');
+
+        const channel = await connection.createChannel();
+
+        await channel.assertQueue(requests_queue, {
+            durable: false
+        });
+
+        await channel.sendToQueue(requests_queue, Buffer.from('newUser:' + req.body.email + ';' + req.body.name + ';' + req.body.phoneno));
+        console.log('message sent!');
+
+    } catch (e) {
+        console.log(e);
+    }
+
 });
 
 app.use(express.static('public'));
@@ -77,7 +99,7 @@ app.use((err, req, res, next) => {
     console.error(err.stack);
 });
 
-const PORT = 3000;
+const PORT = 3002;
 app.listen(PORT, () => console.info(`Server has started on port ${PORT}`));
 
 

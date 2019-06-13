@@ -1,0 +1,30 @@
+[
+    {
+        "amount": 5,
+        "result": "winHome",
+        "paid": false,
+        "user_id": 1,
+        "event_id": 3
+    },
+    {
+        "amount": 2,
+        "result": "draw",
+        "paid": false,
+        "user_id": 2,
+        "event_id": 2
+    },
+    {
+        "amount": 20,
+        "result": "winAway",
+        "paid": false,
+        "user_id": 2,
+        "event_id": 3
+    },
+    {
+        "amount": 15,
+        "result": "winHome",
+        "paid": false,
+        "user_id": 1,
+        "event_id": 4
+    }
+]
