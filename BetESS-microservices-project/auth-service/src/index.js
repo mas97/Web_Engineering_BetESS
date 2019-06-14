@@ -8,6 +8,7 @@ let amqp = require('amqplib');
 let authModel = require('./models/user');
 let privateKEY  = fs.readFileSync( __dirname + '/private.key');
 let publicKEY  = fs.readFileSync( __dirname + '/public.key');
+let bcrypt = require('bcrypt');
 require('./db');
 
 app.use(bodyParser.json());
@@ -38,6 +39,15 @@ app.post('/token', (req, res) => {
             } else {
                 let password = reqData.password;
 
+                // bcrypt.compare(password, doc.password, function(err, res) {
+                //     if (!res) {
+                //         return res.status(401).send('Password not valid.');
+                //     } else {
+                //         let token = jwt.sign({ user_id: doc.user_id }, privateKEY, { algorithm: 'RS256'});
+                //         return res.status(200).send({token: token});
+                //     }
+                // });
+
                 if (!validPassword(doc, password)) {
                     return res.status(401).send('Password not valid.');
                 } else {
@@ -48,12 +58,53 @@ app.post('/token', (req, res) => {
         })
 });
 
-app.post('/users', async (req, res) => {
+app.post('/userAuth', async (req, res) => {
+
+    let user_id = -1;
+
+    if (!req.headers.authorization) {
+
+        return res.status(401).send('Missing auth token');
+
+    } else {
+
+        let header_token = req.headers.authorization;
+
+        try {
+            let decoded = jwt.verify(header_token, publicKEY, ['RS256']);
+
+            console.log(decoded);
+            user_id = decoded.user_id;
+        } catch (e) {
+            console.log(e);
+            return res.status(401).send('Missing auth token');
+        }
+
+        if (!req.body) {
+            return res.status(400).send('Request body is missing');
+        }
+
+        if (req.body.hasOwnProperty('password')) {
+
+            // req.body.password = await bcrypt.hash(req.body.password, 10);
+
+            authModel.findOne({user_id: user_id}, function (err, doc) {
+                doc.password = req.body.password;
+                doc.save();
+            });
+
+        }
+    }
+
+});
+
+app.post('/register', async (req, res) => {
 
     if (!req.body) {
         return res.status(400).send('Request body is missing');
     }
 
+    // req.body.password = await bcrypt.hash(req.body.password, 10);
     let model = new authModel(req.body);
     model.save()
         .then(doc => {
