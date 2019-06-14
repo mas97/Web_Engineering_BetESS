@@ -9,7 +9,7 @@
           <div class="sign-in-htm">
             <div class="group">
               <label for="user" class="label">Email</label>
-              <input id="user" type="text" class="input">
+              <input id="user" type="email" class="input">
             </div>
             <div class="group">
               <label for="pass" class="label">Password</label>
@@ -30,7 +30,7 @@
             </div>
             <div class="group">
               <label for="pass" class="label">Usermame</label>
-              <input id="pass" type="password" class="input" data-type="password" style="padding:10px;">
+              <input id="pass" type="text" class="input" data-type="password" style="padding:10px;">
             </div>
             <div class="group">
               <label for="pass" class="label">Password</label>
@@ -38,7 +38,7 @@
             </div>
             <div class="group">
               <label for="pass" class="label">Email Address</label>
-              <input id="pass" type="text" class="input" style="padding:10px;">
+              <input id="pass" type="email" class="input" style="padding:10px;">
             </div>
             <div class="group">
               <input type="submit" class="button" value="Sign Up">
@@ -74,6 +74,7 @@ body{
   width: 100%;
   background-image: url("../assets/background-main.jpg");
   background-size: cover;
+	position: fixed;
 	overflow: hidden;
 }
 
