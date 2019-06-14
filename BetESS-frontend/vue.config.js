@@ -12,9 +12,9 @@ module.exports = {
     // and distribute
     devServer: {
       proxy: {
-        '/cuida24*': {
+        '/betess*': {
           // Forward frontend dev server request for /api to django dev server
-          target: 'http://localhost:8000/',
+          target: 'http://192.168.33.10:80/',
         }
       }
     }

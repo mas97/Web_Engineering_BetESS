@@ -23,6 +23,11 @@ npm install forever -g
 
 cd files
 
+mongoimport --db betess --collection events --drop --file events.json
+mongoimport --db betess --collection leagues --drop --file leagues.json
+mongoimport --db betess --collection sports --drop --file sports.json
+mongoimport --db betess --collection teams --drop --file teams.json
+
 forever start -e error.log -l logs.log -o out.log src/index.js
 
 echo '---------- CHECKING PORTS ----------'
