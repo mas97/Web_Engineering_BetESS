@@ -11,11 +11,8 @@
           <div class="sign-in-htm">
             <div class="group">
               <label for="user" class="label">Email</label>
-<<<<<<< HEAD
-              <input id="user" v-model="email" type="text" class="input">
-=======
-              <input id="user" type="email" class="input">
->>>>>>> bfdd398f0afcf77747223a322a077287a4a5de5f
+              <input id="user" v-model="email" type="email" class="input">
+
             </div>
             <div class="group">
               <label for="pass" class="label">Password</label>
@@ -48,7 +45,7 @@
             <div class="group">
               <label for="pass" class="label">Email Address</label>
               <input id="pass" v-model="email" type="email" class="input" style="padding:10px;">
-							
+
             </div>
             <div class="group">
               <input type="submit" class="button" v-on:click="onSubmit" value="Sign Up">
