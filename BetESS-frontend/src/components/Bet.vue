@@ -3,10 +3,10 @@
 
     <NavbarToOffcanvas v-if="['calendario'].indexOf($route.name) < 0" ></NavbarToOffcanvas>
     <div class="container-full">
-        <div style="width: 25%; float:left">
+        <div style="width: 25%; float:left;">
             <div class="wrapper">
               <form>
-
+                <hr/>
                 <div class="group">
                   <input type="number" required="required" min="1"/><span class="highlight"></span><span class="bar"></span>
                   <label>1º Insert the amount to bet</label>
@@ -27,6 +27,8 @@
           </div>
 
           <div style="width: 75%; float:right" id="events">
+            <h3 style="text-align: left; padding-top: 3.5px;"> Available Events </h3>
+            <hr id="hr"/>
 
             <div class="row">
               <div class="col-sm-4 mb-3 mb-md-0">
@@ -114,6 +116,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+#hr { display: block; height: 1px;
+    border: 0; border-top: 1px solid #ccc;
+    margin: 1em 0; padding: 0; }
+
 
 .container-full { 
   background-color: black;

@@ -24,6 +24,10 @@
                 </div>
                 FCPorto - SLBenfica
                 <small>Soccer, Primeira Liga</small>
+
+                <!-- Aqui fica text-success (verde) se o saldo tiver aumentado (comparando c anterior)-->
+                <!-- Ou text-danger se tiver diminuido -->
+                <!--  Se mt dificil tirar cor, pôr só text-->
                 <p class="text-success" style="padding-top: 15px;"><small>Balance: 360</small></p>
                 <button class="btn"><i class="fa fa-check"></i> mark as seen</button>
               </li>
@@ -75,6 +79,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+hr { display: block; height: 1px;
+    border: 0; border-top: 1px solid #ccc;
+    margin: 1em 0; padding: 0; }
+
 
 .container-full { 
   background-color: black;

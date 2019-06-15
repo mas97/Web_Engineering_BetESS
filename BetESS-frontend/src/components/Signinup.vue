@@ -11,7 +11,11 @@
           <div class="sign-in-htm">
             <div class="group">
               <label for="user" class="label">Email</label>
+<<<<<<< HEAD
               <input id="user" v-model="email" type="text" class="input">
+=======
+              <input id="user" type="email" class="input">
+>>>>>>> bfdd398f0afcf77747223a322a077287a4a5de5f
             </div>
             <div class="group">
               <label for="pass" class="label">Password</label>
@@ -34,7 +38,8 @@
             </div>
             <div class="group">
               <label for="pass" class="label">Usermame</label>
-              <input id="pass" v-model="username" type="password" class="input" data-type="password" style="padding:10px;">
+              <input id="pass" v-model="username" type="text" class="input" data-type="password" style="padding:10px;">
+
             </div>
             <div class="group">
               <label for="pass" class="label">Password</label>
@@ -42,7 +47,8 @@
             </div>
             <div class="group">
               <label for="pass" class="label">Email Address</label>
-              <input id="pass" v-model="email" type="text" class="input" style="padding:10px;">
+              <input id="pass" v-model="email" type="email" class="input" style="padding:10px;">
+							
             </div>
             <div class="group">
               <input type="submit" class="button" v-on:click="onSubmit" value="Sign Up">
@@ -114,6 +120,7 @@ body{
   width: 100%;
   background-image: url("../assets/background-main.jpg");
   background-size: cover;
+	position: fixed;
 	overflow: hidden;
 }
 

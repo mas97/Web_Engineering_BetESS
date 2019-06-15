@@ -4,6 +4,12 @@
     
     <div class="container-full">
 
+      <h3 style="text-align: left;"> Your Current Bets </h3>
+      <hr/>
+
+    <!-- Aqui mostra as bets de eventos que ainda n acabaram. -->
+    <!-- Bets de eventos terminados vão para as notificações. -->
+
       <div class="row">
         <div class="col-sm-4 mb-3 mb-md-0">
           <div class="card border-warning">
@@ -83,9 +89,16 @@ export default {
   background-size: cover;
   overflow: hidden;
   height: 100vh;
-  padding: 15px;
-  padding-top: 5%;
+  padding-top: 8%;
+  padding-left: 18%;
+  padding-right: 18%;
+  overflow: auto;
 }
+
+hr { display: block; height: 1px;
+    border: 0; border-top: 1px solid #ccc;
+    margin: 1em 0; padding: 0; }
+
 
 .card-body {
   color: black
