@@ -7,7 +7,7 @@
         <div style="width: 25%; float:left">
             <div class="wrapper">
               <form>
-
+                <hr/>
                 <div class="group">
                   <input type="text" required="required"/><span class="highlight"></span><span class="bar"></span>
                   <label>Insert New League</label>
@@ -24,6 +24,8 @@
           </div>
 
           <div style="width: 75%; float:right;" id="events">
+            <h3 style="text-align: left; padding-top: 3.5px;"> Leagues' List </h3>
+            <hr id="hr"/>
             <div class="container" style="padding-top:3%">
               <div class="row">
                 <div class="col-12 col-sm-8 col-lg-5" style="min-width: 70%; margin:auto;">
@@ -67,6 +69,11 @@ export default {
   height: 100vh;
   padding-top: 5%;
 }
+
+#hr { display: block; height: 1px;
+    border: 0; border-top: 1px solid #ccc;
+    margin: 1em 0; padding: 0; }
+
 
  /* Style buttons */
 .btn {
