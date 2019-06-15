@@ -9,14 +9,14 @@
               <form>
                 <hr/>
                 <div class="group">
-                  <input type="text" required="required"/><span class="highlight"></span><span class="bar"></span>
+                  <input type="text" v-model="team_name" required="required"/><span class="highlight"></span><span class="bar"></span>
                   <label>Insert New Team</label>
                 </div>
 
                 <br/>
 
                 <div class="btn-box">
-                  <button class="btn btn-submit" type="submit">Submit</button>
+                  <button type="submit" class="btn btn-submit" v-on:click="postTeam()">Submit</button>
                 </div>
 
               </form>
@@ -31,10 +31,10 @@
                 <div class="col-12 col-sm-8 col-lg-5" style="min-width: 70%; margin:auto;">
                   <ul class="list-group">
                     
-                    <li class="list-group-item d-flex justify-content-between align-items-center" style="color: gray; text-align: center;">
-                      <center>1</center>
-                      <center>FCPorto</center>
-                      <button class="btn"><i class="fa fa-times"></i></button>
+                    <li v-for="team in $store.state.teams.teams" :key="team.team_id" class="list-group-item d-flex justify-content-between align-items-center" style="color: gray; text-align: center;">
+                      <center>{{team.team_id}}</center>
+                      <center>{{team.name}}</center>
+                      <button class="btn" v-on:click="remove(team.team_id)"><i class="fa fa-times"></i></button>
                     </li>
                   
                   </ul>
@@ -51,6 +51,42 @@
 import NavbarToOffcanvasAdmin from '../components/NavBarToOffcanvasAdmin'
 export default {
   name: 'teams',
+  data () {
+    return {
+      team_name: '' 
+    }
+
+  },
+  created () {
+    this.$store.dispatch('teams/getTeams').then((response) => {
+      //console.log(JSON.stringify(this.$store.state.teams))
+      console.log(JSON.stringify(response))
+    })    
+  },
+  methods: {
+    postTeam () {
+      if (this.team_name === '') {
+        alert('Please insert team name.')
+      } else {
+        this.$store.dispatch('teams/postTeam', {
+          name: this.team_name
+        }).then((response) => {
+          // algo a fazer no final do pedido
+        }).catch((error) => {
+          console.log(error)
+        })
+      }
+    },
+    remove ( id ) {
+      this.$store.dispatch('teams/removeTeam', {
+        team_id: id
+      }).then(response => {
+        // fazer alguma coisa depois do delete ser feito com sucesso
+      }).catch((error) => {
+        console.log(error)
+      })
+    }
+  },
   components: {
     NavbarToOffcanvasAdmin
   }
