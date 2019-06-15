@@ -2,7 +2,9 @@
 import loginService from '../../services/loginService'
 
 const state = {
-  accesstoken: ''
+  accesstoken: '',
+  premium: false,
+  username: ''
 }
 
 const getters = {
@@ -14,8 +16,13 @@ const getters = {
 const mutations = {
   setToken (state, response) {
     state.accesstoken = response.token
+    state.premium = response.premium
+    state.username = response.username
     console.log('teste mutations ' + response)
     console.log('teste mutations ' + response.token)
+  },
+  resetToken (state) {
+      state.accesstoken = ''
   }
 }
 
@@ -34,6 +41,15 @@ const actions = {
           reject(error)
         })
     })
+  },
+  resetToken ( {commit} ) {
+      return new Promise((resolve, reject) => {
+          commit('resetToken').then(() => {
+              resolve('Success logout.')
+          }, error => {
+              reject(error)
+          })
+      })
   }
 }
 

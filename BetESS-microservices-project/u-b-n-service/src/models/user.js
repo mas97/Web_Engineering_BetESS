@@ -17,10 +17,6 @@ let userSchema = new mongoose.Schema({
     balance: {
         type: Number,
         required: true
-    },
-    premium: {
-        type: Boolean,
-        required: true
     }
 });
 

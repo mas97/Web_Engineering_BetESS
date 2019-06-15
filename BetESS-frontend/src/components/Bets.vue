@@ -24,6 +24,15 @@
                 <th>Paid</th>
                 <th>User</th>
               </tr>
+              <!-- <tr v-for="bet in $store.state.bets.bets" :key="bet.bet_id">
+                <td>FCPorto - SLBenfica</td>
+                <td>Soccer</td>
+                <td>Primeira Liga</td>
+                <td>10 ESScoins</td>
+                <td>Win Home</td>
+                <td class="text-warning">No</td>
+                <td>joao_oli_25</td>
+              </tr> -->
               <tr>
                 <td>FCPorto - SLBenfica</td>
                 <td>Soccer</td>

@@ -91,31 +91,31 @@ router.post('/premium', (req, res) => {
             return res.status(401).send('Invalid authentication token');
         }
 
-        if (req.body.hasOwnProperty('premium')) {
-
-            UserModel.findOne({user_id: user_id}, {balance: 1})
+            UserModel.findOne({user_id: user_id})
                 .then(doc => {
                     console.log(doc);
-                    let user_balance = parseFloat(doc.balance);
 
-                    if (user_balance >= 50) {
+                    if (doc.premium) {
 
-                        UserModel.findOne({user_id: user_id}, function (err, doc) {
-                            doc.premium = true;
-                            doc.balance = user_balance - 50;
-                            doc.save();
-                        });
+                        let user_balance = parseFloat(doc.balance);
 
-                        return res.status(200);
+                        if (user_balance >= 50) {
 
+                            UserModel.findOne({user_id: user_id}, function (err, doc) {
+                                doc.premium = true;
+                                doc.balance = user_balance - 50;
+                                doc.save();
+                            });
+
+                            return res.status(200);
+
+                        } else {
+                            return res.status(400).send('Insufficient balance');
+                        }
                     } else {
-                        return res.status(400).send('Insufficient balance');
+                        return res.status(400).send('Not a premium user');
                     }
                 })
-
-        } else {
-            return res.status(400).send('Missing premium attribute');
-        }
     }
 });
 

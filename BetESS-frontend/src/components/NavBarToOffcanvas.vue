@@ -43,7 +43,8 @@
 
       <br/>
 
-      <button class="btn btn-outline-warning my-2 my-sm-0" type="submit" style="margin:10px;">Logout</button>
+      <button :to="{ name: 'user' }" v-on:click="logout()" v-if="this.$store.state.login.accesstoken != ''" class="btn btn-outline-warning my-2 my-sm-0" type="submit" style="margin:10px;">Logout</button>
+      <button :to="{ name: 'signinup' }" v-if="this.$store.state.login.accesstoken == ''" class="btn btn-outline-warning my-2 my-sm-0" type="submit" style="margin:10px;">Login</button>
     </div>
   </nav>
 
@@ -64,6 +65,13 @@ export default {
   },
 
   methods: {
+    logout () {
+      this.$store.dispatch('login/resetToken').then(() => {
+        // logout com sucesso
+      }).catch((error) => {
+        console.log(error)
+      })
+    },
     toggleoffcanvas: function () {
       this.collapse = !this.collapse
       return this.collapse

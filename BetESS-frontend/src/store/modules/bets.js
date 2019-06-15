@@ -1,42 +1,39 @@
 /* eslint-disable no-console */
-import sportsService from '../../services/sportsService'
+import betsService from '../../services/betsService'
 
 const state = {
-    sports: []
+    bets: []
   }
   
   const getters = {
-    sports: state => {
-      return state.sports
+    bets: state => {
+      return state.bets
     }
   }
   
   const mutations = {
-    setSports (state, response) {
-        state.sports = response
+    setBets (state, response) {
+        state.bets = response
     }
   }
 
 const actions = {
-    postSport ({ commit }, payload) {
-      sportsService.postSport(payload)
-    },
-    getSports ({ commit }) {
+    postBet ({ commit }, payload) {
         return new Promise((resolve, reject) => {
-            sportsService.getSports()
+            betsService.postBet(payload)
                 .then(function (response) {
-                    commit('setSports', response)
+                    commit('setBets', response)
                 })
                 .then(() => {
-                    resolve(state.sports)
+                    resolve(state.bets)
                 }, error => {
                     reject(error)
                 })
         })
     },
-    removeSport ({ commit }, payload) {
+    getBets ({ commit }) {
         return new Promise((resolve, reject) => {
-            sportsService.removeSport(payload)
+            betsService.getSports()
                 .then(function (response) {
                     commit('setSports', response)
                 })

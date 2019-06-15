@@ -7,21 +7,23 @@ let publicKEY  = fs.readFileSync( __dirname + '/public.key');
 
 router.post('/sports', (req, res) => {
 
-    console.log(req.headers);
+    console.log(req.body);
 
-    if (!req.headers.authorization) {
+    if (!req.body.authorization) {
 
         return res.status(401).send('Missing auth token');
 
     } else {
 
-        let header_token = req.headers.authorization;
+        let header_token = req.body.authorization;
+        console.log(req.body.authorization);
 
         try {
             let decoded = jwt.verify(header_token, publicKEY, ['RS256']);
 
             console.log(decoded);
         } catch (e) {
+            console.log('ERRO VERIFY');
             console.log(e);
             return res.status(401).send('Missing auth token');
         }
@@ -36,6 +38,8 @@ router.post('/sports', (req, res) => {
                 if (!doc || doc.length === 0) {
                     return res.status(500).send(doc);
                 }
+
+                // não retornar só o doc mas sim todos os desportos no momento
 
                 return res.status(201).send(doc);
             })
@@ -91,7 +95,7 @@ router.get('/sports', (req, res) => {
     if (Object.keys(req.body).length == 0) {
         SportModel.find({}, { _id: 0, __v:0})
             .then(doc => {
-                return res.json({'sports': doc});
+                return res.json(doc);
             });
     }
 

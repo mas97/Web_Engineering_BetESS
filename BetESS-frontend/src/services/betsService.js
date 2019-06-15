@@ -3,11 +3,13 @@ import betess from '@/services/betess'
 import store from '@/store/modules/login'
 
 export default {
-  postSport (payload) {
-    console.log('teste token ' + store.state.accesstoken)
-    return betess.post(`sports/`, {
-        name: payload.name,
-        authorization: store.state.accesstoken
+  postBet (payload) {
+    console.log('teste token ' + store.state.token)
+    return betess.post(`bets/`, {
+        payload,
+        headers: {
+            Authorization: store.state.accesstoken
+        }
     }).then(response => {
         console.log('antes do return ' + response)
         return response.data})
@@ -15,8 +17,8 @@ export default {
         alert(error.message)
       })
   },
-  getSports () {
-      return betess.get(`sports/`).then(response => response.data)
+  getBets () {
+      return betess.get(`bets/`).then(response => response.data)
   },
   removeSport (payload) {
       return betess.delete(`sports`, {

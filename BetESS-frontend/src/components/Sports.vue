@@ -6,7 +6,7 @@
         
         <div style="width: 25%; float:left">
             <div class="wrapper">
-              <form>
+              <form > 
                 <hr/>
                 <div class="group">
                   <input type="text" v-model="sport_name" required="required"/><span class="highlight"></span><span class="bar"></span>
@@ -15,11 +15,10 @@
 
                 <br/>
 
-                <div class="btn-box">
-                  <button class="btn btn-submit" v-on:click="postSport" >Submit</button>
-                </div>
-
               </form>
+              <div class="btn-box">
+                  <button type="button" class="btn btn-submit" v-on:click="postSport()" >Submit</button>
+                </div>
             </div>
           </div>
 
@@ -31,10 +30,10 @@
                 <div class="col-12 col-sm-8 col-lg-5" style="min-width: 70%; margin:auto;">
                   <ul class="list-group">
                     
-                    <li class="list-group-item d-flex justify-content-between align-items-center" style="color: gray; text-align: center;">
-                      <center>1</center>
-                      <center>Basketball</center>
-                      <button class="btn"><i class="fa fa-times"></i></button>
+                    <li v-for="sport in $store.state.sports.sports" :key="sport.sport_id" class="list-group-item d-flex justify-content-between align-items-center" style="color: gray; text-align: center;">
+                      <center>{{sport.sport_id}}</center>
+                      <center>{{sport.name}}</center>
+                      <button class="btn" v-on:click="remove(sport.sport_id)"><i class="fa fa-times"></i></button>
                     </li>
                   
                   </ul>
@@ -53,14 +52,13 @@ export default {
   name: 'sports',
   data () {
     return {
-      sport_name: '',
-      sports: []
+      sport_name: ''
     }
   },
   created () {
     this.$store.dispatch('sports/getSports').then((response) => {
-      this.sports = response
-      console.log(this.sports)
+      //console.log(JSON.stringify(this.$store.state.sports))
+      console.log(JSON.stringify(response))
     })
   },
   methods: {
@@ -76,7 +74,16 @@ export default {
           console.log(error)
         })
       }
-		},
+    },
+    remove ( id ) {
+      this.$store.dispatch('sports/removeSport', {
+        sport_id: id
+      }).then(response => {
+        // fazer alguma coisa depois do delete ser feito com sucesso
+      }).catch((error) => {
+        console.log(error)
+      })
+    }
   },
   components: {
     NavbarToOffcanvasAdmin

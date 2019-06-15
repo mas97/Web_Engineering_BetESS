@@ -66,6 +66,8 @@ router.post('/bets', (req, res) => {
 
 router.get('/bets', (req, res) => {
 
+    //fazer a verificação se é um admin ou não autenticado e retornar todas as bets ou apenas as referentes ao user
+
     if (!req.headers.authorization) {
 
         return res.status(401).send('Missing auth token');

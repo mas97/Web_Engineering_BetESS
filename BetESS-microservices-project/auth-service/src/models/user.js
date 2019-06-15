@@ -10,6 +10,10 @@ let authSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true
+    },premium: {
+        type: Boolean,
+        required: true,
+        default: false
     }
 });
 
