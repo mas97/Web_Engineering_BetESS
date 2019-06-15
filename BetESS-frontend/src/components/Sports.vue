@@ -9,14 +9,14 @@
               <form>
 
                 <div class="group">
-                  <input type="text" required="required"/><span class="highlight"></span><span class="bar"></span>
+                  <input type="text" v-model="sport_name" required="required"/><span class="highlight"></span><span class="bar"></span>
                   <label>Insert New Sport</label>
                 </div>
 
                 <br/>
 
                 <div class="btn-box">
-                  <button class="btn btn-submit" type="submit">Submit</button>
+                  <button class="btn btn-submit" v-on:click="postSport" >Submit</button>
                 </div>
 
               </form>
@@ -49,6 +49,33 @@
 import NavbarToOffcanvasAdmin from '../components/NavBarToOffcanvasAdmin'
 export default {
   name: 'sports',
+  data () {
+    return {
+      sport_name: '',
+      sports: []
+    }
+  },
+  created () {
+    this.$store.dispatch('sports/getSports').then((response) => {
+      this.sports = response
+      console.log(this.sports)
+    })
+  },
+  methods: {
+    postSport () {
+      if (this.sport_name === '') {
+        alert('Please insert sport name.')
+      } else {
+        this.$store.dispatch('sports/postSport', {
+          name: this.sport_name
+        }).then((response) => {
+          // algo a fazer no final do pedido
+        }).catch((error) => {
+          console.log(error)
+        })
+      }
+		},
+  },
   components: {
     NavbarToOffcanvasAdmin
   }

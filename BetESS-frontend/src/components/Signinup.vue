@@ -5,46 +5,52 @@
       <div class="login-html">
         <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
         <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
-        <div class="login-form">
+        
+
+				<div class="login-form">
           <div class="sign-in-htm">
             <div class="group">
               <label for="user" class="label">Email</label>
-              <input id="user" type="text" class="input">
+              <input id="user" v-model="email" type="text" class="input">
             </div>
             <div class="group">
               <label for="pass" class="label">Password</label>
-              <input id="pass" type="password" class="input" data-type="password">
+              <input id="pass" v-model="password" type="password" class="input" data-type="password">
             </div>
             <div class="group">
               <input id="check" type="checkbox" class="check" checked>
               <label for="check"><span class="icon"></span> Keep me Signed in</label>
             </div>
             <div class="group">
-              <input type="submit" class="button" value="Sign In">
+              <input type="submit" class="button" v-on:click="login" value="Sign In">
             </div>
           </div>
-          <div class="sign-up-htm">
+          
+					
+					<div class="sign-up-htm">
             <div class="group">
               <label for="user" class="label">Name</label>
-              <input id="user" type="text" class="input" style="padding:10px;">
+              <input id="user" v-model="name" type="text" class="input" style="padding:10px;">
             </div>
             <div class="group">
               <label for="pass" class="label">Usermame</label>
-              <input id="pass" type="password" class="input" data-type="password" style="padding:10px;">
+              <input id="pass" v-model="username" type="password" class="input" data-type="password" style="padding:10px;">
             </div>
             <div class="group">
               <label for="pass" class="label">Password</label>
-              <input id="pass" type="password" class="input" data-type="password" style="padding:10px;">
+              <input id="pass" v-model="password" type="password" class="input" data-type="password" style="padding:10px;">
             </div>
             <div class="group">
               <label for="pass" class="label">Email Address</label>
-              <input id="pass" type="text" class="input" style="padding:10px;">
+              <input id="pass" v-model="email" type="text" class="input" style="padding:10px;">
             </div>
             <div class="group">
-              <input type="submit" class="button" value="Sign Up">
+              <input type="submit" class="button" v-on:click="onSubmit" value="Sign Up">
             </div>
           </div>
-        </div>
+        
+				
+				</div>
       </div>
     </div>
   </div>
@@ -54,7 +60,41 @@
 <script>
 export default {
   name: 'Signinup',
-
+  data () {
+    return {
+      email: '',
+			password: '',
+			name: '',
+			username: ''
+    }
+  },
+  methods: {
+    login () {
+      this.$store.dispatch('login/getToken', {
+        email: this.email,
+        password: this.password
+      }).then((response) => {
+				//console.log('teste ' + response)
+				console.log('token ' + response)
+        //this.$router.push('/')
+      }).catch((error) => {
+        console.log(error)
+      })
+		},
+		onSubmit () {
+        // alert(JSON.stringify(this.form))
+        if (this.name === '' | this.email === '' | this.password === '' | this.username === '') {
+          alert('Por favor preencha todos os campos do formulário.')
+        } else {
+              this.$store.dispatch('register/registerUser', {
+                name: this.name,
+                email: this.email,
+                username: this.email,
+                password: this.password
+							})
+				}
+    }
+  }
 }
 </script>
 
