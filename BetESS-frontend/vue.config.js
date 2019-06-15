@@ -3,6 +3,7 @@
 module.exports = {
     outputDir: 'dist',
     assetsDir: 'static',
+    lintOnSave: false,
     // baseUrl: IS_PRODUCTION
     // ? 'http://cdn123.com'
     // : '/',
@@ -14,6 +15,7 @@ module.exports = {
       proxy: {
         '/betess*': {
           // Forward frontend dev server request for /api to django dev server
+          //target: 'http://localhost:3001/',
           target: 'http://192.168.33.10:80/',
         }
       }

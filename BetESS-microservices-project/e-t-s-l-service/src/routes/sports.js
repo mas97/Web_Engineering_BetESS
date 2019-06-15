@@ -7,6 +7,8 @@ let publicKEY  = fs.readFileSync( __dirname + '/public.key');
 
 router.post('/sports', (req, res) => {
 
+    console.log(req.headers);
+
     if (!req.headers.authorization) {
 
         return res.status(401).send('Missing auth token');
@@ -89,7 +91,7 @@ router.get('/sports', (req, res) => {
     if (Object.keys(req.body).length == 0) {
         SportModel.find({}, { _id: 0, __v:0})
             .then(doc => {
-                return res.json(doc);
+                return res.json({'sports': doc});
             });
     }
 

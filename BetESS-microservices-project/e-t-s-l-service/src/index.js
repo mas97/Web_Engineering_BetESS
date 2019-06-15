@@ -6,9 +6,11 @@ let leaguesRoute = require('./routes/leagues');
 let sportsRoute = require('./routes/sports');
 let teamsRoute = require('./routes/teams');
 let bodyParser = require('body-parser');
+let cors = require('cors');
 require('./db');
 
 app.use(bodyParser.json());
+app.use(cors());
 
 // middleware function declaration
 app.use((req, res, next) => {

@@ -21,7 +21,13 @@ npm install
 
 npm install forever -g
 
+# npm remove bcrypt
+
+# npm install bcrypt
+
 cd files
+
+# mongoimport --db betess --collection users --drop --file users.json --jsonArray
 
 forever start -e error.log -l logs.log -o out.log src/index.js
 

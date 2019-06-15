@@ -13,6 +13,6 @@ let authSchema = new mongoose.Schema({
     }
 });
 
-authSchema.plugin(AutoIncrement, {inc_field: 'user_id'});
+authSchema.plugin(AutoIncrement, {inc_field: 'userAuth_id'});
 
 module.exports = mongoose.model('Auth', authSchema);

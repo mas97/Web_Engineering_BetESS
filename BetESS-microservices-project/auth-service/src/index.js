@@ -8,10 +8,12 @@ let amqp = require('amqplib');
 let authModel = require('./models/user');
 let privateKEY  = fs.readFileSync( __dirname + '/private.key');
 let publicKEY  = fs.readFileSync( __dirname + '/public.key');
-let bcrypt = require('bcrypt');
+let cors = require('cors');
+// let bcrypt = require('bcrypt');
 require('./db');
 
 app.use(bodyParser.json());
+app.use(cors());
 
 // middleware function declaration
 app.use((req, res, next) => {
@@ -52,7 +54,7 @@ app.post('/token', (req, res) => {
                     return res.status(401).send('Password not valid.');
                 } else {
                     let token = jwt.sign({ user_id: doc.user_id }, privateKEY, { algorithm: 'RS256'});
-                    return res.status(200).send({token: token});
+                    return res.json({'token': token});
                 }
             }
         })
@@ -100,12 +102,15 @@ app.post('/userAuth', async (req, res) => {
 
 app.post('/register', async (req, res) => {
 
+    console.log( 'PEDIDO\n' + req);
+
     if (!req.body) {
         return res.status(400).send('Request body is missing');
     }
 
     // req.body.password = await bcrypt.hash(req.body.password, 10);
     let model = new authModel(req.body);
+    console.log(req.body);
     model.save()
         .then(doc => {
             if (!doc || doc.length === 0) {

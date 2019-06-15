@@ -6,6 +6,7 @@ let betsRoute = require('./routes/bets');
 let notificationsRoute = require('./routes/notifications');
 let close_eventsRoute = require('./routes/close_event');
 let bodyParser = require('body-parser');
+let cors = require('cors');
 require('./db');
 
 /*amqp.connect('amqp://admin:StrongPassword@192.168.33.13:5672', function(error0, connection) {
@@ -24,6 +25,7 @@ require('./db');
 });*/
 
 app.use(bodyParser.json());
+app.use(cors());
 
 // middleware function declaration
 app.use((req, res, next) => {

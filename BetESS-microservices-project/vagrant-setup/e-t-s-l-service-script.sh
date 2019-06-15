@@ -23,10 +23,10 @@ npm install forever -g
 
 cd files
 
-mongoimport --db betess --collection events --drop --file events.json
-mongoimport --db betess --collection leagues --drop --file leagues.json
-mongoimport --db betess --collection sports --drop --file sports.json
-mongoimport --db betess --collection teams --drop --file teams.json
+# mongoimport --db betess --collection events --drop --file events.json --jsonArray
+# mongoimport --db betess --collection leagues --drop --file leagues.json --jsonArray
+# mongoimport --db betess --collection sports --drop --file sports.json --jsonArray
+# mongoimport --db betess --collection teams --drop --file teams.json --jsonArray
 
 forever start -e error.log -l logs.log -o out.log src/index.js
 
