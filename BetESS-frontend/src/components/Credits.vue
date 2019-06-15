@@ -41,6 +41,22 @@
           <label>Current Balance: 460 ESScoins</label>
         </div>
 
+        <!-- JÁ FECHAM SOZINHOS, O BUTTON FAZ-LOS DESAPARECER -->
+        <!-- Era fixe pô-los sempre no canto superior direito em baixo do login -->
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>        
+
 
 
 
