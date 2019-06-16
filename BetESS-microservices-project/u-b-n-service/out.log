@@ -3,22 +3,155 @@ Database connection successful
  [x] Received newUser:b;b;
 string
 [ 'newUser', 'b;b;' ]
-Sun Jun 16 2019 11:33:09 GMT+0000 (UTC) => /users/, [object Object]
-Sun Jun 16 2019 11:34:14 GMT+0000 (UTC) => /users/, [object Object]
-Sun Jun 16 2019 11:35:39 GMT+0000 (UTC) => /users/, [object Object]
-{ name: 'TESTE DESPORTO',
-  authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNjc3MjIwfQ.ZTLsuUsT9Zig4KojYoAd3fFqb5q9K51MwuWJ8g6tEX_DRYr-DtnpUXbHpCYroUCpNH_1noLCjk8kIT8zOBl5cg' }
-{ premium: false, iat: 1560677220 }
-Sun Jun 16 2019 11:36:31 GMT+0000 (UTC) => /users/, [object Object]
+Sun Jun 16 2019 13:49:13 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNjkyOTQ2fQ.KXsGNjuBGjSMlHgFwfEesAUyTHewzpSiD-VE7oe7t4M-6GeFqFZv2C1zwg_iuZ3JEtSMi16hpHwTGgrV8RQUPw',
+  command: 'getUser' }
+{ user_id: 1, premium: false, iat: 1560692946 }
+1
+Sun Jun 16 2019 13:51:50 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNjkzMDk3fQ.iFmAw6_-yX_k47nHlwulpdpNcD6CO1nXga7351DLExwf_0y2ytxEY-4JXrxLbp5wAjqZ-QmtdNViShxsuo01IA',
+  command: 'getUser' }
+{ user_id: 1, premium: false, iat: 1560693097 }
+1
+Sun Jun 16 2019 13:52:27 GMT+0000 (UTC) => /users/, [object Object]
 { authorization: '', command: 'getUser' }
- [x] Received newUser:b;b;
+Sun Jun 16 2019 13:53:02 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNjkzMTc1fQ.Xq9D1XmHd6GAtlydSHJ3-lV8sinzQuo1O29scqlkXZe67dK2E2G_5Wv1BAUY7U5jNXrmLY98sKeAIZV9i6hu6w',
+  command: 'getUser' }
+{ user_id: 1, premium: false, iat: 1560693175 }
+1
+Sun Jun 16 2019 13:53:13 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNjkzMTc1fQ.Xq9D1XmHd6GAtlydSHJ3-lV8sinzQuo1O29scqlkXZe67dK2E2G_5Wv1BAUY7U5jNXrmLY98sKeAIZV9i6hu6w',
+  command: 'draw',
+  balance: '1' }
+{ user_id: 1, premium: false, iat: 1560693175 }
+1
+Sun Jun 16 2019 13:54:30 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: '', command: 'getUser' }
+Sun Jun 16 2019 13:55:03 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNjkzMjk2fQ.IomkGqvLHzfg4tWEybv0TOwL8_-0ifuNM5Cq1w-9W5gDdPbzCp1MLk3H6P9QisE1nwusszZKA2XhIiBIiIuXKA',
+  command: 'getUser' }
+{ user_id: 1, premium: false, iat: 1560693296 }
+1
+Sun Jun 16 2019 13:55:08 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNjkzMjk2fQ.IomkGqvLHzfg4tWEybv0TOwL8_-0ifuNM5Cq1w-9W5gDdPbzCp1MLk3H6P9QisE1nwusszZKA2XhIiBIiIuXKA',
+  command: 'draw',
+  balance: '1' }
+{ user_id: 1, premium: false, iat: 1560693296 }
+1
+Sun Jun 16 2019 13:58:57 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: '', command: 'getUser' }
+Sun Jun 16 2019 13:59:46 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNjkzNTY1fQ.R0RTMQQx43lOKGTZdd0SPX17jbPtGMWHY12RbScxYDxCJsQZgM6iIf9KxE16_YUgGEe_aKErTwd6bBz5F2LvZw',
+  command: 'getUser' }
+{ user_id: 1, premium: false, iat: 1560693565 }
+1
+Sun Jun 16 2019 14:00:01 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNjkzNTY1fQ.R0RTMQQx43lOKGTZdd0SPX17jbPtGMWHY12RbScxYDxCJsQZgM6iIf9KxE16_YUgGEe_aKErTwd6bBz5F2LvZw',
+  command: 'draw',
+  balance: '1' }
+{ user_id: 1, premium: false, iat: 1560693565 }
+1
+Sun Jun 16 2019 14:01:17 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNjkzNTY1fQ.R0RTMQQx43lOKGTZdd0SPX17jbPtGMWHY12RbScxYDxCJsQZgM6iIf9KxE16_YUgGEe_aKErTwd6bBz5F2LvZw',
+  command: 'draw',
+  balance: '1' }
+{ user_id: 1, premium: false, iat: 1560693565 }
+1
+Sun Jun 16 2019 14:03:07 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: '', command: 'getUser' }
+Sun Jun 16 2019 14:03:44 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNjkzODE3fQ.AfW5YAwLZj92GhwOyJSoNwWq8qfzmgdXjUuvhSTIbWl3JtKPUQ38vGrK1ALisiRpRNHVDZolbhR3F1KAZkoC1Q',
+  command: 'getUser' }
+{ user_id: 1, premium: false, iat: 1560693817 }
+1
+Sun Jun 16 2019 14:05:05 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: '', command: 'getUser' }
+Sun Jun 16 2019 14:05:46 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNjkzOTM0fQ.KrsCKMtOIHQ91b45xm817PFapAycjNpqmkk_LrRx35AHEHe-N_OzsCDeMCmxjR36v_R7fInZootnU0VR_aGZeg',
+  command: 'getUser' }
+{ user_id: 1, premium: false, iat: 1560693934 }
+1
+Sun Jun 16 2019 14:06:39 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: '', command: 'getUser' }
+Sun Jun 16 2019 14:06:52 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNjk0MDA3fQ.bppNfa-HibUDog4Ea0A83z9gpC0bbh0J06HYaW8u2mO-9Ppl8pW14Q6oVqn1rASod104CBIQ2ivJmG3eq6LpjA',
+  command: 'getUser' }
+{ user_id: 1, premium: false, iat: 1560694007 }
+1
+Sun Jun 16 2019 14:10:14 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: '', command: 'getUser' }
+ [x] Received newUser:a;a;
 string
-[ 'newUser', 'b;b;' ]
-Sun Jun 16 2019 11:37:36 GMT+0000 (UTC) => /users/, [object Object]
-{ authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNjg1MDQ3fQ.dadnCS5rH5lR967QnB7W-daDeaMZ2GLC9cjUCXGVgqfeV8jD00KNoQbhW5R1XaLfThBVjIBC-7OTCWlcWre0AQ',
+[ 'newUser', 'a;a;' ]
+Sun Jun 16 2019 14:11:33 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNjk0Mjg3fQ.ItXtrdJc07gOrwdAFIFP7qAhD9R994zEysncsl1DXmJiLTi9tjNXoEx4gTJsfBs2Q45T2G9QL9-gUB-vcHI1yw',
   command: 'getUser' }
-{ premium: false, iat: 1560685047 }
-Sun Jun 16 2019 11:38:32 GMT+0000 (UTC) => /users/, [object Object]
-{ authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNjg1MDQ3fQ.dadnCS5rH5lR967QnB7W-daDeaMZ2GLC9cjUCXGVgqfeV8jD00KNoQbhW5R1XaLfThBVjIBC-7OTCWlcWre0AQ',
+{ user_id: 2, premium: false, iat: 1560694287 }
+2
+Sun Jun 16 2019 14:11:43 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNjk0Mjg3fQ.ItXtrdJc07gOrwdAFIFP7qAhD9R994zEysncsl1DXmJiLTi9tjNXoEx4gTJsfBs2Q45T2G9QL9-gUB-vcHI1yw',
+  command: 'draw',
+  balance: '1' }
+{ user_id: 2, premium: false, iat: 1560694287 }
+2
+Sun Jun 16 2019 14:12:23 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: '', command: 'getUser' }
+Sun Jun 16 2019 14:14:45 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNjk0NDcwfQ.BI02QpOv3-CnNaoHgKMYoPW1WEGhMYhmg_1tocjR_Ns4cRcu68sQWQWNCZtOxQg3AZifS4sfTLOesHq04eHkew',
   command: 'getUser' }
-{ premium: false, iat: 1560685047 }
+{ user_id: 2, premium: false, iat: 1560694470 }
+2
+Sun Jun 16 2019 14:14:58 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNjk0NDcwfQ.BI02QpOv3-CnNaoHgKMYoPW1WEGhMYhmg_1tocjR_Ns4cRcu68sQWQWNCZtOxQg3AZifS4sfTLOesHq04eHkew',
+  command: 'draw',
+  balance: '1' }
+{ user_id: 2, premium: false, iat: 1560694470 }
+2
+Sun Jun 16 2019 14:18:39 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: '', command: 'getUser' }
+Sun Jun 16 2019 14:19:20 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNjk0NzQ5fQ.DyRy_Qre_7U4hMpwsD10mFNewjkDO1aM9w26IDjbPl7qrALGopF_JgkcTesnk8XD1uS3JbprdgE8ihHXgq-PIA',
+  command: 'getUser' }
+{ user_id: 2, premium: false, iat: 1560694749 }
+2
+Sun Jun 16 2019 14:19:35 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNjk0NzQ5fQ.DyRy_Qre_7U4hMpwsD10mFNewjkDO1aM9w26IDjbPl7qrALGopF_JgkcTesnk8XD1uS3JbprdgE8ihHXgq-PIA',
+  command: 'draw',
+  balance: '1' }
+{ user_id: 2, premium: false, iat: 1560694749 }
+2
+Sun Jun 16 2019 14:20:23 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNjk0NzQ5fQ.DyRy_Qre_7U4hMpwsD10mFNewjkDO1aM9w26IDjbPl7qrALGopF_JgkcTesnk8XD1uS3JbprdgE8ihHXgq-PIA',
+  command: 'draw',
+  balance: '1' }
+{ user_id: 2, premium: false, iat: 1560694749 }
+2
+Sun Jun 16 2019 14:20:40 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNjk0NzQ5fQ.DyRy_Qre_7U4hMpwsD10mFNewjkDO1aM9w26IDjbPl7qrALGopF_JgkcTesnk8XD1uS3JbprdgE8ihHXgq-PIA',
+  command: 'getUser' }
+{ user_id: 2, premium: false, iat: 1560694749 }
+2
+Sun Jun 16 2019 14:22:14 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNjk0OTI2fQ.ftS0q6_kiPEWkZTJqsrZEt4KkkID0emz3M_5ZNO1MMD9-422Xpu28AlTj4Tqonnw-xzqp03lV3_OmxL8nVDagw',
+  command: 'getUser' }
+{ user_id: 2, premium: false, iat: 1560694926 }
+2
+Sun Jun 16 2019 14:24:32 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNjk1MDYxfQ.TNoNCN8SwL_h0PrbjBGRWC5nwQZZ-6iiuXtd-FrJvjOIM0FbUMF3fYjt8xeUCGI9yljeP52jgeer0VpDUZTT1g',
+  command: 'getUser' }
+{ user_id: 2, premium: false, iat: 1560695061 }
+2
+Sun Jun 16 2019 14:26:25 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: '', command: 'getUser' }
+Sun Jun 16 2019 14:30:07 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNjk1NDAxfQ.lBjfbSVcVatcjigyJ4spBX2dPGe8BUWu0NOUSiDnGX5Lp0mlZpCaTguMzSmCicqF56zh9mTsK_GU40RwZWoh2w',
+  command: 'getUser' }
+{ user_id: 2, premium: false, iat: 1560695401 }
+2
+Sun Jun 16 2019 14:30:17 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNjk1NDAxfQ.lBjfbSVcVatcjigyJ4spBX2dPGe8BUWu0NOUSiDnGX5Lp0mlZpCaTguMzSmCicqF56zh9mTsK_GU40RwZWoh2w',
+  command: 'draw',
+  balance: '1' }
+{ user_id: 2, premium: false, iat: 1560695401 }
+2

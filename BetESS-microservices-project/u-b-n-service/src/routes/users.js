@@ -196,6 +196,8 @@ router.post('/users', (req, res) => {
 
             console.log(decoded);
             user_id = decoded.user_id;
+
+            console.log(user_id)
         } catch (e) {
             console.log(e);
             return res.status(401).send('Invalid authentication token');
@@ -215,6 +217,44 @@ router.post('/users', (req, res) => {
                 .then(doc => {
                     return res.json(doc);
                 });
+        }
+
+        if (req.body.command === 'draw') {
+
+            if (req.body.balance) {
+
+                UserModel.findOne({user_id: user_id}, function (err, doc) {
+
+                    let withdraw_amount = req.body.balance;
+
+                    if (withdraw_amount > doc.balance) {
+                        return res.status(400).send('Not enough credits')
+                    } else {
+                        doc.balance = doc.balance - withdraw_amount;
+                    }
+
+                    doc.save();
+                    return res.json(doc);
+                })
+            } else {
+                return res.status(400).send('Missing balance in body.')
+            }
+        }
+
+        if (req.body.command === 'deposit') {
+
+            if (req.body.balance) {
+
+                UserModel.findOne({user_id: user_id}, function (err, doc) {
+
+                    doc.balance = doc.balance + req.body.amount;
+                    
+                    doc.save();
+                    return res.json(doc);
+                })
+            } else {
+                return res.status(400).send('Missing balance in body.')
+            }
         }
     }
 });

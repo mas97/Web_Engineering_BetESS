@@ -1,14 +1,26 @@
 Server has started on port 3000
 Database connection successful
-Sun Jun 16 2019 11:32:57 GMT+0000 (UTC) => /register/, [object Object]
+Sun Jun 16 2019 13:49:02 GMT+0000 (UTC) => /register/, [object Object]
 PEDIDO
 [object Object]
 { name: 'b', email: 'b', username: 'b', password: 'b' }
 message sent!
-Sun Jun 16 2019 11:33:02 GMT+0000 (UTC) => /token/, [object Object]
-Sun Jun 16 2019 11:37:11 GMT+0000 (UTC) => /register/, [object Object]
+Sun Jun 16 2019 13:49:06 GMT+0000 (UTC) => /token/, [object Object]
+Sun Jun 16 2019 13:51:37 GMT+0000 (UTC) => /token/, [object Object]
+Sun Jun 16 2019 13:52:55 GMT+0000 (UTC) => /token/, [object Object]
+Sun Jun 16 2019 13:54:56 GMT+0000 (UTC) => /token/, [object Object]
+Sun Jun 16 2019 13:59:25 GMT+0000 (UTC) => /token/, [object Object]
+Sun Jun 16 2019 14:03:37 GMT+0000 (UTC) => /token/, [object Object]
+Sun Jun 16 2019 14:05:34 GMT+0000 (UTC) => /token/, [object Object]
+Sun Jun 16 2019 14:06:47 GMT+0000 (UTC) => /token/, [object Object]
+Sun Jun 16 2019 14:11:23 GMT+0000 (UTC) => /register/, [object Object]
 PEDIDO
 [object Object]
-{ name: 'b', email: 'b', username: 'b', password: 'b' }
+{ name: 'a', email: 'a', username: 'a', password: 'a' }
 message sent!
-Sun Jun 16 2019 11:37:27 GMT+0000 (UTC) => /token/, [object Object]
+Sun Jun 16 2019 14:11:27 GMT+0000 (UTC) => /token/, [object Object]
+Sun Jun 16 2019 14:14:30 GMT+0000 (UTC) => /token/, [object Object]
+Sun Jun 16 2019 14:19:09 GMT+0000 (UTC) => /token/, [object Object]
+Sun Jun 16 2019 14:22:06 GMT+0000 (UTC) => /token/, [object Object]
+Sun Jun 16 2019 14:24:21 GMT+0000 (UTC) => /token/, [object Object]
+Sun Jun 16 2019 14:30:01 GMT+0000 (UTC) => /token/, [object Object]

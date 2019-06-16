@@ -13,12 +13,12 @@
               <h3 style="text-align: left; color: gray"> Draw </h3>
               <br/>
               <div class="group"> <!-- se desse, punhamos o max para o saldo q ele tivesse -->
-                <input type="number" required="required" min="1"/><span class="highlight"></span><span class="bar"></span>
+                <input type="number" v-model="draw_amount" required="required" min="1"/><span class="highlight"></span><span class="bar"></span>
                 <label>Insert the amount to draw:</label>
               </div>
             </div>
           <h6 style="color:gray;"><small>* The amount will be returned to your bank account.</small></h6>
-          <button type="button" class="btn btn-submit" style="float:right; margin-bottom:5px; margin-right:-10px; margin-top: 15px;">Submit</button>
+          <button type="button" v-on:click="draw()" class="btn btn-submit" style="float:right; margin-bottom:5px; margin-right:-10px; margin-top: 15px;">Submit</button>
           </div>
 
 
@@ -27,7 +27,7 @@
               <h3 style="text-align: left; color: gray"> Deposit </h3>
               <br/>
               <div class="group"> 
-                <input type="number" required="required" min="1"/><span class="highlight"></span><span class="bar"></span>
+                <input type="number" v-model="deposit_amount" required="required" min="1"/><span class="highlight"></span><span class="bar"></span>
                 <label>Insert the amount to deposit:</label>
               </div>
             </div>
@@ -70,15 +70,30 @@ export default {
   name: 'credits',
   data () {
     return {
+      draw_amount: 0,
+      deposit_amount: 0
     }
   },
   created () {
     this.$store.dispatch('login/getUser').then((response) => {
-      console.log(JSON.stringify(response))
+      // console.log(JSON.stringify(response))
     })
   },
   methods: {
-
+    draw () {
+      this.$store.dispatch('login/draw', {
+         balance: this.draw_amount
+      }).then((response) => {
+        console.log(response)
+      })
+    },
+    deposit () {
+      this.$store.dispatch('login/deposit', {
+         balance: this.deposit_amount
+      }).then((response) => {
+        console.log(response)
+      })
+    }
   },
   components: {
     NavbarToOffcanvas

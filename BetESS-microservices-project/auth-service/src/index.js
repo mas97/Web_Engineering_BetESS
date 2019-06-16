@@ -53,7 +53,7 @@ app.post('/token', (req, res) => {
                 if (!validPassword(doc, password)) {
                     return res.status(401).send('Password not valid.');
                 } else {
-                    let token = jwt.sign({ user_id: doc.user_id, premium: doc.premium, username: doc.username }, privateKEY, { algorithm: 'RS256'});
+                    let token = jwt.sign({ user_id: doc.userAuth_id, premium: doc.premium }, privateKEY, { algorithm: 'RS256'});
                     return res.json({'token': token});
                 }
             }

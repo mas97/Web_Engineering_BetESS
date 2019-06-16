@@ -1,16 +1,22 @@
 /* eslint-disable no-console */
 import loginService from '../../services/loginService'
+import creditsService from '../../services/creditsService';
 
 const state = {
   accesstoken: '',
   premium: false,
-  username: '',
-  user: ''
+  user: '',
 }
 
 const getters = {
   accesstoken: state => {
     return state.accesstoken
+  },
+  user: state => {
+      return state.user
+  },
+  premium: state => {
+      return state.premium
   }
 }
 
@@ -18,7 +24,6 @@ const mutations = {
   setToken (state, response) {
     state.accesstoken = response.token
     state.premium = response.premium
-    state.username = response.username
     console.log('teste mutations ' + response)
     console.log('teste mutations ' + response.token)
   },
@@ -61,6 +66,21 @@ const actions = {
       return new Promise((resolve, reject) => {
           loginService.getUser()
             .then(function (response) {
+                console.log(response)
+                commit('setUser', response[0])
+            })
+            .then(() => {
+                resolve(state.user)
+            }, error => {
+                reject(error)
+            })
+      })
+  },
+  draw ( {commit}, payload ) {
+      return new Promise((resolve, reject) => {
+          creditsService.draw(payload)
+            .then(function (response) {
+                console.log(response)
                 commit('setUser', response)
             })
             .then(() => {
@@ -69,7 +89,21 @@ const actions = {
                 reject(error)
             })
       })
-  }
+  },
+  deposit ( {commit}, payload ) {
+    return new Promise((resolve, reject) => {
+        creditsService.deposit(payload)
+          .then(function (response) {
+              console.log(response)
+              commit('setUser', response)
+          })
+          .then(() => {
+              resolve(state.user)
+          }, error => {
+              reject(error)
+          })
+    })
+}
 }
 
 export default {
