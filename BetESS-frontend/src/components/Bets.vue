@@ -24,32 +24,19 @@
                 <th>Paid</th>
                 <th>User</th>
               </tr>
-              <!-- <tr v-for="bet in $store.state.bets.bets" :key="bet.bet_id">
-                <td>FCPorto - SLBenfica</td>
-                <td>Soccer</td>
-                <td>Primeira Liga</td>
-                <td>10 ESScoins</td>
-                <td>Win Home</td>
-                <td class="text-warning">No</td>
-                <td>joao_oli_25</td>
-              </tr> -->
-              <tr>
-                <td>FCPorto - SLBenfica</td>
-                <td>Soccer</td>
-                <td>Primeira Liga</td>
-                <td>10 ESScoins</td>
-                <td>Win Home</td>
-                <td class="text-warning">No</td>
-                <td>joao_oli_25</td>
-              </tr>
-              <tr>
-                <td>FCPorto - SLBenfica</td>
-                <td>Soccer</td>
-                <td>Primeira Liga</td>
-                <td>10 ESScoins</td>
-                <td>Win Home</td>
-                <td class="text-warning">No</td>
-                <td>joao_oli_25</td>
+
+              
+              <tr v-if="$store.state.bets.bets.length > 0 && $store.state.events.events && $store.state.teams.teams && $store.state.sports.sports && $store.state.leagues.leagues"
+                  v-for="bet in $store.state.bets.bets" :key="bet.bet_id">
+                
+                <td>{{$store.state.events.events[bet.event_id - 1].teams.teams[event.team_home_id - 1].name}} - {{$store.state.events.events[bet.event_id - 1].teams.teams[event.team_away_id - 1].name}}</td>
+                <td>{{$store.state.events.events[bet.event_id - 1].sports.sports[event.sport_id - 1].name}}</td>  
+                <td>{{$store.state.events.events[bet.event_id - 1].leagues.leagues[event.league_id - 1].name}}</td>
+                <td>{{bet.amount}}</td>
+                <td>{{bet.result}}</td>
+                <td class="text-warning">{{bet.paid ? "Yes" : "No"}}</td>
+                <td>{{$store.state.login.user.username}}</td>
+
               </tr>
             </table>
 
@@ -66,6 +53,34 @@
 import NavbarToOffcanvasAdmin from '../components/NavBarToOffcanvasAdmin'
 export default {
   name: 'bets',
+  data () {
+
+  },
+  created () {
+    this.$store.dispatch('bets/getBets').then((response) => {
+      //console.log(JSON.stringify(this.$store.state.events))
+      console.log('hsbdchw' + JSON.stringify(response))
+    })
+    this.$store.dispatch('events/getEvents').then((response) => {
+      //console.log(JSON.stringify(this.$store.state.events))
+      c//onsole.log(JSON.stringify(response))
+    })
+    this.$store.dispatch('teams/getTeams').then((response) => {
+      //console.log(JSON.stringify(this.$store.state.teams))
+      //console.log(JSON.stringify(response))
+    })
+    this.$store.dispatch('leagues/getLeagues').then((response) => {
+      //console.log(JSON.stringify(this.$store.state.leagues))
+      //console.log(JSON.stringify(response))
+    })
+    this.$store.dispatch('sports/getSports').then((response) => {
+      //console.log(JSON.stringify(this.$store.state.sports))
+      //console.log(JSON.stringify(response))
+    })
+  },
+  methods: {
+
+  },
   components: {
     NavbarToOffcanvasAdmin
   }
