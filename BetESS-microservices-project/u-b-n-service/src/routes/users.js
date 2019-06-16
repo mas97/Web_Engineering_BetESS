@@ -256,6 +256,51 @@ router.post('/users', (req, res) => {
                 return res.status(400).send('Missing balance in body.')
             }
         }
+        if (req.body.command === 'upd_pwd') {
+
+            if (req.body.password) {
+
+                UserModel.findOne({user_id: user_id}, function (err, doc) {
+
+                    doc.password =  req.body.password;
+                    
+                    doc.save();
+                    return res.json(doc);
+                })
+            } else {
+                return res.status(400).send('Missing password in body.')
+            }
+        }
+        if (req.body.command === 'upd_phone') {
+
+            if (req.body.phoneno) {
+
+                UserModel.findOne({user_id: user_id}, function (err, doc) {
+
+                    doc.phoneno = req.body.phoneno;
+                    
+                    doc.save();
+                    return res.json(doc);
+                })
+            } else {
+                return res.status(400).send('Missing phone in body.')
+            }
+        }
+        if (req.body.command === 'upd_premium') {
+
+            if (req.body.premium) {
+
+                UserModel.findOne({user_id: user_id}, function (err, doc) {
+
+                    doc.premium = true;
+                    
+                    doc.save();
+                    return res.json(doc);
+                })
+            } else {
+                return res.status(400).send('Missing premium in body.')
+            }
+        }
     }
 });
 

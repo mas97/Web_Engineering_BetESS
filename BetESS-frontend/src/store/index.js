@@ -7,7 +7,6 @@ import sports from './modules/sports'
 import teams from './modules/teams'
 import leagues from './modules/leagues'
 import events from './modules/events'
-import profile from './modules/profile'
 
 Vue.use(Vuex)
 
@@ -19,7 +18,6 @@ export default new Vuex.Store({
     sports,
     teams,
     leagues,
-    events,
-    bets
+    events
   }
 })

@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import loginService from '../../services/loginService'
 import creditsService from '../../services/creditsService';
+import profileService from '../../services/profileService';
 
 const state = {
   accesstoken: '',
