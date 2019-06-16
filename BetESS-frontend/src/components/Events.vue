@@ -15,59 +15,59 @@
               <h3 style="text-align: left;"> Create Event: </h3>
 
                 <div class="group">
-                  <b-dropdown id="dropdown-1" size="sm" text="Select League" class="m-md-2">
-                    <b-dropdown-item>First Action</b-dropdown-item>
-                    <b-dropdown-item>Second Action</b-dropdown-item>
-                    <b-dropdown-item>Third Action</b-dropdown-item>
+                  <b-dropdown id="dropdown-1" v-model="league_selected" size="sm" text="Select League" class="m-md-2">
+                    <b-dropdown-item v-for="league in $store.state.leagues.leagues" :key="league.league_id">
+                      {{league.name}}
+                      </b-dropdown-item>
                   </b-dropdown>
 
-                  <b-dropdown id="dropdown-1" size="sm" text="Select Sport" class="m-md-2">
-                    <b-dropdown-item>First Action</b-dropdown-item>
-                    <b-dropdown-item>Second Action</b-dropdown-item>
-                    <b-dropdown-item>Third Action</b-dropdown-item>
+                  <b-dropdown id="dropdown-2"  v-model="sport_selected" size="sm" text="Select Sport" class="m-md-2">
+                    <b-dropdown-item v-for="sport in $store.state.sports.sports" :key="sport.sport_id">
+                      {{sport.name}}
+                      </b-dropdown-item>
                   </b-dropdown>
                 </div>
 
                 <div class="group">
-                  <input type="number" required="required" min="1"/><span class="highlight"></span><span class="bar"></span>
+                  <input type="number" v-model="odd_home_selected" required="required" min="1"/><span class="highlight"></span><span class="bar"></span>
                   <label>Insert Odd Home</label>
                 </div>  
           
                 <div class="group">
-                  <input type="number" required="required" min="1"/><span class="highlight"></span><span class="bar"></span>
+                  <input type="number" v-model="odd_away_selected" required="required" min="1"/><span class="highlight"></span><span class="bar"></span>
                   <label>Insert Odd Away</label>
                 </div> 
 
                 <div class="group">
-                  <input type="number" required="required" min="1"/><span class="highlight"></span><span class="bar"></span>
+                  <input type="number" v-model="odd_draw_selected" required="required" min="1"/><span class="highlight"></span><span class="bar"></span>
                   <label>Insert Odd Draw</label>
                 </div>                 
 
                 <div class="group">
-                  <b-dropdown id="dropdown-1" size="sm" text="Home Team" class="m-md-2">
-                    <b-dropdown-item>First Action</b-dropdown-item>
-                    <b-dropdown-item>Second Action</b-dropdown-item>
-                    <b-dropdown-item>Third Action</b-dropdown-item>
+                  <b-dropdown id="dropdown-3" v-model="home_team_selected" size="sm" text="Home Team" class="m-md-2">
+                    <b-dropdown-item v-for="team in $store.state.teams.teams" :key="team.team_id">
+                      {{team.name}}
+                    </b-dropdown-item>
                   </b-dropdown>
-                  <b-dropdown id="dropdown-1" size="sm" text="Away Team" class="m-md-2">
-                    <b-dropdown-item>First Action</b-dropdown-item>
-                    <b-dropdown-item>Second Action</b-dropdown-item>
-                    <b-dropdown-item>Third Action</b-dropdown-item>
+                  <b-dropdown id="dropdown-4" v-model="away_team_selected" size="sm" text="Away Team" class="m-md-2">
+                    <b-dropdown-item v-for="team in $store.state.teams.teams" :key="team.team_id">
+                      {{team.name}}
+                    </b-dropdown-item>
                   </b-dropdown>
                 </div>
 
                 <div class="group" id="listResults">
                   <div class="col-xs-2 text-center">
                     <div class="checkbox checkbox-circle checkbox-yellow" style="margin-left: 35%;">
-                      <input id="checkbox3" type="checkbox" checked>
-                      <label>Premium?</label>
+                      <input id="checkbox" type="checkbox" checked v-model="premium_selected">
+                      <label for="checkbox">Premium?</label>
                     </div>
                   </div>
                 </div>
 
 
                 <div class="btn-box">
-                  <button class="btn btn-submit" type="submit">Create Event</button>
+                  <button type="button" class="btn btn-submit" v-on:click="postEvent()">Create Event</button>
                 </div>
 
               </form>
@@ -84,16 +84,30 @@
               <div class="row">
                 <div class="col-12 col-sm-8 col-lg-5" style="min-width: 100%;">
                   <ul class="list-group">
-                    <li class="list-group-item d-flex justify-content-between align-items-center" style="color: gray">
-                      GS Warriors - TOR Raptors
-                      <small>Basketball, EUA - NBA</small>
-                      <button class="button button1" disabled>1.5</button>
-                      <button class="button button1" disabled>4.5</button>
-                      <button class="button button1" disabled>2.1</button>
-                      <p class="text-success" style="padding-top: 15px;"><small>Open</small></p>
-                      <p style="padding-top: 15px;"><small>No Result</small></p>
+                    <li v-for="event in $store.state.events.events" :key="event.event_id" class="list-group-item d-flex justify-content-between align-items-center" style="color: gray">
+                      {{team[team_home_id].name}} - {{team[team_away_id].name}}
+                      <small>{{sport[sport_id].name}}, {{sport[league_id].name}}</small>
+                      <button class="button button1" disabled>
+                        {{event.oddHome}}
+                      </button>
+                      <button class="button button1" disabled>
+                        {{event.oddAway}}
+                      </button>
+                      <button class="button button1" disabled>
+                        {{event.oddDraw}}
+                      </button>
+                      <p class="text-success" style="padding-top: 15px;">
+                        <small>{{event.status}}</small>
+                      </p>
+                      <p style="padding-top: 15px;">
+                        <small>{{event.result}}</small>
+                      </p>
                       <!-- aqui ficava fixe um if not premium disable button-->
-                      <p class="text-warning" style="padding-top: 15px;"><small>Premium</small></p>
+                      <p class="text-warning" style="padding-top: 15px;">
+                        <small>{{event.premium ? "Premium" : "Not Premium"}}</small>
+                      </p>
+
+                      <!-- v-on:click="remove(event.event_id)" -->
                       <button class="btn"><i class="fa fa-times"></i> Delete</button>
                       
                       <!-- PÔR AQUI UM IF RESULT!= NO RESULT disable close button e delete button -->
@@ -102,7 +116,7 @@
                       <button class="btn" @click="close = true"><i class="fa fa-times"></i> Close</button>
                       <span v-if="close">
                         <input style="width: 120px; height: 45px; border: 2px solid orange; border-radius: 5px;"/>
-                        <button id="buttonclose" class="btn-xs" v-on:click="close = false"><i class="fa fa-check"></i></button>
+                        <button id="buttonclose" class="btn-xs" v-on:click="close(event.event_id), close = false"><i class="fa fa-check"></i></button>
                       </span>
                     </li> 
                   </ul>
@@ -122,8 +136,73 @@ export default {
   name: 'events',
   data() {
     return {
+        /* for close button in "Events' Management" */
         close: false,
-        closen: false
+        /* for form in "Create Event:" */
+        league_selected: '',
+        sport_selected: '',
+        odd_home_selected: '',
+        odd_away_selected: '',
+        odd_draw_selected: '',
+        home_team_selected: '',
+        away_team_selected: '',
+        premium_selected: ''
+    }
+  },
+  created () {
+    this.$store.dispatch('events/getEvents').then((response) => {
+      //console.log(JSON.stringify(this.$store.state.events))
+      console.log(JSON.stringify(response))
+    })
+  },
+  methods: {
+    postEvent () {
+      if (this.league_selected === '' || 
+          this.sport_selected === '' ||
+          this.odd_home_selected === '' ||
+          this.odd_away_selected === '' ||
+          this.odd_draw_selected === '' ||
+          this.home_team_selected === '' ||
+          this.away_team_selected === '' ) {
+        alert('Please fill all the fields.')
+      } else {
+        this.$store.dispatch('events/postEvent', {
+          status: 'Open',
+          result: 'No result',
+          oddHome: this.odd_home_selected,
+          oddAway: this.odd_away_selected,
+          oddDraw: this.odd_draw_selected,
+          premium: this.premium_selected,
+          sport_id: this.sport_selected,
+          league_id: this.league_selected,
+          team_home_id: this.home_team_selected,
+          team_away_id: this.away_team_selected
+        }).then((response) => {
+          // algo a fazer no final do pedido
+        }).catch((error) => {
+          console.log(error)
+        })
+      }
+    },
+    /*
+    remove ( id ) {
+      this.$store.dispatch('events/removeEvent', {
+        event_id: id
+      }).then(response => {
+        // fazer alguma coisa depois do delete ser feito com sucesso
+      }).catch((error) => {
+        console.log(error)
+      })
+    },
+    */
+    close ( id ) {
+      this.$store.dispatch('events/closeEvent', {
+        event_id: id
+      }).then(response => {
+        // fazer alguma coisa depois do delete ser feito com sucesso
+      }).catch((error) => {
+        console.log(error)
+      })
     }
   },
   components: {
@@ -179,8 +258,6 @@ export default {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
 }
-
-
 
 .container-full { 
   background-color: black;
@@ -279,10 +356,12 @@ textarea {
   border-radius: 0;
   border-bottom: 1px solid #c6c6c6;
 }
+
 input:focus,
 textarea:focus {
   outline: none;
 }
+
 input:focus ~ label, input:valid ~ label,
 textarea:focus ~ label,
 textarea:valid ~ label {
@@ -290,6 +369,7 @@ textarea:valid ~ label {
   font-size: 12px;
   color: orange;
 }
+
 input:focus ~ .bar:before,
 textarea:focus ~ .bar:before {
   width: 320px;
@@ -338,18 +418,22 @@ label {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
+
 .btn:hover {
   color: #8b8b8b;
   box-shadow: 0 7px 14px rgba(0, 0, 0, 0.18), 0 5px 5px rgba(0, 0, 0, 0.12);
 }
+
 .btn.btn-link {
   background: #2196F3;
   color: #d3eafd;
 }
+
 .btn.btn-link:hover {
   background: #0d8aee;
   color: #deeffd;
 }
+
 .btn.btn-submit {
   background: black;
   color: orange;
@@ -357,13 +441,16 @@ label {
   border-width: 1px 1px 1px 1px;
   float: right;
 }
+
 .btn.btn-submit:hover {
   background: orange;
   color: black;
 }
+
 .btn.btn-cancel {
   background: #eee;
 }
+
 .btn.btn-cancel:hover {
   background: #e1e1e1;
   color: #8b8b8b;
