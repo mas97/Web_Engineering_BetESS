@@ -4,7 +4,8 @@ import loginService from '../../services/loginService'
 const state = {
   accesstoken: '',
   premium: false,
-  username: ''
+  username: '',
+  user: ''
 }
 
 const getters = {
@@ -23,6 +24,11 @@ const mutations = {
   },
   resetToken (state) {
       state.accesstoken = ''
+      state.premium = false
+      state.username = ''
+  },
+  setUser (state, response) {
+      state.user = response
   }
 }
 
@@ -49,6 +55,19 @@ const actions = {
           }, error => {
               reject(error)
           })
+      })
+  },
+  getUser ( {commit} ) {
+      return new Promise((resolve, reject) => {
+          loginService.getUser()
+            .then(function (response) {
+                commit('setUser', response)
+            })
+            .then(() => {
+                resolve(state.user)
+            }, error => {
+                reject(error)
+            })
       })
   }
 }

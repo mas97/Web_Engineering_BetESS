@@ -10,13 +10,13 @@ router.post('/bets', (req, res) => {
 
     let user_id = -1;
 
-    if (!req.headers.authorization) {
+    if (!req.body.authorization) {
 
         return res.status(401).send('Missing auth token');
 
     } else {
 
-        let header_token = req.headers.authorization;
+        let header_token = req.body.authorization;
 
         try {
             let decoded = jwt.verify(header_token, publicKEY, ['RS256']);
@@ -68,13 +68,13 @@ router.get('/bets', (req, res) => {
 
     //fazer a verificação se é um admin ou não autenticado e retornar todas as bets ou apenas as referentes ao user
 
-    if (!req.headers.authorization) {
+    if (!req.body.authorization) {
 
         return res.status(401).send('Missing auth token');
 
     } else {
 
-        let header_token = req.headers.authorization;
+        let header_token = req.body.authorization;
 
         try{
             let decoded = jwt.verify(header_token, publicKEY, ['RS256']);

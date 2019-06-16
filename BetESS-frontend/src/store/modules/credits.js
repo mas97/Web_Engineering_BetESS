@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
-import sportsService from '../../services/creditsService'
+import creditsService from '../../services/creditsService'
 
 const state = {
 
-  }
+}
   
 const getters = {
 

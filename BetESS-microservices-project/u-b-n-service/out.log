@@ -1,5 +1,24 @@
 Server has started on port 3000
 Database connection successful
- [x] Received newUser:b;b;undefined
+ [x] Received newUser:b;b;
 string
-[ 'newUser', 'b;b;undefined' ]
+[ 'newUser', 'b;b;' ]
+Sun Jun 16 2019 11:33:09 GMT+0000 (UTC) => /users/, [object Object]
+Sun Jun 16 2019 11:34:14 GMT+0000 (UTC) => /users/, [object Object]
+Sun Jun 16 2019 11:35:39 GMT+0000 (UTC) => /users/, [object Object]
+{ name: 'TESTE DESPORTO',
+  authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNjc3MjIwfQ.ZTLsuUsT9Zig4KojYoAd3fFqb5q9K51MwuWJ8g6tEX_DRYr-DtnpUXbHpCYroUCpNH_1noLCjk8kIT8zOBl5cg' }
+{ premium: false, iat: 1560677220 }
+Sun Jun 16 2019 11:36:31 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: '', command: 'getUser' }
+ [x] Received newUser:b;b;
+string
+[ 'newUser', 'b;b;' ]
+Sun Jun 16 2019 11:37:36 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNjg1MDQ3fQ.dadnCS5rH5lR967QnB7W-daDeaMZ2GLC9cjUCXGVgqfeV8jD00KNoQbhW5R1XaLfThBVjIBC-7OTCWlcWre0AQ',
+  command: 'getUser' }
+{ premium: false, iat: 1560685047 }
+Sun Jun 16 2019 11:38:32 GMT+0000 (UTC) => /users/, [object Object]
+{ authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNjg1MDQ3fQ.dadnCS5rH5lR967QnB7W-daDeaMZ2GLC9cjUCXGVgqfeV8jD00KNoQbhW5R1XaLfThBVjIBC-7OTCWlcWre0AQ',
+  command: 'getUser' }
+{ premium: false, iat: 1560685047 }

@@ -1,7 +1,7 @@
 let express = require('express');
 let router = express.Router();
 let UserModel = require('../models/user');
-var jwt = require('jsonwebtoken');
+let jwt = require('jsonwebtoken');
 const fs   = require('fs');
 let publicKEY  = fs.readFileSync( __dirname + '/public.key');
 let amqp = require('amqplib');
@@ -71,15 +71,17 @@ async function consume_requests(){
 
 router.post('/premium', (req, res) => {
 
+    console.log(req.body);
+
     let user_id = -1;
 
-    if (!req.headers.authorization) {
+    if (!req.body.authorization) {
 
         return res.status(401).send('Missing auth token');
 
     } else {
 
-        let header_token = req.headers.authorization;
+        let header_token = req.body.authorization;
 
         try {
             let decoded = jwt.verify(header_token, publicKEY, ['RS256']);
@@ -119,15 +121,75 @@ router.post('/premium', (req, res) => {
     }
 });
 
-router.get('/users', (req, res) => {
+// router.post('/users', (req, res) => {
+//
+//     console.log(req.body);
+//
+//     let user_id = -1;
+//
+//     if (!req.body.authorization) {
+//
+//         return res.status(401).send('Missing auth token');
+//
+//     } else {
+//
+//         let header_token = req.body.authorization;
+//
+//         try {
+//             let decoded = jwt.verify(header_token, publicKEY, ['RS256']);
+//
+//             console.log(decoded);
+//             user_id = decoded.user_id;
+//         } catch (e) {
+//             console.log(e);
+//             return res.status(401).send('Invalid authentication token');
+//         }
+//
+//         if (req.body.balance) {
+//
+//             let credits_code = req.body.balance.split(':');
+//
+//             UserModel.findOne({ user_id: user_id }, function (err, doc) {
+//                 if (credits_code[0] === '+') {
+//                     doc.balance = doc.balance + parseFloat(credits_code[1]);
+//                 } else {
+//
+//                     if (credits_code[0] === '+') {
+//
+//                         let withdraw_amount = parseFloat(credits_code[1]);
+//
+//                         if (withdraw_amount > doc.balance) {
+//                             return res.status(400).send('Not enough credits')
+//                         } else {
+//                             doc.balance = doc.balance + parseFloat(credits_code[1]);
+//                         }
+//
+//                     }
+//
+//                 }
+//
+//                 doc.save();
+//                 return res.json(doc);
+//             })
+//
+//         }
+//
+//     }
+// });
 
-    if (!req.headers.authorization) {
+router.post('/users', (req, res) => {
+
+    console.log(req.body);
+
+    let user_id = -1;
+
+    if (!req.body.authorization) {
 
         return res.status(401).send('Missing auth token');
 
     } else {
 
-        let header_token = req.headers.authorization;
+        let header_token = req.body.authorization;
 
         try {
             let decoded = jwt.verify(header_token, publicKEY, ['RS256']);
@@ -139,25 +201,20 @@ router.get('/users', (req, res) => {
             return res.status(401).send('Invalid authentication token');
         }
 
-        if (req.body.hasOwnProperty('premium')) {
+        // list all users
+        if (Object.keys(req.body).length == 1) {
+            UserModel.find({}, {_id: 0, __v: 0})
+                .then(doc => {
+                    return res.json(doc);
+                });
+        }
 
-            // list all users
-            if (Object.keys(req.body).length == 0) {
-                UserModel.find({}, {_id: 0, __v: 0})
-                    .then(doc => {
-                        return res.json(doc);
-                    });
-            }
-
-            // list users by id
-            if (req.body.hasOwnProperty('user_id')) {
-                UserModel.find({id: req.body.id}, {_id: 0, __v: 0})
-                    .then(doc => {
-                        return res.json(doc);
-                    });
-            }
-        } else {
-            return res.status(400).send('');
+        // list users by id
+        if (req.body.command === 'getUser') {
+            UserModel.find({user_id: user_id}, {_id: 0, __v: 0})
+                .then(doc => {
+                    return res.json(doc);
+                });
         }
     }
 });

@@ -31,15 +31,17 @@ function sleep(ms) {
 
 router.post('/close_event', async (req, res) => {
 
+    console.log(req.body);
+
     let user_id = -1;
 
-    if (!req.headers.authorization) {
+    if (!req.body.authorization) {
 
         return res.status(401).send('Missing auth token');
 
     } else {
 
-        let header_token = req.headers.authorization;
+        let header_token = req.body.authorization;
 
         try {
             let decoded = jwt.verify(header_token, publicKEY, ['RS256']);

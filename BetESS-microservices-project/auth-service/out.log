@@ -1,8 +1,14 @@
 Server has started on port 3000
 Database connection successful
-Sat Jun 15 2019 17:39:04 GMT+0000 (UTC) => /register/, [object Object]
+Sun Jun 16 2019 11:32:57 GMT+0000 (UTC) => /register/, [object Object]
 PEDIDO
 [object Object]
 { name: 'b', email: 'b', username: 'b', password: 'b' }
 message sent!
-Sat Jun 15 2019 17:39:05 GMT+0000 (UTC) => /token/, [object Object]
+Sun Jun 16 2019 11:33:02 GMT+0000 (UTC) => /token/, [object Object]
+Sun Jun 16 2019 11:37:11 GMT+0000 (UTC) => /register/, [object Object]
+PEDIDO
+[object Object]
+{ name: 'b', email: 'b', username: 'b', password: 'b' }
+message sent!
+Sun Jun 16 2019 11:37:27 GMT+0000 (UTC) => /token/, [object Object]

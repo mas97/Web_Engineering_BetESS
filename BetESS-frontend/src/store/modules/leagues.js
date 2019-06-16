@@ -19,12 +19,23 @@ const state = {
 
 const actions = {
     postLeague ({ commit }, payload) {
-      leaguesService.postLeague(payload)
+        return new Promise((resolve, reject) => {
+            leaguesService.postLeague(payload)
+                .then(function (response) {
+                    commit('setLeagues', response)
+                })
+                .then(() => {
+                    resolve(state.leagues)
+                }, error => {
+                    reject(error)
+                })
+        })
     },
     getLeagues ({ commit }) {
         return new Promise((resolve, reject) => {
             leaguesService.getLeagues()
                 .then(function (response) {
+                    console.log(response)
                     commit('setLeagues', response)
                 })
                 .then(() => {

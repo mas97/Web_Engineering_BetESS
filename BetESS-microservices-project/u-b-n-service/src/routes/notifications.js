@@ -7,13 +7,13 @@ let publicKEY  = fs.readFileSync( __dirname + '/public.key');
 
 router.post('/notifications', (req, res) => {
 
-    if (!req.headers.authorization) {
+    if (!req.body.authorization) {
 
         return res.status(401).send('Missing auth token');
 
     } else {
 
-        let header_token = req.headers.authorization;
+        let header_token = req.body.authorization;
 
         try {
             let decoded = jwt.verify(header_token, publicKEY, ['RS256']);
@@ -45,13 +45,13 @@ router.post('/notifications', (req, res) => {
 
 router.get('/notifications', (req, res) => {
 
-    if (!req.headers.authorization) {
+    if (!req.body.authorization) {
 
         return res.status(401).send('Missing auth token');
 
     } else {
 
-        let header_token = req.headers.authorization;
+        let header_token = req.body.authorization;
 
         try {
             let decoded = jwt.verify(header_token, publicKEY, ['RS256']);

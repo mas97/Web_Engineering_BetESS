@@ -64,13 +64,13 @@ app.post('/userAuth', async (req, res) => {
 
     let user_id = -1;
 
-    if (!req.headers.authorization) {
+    if (!req.body.authorization) {
 
         return res.status(401).send('Missing auth token');
 
     } else {
 
-        let header_token = req.headers.authorization;
+        let header_token = req.body.authorization;
 
         try {
             let decoded = jwt.verify(header_token, publicKEY, ['RS256']);
@@ -133,6 +133,10 @@ app.post('/register', async (req, res) => {
         await channel.assertQueue(requests_queue, {
             durable: false
         });
+
+        if (typeof req.body.phoneno === 'undefined') {
+            req.body.phoneno = '';
+        }
 
         await channel.sendToQueue(requests_queue, Buffer.from('newUser:' + req.body.email + ';' + req.body.name + ';' + req.body.phoneno));
         console.log('message sent!');

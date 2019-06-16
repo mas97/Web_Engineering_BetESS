@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import betess from '@/services/betess'
+import store from '@/store/modules/login'
 
 export default {
   getToken (credencials) {
@@ -15,5 +16,14 @@ export default {
       .catch((error) => {
         alert(error.message)
       })
+  },
+  getUser () {
+      return betess.post(`users/`, {
+          authorization: store.state.accesstoken,
+          command: 'getUser'
+      }).then(response => response.data)
+        .catch((error) => {
+            alert(error.message)
+        })
   }
 }

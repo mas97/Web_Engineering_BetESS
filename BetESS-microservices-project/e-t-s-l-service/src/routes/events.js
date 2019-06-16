@@ -65,13 +65,13 @@ async function consume_requests(){
 
 router.post('/events', (req, res) => {
 
-    if (!req.headers.authorization) {
+    if (!req.body.authorization) {
 
         return res.status(401).send('Missing auth token');
 
     } else {
 
-        let header_token = req.headers.authorization;
+        let header_token = req.body.authorization;
 
         try {
             let decoded = jwt.verify(header_token, publicKEY, ['RS256']);
@@ -93,7 +93,11 @@ router.post('/events', (req, res) => {
                     return res.status(500).send(doc);
                 }
 
-                return res.status(201).send(doc);
+                EventModel.find({}, { _id: 0, __v:0})
+                    .then(doc => {
+                        return res.json(doc);
+                    });
+
             })
             .catch(err => {
                 return res.status(500).json(err);

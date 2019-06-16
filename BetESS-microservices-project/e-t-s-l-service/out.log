@@ -1,8 +1,2 @@
 Server has started on port 3000
 Database connection successful
-Sat Jun 15 2019 17:39:09 GMT+0000 (UTC) => /sports/, [object Object]
-Sat Jun 15 2019 17:39:12 GMT+0000 (UTC) => /sports/, [object Object]
-{ name: 's',
-  authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNjIwMzQ1fQ.f-aLaVjGhvmDdAhmRPz0HdNT1CHqlYr3sg-dLBeZGyVsxZJgW_ggyaC4gG7qMjwUqyLZin1V6oxnT0lw_jJOQw' }
-eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNjIwMzQ1fQ.f-aLaVjGhvmDdAhmRPz0HdNT1CHqlYr3sg-dLBeZGyVsxZJgW_ggyaC4gG7qMjwUqyLZin1V6oxnT0lw_jJOQw
-{ premium: false, iat: 1560620345 }

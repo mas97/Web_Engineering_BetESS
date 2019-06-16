@@ -39,9 +39,11 @@ router.post('/sports', (req, res) => {
                     return res.status(500).send(doc);
                 }
 
-                // não retornar só o doc mas sim todos os desportos no momento
+                SportModel.find({}, { _id: 0, __v:0})
+                    .then(doc => {
+                        return res.json(doc);
+                    });
 
-                return res.status(201).send(doc);
             })
             .catch(err => {
                 return res.status(500).json(err);
@@ -80,9 +82,16 @@ router.delete('/sports', (req, res) => {
 
             SportModel.remove({ sport_id: req.body.sport_id }, function (err) {
                 if (!err) {
-                    return res.status(200);
+
+                    SportModel.find({}, { _id: 0, __v:0})
+                        .then(doc => {
+                            return res.json(doc);
+                        });
+
                 } else {
+
                     return res.status(400).send('Error removing sport');
+
                 }
             });
         }

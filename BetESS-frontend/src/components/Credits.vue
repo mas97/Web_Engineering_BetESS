@@ -38,7 +38,7 @@
         </div>
 
         <div class="group">
-          <label>Current Balance: {{user.balance}}</label>
+          <label>Current Balance: {{$store.state.login.user.balance}}</label>
         </div>
 
         <!-- JÁ FECHAM SOZINHOS, O BUTTON FAZ-LOS DESAPARECER -->
@@ -70,17 +70,18 @@ export default {
   name: 'credits',
   data () {
     return {
-
     }
   },
   created () {
-
+    this.$store.dispatch('login/getUser').then((response) => {
+      console.log(JSON.stringify(response))
+    })
   },
   methods: {
 
   },
   components: {
-    NavbarToOffcanvasAdmin
+    NavbarToOffcanvas
   }
 }
 
