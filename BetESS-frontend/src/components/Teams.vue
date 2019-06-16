@@ -16,7 +16,7 @@
                 <br/>
 
                 <div class="btn-box">
-                  <button type="submit" class="btn btn-submit" v-on:click="postTeam()">Submit</button>
+                  <button type="button" class="btn btn-submit" v-on:click="postTeam()">Submit</button>
                 </div>
 
               </form>

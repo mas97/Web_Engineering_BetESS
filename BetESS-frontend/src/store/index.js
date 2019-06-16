@@ -5,6 +5,7 @@ import login from './modules/login'
 import register from './modules/register'
 import sports from './modules/sports'
 import teams from './modules/teams'
+import leagues from './modules/leagues'
 
 Vue.use(Vuex)
 
@@ -14,6 +15,7 @@ export default new Vuex.Store({
     login,
     register,
     sports,
-    teams
+    teams,
+    leagues
   }
 })

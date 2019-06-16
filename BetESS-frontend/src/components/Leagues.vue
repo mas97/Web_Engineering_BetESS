@@ -9,14 +9,14 @@
               <form>
                 <hr/>
                 <div class="group">
-                  <input type="text" required="required"/><span class="highlight"></span><span class="bar"></span>
+                  <input type="text" v-model="league_name" required="required"/><span class="highlight"></span><span class="bar"></span>
                   <label>Insert New League</label>
                 </div>
 
                 <br/>
 
                 <div class="btn-box">
-                  <button class="btn btn-submit" type="submit">Submit</button>
+                  <button type="button" class="btn btn-submit" v-on:click="postLeague()">Submit</button>
                 </div>
 
               </form>
@@ -31,10 +31,10 @@
                 <div class="col-12 col-sm-8 col-lg-5" style="min-width: 70%; margin:auto;">
                   <ul class="list-group">
                     
-                    <li class="list-group-item d-flex justify-content-between align-items-center" style="color: gray; text-align: center;">
-                      <center>1</center>
-                      <center>Premier League</center>
-                      <button class="btn"><i class="fa fa-times"></i></button>
+                    <li v-for="league in $store.state.leagues.leagues" :key="league.league_id" class="list-group-item d-flex justify-content-between align-items-center" style="color: gray; text-align: center;">
+                      <center>{{league.league_id}}</center>
+                      <center>{{league.name}}</center>
+                      <button class="btn" v-on:click="remove(league.league_id)"><i class="fa fa-times"></i></button>
                     </li>
                   
                   </ul>
@@ -51,6 +51,41 @@
 import NavbarToOffcanvasAdmin from '../components/NavBarToOffcanvasAdmin'
 export default {
   name: 'leagues',
+  data () {
+    return {
+      league_name: ''
+    }
+  },
+  created () {
+    this.$store.dispatch('leagues/getLeagues').then((response) => {
+      //console.log(JSON.stringify(this.$store.state.leagues))
+      console.log(JSON.stringify(response))
+    })
+  },
+  methods: {
+    postLeague () {
+      if (this.league_name === '') {
+        alert('Please insert league name.')
+      } else {
+        this.$store.dispatch('leagues/postLeague', {
+          name: this.league_name
+        }).then((response) => {
+          // algo a fazer no final do pedido
+        }).catch((error) => {
+          console.log(error)
+        })
+      }
+    },
+    remove ( id ) {
+      this.$store.dispatch('leagues/removeLeague', {
+        league_id: id
+      }).then(response => {
+        // fazer alguma coisa depois do delete ser feito com sucesso
+      }).catch((error) => {
+        console.log(error)
+      })
+    }
+  },
   components: {
     NavbarToOffcanvasAdmin
   }
