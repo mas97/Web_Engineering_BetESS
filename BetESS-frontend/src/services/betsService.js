@@ -17,7 +17,7 @@ export default {
   },
   getBets (payload) {
       return betess.get(`bets/`, {
-        authorization: store.state.accesstoken
+        authorization: store.state.accesstoken,
         role: payload.role
       }).then(response => response.data)
   },
