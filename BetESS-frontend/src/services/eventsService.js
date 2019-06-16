@@ -42,10 +42,9 @@ export default {
   /* ALTERAR ISTO TD */
   closeEvent (payload) {
     return betess.post(`close_event/`, {
-        payload,
-        headers: {
-          Authorization: store.state.accesstoken
-        }
+        result: payload.result,
+        event_id: payload.event_id,
+        authorization: store.state.accesstoken
     }).then(response => response.data)
 }
 }

@@ -9,7 +9,7 @@
 
 
 
-        <div style="width: 25%; float:left">
+        <div v-if="$store.state.events.events && $store.state.teams.teams && $store.state.sports.sports && $store.state.leagues.leagues" style="width: 25%; float:left">
             <div class="wrapper">
               <form>
               <h3 style="text-align: left;"> Create Event: </h3>
@@ -84,9 +84,9 @@
               <div class="row">
                 <div class="col-12 col-sm-8 col-lg-5" style="min-width: 100%;">
                   <ul class="list-group">
-                    <li v-for="event in $store.state.events.events" :key="event.event_id" class="list-group-item d-flex justify-content-between align-items-center" style="color: gray">
-                      {{team[team_home_id].name}} - {{team[team_away_id].name}}
-                      <small>{{sport[sport_id].name}}, {{sport[league_id].name}}</small>
+                    <li v-if="$store.state.events.events.length > 0 && $store.state.teams.teams && $store.state.sports.sports && $store.state.leagues.leagues" v-for="event in $store.state.events.events" :key="event.event_id" class="list-group-item d-flex justify-content-between align-items-center" style="color: gray">
+                      {{$store.state.teams.teams[event.team_home_id - 1].name}} - {{$store.state.teams.teams[event.team_away_id - 1].name}}
+                      <small>{{$store.state.sports.sports[event.sport_id - 1].name}}, {{$store.state.leagues.leagues[event.league_id - 1].name}}</small>
                       <button class="button button1" disabled>
                         {{event.oddHome}}
                       </button>
@@ -113,10 +113,10 @@
                       <!-- PÔR AQUI UM IF RESULT!= NO RESULT disable close button e delete button -->
                       <!-- Ou seja, result já é tipo Win Home, pq evento já foi fechado -->
                       
-                      <button class="btn" @click="close = true"><i class="fa fa-times"></i> Close</button>
-                      <span v-if="close">
-                        <input style="width: 120px; height: 45px; border: 2px solid orange; border-radius: 5px;"/>
-                        <button id="buttonclose" class="btn-xs" v-on:click="close(event.event_id), close = false"><i class="fa fa-check"></i></button>
+                      <button class="btn" @click="closeFlag = true"><i class="fa fa-times"></i> Close</button>
+                      <span v-if="closeFlag">
+                        <input v-model="event_result" style="width: 120px; height: 45px; border: 2px solid orange; border-radius: 5px;"/>
+                        <button id="buttonclose" class="btn-xs" v-on:click="close(event.event_id), closeFlag = false"><i class="fa fa-check"></i></button>
                       </span>
                     </li> 
                   </ul>
@@ -136,8 +136,9 @@ export default {
   name: 'events',
   data() {
     return {
+        event_result: '',
         /* for close button in "Events' Management" */
-        close: false,
+        closeFlag: false,
         /* for form in "Create Event:" */
         league_selected: '',
         sport_selected: '',
@@ -152,7 +153,19 @@ export default {
   created () {
     this.$store.dispatch('events/getEvents').then((response) => {
       //console.log(JSON.stringify(this.$store.state.events))
-      console.log(JSON.stringify(response))
+      console.log('hsbdchw' + JSON.stringify(response))
+    })
+    this.$store.dispatch('teams/getTeams').then((response) => {
+      //console.log(JSON.stringify(this.$store.state.teams))
+      //console.log(JSON.stringify(response))
+    })
+    this.$store.dispatch('leagues/getLeagues').then((response) => {
+      //console.log(JSON.stringify(this.$store.state.leagues))
+      //console.log(JSON.stringify(response))
+    })
+    this.$store.dispatch('sports/getSports').then((response) => {
+      //console.log(JSON.stringify(this.$store.state.sports))
+      //console.log(JSON.stringify(response))
     })
   },
   methods: {
@@ -196,8 +209,10 @@ export default {
     },
     */
     close ( id ) {
+      console.log(this.event_result)
       this.$store.dispatch('events/closeEvent', {
-        event_id: id
+        event_id: id,
+        result: this.event_result
       }).then(response => {
         // fazer alguma coisa depois do delete ser feito com sucesso
       }).catch((error) => {

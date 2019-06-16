@@ -248,7 +248,7 @@ router.post('/users', (req, res) => {
                 UserModel.findOne({user_id: user_id}, function (err, doc) {
 
                     doc.balance = doc.balance + req.body.amount;
-                    
+
                     doc.save();
                     return res.json(doc);
                 })
