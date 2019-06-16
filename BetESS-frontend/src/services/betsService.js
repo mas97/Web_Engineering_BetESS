@@ -9,6 +9,7 @@ export default {
         amount: payload.amount,
         result: payload.result,
         event_id: payload.event_id,
+        command: 'postBet',
         authorization: store.state.accesstoken
     }).then(response => {
         console.log('antes do return ' + response)
@@ -18,9 +19,10 @@ export default {
       })
   },
   getBets (payload) {
-      return betess.get(`bets/`, {
+      return betess.post(`bets/`, {
         authorization: store.state.accesstoken,
-        role: payload.role
+        role: payload.role,
+        command: 'getBets'
       }).then(response => response.data)
   }
 }

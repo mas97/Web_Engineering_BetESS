@@ -4,9 +4,8 @@ import store from '@/store/modules/login'
 
 export default {
     upd_pwd (payload) {
-        return betess.post(`users/`, {
+        return betess.post(`userAuth/`, {
             authorization: store.state.accesstoken,
-            command: 'upd_pwd',
             password: payload.password
         }).then(response => {
             console.log(response.data)

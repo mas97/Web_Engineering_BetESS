@@ -14,8 +14,8 @@
           <header class="cssui-usercard__header">
             <img src="../assets/avatar.png" class="cssui-usercard__avatar" alt="Avatar">
             <div class="cssui-usercard__header-info">
-              <h3 class="cssui-usercard__name">{{user.name}}<span class="cssui-usercard__name-label">Oliveira</span></h3>
-              <span class="cssui-usercard__post">BetESS Member - {{user.premium ? "Premium" : "Not Premium"}}</span>
+              <h3 class="cssui-usercard__name">{{$store.state.login.user.name}}<span class="cssui-usercard__name-label"></span></h3>
+              <span class="cssui-usercard__post">BetESS Member - {{$store.state.login.user.premium ? "Premium" : "Not Premium"}}</span>
             </div>
           </header>
           <div class="cssui-usercard__content">
@@ -31,7 +31,7 @@
                       <i class="cssui-icon icon-earth"></i>
                       <div class="cssui-stats__info cssui-usercard__stats-info">
                         <span class="cssui-stats__name cssui-usercard__stats-name">Username</span>
-                        <span class="cssui-stats__value"><small>{{user.username}}5</small></span>
+                        <span class="cssui-stats__value"><small>{{$store.state.login.user.username}}</small></span>
                       </div>
                     </div>
 
@@ -40,7 +40,7 @@
                       <i class="cssui-icon icon-location"></i>
                       <div class="cssui-stats__info cssui-usercard__stats-info">
                         <span class="cssui-stats__name cssui-usercard__stats-name">Email</span>
-                        <span class="cssui-stats__value"><small>{{user.email}}t</small></span>
+                        <span class="cssui-stats__value"><small>{{$store.state.login.user.email}}</small></span>
                       </div>
 
                     </div>
@@ -48,7 +48,7 @@
                       <i class="cssui-icon icon-calendar"></i>
                       <div class="cssui-stats__info cssui-usercard__stats-info">
                         <span class="cssui-stats__name cssui-usercard__stats-name">Phone number<button style="font-size:15px" @click="pn = !pn"><i class="fa fa-pencil"></i></button></span>
-                          <span v-if="pn" class="cssui-stats__value"><small>{{user.phoneno}}</small></span>
+                          <span v-if="pn" class="cssui-stats__value"><small>{{$store.state.login.user.phoneno}}</small></span>
                           <div v-else>
                             
                             <input v-model="new_phone" style="width: 120px; height: 45px; border: 2px solid orange; border-radius: 5px;"/>
@@ -73,7 +73,7 @@
                       <i class="cssui-icon icon-man-woman"></i> 
                       <div class="cssui-stats__info cssui-usercard__stats-info">
                         <span class="cssui-stats__name cssui-usercard__stats-name">Balance</span>
-                        <span class="cssui-stats__value"><small>{{user.balance}}</small></span>
+                        <span class="cssui-stats__value"><small>{{$store.state.login.user.balance}}</small></span>
                       </div>
                     </div>
 

@@ -18,6 +18,7 @@ export default {
       })
   },
   getUser () {
+    console.log(store.state.accesstoken)
       return betess.post(`users/`, {
           authorization: store.state.accesstoken,
           command: 'getUser'

@@ -1,5 +1,4 @@
 import betess from '@/services/betess'
-import store from '@/store/modules/login'
 
 export default {
 //   fetchCaregivers () {

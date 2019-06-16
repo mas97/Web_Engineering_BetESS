@@ -65,10 +65,10 @@ export default {
   name: 'Signinup',
   data () {
     return {
-      email: '',
-			password: '',
-			name: '',
-			username: ''
+    	email: '',
+		password: '',
+		name: '',
+		username: ''
     }
   },
   methods: {
@@ -77,9 +77,15 @@ export default {
         email: this.email,
         password: this.password
       }).then((response) => {
-				//console.log('teste ' + response)
-				console.log('token ' + response)
-        //this.$router.push('/')
+		//console.log('teste ' + response)
+		console.log('token ' + response)
+		if (this.email === 'admin@betess.pt') {
+			this.$router.push('admin')
+		} else {
+			console.log('teste login')
+			this.$router.push('user')
+		}
+        this.$router.push('/')
       }).catch((error) => {
         console.log(error)
       })

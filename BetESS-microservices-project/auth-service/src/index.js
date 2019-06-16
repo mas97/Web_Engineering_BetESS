@@ -26,6 +26,44 @@ function validPassword(user, password) {
     return user.password === password;
 }
 
+async function consume_requests(){
+    try {
+        let requests_queue = 'requests_u_b_n_service';
+        // connect to Rabbit MQ and create a channel
+        const connection = await amqp.connect('amqp://admin:StrongPassword@192.168.33.13:5672');
+
+        const channel = await connection.createChannel();
+
+        await channel.assertQueue(requests_queue, {
+            durable: false
+        });
+
+        await channel.consume(requests_queue, (msg) => {
+            console.log(" [x] Received %s", msg.content.toString());
+            let message = msg.content.toString();
+            console.log(typeof message);
+            let splitted_message = message.split(':');
+            console.log(splitted_message);
+
+            if (splitted_message[0] === 'upgradePremium') {
+
+                let user_id = parseFloat(splitted_message[1]);
+
+                authModel.findOne({user_id: user_id}, function (err, doc) {
+                    doc.premium = true;
+                    doc.save();
+                });
+            }
+
+        }, {
+            noAck: true
+        });
+
+    } catch (e) {
+        console.log(e);
+    }
+}
+
 app.post('/token', (req, res) => {
 
     if (!req.body) {
@@ -86,14 +124,18 @@ app.post('/userAuth', async (req, res) => {
             return res.status(400).send('Request body is missing');
         }
 
-        if (req.body.hasOwnProperty('password')) {
+        if (req.body.command === 'upd_pwd') {
 
-            // req.body.password = await bcrypt.hash(req.body.password, 10);
+            if (req.body.hasOwnProperty('password')) {
 
-            authModel.findOne({user_id: user_id}, function (err, doc) {
-                doc.password = req.body.password;
-                doc.save();
-            });
+                // req.body.password = await bcrypt.hash(req.body.password, 10);
+
+                authModel.findOne({user_id: user_id}, function (err, doc) {
+                    doc.password = req.body.password;
+                    doc.save();
+                });
+
+            }
 
         }
     }
@@ -102,6 +144,8 @@ app.post('/userAuth', async (req, res) => {
 
 app.post('/register', async (req, res) => {
 
+    console.log(req.body);
+
     console.log( 'PEDIDO\n' + req);
 
     if (!req.body) {
@@ -109,8 +153,11 @@ app.post('/register', async (req, res) => {
     }
 
     // req.body.password = await bcrypt.hash(req.body.password, 10);
-    let model = new authModel(req.body);
-    console.log(req.body);
+    let model = new authModel({
+        password: req.body.password,
+        email: req.body.email
+    });
+
     model.save()
         .then(doc => {
             if (!doc || doc.length === 0) {
@@ -161,6 +208,8 @@ app.use((err, req, res, next) => {
 
 const PORT = 3000;
 app.listen(PORT, () => console.info(`Server has started on port ${PORT}`));
+
+consume_requests();
 
 
 

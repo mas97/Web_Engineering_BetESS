@@ -54,10 +54,14 @@ import NavbarToOffcanvasAdmin from '../components/NavBarToOffcanvasAdmin'
 export default {
   name: 'bets',
   data () {
+    return {
+
+    }
 
   },
   created () {
     this.$store.dispatch('bets/getBets').then((response) => {
+      role: 'admin'
       //console.log(JSON.stringify(this.$store.state.events))
       console.log('hsbdchw' + JSON.stringify(response))
     })

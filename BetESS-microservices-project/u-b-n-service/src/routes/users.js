@@ -70,7 +70,7 @@ async function consume_requests(){
 //         })
 // });
 
-router.post('/premium', (req, res) => {
+router.post('/premium', async (req, res) => {
 
     console.log(req.body);
 
@@ -95,7 +95,7 @@ router.post('/premium', (req, res) => {
         }
 
             UserModel.findOne({user_id: user_id})
-                .then(doc => {
+                .then(async doc => {
                     console.log(doc);
 
                     if (doc.premium) {
@@ -104,11 +104,34 @@ router.post('/premium', (req, res) => {
 
                         if (user_balance >= 50) {
 
-                            UserModel.findOne({user_id: user_id}, function (err, doc) {
+                            UserModel.findOne({user_id: user_id}, async function (err, doc) {
                                 doc.premium = true;
                                 doc.balance = user_balance - 50;
                                 doc.save();
                             });
+
+                            try {
+                                let requests_queue = 'requests_u_b_n_service';
+
+                                // connect to Rabbit MQ and create a channel
+                                const connection = await amqp.connect('amqp://admin:StrongPassword@192.168.33.13:5672');
+
+                                const channel = await connection.createChannel();
+
+                                await channel.assertQueue(requests_queue, {
+                                    durable: false
+                                });
+
+                                if (typeof req.body.phoneno === 'undefined') {
+                                    req.body.phoneno = '';
+                                }
+
+                                await channel.sendToQueue(requests_queue, Buffer.from('upgradePremium:' + user_id));
+                                console.log('message sent!');
+
+                            } catch (e) {
+                                console.log(e);
+                            }
 
                             return res.status(200);
 

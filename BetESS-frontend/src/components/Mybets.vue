@@ -10,18 +10,18 @@
     <!-- Aqui mostra as bets de eventos que ainda n acabaram. -->
     <!-- Bets de eventos terminados vão para as notificações. -->
 
-      <div class="row">
-        <div class="col-sm-4 mb-3 mb-md-0">
+      <div v-for="bet in $store.state.bets.bets" :key="bet.bet_id" class="row">
+        <div class="col-sm-4">
           <div class="card border-warning">
             <div class="card-body">
-              <h5 class="card-title">FCPorto - SLBenfica</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Soccer, Primeira Liga</h6>
-              <p class="card-text mb-2 text-muted"><small>Possible Gains: 20 ESScoins</small></p>
-              <a href="#!" class="btn btn-outline-warning my-2 my-sm-0">Cashout</a>
+              <h5 class="card-title">{{$store.state.teams.teams[$store.state.events.events[bet.event_id - 1].team_home_id - 1].name}} - {{$store.state.teams.teams[$store.state.events.events[bet.event_id - 1].team_away_id - 1].name}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{$store.state.sports.sports[$store.state.events.events[bet.event_id - 1].sport_id - 1].name}}, {{$store.state.leagues.leagues[$store.state.events.events[bet.event_id - 1].league_id - 1].name}}</h6>
+              <a href="#!" v-on:click="cashout()" class="btn btn-outline-warning my-2 my-sm-0">Cashout</a>
             </div>
           </div>
         </div>
-
+      </div>
+<!-- 
         <div class="col-sm-4">
           <div class="card border-warning">
             <div class="card-body">
@@ -43,10 +43,7 @@
             </div>
           </div>
         </div>      
-      
-      </div>
 
-      <div class="row">
         <div class="col-sm-4">
           <div class="card border-warning">
             <div class="card-body">
@@ -58,7 +55,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
     </div>
   </div>
@@ -78,6 +75,23 @@ export default {
     this.$store.dispatch('bets/getBets', {
       role: 'user'
     }).then((response) => {
+      //console.log(JSON.stringify(this.$store.state.sports))
+      //console.log(JSON.stringify(response))
+    })
+    this.$store.dispatch('events/getEvents').then((response) => {
+      //console.log(JSON.stringify(this.$store.state.events))
+      console.log('hsbdchw' + JSON.stringify(response))
+    })
+    this.$store.dispatch('teams/getTeams').then((response) => {
+      //console.log(JSON.stringify(this.$store.state.teams))
+      //console.log(JSON.stringify(response))
+      console.log(this.$store.state.login.premium)
+    })
+    this.$store.dispatch('leagues/getLeagues').then((response) => {
+      //console.log(JSON.stringify(this.$store.state.leagues))
+      //console.log(JSON.stringify(response))
+    })
+    this.$store.dispatch('sports/getSports').then((response) => {
       //console.log(JSON.stringify(this.$store.state.sports))
       //console.log(JSON.stringify(response))
     })

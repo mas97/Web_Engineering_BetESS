@@ -63,12 +63,12 @@ const actions = {
           })
       })
   },
-  getUser ( {commit} ) {
+  getUser ( {commit}, payload ) {
       return new Promise((resolve, reject) => {
-          loginService.getUser()
+          loginService.getUser(payload)
             .then(function (response) {
                 console.log(response)
-                commit('setUser', response[0])
+                commit('setUser', response)
             })
             .then(() => {
                 resolve(state.user)

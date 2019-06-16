@@ -1,2 +1,2 @@
-(node:11776) DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead.
-(node:11776) DeprecationWarning: Mongoose: `findOneAndUpdate()` and `findOneAndDelete()` without the `useFindAndModify` option set to false are deprecated. See: https://mongoosejs.com/docs/deprecations.html#-findandmodify-
+(node:11764) DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead.
+(node:11764) DeprecationWarning: Mongoose: `findOneAndUpdate()` and `findOneAndDelete()` without the `useFindAndModify` option set to false are deprecated. See: https://mongoosejs.com/docs/deprecations.html#-findandmodify-
