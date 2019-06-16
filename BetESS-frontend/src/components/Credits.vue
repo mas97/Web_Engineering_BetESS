@@ -18,7 +18,7 @@
               </div>
             </div>
           <h6 style="color:gray;"><small>* The amount will be returned to your bank account.</small></h6>
-          <button class="btn btn-submit" type="submit" style="float:right; margin-bottom:5px; margin-right:-10px; margin-top: 15px;">Submit</button>
+          <button type="button" class="btn btn-submit" style="float:right; margin-bottom:5px; margin-right:-10px; margin-top: 15px;">Submit</button>
           </div>
 
 
@@ -32,13 +32,13 @@
               </div>
             </div>
           <h6 style="color:gray;"><small>* The amount will be withdrawn from your bank account.</small></h6>
-          <button class="btn btn-submit" type="submit" style="float:right; margin-bottom:5px; margin-right:-10px; margin-top: 15px;">Submit</button>
+          <button type="button" class="btn btn-submit" style="float:right; margin-bottom:5px; margin-right:-10px; margin-top: 15px;">Submit</button>
           </div> 
         
         </div>
 
         <div class="group">
-          <label>Current Balance: 460 ESScoins</label>
+          <label>Current Balance: {{user.balance}}</label>
         </div>
 
         <!-- JÁ FECHAM SOZINHOS, O BUTTON FAZ-LOS DESAPARECER -->
@@ -68,10 +68,20 @@
 import NavbarToOffcanvas from '../components/NavBarToOffcanvas'
 export default {
   name: 'credits',
-  components: {
-    NavbarToOffcanvas
-  }  
+  data () {
+    return {
 
+    }
+  },
+  created () {
+
+  },
+  methods: {
+
+  },
+  components: {
+    NavbarToOffcanvasAdmin
+  }
 }
 
 

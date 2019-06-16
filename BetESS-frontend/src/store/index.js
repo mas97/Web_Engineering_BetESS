@@ -6,6 +6,7 @@ import register from './modules/register'
 import sports from './modules/sports'
 import teams from './modules/teams'
 import leagues from './modules/leagues'
+import credits from './modules/credits'
 
 Vue.use(Vuex)
 
@@ -16,6 +17,7 @@ export default new Vuex.Store({
     register,
     sports,
     teams,
-    leagues
+    leagues,
+    credits
   }
 })
