@@ -14,8 +14,8 @@
           <header class="cssui-usercard__header">
             <img src="../assets/avatar.png" class="cssui-usercard__avatar" alt="Avatar">
             <div class="cssui-usercard__header-info">
-              <h3 class="cssui-usercard__name">João <span class="cssui-usercard__name-label">Oliveira</span></h3>
-              <span class="cssui-usercard__post">BetESS Member - Not Premium</span>
+              <h3 class="cssui-usercard__name">{{user.name}}<span class="cssui-usercard__name-label">Oliveira</span></h3>
+              <span class="cssui-usercard__post">BetESS Member - {{user.premium ? "Premium" : "Not Premium"}}</span>
             </div>
           </header>
           <div class="cssui-usercard__content">
@@ -31,7 +31,7 @@
                       <i class="cssui-icon icon-earth"></i>
                       <div class="cssui-stats__info cssui-usercard__stats-info">
                         <span class="cssui-stats__name cssui-usercard__stats-name">Username</span>
-                        <span class="cssui-stats__value"><small>j_oli_25</small></span>
+                        <span class="cssui-stats__value"><small>{{user.username}}5</small></span>
                       </div>
                     </div>
 
@@ -40,7 +40,7 @@
                       <i class="cssui-icon icon-location"></i>
                       <div class="cssui-stats__info cssui-usercard__stats-info">
                         <span class="cssui-stats__name cssui-usercard__stats-name">Email</span>
-                        <span class="cssui-stats__value"><small>j_oli@uminho.pt</small></span>
+                        <span class="cssui-stats__value"><small>{{user.email}}t</small></span>
                       </div>
 
                     </div>
@@ -48,11 +48,11 @@
                       <i class="cssui-icon icon-calendar"></i>
                       <div class="cssui-stats__info cssui-usercard__stats-info">
                         <span class="cssui-stats__name cssui-usercard__stats-name">Phone number<button style="font-size:15px" @click="pn = !pn"><i class="fa fa-pencil"></i></button></span>
-                          <span v-if="pn" class="cssui-stats__value"><small>919191919</small></span>
+                          <span v-if="pn" class="cssui-stats__value"><small>{{user.phoneno}}</small></span>
                           <div v-else>
                             
-                            <input style="width: 120px; height: 45px; border: 2px solid orange; border-radius: 5px;"/>
-                            <button class="btn-xs" v-on:click="pn = true"><i class="fa fa-check"></i></button>
+                            <input v-model="new_phone" style="width: 120px; height: 45px; border: 2px solid orange; border-radius: 5px;"/>
+                            <button class="btn-xs" v-on:click="upd_phone(), pn = true"><i class="fa fa-check"></i></button>
                           </div>
                       </div>
                     </div>  
@@ -63,8 +63,8 @@
                         <span class="cssui-stats__name cssui-usercard__stats-name">Password<button style="font-size:15px" @click="pwd = !pwd"><i class="fa fa-pencil"></i></button></span>
                         <span v-if="pwd" class="cssui-stats__value"><small>**********</small></span>
                           <div v-else>
-                            <input style="width: 120px; height: 45px; border: 2px solid orange; border-radius: 5px;"/>
-                            <button class="btn-xs" v-on:click="pwd = true"><i class="fa fa-check"></i></button>
+                            <input v-model="new_pwd" style="width: 120px; height: 45px; border: 2px solid orange; border-radius: 5px;"/>
+                            <button type="button" class="btn-xs" v-on:click="upd_pwd(),pwd = true"><i class="fa fa-check"></i></button>
                           </div>
                       </div>
                     </div> 
@@ -73,7 +73,7 @@
                       <i class="cssui-icon icon-man-woman"></i> 
                       <div class="cssui-stats__info cssui-usercard__stats-info">
                         <span class="cssui-stats__name cssui-usercard__stats-name">Balance</span>
-                        <span class="cssui-stats__value"><small>350 ESScoins</small></span>
+                        <span class="cssui-stats__value"><small>{{user.balance}}</small></span>
                       </div>
                     </div>
 
@@ -83,7 +83,7 @@
                       <i class="cssui-icon icon-man-woman"></i> 
                       <div class="cssui-stats__info cssui-usercard__stats-info">
                         <span class="cssui-stats__name cssui-usercard__stats-name">Premium?</span>
-                        <button class="btn btn-warning my-2 my-sm-0" type="submit" style="margin:10px;">Upgrade</button>
+                        <button type="button" class="btn btn-warning my-2 my-sm-0" v-on:click="upd_premium()" style="margin:10px;">Upgrade</button>
                         <h6 style="color:gray;"><small> * being a premium user gives you access to unique events and opportunities, by the simple amount of 50 ESScoins</small></h6>
                       </div>
                     </div>
@@ -109,14 +109,45 @@ export default {
   name: 'profile',
   data() {
     return {
+        /* Vars apenas para controlo de botoes dinamicos */
         pn: true,
-        pwd: true
+        pwd: true,
+        /* Vars de input (novo número de telefone e nova password) */
+        new_phone: '',
+        new_pwd: ''
+    }
+  },
+  created () {
+    this.$store.dispatch('login/getUser').then((response) => {
+      // console.log(JSON.stringify(response))
+    })
+  },
+  methods: {
+    upd_pwd () {
+      this.$store.dispatch('login/upd_pwd', {
+         password: this.new_pwd
+      }).then((response) => {
+        console.log(response)
+      })
+    },
+    upd_phone () {
+      this.$store.dispatch('login/upd_phone', {
+         phoneno: this.new_phone
+      }).then((response) => {
+        console.log(response)
+      })
+    },
+    upd_premium() {
+      this.$store.dispatch('login/upd_premium', {
+
+      }).then((response) => {
+        console.log(response)
+      })
     }
   },
   components: {
     NavbarToOffcanvas
   }  
-
 }
 
 

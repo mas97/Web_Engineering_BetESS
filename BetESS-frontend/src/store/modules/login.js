@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import loginService from '../../services/loginService'
 import creditsService from '../../services/creditsService';
+import profileService from '../../services/profileService';
 
 const state = {
   accesstoken: '',
@@ -103,7 +104,53 @@ const actions = {
               reject(error)
           })
     })
-}
+   },
+
+   upd_pwd ( {commit}, payload ) {
+    return new Promise((resolve, reject) => {
+        profileService.upd_pwd(payload)
+          .then(function (response) {
+              console.log(response)
+              commit('setUser', response)
+          })
+          .then(() => {
+              resolve(state.user)
+          }, error => {
+              reject(error)
+          })
+    })
+   },
+   upd_phone ( {commit}, payload ) {
+    return new Promise((resolve, reject) => {
+        profileService.upd_phone(payload)
+          .then(function (response) {
+              console.log(response)
+              commit('setUser', response)
+          })
+          .then(() => {
+              resolve(state.user)
+          }, error => {
+              reject(error)
+          })
+    })
+   },
+   /* aqui também é necessário payload? */
+   upd_premium ( {commit}, payload ) {
+    return new Promise((resolve, reject) => {
+        profileService.upd_premium(payload)
+          .then(function (response) {
+              console.log(response)
+              commit('setUser', response)
+          })
+          .then(() => {
+              resolve(state.user)
+          }, error => {
+              reject(error)
+          })
+    })
+  },
+
+
 }
 
 export default {
