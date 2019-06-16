@@ -2,6 +2,14 @@ let mongoose = require('mongoose');
 let AutoIncrement = require('mongoose-sequence')(mongoose);
 
 let userSchema = new mongoose.Schema({
+    username: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
     email: {
         type: String,
         required: true
@@ -16,6 +24,10 @@ let userSchema = new mongoose.Schema({
     },
     balance: {
         type: Number,
+        required: true
+    },
+    premium: {
+        type: Boolean,
         required: true
     }
 });
