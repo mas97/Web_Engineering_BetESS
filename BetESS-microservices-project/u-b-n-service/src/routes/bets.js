@@ -31,6 +31,7 @@ router.post('/bets', async (req, res) => {
             let decoded = jwt.verify(header_token, publicKEY, ['RS256']);
 
             console.log(decoded);
+            user_id = decoded.user_id;
 
         } catch (e) {
             console.log(e);
@@ -122,14 +123,22 @@ router.post('/bets', async (req, res) => {
 
             if (event_status === 'open') {
 
-                let model = new BetModel(req.body);
+                let model = new BetModel({
+                    amount: req.body.amount,
+                    result: req.body.result,
+                    user_id: user_id,
+                    event_id: req.body.event_id
+                });
                 model.save()
                     .then(doc => {
                         if (!doc || doc.length === 0) {
                             return res.status(500).send(doc);
                         }
 
-                        return res.status(201).send(doc);
+                        BetModel.find({}, { _id: 0, __v:0})
+                            .then(doc => {
+                                return res.json(doc);
+                            });
                     })
                     .catch(err => {
                         return res.status(500).json(err);

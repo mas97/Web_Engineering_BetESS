@@ -12,7 +12,8 @@ let betSchema = new mongoose.Schema({
     },
    paid: {
         type: Boolean,
-        required: true
+        required: true,
+        default: false
     },
     user_id: {
         type: Number,

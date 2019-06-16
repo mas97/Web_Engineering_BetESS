@@ -20,7 +20,7 @@ export default {
   },
   removeLeague (payload) {
       return betess.delete(`leagues`, {
-          
+          league_id: payload.league_id
       }).then(response => response.data)
   }
 }

@@ -20,10 +20,7 @@ export default {
   },
   removeSport (payload) {
       return betess.delete(`sports`, {
-          payload,
-          headers: {
-            Authorization: store.state.accesstoken
-          }
+          sport_id: payload.sport_id
       }).then(response => response.data)
   }
 }

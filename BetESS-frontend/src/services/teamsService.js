@@ -20,10 +20,7 @@ export default {
   },
   removeTeam (payload) {
       return betess.delete(`teams`, {
-          payload,
-          headers: {
-            Authorization: store.state.accesstoken
-          }
+          team_id: payload.team_id
       }).then(response => response.data)
   }
 }

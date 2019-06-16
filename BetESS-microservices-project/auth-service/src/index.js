@@ -138,7 +138,7 @@ app.post('/register', async (req, res) => {
             req.body.phoneno = '';
         }
 
-        await channel.sendToQueue(requests_queue, Buffer.from('newUser:' + req.body.email + ';' + req.body.name + ';' + req.body.phoneno));
+        await channel.sendToQueue(requests_queue, Buffer.from('newUser:' + req.body.email + ';' + req.body.name + ';' + req.body.phoneno + ';' + req.body.username));
         console.log('message sent!');
 
     } catch (e) {

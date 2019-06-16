@@ -1,2 +1,5 @@
 Server has started on port 3000
 Database connection successful
+ [x] Received newUser:b;b;
+string
+[ 'newUser', 'b;b;' ]

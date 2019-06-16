@@ -1,1 +1,9 @@
-(node:11755) DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead.
+(node:11760) DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead.
+(node:11760) UnhandledPromiseRejectionWarning: ValidationError: User validation failed: password: Path `password` is required., username: Path `username` is required.
+    at new ValidationError (/home/vagrant/files/node_modules/mongoose/lib/error/validation.js:30:11)
+    at model.Document.invalidate (/home/vagrant/files/node_modules/mongoose/lib/document.js:2259:32)
+    at p.doValidate.skipSchemaValidators (/home/vagrant/files/node_modules/mongoose/lib/document.js:2108:17)
+    at /home/vagrant/files/node_modules/mongoose/lib/schematype.js:981:9
+    at process._tickCallback (internal/process/next_tick.js:176:11)
+(node:11760) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:11760) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.

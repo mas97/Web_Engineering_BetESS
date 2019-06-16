@@ -35,7 +35,8 @@ async function consume_requests(){
                         name: data[1],
                         phoneno: data[2],
                         balance: 5,
-                        premium: false
+                        premium: false,
+                        username: data[3]
                     });
                     model.save();
                 }

@@ -19,7 +19,7 @@
                 <br/>
 
                 <div class="btn-box">
-                  <button class="btn btn-submit" v-on:click="postBet()" type="submit">Submit</button>
+                  <button type="button" class="btn btn-submit" v-on:click="postBet()">Submit</button>
                 </div>
 
               </form>
@@ -36,11 +36,11 @@
                   <div class="card-body">
                     <h5 class="card-title">{{$store.state.teams.teams[event.team_home_id - 1].name}} - {{$store.state.teams.teams[event.team_away_id - 1].name}}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">{{$store.state.sports.sports[event.sport_id - 1].name}}, {{$store.state.leagues.leagues[event.league_id - 1].name}}</h6>
-                    <p class="card-text mb-2 text-muted">Possible Gains: 20 ESScoins</p>
+                    <p v-if="event.premium" class="card-text mb-2" style="color:orange;"><small>**** Premium ****</small></p> 
                    <div class="btn-group" role="group" aria-label="Basic example">
-                      <button type="button" class="btn btn-warning">{{event.oddHome}}</button>
-                      <button type="button" class="btn btn-warning">{{event.oddDraw}}</button>
-                      <button type="button" class="btn btn-warning">{{event.oddAway}}</button>
+                      <button type="button" v-on:click="result_selected = 'winHome'; event_id_selected = event.event_id" class="btn btn-warning">{{event.oddHome}}</button>
+                      <button type="button" v-on:click="result_selected = 'draw'; event_id_selected = event.event_id" class="btn btn-warning">{{event.oddDraw}}</button>
+                      <button type="button" v-on:click="result_selected = 'winAway'; event_id_selected = event.event_id;" class="btn btn-warning">{{event.oddAway}}</button>
                       
                     </div>
                   </div>
@@ -109,7 +109,8 @@ export default {
   data () {
     return {
       bet_amount: '',
-      result: '',
+      result_selected: '',
+      event_id_selected: ''
     }
   },
   created () {
@@ -120,6 +121,7 @@ export default {
     this.$store.dispatch('teams/getTeams').then((response) => {
       //console.log(JSON.stringify(this.$store.state.teams))
       //console.log(JSON.stringify(response))
+      console.log(this.$store.state.login.premium)
     })
     this.$store.dispatch('leagues/getLeagues').then((response) => {
       //console.log(JSON.stringify(this.$store.state.leagues))
@@ -132,7 +134,11 @@ export default {
   }, 
   methods: {
     postBet () {
-
+      this.$store.dispatch('bets/postBet', {
+        amount: this.bet_amount,
+        event_id: this.event_id_selected,
+        result: this.result_selected
+      })
     }
   },
   components: {
