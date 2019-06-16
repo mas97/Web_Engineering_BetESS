@@ -8,6 +8,7 @@ import teams from './modules/teams'
 import leagues from './modules/leagues'
 import events from './modules/events'
 import bets from './modules/bets'
+import notifications from './modules/notifications'
 
 Vue.use(Vuex)
 
@@ -20,6 +21,7 @@ export default new Vuex.Store({
     teams,
     leagues,
     events,
-    bets
+    bets,
+    notifications
   }
 })

@@ -15,46 +15,25 @@
         <div class="row">
           <div class="col-12 col-sm-8 col-lg-5" style="min-width: 100%;">
             <ul class="list-group">
-              <li class="list-group-item d-flex justify-content-between align-items-center" style="color: gray">
+              
+              <li 
+              v-if="$store.state.notifications.notifications[login.user.user_id] > 0"
+              v-for="notification in $store.state.notifications.notifications[login.user.user_id]" :key="notification.notification_id"  
+              class="list-group-item d-flex justify-content-between align-items-center" 
+              style="color: gray">
                   <div class="image-parent">
                     <figure>
-                      <img src="../assets/envelope-closed.png" class="img-fluid" alt="quixote">
-                      <figcaption><small>2 min</small></figcaption>
+                      <img src="../assets/envelope-closed.png" class="img-fluid" alt="env">
                     </figure>
                 </div>
-                FCPorto - SLBenfica
-                <small>Soccer, Primeira Liga</small>
+                {{$store.state.events.events[notification.event_id - 1].teams.teams[event.team_home_id - 1].name}} - {{$store.state.events.events[notification.event_id - 1].teams.teams[event.team_away_id - 1].name}}
+                <small>{{$store.state.events.events[bet.event_id - 1].sports.sports[event.sport_id - 1].name}}, {{$store.state.events.events[bet.event_id - 1].leagues.leagues[event.league_id - 1].name}}</small>
 
-                <!-- Aqui fica text-success (verde) se o saldo tiver aumentado (comparando c anterior)-->
-                <!-- Ou text-danger se tiver diminuido -->
-                <!--  Se mt dificil tirar cor, pôr só text-->
-                <p class="text-success" style="padding-top: 15px;"><small>Balance: 360</small></p>
-                <button class="btn"><i class="fa fa-check"></i> mark as seen</button>
+                <p class="text-success" style="padding-top: 15px;"><small>Balance: {{notification.balancebet}}</small></p>
+                <!-- if bet status read ? seen : mark as seen [para o texto] depois disable ao botão-->
+                <button class="btn"><i class="fa fa-check"></i> {{(notification.status == "notSeen") ? "mark as seen" : "seen"}}</button>
               </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center" style="color: gray">
-                  <div class="image-parent">
-                    <figure>
-                      <img src="../assets/envelope-closed.png" class="img-fluid" alt="quixote">
-                      <figcaption><small>5 h</small></figcaption>
-                    </figure>
-                </div>
-                GS Warriors - TOR Raptors
-                <small>Basketball, EUA - NBA</small>
-                <p class="text-success" style="padding-top: 15px;"><small>Balance: 320</small></p>
-                <button class="btn"><i class="fa fa-check"></i> mark as seen</button>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center disabled" style="color: gray">
-                  <div class="image-parent">
-                    <figure>
-                      <img src="../assets/envelope-open.png" class="img-fluid" alt="quixote">
-                      <figcaption><small>3 dias</small></figcaption>
-                    </figure>
-                </div>
-                GS Warriors - TOR Raptors
-                <small>Basketball, EUA - NBA</small>
-                <p class="text-danger" style="padding-top: 15px;"><small>Balance: 250</small></p>
-                <button class="btn"><i class="fa fa-check"></i> seen</button>
-              </li>
+            
             </ul>
           </div>
         </div>
@@ -69,6 +48,31 @@
 import NavbarToOffcanvas from '../components/NavBarToOffcanvas'
 export default {
   name: 'notifications',
+  data() {
+
+  },
+  created () {
+    this.$store.dispatch('notifications/getNotifications').then((response) => {
+      //console.log(JSON.stringify(this.$store.state.events))
+      console.log('hsbdchw' + JSON.stringify(response))
+    })
+    this.$store.dispatch('events/getEvents').then((response) => {
+      //console.log(JSON.stringify(this.$store.state.events))
+      //console.log('hsbdchw' + JSON.stringify(response))
+    })
+    this.$store.dispatch('teams/getTeams').then((response) => {
+      //console.log(JSON.stringify(this.$store.state.teams))
+      //console.log(JSON.stringify(response))
+    })
+    this.$store.dispatch('leagues/getLeagues').then((response) => {
+      //console.log(JSON.stringify(this.$store.state.leagues))
+      //console.log(JSON.stringify(response))
+    })
+    this.$store.dispatch('sports/getSports').then((response) => {
+      //console.log(JSON.stringify(this.$store.state.sports))
+      //console.log(JSON.stringify(response))
+    })
+  },
   components: {
     NavbarToOffcanvas
   }
