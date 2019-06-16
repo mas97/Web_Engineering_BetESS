@@ -69,6 +69,22 @@
 import NavbarToOffcanvas from '../components/NavBarToOffcanvas'
 export default {
   name: 'mybets',
+  data () {
+    return {
+
+    }
+  },
+  created () {
+    this.$store.dispatch('bets/getBets', {
+      role: 'user'
+    }).then((response) => {
+      //console.log(JSON.stringify(this.$store.state.sports))
+      //console.log(JSON.stringify(response))
+    })
+  },
+  methods: {
+
+  },
   components: {
     NavbarToOffcanvas
   }

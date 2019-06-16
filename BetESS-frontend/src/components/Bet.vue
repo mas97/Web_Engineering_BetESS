@@ -8,7 +8,7 @@
               <form>
                 <hr/>
                 <div class="group">
-                  <input type="number" required="required" min="1"/><span class="highlight"></span><span class="bar"></span>
+                  <input v-model="bet_amount" type="number" required="required" min="1"/><span class="highlight"></span><span class="bar"></span>
                   <label>1º Insert the amount to bet</label>
                 </div>
 
@@ -19,7 +19,7 @@
                 <br/>
 
                 <div class="btn-box">
-                  <button class="btn btn-submit" type="submit">Submit</button>
+                  <button class="btn btn-submit" v-on:click="postBet()" type="submit">Submit</button>
                 </div>
 
               </form>
@@ -31,22 +31,23 @@
             <hr id="hr"/>
 
             <div class="row">
-              <div class="col-sm-4 mb-3 mb-md-0">
+              <div v-for="event in $store.state.events.events" :key="event.event_id" class="col-sm-4">
                 <div class="card border-warning">
                   <div class="card-body">
-                    <h5 class="card-title">FCPorto - SLBenfica</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Soccer, Primeira Liga</h6>
+                    <h5 class="card-title">{{$store.state.teams.teams[event.team_home_id - 1].name}} - {{$store.state.teams.teams[event.team_away_id - 1].name}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{$store.state.sports.sports[event.sport_id - 1].name}}, {{$store.state.leagues.leagues[event.league_id - 1].name}}</h6>
                     <p class="card-text mb-2 text-muted">Possible Gains: 20 ESScoins</p>
                    <div class="btn-group" role="group" aria-label="Basic example">
-                      <button type="button" class="btn btn-warning">Odd1</button>
-                      <button type="button" class="btn btn-warning">Odd2</button>
-                      <button type="button" class="btn btn-warning">Odd3</button>
+                      <button type="button" class="btn btn-warning">{{event.oddHome}}</button>
+                      <button type="button" class="btn btn-warning">{{event.oddDraw}}</button>
+                      <button type="button" class="btn btn-warning">{{event.oddAway}}</button>
+                      
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div class="col-sm-4">
+              <!-- <div class="col-sm-4">
                 <div class="card border-warning">
                   <div class="card-body">
                     <h5 class="card-title">GS Warriors - TOR Raptors</h5>
@@ -93,7 +94,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
 
           </div>
@@ -105,6 +106,35 @@
 import NavbarToOffcanvas from '../components/NavBarToOffcanvas'
 export default {
   name: 'bet',
+  data () {
+    return {
+      bet_amount: '',
+      result: '',
+    }
+  },
+  created () {
+    this.$store.dispatch('events/getEvents').then((response) => {
+      //console.log(JSON.stringify(this.$store.state.events))
+      console.log('hsbdchw' + JSON.stringify(response))
+    })
+    this.$store.dispatch('teams/getTeams').then((response) => {
+      //console.log(JSON.stringify(this.$store.state.teams))
+      //console.log(JSON.stringify(response))
+    })
+    this.$store.dispatch('leagues/getLeagues').then((response) => {
+      //console.log(JSON.stringify(this.$store.state.leagues))
+      //console.log(JSON.stringify(response))
+    })
+    this.$store.dispatch('sports/getSports').then((response) => {
+      //console.log(JSON.stringify(this.$store.state.sports))
+      //console.log(JSON.stringify(response))
+    })
+  }, 
+  methods: {
+    postBet () {
+
+    }
+  },
   components: {
     NavbarToOffcanvas
   }

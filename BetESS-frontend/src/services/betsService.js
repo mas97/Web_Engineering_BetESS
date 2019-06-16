@@ -7,9 +7,7 @@ export default {
     console.log('teste token ' + store.state.token)
     return betess.post(`bets/`, {
         payload,
-        headers: {
-            Authorization: store.state.accesstoken
-        }
+        authorization: store.state.accesstoken
     }).then(response => {
         console.log('antes do return ' + response)
         return response.data})
@@ -17,8 +15,11 @@ export default {
         alert(error.message)
       })
   },
-  getBets () {
-      return betess.get(`bets/`).then(response => response.data)
+  getBets (payload) {
+      return betess.get(`bets/`, {
+        authorization: store.state.accesstoken
+        role: payload.role
+      }).then(response => response.data)
   },
   removeSport (payload) {
       return betess.delete(`sports`, {

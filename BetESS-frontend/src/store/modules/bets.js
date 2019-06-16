@@ -31,14 +31,14 @@ const actions = {
                 })
         })
     },
-    getBets ({ commit }) {
+    getBets ({ commit }, payload) {
         return new Promise((resolve, reject) => {
-            betsService.getSports()
+            betsService.getBets(payload)
                 .then(function (response) {
-                    commit('setSports', response)
+                    commit('setBets', response)
                 })
                 .then(() => {
-                    resolve(state.sports)
+                    resolve(state.bets)
                 }, error => {
                     reject(error)
                 })
