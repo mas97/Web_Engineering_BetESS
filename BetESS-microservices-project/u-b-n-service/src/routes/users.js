@@ -8,7 +8,8 @@ let amqp = require('amqplib');
 
 async function consume_requests(){
     try {
-        let requests_queue = 'requests_u_b_n_service';
+
+        let requests_queue = 'requests_u_b_n_service_new_user';
         // connect to Rabbit MQ and create a channel
         const connection = await amqp.connect('amqp://admin:StrongPassword@192.168.33.13:5672');
 
@@ -20,30 +21,30 @@ async function consume_requests(){
 
         let data;
 
-            await channel.consume(requests_queue, (msg) => {
-                console.log(" [x] Received %s", msg.content.toString());
-                let message = msg.content.toString();
-                console.log(typeof message);
-                let splitted_message = message.split(':');
-                console.log(splitted_message);
+        await channel.consume(requests_queue, (msg) => {
+            console.log(" [x] Received %s", msg.content.toString());
+            let message = msg.content.toString();
+            console.log(typeof message);
+            let splitted_message = message.split(':');
+            console.log(splitted_message);
 
-                if (splitted_message[0] === 'newUser') {
-                    data = splitted_message[1].split(';');
+            if (splitted_message[0] === 'newUser') {
+                data = splitted_message[1].split(';');
 
-                    let model = new UserModel({
-                        email: data[0],
-                        name: data[1],
-                        phoneno: data[2],
-                        balance: 5,
-                        premium: false,
-                        username: data[3]
-                    });
-                    model.save();
-                }
+                let model = new UserModel({
+                    email: data[0],
+                    name: data[1],
+                    phoneno: data[2],
+                    balance: 5,
+                    premium: false,
+                    username: data[3]
+                });
+                model.save();
+            }
 
-            }, {
-                noAck: true
-            });
+        }, {
+            noAck: true
+        });
 
     } catch (e) {
         console.log(e);
@@ -111,7 +112,7 @@ router.post('/premium', async (req, res) => {
                             });
 
                             try {
-                                let requests_queue = 'requests_u_b_n_service';
+                                let requests_queue = 'requests_u_b_n_service_premium';
 
                                 // connect to Rabbit MQ and create a channel
                                 const connection = await amqp.connect('amqp://admin:StrongPassword@192.168.33.13:5672');
@@ -227,20 +228,25 @@ router.post('/users', (req, res) => {
             return res.status(401).send('Invalid authentication token');
         }
 
-        // list all users
-        if (Object.keys(req.body).length == 1) {
-            UserModel.find({}, {_id: 0, __v: 0})
-                .then(doc => {
-                    return res.json(doc);
-                });
-        }
+        // // list all users
+        // if (Object.keys(req.body).length == 1) {
+        //     UserModel.find({}, {_id: 0, __v: 0})
+        //         .then(doc => {
+        //             return res.json(doc);
+        //         });
+        // }
 
         // list users by id
         if (req.body.command === 'getUser') {
-            UserModel.find({user_id: user_id}, {_id: 0, __v: 0})
+
+            console.log(user_id);
+
+            UserModel.findOne({user_id: user_id}, {_id: 0, __v: 0})
                 .then(doc => {
+                    console.log(doc);
                     return res.json(doc);
                 });
+
         }
 
         if (req.body.command === 'draw') {

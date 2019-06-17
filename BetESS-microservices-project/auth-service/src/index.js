@@ -28,7 +28,7 @@ function validPassword(user, password) {
 
 async function consume_requests(){
     try {
-        let requests_queue = 'requests_u_b_n_service';
+        let requests_queue = 'requests_u_b_n_service_premium';
         // connect to Rabbit MQ and create a channel
         const connection = await amqp.connect('amqp://admin:StrongPassword@192.168.33.13:5672');
 
@@ -158,19 +158,8 @@ app.post('/register', async (req, res) => {
         email: req.body.email
     });
 
-    model.save()
-        .then(doc => {
-            if (!doc || doc.length === 0) {
-                return res.status(500).send(doc);
-            }
-            return res.status(201).send(doc);
-        })
-        .catch(err => {
-            return res.status(500).json(err);
-            });
-
     try {
-        let requests_queue = 'requests_u_b_n_service';
+        let requests_queue = 'requests_u_b_n_service_new_user';
 
         // connect to Rabbit MQ and create a channel
         const connection = await amqp.connect('amqp://admin:StrongPassword@192.168.33.13:5672');
@@ -191,6 +180,17 @@ app.post('/register', async (req, res) => {
     } catch (e) {
         console.log(e);
     }
+
+    model.save()
+        .then(doc => {
+            if (!doc || doc.length === 0) {
+                return res.status(500).send(doc);
+            }
+            return res.status(201).send(doc);
+        })
+        .catch(err => {
+            return res.status(500).json(err);
+            });
 
 });
 

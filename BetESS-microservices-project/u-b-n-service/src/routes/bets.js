@@ -3,6 +3,7 @@ let router = express.Router();
 let BetModel = require('../models/bet');
 let UserModel = require('../models/user');
 let jwt = require('jsonwebtoken');
+let amqp = require('amqplib');
 const fs   = require('fs');
 let publicKEY  = fs.readFileSync( __dirname + '/public.key');
 let event_status;
@@ -18,6 +19,10 @@ function sleep(ms) {
 router.post('/bets', async (req, res) => {
 
     console.log(req.body);
+
+    if (!req.body) {
+        return res.status(400).send('Request body is missing');
+    }
 
     let user_id = -1;
 
@@ -40,11 +45,8 @@ router.post('/bets', async (req, res) => {
             return res.status(401).send('Missing auth token');
         }
 
-        if (!req.body) {
-            return res.status(400).send('Request body is missing');
-        }
-
         if (req.body.command === 'getBets') {
+
             if (!req.body.role) {
 
                 return res.status(401).send('Missing role field');
@@ -78,12 +80,12 @@ router.post('/bets', async (req, res) => {
 
             let bet_amount = 0;
 
-            BetModel.findOne({bet_id: req.body.bet_id})
+            await BetModel.findOne({bet_id: req.body.bet_id})
                 .then(doc => {
                     bet_amount = doc.amount;
                 });
 
-            BetModel.remove({bet_id: req.body.bet_id}, function (error) {
+            BetModel.remove({bet_id: req.body.bet_id}, async function (error) {
                 if (!error) {
 
                     BetModel.find({user_id: user_id}, { _id: 0, __v:0})
@@ -91,7 +93,7 @@ router.post('/bets', async (req, res) => {
                             return res.json(doc);
                         });
 
-                    UserModel.findOne({ user_id: user_id }, function (err, doc) {
+                    await UserModel.findOne({ user_id: user_id }, function (err, doc) {
                         doc.balance = doc.balance + (bet_amount / 2);
                         doc.save();
                     })
@@ -105,18 +107,21 @@ router.post('/bets', async (req, res) => {
 
             let user_balance = -1;
 
-            UserModel.findOne({user_id: user_id})
+            await UserModel.findOne({user_id: user_id})
                 .then(doc => {
-                    user_balance = parseFloat(doc.balance);
+                    user_balance = doc.balance;
                 });
 
             let bet_amount = -1;
 
             if (req.body.amount) {
-                bet_amount = parseFloat(req.body.amount);
+                bet_amount = req.body.amount;
             } else {
                 return res.status(400).send('Missing bet amount.');
             }
+
+            console.log('user balance: ' + user_balance);
+            console.log('bet amount: ' + bet_amount);
 
             if (user_balance > bet_amount && req.body.event_id) {
 
@@ -206,7 +211,8 @@ router.post('/bets', async (req, res) => {
                         });
 
                 }
-
+            } else {
+                return res.status(500).send('Missing event_id or no balance to bet')
             }
         }
     }

@@ -22,7 +22,9 @@ export default {
       return betess.post(`users/`, {
           authorization: store.state.accesstoken,
           command: 'getUser'
-      }).then(response => response.data)
+      }).then(response => {
+        console.log(response.data)
+        return response.data})
         .catch((error) => {
             alert(error.message)
         })
