@@ -34,11 +34,9 @@
         </li>
       </ul>
 
-      <!--   MUDAR AQUELE "2" PARA DINAMICO CONFORME NOTIFICAÇOES   -->
+
       <li class="nav-item">
-          <span class="badge badge-pill badge-warning" style="float:right;margin-bottom:-15px;">2</span>
-          
-          <a class="nav-link" href="#/notifications" style="color: gray">Notifications <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#/notifications" style="color: gray">Notifications <span class="sr-only">(current)</span></a>
       </li>
 
       <br/>
@@ -47,8 +45,8 @@
       <button :to="{ name: 'signinup' }" v-if="this.$store.state.login.accesstoken == ''" class="btn btn-outline-warning my-2 my-sm-0" type="submit" style="margin:10px;">Login</button>
     </div>
   </nav>
-
 </template>
+
 
 <script>
 export default {
@@ -63,7 +61,6 @@ export default {
       profileCurrent: false
     }
   },
-
   methods: {
     logout () {
       this.$store.dispatch('login/resetToken').then(() => {
@@ -103,9 +100,9 @@ export default {
 }
 </script>
 
+
 <style>
 li {
     list-style-type: none;
 }
-
 </style>
