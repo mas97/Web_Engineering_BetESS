@@ -34,7 +34,24 @@
                     <li v-for="league in $store.state.leagues.leagues" :key="league.league_id" class="list-group-item d-flex justify-content-between align-items-center" style="color: gray; text-align: center;">
                       <center>{{league.league_id}}</center>
                       <center>{{league.name}}</center>
-                      <button class="btn" v-on:click="remove(league.league_id)"><i class="fa fa-times"></i></button>
+                      
+                                    
+                      <div>
+                        <mdb-btn color="primary" @click.native="modal = true"><i class="fa fa-times"></i></mdb-btn>
+                        <mdb-modal removeBackdrop side position="top-right" :show="modal" @close="modal = false">
+                            <mdb-modal-header>
+                                <mdb-modal-title>Delete League</mdb-modal-title>
+                            </mdb-modal-header>
+                            <mdb-modal-body>Are you sure you want to delete this item?</mdb-modal-body>
+                            <mdb-modal-footer>
+                                <mdb-btn color="secondary" @click.native="modal = false">Close</mdb-btn>
+                                <mdb-btn color="primary" v-on:click="remove(league.league_id)">Save changes</mdb-btn>
+                            </mdb-modal-footer>
+                        </mdb-modal>
+                      </div>           
+                      
+                      
+                      <!-- <button class="btn" v-on:click="remove(league.league_id)"><i class="fa fa-times"></i></button> -->
                     </li>
                   
                   </ul>
@@ -48,11 +65,13 @@
 </template>
 
 <script>
+import { mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter, mdbBtn } from 'mdbvue';
 import NavbarToOffcanvasAdmin from '../components/NavBarToOffcanvasAdmin'
 export default {
   name: 'leagues',
   data () {
     return {
+      modal: false,
       league_name: ''
     }
   },
@@ -87,7 +106,13 @@ export default {
     }
   },
   components: {
-    NavbarToOffcanvasAdmin
+    NavbarToOffcanvasAdmin,
+    mdbModal,
+    mdbModalHeader,
+    mdbModalTitle,
+    mdbModalBody,
+    mdbModalFooter,
+    mdbBtn
   }
 }
 </script>
