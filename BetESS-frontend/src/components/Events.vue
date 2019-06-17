@@ -15,11 +15,12 @@
               <h3 style="text-align: left;"> Create Event: </h3>
 
                 <div class="group">
-                  <b-form-select v-model="league_selected" :options="leagues_info"></b-form-select>
+                  <div class="row">
+                    <b-col lg="6" class="pb-2"><b-form-select v-model="league_selected" :options="leagues_info"></b-form-select></b-col>
 
-                  <b-form-select v-model="sport_selected" :options="sports_info"></b-form-select>
+                    <b-col lg="6" class="pb-2"><b-form-select v-model="sport_selected" :options="sports_info"></b-form-select></b-col>
+                  </div>
                 </div>
-
                 <div class="group">
                   <input type="number" v-model="odd_home_selected" required="required" min="1"/><span class="highlight"></span><span class="bar"></span>
                   <label>Insert Odd Home</label>
@@ -36,8 +37,11 @@
                 </div>                 
 
                 <div class="group">
-                  <b-form-select v-model="home_team_selected" :options="teams_home_info"></b-form-select>
-                  <b-form-select v-model="away_team_selected" :options="teams_away_info"></b-form-select>
+                  <div class="row">
+                    <b-col lg="6" class="pb-2"><b-form-select v-model="home_team_selected" :options="teams_home_info"></b-form-select></b-col>
+
+                    <b-col lg="6" class="pb-2"><b-form-select v-model="away_team_selected" :options="teams_away_info"></b-form-select></b-col>
+                  </div>
                 </div>
 
                 <div class="group" id="listResults">
@@ -92,7 +96,7 @@
                       </p>
 
                       <!-- v-on:click="remove(event.event_id)" -->
-                      <button class="btn"><i class="fa fa-times"></i> Delete</button>
+                      <!-- <button class="btn"><i class="fa fa-times"></i> Delete</button> -->
                       
                       <!-- PÔR AQUI UM IF RESULT!= NO RESULT disable close button e delete button -->
                       <!-- Ou seja, result já é tipo Win Home, pq evento já foi fechado -->
@@ -154,8 +158,8 @@ export default {
       //console.log(JSON.stringify(this.$store.state.teams))
       //console.log(JSON.stringify(response))
       let i, len
-      this.teams_home_info.push({ value: null, text: 'Please select the home team' })
-      this.teams_away_info.push({ value: null, text: 'Please select the away team' })
+      this.teams_home_info.push({ value: null, text: 'Home Team' })
+      this.teams_away_info.push({ value: null, text: 'Away Team' })
       for (i = 0, len = response.length; i < len; i++) { 
         this.teams_home_info.push({value: response[i].team_id, text: response[i].name})
         this.teams_away_info.push({value: response[i].team_id, text: response[i].name})
@@ -165,7 +169,7 @@ export default {
       //console.log(JSON.stringify(this.$store.state.leagues))
       //console.log(JSON.stringify(response))
       let i, len
-      this.leagues_info.push({ value: null, text: 'Please select a league' })
+      this.leagues_info.push({ value: null, text: 'Select League' })
       for (i = 0, len = response.length; i < len; i++) { 
         this.leagues_info.push({value: response[i].league_id, text: response[i].name})
       }
@@ -174,7 +178,7 @@ export default {
       //console.log(JSON.stringify(this.$store.state.sports))
       //console.log(JSON.stringify(response))
       let i, len
-      this.sports_info.push({ value: null, text: 'Please select a sport' })
+      this.sports_info.push({ value: null, text: 'Select Sport' })
       for (i = 0, len = response.length; i < len; i++) { 
         this.sports_info.push({value: response[i].sport_id, text: response[i].name})
       }
