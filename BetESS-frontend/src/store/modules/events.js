@@ -20,7 +20,7 @@ const state = {
 const actions = {
     postEvent ({ commit }, payload) {
         return new Promise((resolve, reject) => {
-            eventsService.postSport(payload)
+            eventsService.postEvent(payload)
                 .then(function (response) {
                     commit('setEvents', response)
                 })

@@ -36,8 +36,8 @@
                 </div>                 
 
                 <div class="group">
-                  <b-form-select v-model="home_team_selected" :options="teams_info"></b-form-select>
-                  <b-form-select v-model="away_team_selected" :options="teams_info"></b-form-select>
+                  <b-form-select v-model="home_team_selected" :options="teams_home_info"></b-form-select>
+                  <b-form-select v-model="away_team_selected" :options="teams_away_info"></b-form-select>
                 </div>
 
                 <div class="group" id="listResults">
@@ -127,20 +127,21 @@ export default {
           { value: { C: '3PO' }, text: 'This is an option with object value' },
           { value: 'd', text: 'This one is disabled', disabled: true }
         ],
-        teams_info: [],
+        teams_home_info: [],
+        teams_away_info: [],
         leagues_info: [],
         sports_info: [],
         event_result: '',
         /* for close button in "Events' Management" */
         closeFlag: false,
         /* for form in "Create Event:" */
-        league_selected: '',
-        sport_selected: '',
+        league_selected: null,
+        sport_selected: null,
         odd_home_selected: '',
         odd_away_selected: '',
         odd_draw_selected: '',
-        home_team_selected: '',
-        away_team_selected: '',
+        home_team_selected: null,
+        away_team_selected: null,
         premium_selected: ''
     }
   },
@@ -153,16 +154,18 @@ export default {
       //console.log(JSON.stringify(this.$store.state.teams))
       //console.log(JSON.stringify(response))
       let i, len
-      this.teams_info.push({ value: null, text: 'Please select a team' })
+      this.teams_home_info.push({ value: null, text: 'Please select the home team' })
+      this.teams_away_info.push({ value: null, text: 'Please select the away team' })
       for (i = 0, len = response.length; i < len; i++) { 
-        this.teams_info.push({value: response[i].team_id, text: response[i].name})
+        this.teams_home_info.push({value: response[i].team_id, text: response[i].name})
+        this.teams_away_info.push({value: response[i].team_id, text: response[i].name})
       }
     })
     this.$store.dispatch('leagues/getLeagues').then((response) => {
       //console.log(JSON.stringify(this.$store.state.leagues))
       //console.log(JSON.stringify(response))
       let i, len
-      this.teams_info.push({ value: null, text: 'Please select a league' })
+      this.leagues_info.push({ value: null, text: 'Please select a league' })
       for (i = 0, len = response.length; i < len; i++) { 
         this.leagues_info.push({value: response[i].league_id, text: response[i].name})
       }
