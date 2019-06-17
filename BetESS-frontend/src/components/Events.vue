@@ -15,17 +15,9 @@
               <h3 style="text-align: left;"> Create Event: </h3>
 
                 <div class="group">
-                  <b-dropdown id="dropdown-1" v-model="league_selected" size="sm" text="Select League" class="m-md-2">
-                    <b-dropdown-item v-for="league in $store.state.leagues.leagues" :key="league.league_id">
-                      {{league.name}}
-                      </b-dropdown-item>
-                  </b-dropdown>
+                  <b-form-select v-model="league_selected" :options="leagues_info"></b-form-select>
 
-                  <b-dropdown id="dropdown-2"  v-model="sport_selected" size="sm" text="Select Sport" class="m-md-2">
-                    <b-dropdown-item v-for="sport in $store.state.sports.sports" :key="sport.sport_id">
-                      {{sport.name}}
-                      </b-dropdown-item>
-                  </b-dropdown>
+                  <b-form-select v-model="sport_selected" :options="sports_info"></b-form-select>
                 </div>
 
                 <div class="group">
@@ -44,16 +36,8 @@
                 </div>                 
 
                 <div class="group">
-                  <b-dropdown id="dropdown-3" v-model="home_team_selected" size="sm" text="Home Team" class="m-md-2">
-                    <b-dropdown-item v-for="team in $store.state.teams.teams" :key="team.team_id">
-                      {{team.name}}
-                    </b-dropdown-item>
-                  </b-dropdown>
-                  <b-dropdown id="dropdown-4" v-model="away_team_selected" size="sm" text="Away Team" class="m-md-2">
-                    <b-dropdown-item v-for="team in $store.state.teams.teams" :key="team.team_id">
-                      {{team.name}}
-                    </b-dropdown-item>
-                  </b-dropdown>
+                  <b-form-select v-model="home_team_selected" :options="teams_info"></b-form-select>
+                  <b-form-select v-model="away_team_selected" :options="teams_info"></b-form-select>
                 </div>
 
                 <div class="group" id="listResults">
@@ -136,6 +120,13 @@ export default {
   name: 'events',
   data() {
     return {
+      options: [
+          { value: null, text: 'Please select an option' },
+          { value: 'a', text: 'This is First option' },
+          { value: 'b', text: 'Selected Option' },
+          { value: { C: '3PO' }, text: 'This is an option with object value' },
+          { value: 'd', text: 'This one is disabled', disabled: true }
+        ],
         teams_info: [],
         leagues_info: [],
         sports_info: [],
@@ -161,30 +152,31 @@ export default {
     this.$store.dispatch('teams/getTeams').then((response) => {
       //console.log(JSON.stringify(this.$store.state.teams))
       //console.log(JSON.stringify(response))
-      let i, j, len
-      this.teams_info[0] = { value: null, text: 'Please select a team' }
-      for (i = 0, j = 1, len = response.length; i < len; i++) { 
-        this.teams_info[j] = {value: response[i].team_id, text: response[i].name}
+      let i, len
+      this.teams_info.push({ value: null, text: 'Please select a team' })
+      for (i = 0, len = response.length; i < len; i++) { 
+        this.teams_info.push({value: response[i].team_id, text: response[i].name})
       }
     })
     this.$store.dispatch('leagues/getLeagues').then((response) => {
       //console.log(JSON.stringify(this.$store.state.leagues))
       //console.log(JSON.stringify(response))
-      let i, j, len
-      this.teams_info[0] = { value: null, text: 'Please select a league' }
-      for (i = 0, j = 1, len = response.length; i < len; i++) { 
-        this.leagues_info[j] = {value: response[i].team_id, text: response[i].name}
+      let i, len
+      this.teams_info.push({ value: null, text: 'Please select a league' })
+      for (i = 0, len = response.length; i < len; i++) { 
+        this.leagues_info.push({value: response[i].league_id, text: response[i].name})
       }
     })
     this.$store.dispatch('sports/getSports').then((response) => {
       //console.log(JSON.stringify(this.$store.state.sports))
       //console.log(JSON.stringify(response))
-      let i, j, len
-      this.sports_info[0] = { value: null, text: 'Please select a sport' }
-      for (i = 0, j = 1, len = response.length; i < len; i++) { 
-        this.sports_info[j] = {value: response[i].team_id, text: response[i].name}
+      let i, len
+      this.sports_info.push({ value: null, text: 'Please select a sport' })
+      for (i = 0, len = response.length; i < len; i++) { 
+        this.sports_info.push({value: response[i].sport_id, text: response[i].name})
       }
       console.log(this.sports_info)
+      console.log(this.options)
     })
   },
   methods: {
