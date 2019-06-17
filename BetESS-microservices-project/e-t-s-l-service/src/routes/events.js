@@ -99,7 +99,16 @@ router.post('/events', (req, res) => {
             return res.status(400).send('Request body is missing');
         }
 
-        let model = new EventModel(req.body);
+        let model = new EventModel({
+            oddHome: req.body.oddHome,
+            oddAway: req.body.oddAway,
+            oddDraw: req.body.oddDraw,
+            premium: req.body.premium,
+            sport_id: req.body.sport_id,
+            league_id: req.body.league_id,
+            team_home_id: req.body.team_home_id,
+            team_away_id: req.body.team_away_id
+        });
         model.save()
             .then(doc => {
                 if (!doc || doc.length === 0) {

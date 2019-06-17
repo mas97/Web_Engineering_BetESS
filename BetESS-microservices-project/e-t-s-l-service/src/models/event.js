@@ -4,11 +4,13 @@ let AutoIncrement = require('mongoose-sequence')(mongoose);
 let eventSchema = new mongoose.Schema({
     status: {
         type: String,
-        required: true
+        required: true,
+        default: 'open'
     },
     result: {
         type: String,
-        required: true
+        required: true,
+        default: 'NA'
     },
     oddHome: {
         type: Number,

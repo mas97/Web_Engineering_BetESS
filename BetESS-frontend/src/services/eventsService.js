@@ -6,8 +6,6 @@ export default {
   postEvent (payload) {
     console.log('teste token ' + store.state.accesstoken)
     return betess.post(`events/`, {
-        status: payload.name,
-        result: payload.result,
         oddHome: payload.oddHome,
         oddAway: payload.oddAway,
         oddDraw: payload.oddDraw,

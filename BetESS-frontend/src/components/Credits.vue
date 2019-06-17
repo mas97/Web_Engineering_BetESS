@@ -111,8 +111,8 @@ export default {
   data () {
     return {
       modal: false,
-      draw_amount: 0,
-      deposit_amount: 0
+      draw_amount: '',
+      deposit_amount: ''
     }
   },
   created () {

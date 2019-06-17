@@ -1,147 +1,85 @@
 Server has started on port 3000
 Database connection successful
-Mon Jun 17 2019 15:33:48 GMT+0000 (UTC) => /leagues/, [object Object]
-Mon Jun 17 2019 15:33:53 GMT+0000 (UTC) => /leagues/, [object Object]
-{ user_id: 1, premium: false, iat: 1560785622 }
-Mon Jun 17 2019 15:33:56 GMT+0000 (UTC) => /sports/, [object Object]
-Mon Jun 17 2019 15:34:01 GMT+0000 (UTC) => /sports/, [object Object]
-{ command: 'postTeam',
-  name: 'Soccer',
-  authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNzg1NjIyfQ.BgZSlYSctMICuNFHHzMpNCC1xZJMYbhiupf1sDeTAV6BLj2UmzrEdX5NGXeaHbz9gZo2SibdYhWmZUejdRykhQ' }
-eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNzg1NjIyfQ.BgZSlYSctMICuNFHHzMpNCC1xZJMYbhiupf1sDeTAV6BLj2UmzrEdX5NGXeaHbz9gZo2SibdYhWmZUejdRykhQ
-{ user_id: 1, premium: false, iat: 1560785622 }
-Mon Jun 17 2019 15:36:18 GMT+0000 (UTC) => /sports/, [object Object]
-{ command: 'postTeam',
-  name: 'Soccer',
-  authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNzg1NjIyfQ.BgZSlYSctMICuNFHHzMpNCC1xZJMYbhiupf1sDeTAV6BLj2UmzrEdX5NGXeaHbz9gZo2SibdYhWmZUejdRykhQ' }
-eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNzg1NjIyfQ.BgZSlYSctMICuNFHHzMpNCC1xZJMYbhiupf1sDeTAV6BLj2UmzrEdX5NGXeaHbz9gZo2SibdYhWmZUejdRykhQ
-{ user_id: 1, premium: false, iat: 1560785622 }
-Mon Jun 17 2019 15:37:49 GMT+0000 (UTC) => /sports/, [object Object]
-Mon Jun 17 2019 15:38:40 GMT+0000 (UTC) => /sports/, [object Object]
-Mon Jun 17 2019 15:38:45 GMT+0000 (UTC) => /sports/, [object Object]
+Mon Jun 17 2019 17:06:08 GMT+0000 (UTC) => /events/, [object Object]
+Mon Jun 17 2019 17:06:08 GMT+0000 (UTC) => /teams/, [object Object]
+Mon Jun 17 2019 17:06:08 GMT+0000 (UTC) => /sports/, [object Object]
+Mon Jun 17 2019 17:06:08 GMT+0000 (UTC) => /leagues/, [object Object]
+Mon Jun 17 2019 17:06:11 GMT+0000 (UTC) => /leagues/, [object Object]
+Mon Jun 17 2019 17:06:19 GMT+0000 (UTC) => /sports/, [object Object]
+Mon Jun 17 2019 17:06:25 GMT+0000 (UTC) => /sports/, [object Object]
 { command: 'postSport',
   name: 'Soccer',
-  authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNzg1OTExfQ.M81QVAOHXgx4RPSLrNjfv8PaLCRGd6XyPLfcqBwBCzN5KJ2a-V8zUMUsr_dFr61r9OM9JmTVyZZrXBiw3eoJEQ' }
-eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNzg1OTExfQ.M81QVAOHXgx4RPSLrNjfv8PaLCRGd6XyPLfcqBwBCzN5KJ2a-V8zUMUsr_dFr61r9OM9JmTVyZZrXBiw3eoJEQ
-{ user_id: 1, premium: false, iat: 1560785911 }
+  authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNzkxMTU3fQ.btq312TV2q4Ua2EL0prLPXhVhyAjJFyKSXvf9mDmGTozbyH8_kGMZ550sItyhGnufXRLtDKMJSSHCmyed61hyg' }
+eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNzkxMTU3fQ.btq312TV2q4Ua2EL0prLPXhVhyAjJFyKSXvf9mDmGTozbyH8_kGMZ550sItyhGnufXRLtDKMJSSHCmyed61hyg
+{ user_id: 1, premium: false, iat: 1560791157 }
 ENTRA AQUI
-Mon Jun 17 2019 15:38:49 GMT+0000 (UTC) => /sports/, [object Object]
-Mon Jun 17 2019 15:39:24 GMT+0000 (UTC) => /sports/, [object Object]
-Mon Jun 17 2019 15:39:31 GMT+0000 (UTC) => /sports/, [object Object]
-Mon Jun 17 2019 15:40:13 GMT+0000 (UTC) => /sports/, [object Object]
-Mon Jun 17 2019 15:40:18 GMT+0000 (UTC) => /sports/, [object Object]
-{ sport_id: 1,
-  authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNzg2MDA3fQ.IeyIao_alcNB3XlBRvBwDnBzdqYOdGsVD8DoVnc2i0YiilJhPVtMCTBUzrseBXEPbuo9yVsDTK3v7ZG8Ar12dA',
-  command: 'removeSport' }
-eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNzg2MDA3fQ.IeyIao_alcNB3XlBRvBwDnBzdqYOdGsVD8DoVnc2i0YiilJhPVtMCTBUzrseBXEPbuo9yVsDTK3v7ZG8Ar12dA
-{ user_id: 1, premium: false, iat: 1560786007 }
-Mon Jun 17 2019 15:41:03 GMT+0000 (UTC) => /sports/, [object Object]
-{ command: 'postSport',
-  name: 'Soccer',
-  authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNzg2MDA3fQ.IeyIao_alcNB3XlBRvBwDnBzdqYOdGsVD8DoVnc2i0YiilJhPVtMCTBUzrseBXEPbuo9yVsDTK3v7ZG8Ar12dA' }
-eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNzg2MDA3fQ.IeyIao_alcNB3XlBRvBwDnBzdqYOdGsVD8DoVnc2i0YiilJhPVtMCTBUzrseBXEPbuo9yVsDTK3v7ZG8Ar12dA
-{ user_id: 1, premium: false, iat: 1560786007 }
+Mon Jun 17 2019 17:06:26 GMT+0000 (UTC) => /leagues/, [object Object]
+Mon Jun 17 2019 17:06:31 GMT+0000 (UTC) => /leagues/, [object Object]
+{ user_id: 1, premium: false, iat: 1560791157 }
+Mon Jun 17 2019 17:06:33 GMT+0000 (UTC) => /teams/, [object Object]
+Mon Jun 17 2019 17:06:38 GMT+0000 (UTC) => /teams/, [object Object]
+{ user_id: 1, premium: false, iat: 1560791157 }
 ENTRA AQUI
-Mon Jun 17 2019 15:41:19 GMT+0000 (UTC) => /sports/, [object Object]
-{ command: 'postSport',
-  name: 'Soccer',
-  authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNzg2MDA3fQ.IeyIao_alcNB3XlBRvBwDnBzdqYOdGsVD8DoVnc2i0YiilJhPVtMCTBUzrseBXEPbuo9yVsDTK3v7ZG8Ar12dA' }
-eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNzg2MDA3fQ.IeyIao_alcNB3XlBRvBwDnBzdqYOdGsVD8DoVnc2i0YiilJhPVtMCTBUzrseBXEPbuo9yVsDTK3v7ZG8Ar12dA
-{ user_id: 1, premium: false, iat: 1560786007 }
+Mon Jun 17 2019 17:06:43 GMT+0000 (UTC) => /teams/, [object Object]
+{ user_id: 1, premium: false, iat: 1560791157 }
 ENTRA AQUI
-Mon Jun 17 2019 15:41:25 GMT+0000 (UTC) => /sports/, [object Object]
-{ command: 'postSport',
-  name: 'Soccer',
-  authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNzg2MDA3fQ.IeyIao_alcNB3XlBRvBwDnBzdqYOdGsVD8DoVnc2i0YiilJhPVtMCTBUzrseBXEPbuo9yVsDTK3v7ZG8Ar12dA' }
-eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNzg2MDA3fQ.IeyIao_alcNB3XlBRvBwDnBzdqYOdGsVD8DoVnc2i0YiilJhPVtMCTBUzrseBXEPbuo9yVsDTK3v7ZG8Ar12dA
-{ user_id: 1, premium: false, iat: 1560786007 }
-ENTRA AQUI
-Mon Jun 17 2019 15:41:26 GMT+0000 (UTC) => /sports/, [object Object]
-{ command: 'postSport',
-  name: 'Soccer',
-  authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNzg2MDA3fQ.IeyIao_alcNB3XlBRvBwDnBzdqYOdGsVD8DoVnc2i0YiilJhPVtMCTBUzrseBXEPbuo9yVsDTK3v7ZG8Ar12dA' }
-eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNzg2MDA3fQ.IeyIao_alcNB3XlBRvBwDnBzdqYOdGsVD8DoVnc2i0YiilJhPVtMCTBUzrseBXEPbuo9yVsDTK3v7ZG8Ar12dA
-{ user_id: 1, premium: false, iat: 1560786007 }
-ENTRA AQUI
-Mon Jun 17 2019 15:41:34 GMT+0000 (UTC) => /sports/, [object Object]
-{ sport_id: 5,
-  authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNzg2MDA3fQ.IeyIao_alcNB3XlBRvBwDnBzdqYOdGsVD8DoVnc2i0YiilJhPVtMCTBUzrseBXEPbuo9yVsDTK3v7ZG8Ar12dA',
-  command: 'removeSport' }
-eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNzg2MDA3fQ.IeyIao_alcNB3XlBRvBwDnBzdqYOdGsVD8DoVnc2i0YiilJhPVtMCTBUzrseBXEPbuo9yVsDTK3v7ZG8Ar12dA
-{ user_id: 1, premium: false, iat: 1560786007 }
-Mon Jun 17 2019 15:41:39 GMT+0000 (UTC) => /sports/, [object Object]
-{ sport_id: 4,
-  authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNzg2MDA3fQ.IeyIao_alcNB3XlBRvBwDnBzdqYOdGsVD8DoVnc2i0YiilJhPVtMCTBUzrseBXEPbuo9yVsDTK3v7ZG8Ar12dA',
-  command: 'removeSport' }
-eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNzg2MDA3fQ.IeyIao_alcNB3XlBRvBwDnBzdqYOdGsVD8DoVnc2i0YiilJhPVtMCTBUzrseBXEPbuo9yVsDTK3v7ZG8Ar12dA
-{ user_id: 1, premium: false, iat: 1560786007 }
-Mon Jun 17 2019 15:41:40 GMT+0000 (UTC) => /sports/, [object Object]
-{ sport_id: 3,
-  authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNzg2MDA3fQ.IeyIao_alcNB3XlBRvBwDnBzdqYOdGsVD8DoVnc2i0YiilJhPVtMCTBUzrseBXEPbuo9yVsDTK3v7ZG8Ar12dA',
-  command: 'removeSport' }
-eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNzg2MDA3fQ.IeyIao_alcNB3XlBRvBwDnBzdqYOdGsVD8DoVnc2i0YiilJhPVtMCTBUzrseBXEPbuo9yVsDTK3v7ZG8Ar12dA
-{ user_id: 1, premium: false, iat: 1560786007 }
-Mon Jun 17 2019 15:41:43 GMT+0000 (UTC) => /sports/, [object Object]
-{ sport_id: 2,
-  authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNzg2MDA3fQ.IeyIao_alcNB3XlBRvBwDnBzdqYOdGsVD8DoVnc2i0YiilJhPVtMCTBUzrseBXEPbuo9yVsDTK3v7ZG8Ar12dA',
-  command: 'removeSport' }
-eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNzg2MDA3fQ.IeyIao_alcNB3XlBRvBwDnBzdqYOdGsVD8DoVnc2i0YiilJhPVtMCTBUzrseBXEPbuo9yVsDTK3v7ZG8Ar12dA
-{ user_id: 1, premium: false, iat: 1560786007 }
-Mon Jun 17 2019 15:41:51 GMT+0000 (UTC) => /sports/, [object Object]
-{ command: 'postSport',
-  name: 'Soccer',
-  authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNzg2MDA3fQ.IeyIao_alcNB3XlBRvBwDnBzdqYOdGsVD8DoVnc2i0YiilJhPVtMCTBUzrseBXEPbuo9yVsDTK3v7ZG8Ar12dA' }
-eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNzg2MDA3fQ.IeyIao_alcNB3XlBRvBwDnBzdqYOdGsVD8DoVnc2i0YiilJhPVtMCTBUzrseBXEPbuo9yVsDTK3v7ZG8Ar12dA
-{ user_id: 1, premium: false, iat: 1560786007 }
-ENTRA AQUI
-Mon Jun 17 2019 15:42:02 GMT+0000 (UTC) => /sports/, [object Object]
-{ sport_id: 6,
-  authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNzg2MDA3fQ.IeyIao_alcNB3XlBRvBwDnBzdqYOdGsVD8DoVnc2i0YiilJhPVtMCTBUzrseBXEPbuo9yVsDTK3v7ZG8Ar12dA',
-  command: 'removeSport' }
-eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNzg2MDA3fQ.IeyIao_alcNB3XlBRvBwDnBzdqYOdGsVD8DoVnc2i0YiilJhPVtMCTBUzrseBXEPbuo9yVsDTK3v7ZG8Ar12dA
-{ user_id: 1, premium: false, iat: 1560786007 }
-Mon Jun 17 2019 15:42:21 GMT+0000 (UTC) => /teams/, [object Object]
-Mon Jun 17 2019 15:42:27 GMT+0000 (UTC) => /teams/, [object Object]
-{ user_id: 1, premium: false, iat: 1560786007 }
-ENTRA AQUI
-Mon Jun 17 2019 15:42:34 GMT+0000 (UTC) => /teams/, [object Object]
-{ user_id: 1, premium: false, iat: 1560786007 }
-ENTRA AQUI
-Mon Jun 17 2019 15:42:38 GMT+0000 (UTC) => /teams/, [object Object]
-{ user_id: 1, premium: false, iat: 1560786007 }
-Mon Jun 17 2019 15:42:56 GMT+0000 (UTC) => /teams/, [object Object]
-{ user_id: 1, premium: false, iat: 1560786007 }
-ENTRA AQUI
-Mon Jun 17 2019 15:43:10 GMT+0000 (UTC) => /leagues/, [object Object]
-Mon Jun 17 2019 15:43:15 GMT+0000 (UTC) => /leagues/, [object Object]
-{ user_id: 1, premium: false, iat: 1560786007 }
-Mon Jun 17 2019 15:43:18 GMT+0000 (UTC) => /leagues/, [object Object]
-{ user_id: 1, premium: false, iat: 1560786007 }
-Mon Jun 17 2019 15:44:39 GMT+0000 (UTC) => /leagues/, [object Object]
-Mon Jun 17 2019 15:45:50 GMT+0000 (UTC) => /sports/, [object Object]
-Mon Jun 17 2019 15:45:57 GMT+0000 (UTC) => /sports/, [object Object]
-{ command: 'postSport', name: 'Soccer', authorization: '' }
-Mon Jun 17 2019 15:46:14 GMT+0000 (UTC) => /leagues/, [object Object]
-Mon Jun 17 2019 15:46:23 GMT+0000 (UTC) => /leagues/, [object Object]
-Mon Jun 17 2019 15:46:59 GMT+0000 (UTC) => /sports/, [object Object]
-Mon Jun 17 2019 15:47:02 GMT+0000 (UTC) => /sports/, [object Object]
-{ command: 'postSport',
-  name: 'Soccer',
-  authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNzg2NDA5fQ.KyU7_2JQUTpGfmc6hOWXz7aD_BoXi00Yx627orjr_HexYLMkosnbh9nqQelhl99yuVggftPv74e3wNUg2MN4OA' }
-eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNzg2NDA5fQ.KyU7_2JQUTpGfmc6hOWXz7aD_BoXi00Yx627orjr_HexYLMkosnbh9nqQelhl99yuVggftPv74e3wNUg2MN4OA
-{ user_id: 1, premium: false, iat: 1560786409 }
-ENTRA AQUI
-Mon Jun 17 2019 15:47:12 GMT+0000 (UTC) => /leagues/, [object Object]
-Mon Jun 17 2019 15:47:16 GMT+0000 (UTC) => /teams/, [object Object]
-Mon Jun 17 2019 15:47:21 GMT+0000 (UTC) => /teams/, [object Object]
-{ user_id: 1, premium: false, iat: 1560786409 }
-Mon Jun 17 2019 15:47:24 GMT+0000 (UTC) => /leagues/, [object Object]
-Mon Jun 17 2019 15:47:27 GMT+0000 (UTC) => /leagues/, [object Object]
-{ user_id: 1, premium: false, iat: 1560786409 }
-Mon Jun 17 2019 15:47:29 GMT+0000 (UTC) => /sports/, [object Object]
-Mon Jun 17 2019 15:47:32 GMT+0000 (UTC) => /sports/, [object Object]
-{ sport_id: 7,
-  authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNzg2NDA5fQ.KyU7_2JQUTpGfmc6hOWXz7aD_BoXi00Yx627orjr_HexYLMkosnbh9nqQelhl99yuVggftPv74e3wNUg2MN4OA',
-  command: 'removeSport' }
-eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwNzg2NDA5fQ.KyU7_2JQUTpGfmc6hOWXz7aD_BoXi00Yx627orjr_HexYLMkosnbh9nqQelhl99yuVggftPv74e3wNUg2MN4OA
-{ user_id: 1, premium: false, iat: 1560786409 }
+Mon Jun 17 2019 17:06:49 GMT+0000 (UTC) => /events/, [object Object]
+Mon Jun 17 2019 17:06:49 GMT+0000 (UTC) => /leagues/, [object Object]
+Mon Jun 17 2019 17:06:49 GMT+0000 (UTC) => /teams/, [object Object]
+Mon Jun 17 2019 17:06:49 GMT+0000 (UTC) => /sports/, [object Object]
+Mon Jun 17 2019 17:06:55 GMT+0000 (UTC) => /events/, [object Object]
+Mon Jun 17 2019 17:06:55 GMT+0000 (UTC) => /teams/, [object Object]
+Mon Jun 17 2019 17:06:55 GMT+0000 (UTC) => /leagues/, [object Object]
+Mon Jun 17 2019 17:06:55 GMT+0000 (UTC) => /sports/, [object Object]
+Mon Jun 17 2019 17:17:17 GMT+0000 (UTC) => /events/, [object Object]
+Mon Jun 17 2019 17:17:17 GMT+0000 (UTC) => /teams/, [object Object]
+Mon Jun 17 2019 17:17:17 GMT+0000 (UTC) => /leagues/, [object Object]
+Mon Jun 17 2019 17:17:17 GMT+0000 (UTC) => /sports/, [object Object]
+Mon Jun 17 2019 17:17:32 GMT+0000 (UTC) => /events/, [object Object]
+Mon Jun 17 2019 17:17:32 GMT+0000 (UTC) => /teams/, [object Object]
+Mon Jun 17 2019 17:17:32 GMT+0000 (UTC) => /leagues/, [object Object]
+Mon Jun 17 2019 17:17:33 GMT+0000 (UTC) => /sports/, [object Object]
+Mon Jun 17 2019 17:18:29 GMT+0000 (UTC) => /events/, [object Object]
+Mon Jun 17 2019 17:18:29 GMT+0000 (UTC) => /teams/, [object Object]
+Mon Jun 17 2019 17:18:29 GMT+0000 (UTC) => /leagues/, [object Object]
+Mon Jun 17 2019 17:18:29 GMT+0000 (UTC) => /sports/, [object Object]
+Mon Jun 17 2019 17:18:40 GMT+0000 (UTC) => /events/, [object Object]
+Mon Jun 17 2019 17:18:40 GMT+0000 (UTC) => /teams/, [object Object]
+Mon Jun 17 2019 17:18:40 GMT+0000 (UTC) => /leagues/, [object Object]
+Mon Jun 17 2019 17:18:40 GMT+0000 (UTC) => /sports/, [object Object]
+Mon Jun 17 2019 17:19:03 GMT+0000 (UTC) => /events/, [object Object]
+Mon Jun 17 2019 17:19:03 GMT+0000 (UTC) => /teams/, [object Object]
+Mon Jun 17 2019 17:19:03 GMT+0000 (UTC) => /leagues/, [object Object]
+Mon Jun 17 2019 17:19:03 GMT+0000 (UTC) => /sports/, [object Object]
+Mon Jun 17 2019 17:19:16 GMT+0000 (UTC) => /events/, [object Object]
+Mon Jun 17 2019 17:19:16 GMT+0000 (UTC) => /teams/, [object Object]
+Mon Jun 17 2019 17:19:16 GMT+0000 (UTC) => /leagues/, [object Object]
+Mon Jun 17 2019 17:19:16 GMT+0000 (UTC) => /sports/, [object Object]
+Mon Jun 17 2019 17:19:51 GMT+0000 (UTC) => /events/, [object Object]
+Mon Jun 17 2019 17:19:51 GMT+0000 (UTC) => /teams/, [object Object]
+Mon Jun 17 2019 17:19:51 GMT+0000 (UTC) => /leagues/, [object Object]
+Mon Jun 17 2019 17:19:51 GMT+0000 (UTC) => /sports/, [object Object]
+Mon Jun 17 2019 17:35:31 GMT+0000 (UTC) => /teams/, [object Object]
+Mon Jun 17 2019 17:35:31 GMT+0000 (UTC) => /leagues/, [object Object]
+Mon Jun 17 2019 17:35:31 GMT+0000 (UTC) => /events/, [object Object]
+Mon Jun 17 2019 17:35:31 GMT+0000 (UTC) => /sports/, [object Object]
+Mon Jun 17 2019 17:35:54 GMT+0000 (UTC) => /events/, [object Object]
+Mon Jun 17 2019 17:35:54 GMT+0000 (UTC) => /teams/, [object Object]
+Mon Jun 17 2019 17:35:54 GMT+0000 (UTC) => /leagues/, [object Object]
+Mon Jun 17 2019 17:35:54 GMT+0000 (UTC) => /sports/, [object Object]
+Mon Jun 17 2019 17:36:07 GMT+0000 (UTC) => /events/, [object Object]
+Mon Jun 17 2019 17:36:07 GMT+0000 (UTC) => /teams/, [object Object]
+Mon Jun 17 2019 17:36:07 GMT+0000 (UTC) => /leagues/, [object Object]
+Mon Jun 17 2019 17:36:07 GMT+0000 (UTC) => /sports/, [object Object]
+Mon Jun 17 2019 17:36:58 GMT+0000 (UTC) => /events/, [object Object]
+Mon Jun 17 2019 17:36:58 GMT+0000 (UTC) => /teams/, [object Object]
+Mon Jun 17 2019 17:36:58 GMT+0000 (UTC) => /leagues/, [object Object]
+Mon Jun 17 2019 17:36:58 GMT+0000 (UTC) => /sports/, [object Object]
+Mon Jun 17 2019 17:37:15 GMT+0000 (UTC) => /events/, [object Object]
+Mon Jun 17 2019 17:37:15 GMT+0000 (UTC) => /teams/, [object Object]
+Mon Jun 17 2019 17:37:15 GMT+0000 (UTC) => /leagues/, [object Object]
+Mon Jun 17 2019 17:37:15 GMT+0000 (UTC) => /sports/, [object Object]
+Mon Jun 17 2019 17:38:59 GMT+0000 (UTC) => /events/, [object Object]
+Mon Jun 17 2019 17:38:59 GMT+0000 (UTC) => /teams/, [object Object]
+Mon Jun 17 2019 17:38:59 GMT+0000 (UTC) => /leagues/, [object Object]
+Mon Jun 17 2019 17:38:59 GMT+0000 (UTC) => /sports/, [object Object]

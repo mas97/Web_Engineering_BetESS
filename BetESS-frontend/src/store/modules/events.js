@@ -19,7 +19,17 @@ const state = {
 
 const actions = {
     postEvent ({ commit }, payload) {
-      eventsService.postSport(payload)
+        return new Promise((resolve, reject) => {
+            eventsService.postSport(payload)
+                .then(function (response) {
+                    commit('setEvents', response)
+                })
+                .then(() => {
+                    resolve(state.events)
+                }, error => {
+                    reject(error)
+                })
+        })
     },
     getEvents ({ commit }) {
         return new Promise((resolve, reject) => {

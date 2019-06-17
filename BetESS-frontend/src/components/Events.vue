@@ -136,6 +136,9 @@ export default {
   name: 'events',
   data() {
     return {
+        teams_info: [],
+        leagues_info: [],
+        sports_info: [],
         event_result: '',
         /* for close button in "Events' Management" */
         closeFlag: false,
@@ -158,14 +161,30 @@ export default {
     this.$store.dispatch('teams/getTeams').then((response) => {
       //console.log(JSON.stringify(this.$store.state.teams))
       //console.log(JSON.stringify(response))
+      let i, j, len
+      this.teams_info[0] = { value: null, text: 'Please select a team' }
+      for (i = 0, j = 1, len = response.length; i < len; i++) { 
+        this.teams_info[j] = {value: response[i].team_id, text: response[i].name}
+      }
     })
     this.$store.dispatch('leagues/getLeagues').then((response) => {
       //console.log(JSON.stringify(this.$store.state.leagues))
       //console.log(JSON.stringify(response))
+      let i, j, len
+      this.teams_info[0] = { value: null, text: 'Please select a league' }
+      for (i = 0, j = 1, len = response.length; i < len; i++) { 
+        this.leagues_info[j] = {value: response[i].team_id, text: response[i].name}
+      }
     })
     this.$store.dispatch('sports/getSports').then((response) => {
       //console.log(JSON.stringify(this.$store.state.sports))
       //console.log(JSON.stringify(response))
+      let i, j, len
+      this.sports_info[0] = { value: null, text: 'Please select a sport' }
+      for (i = 0, j = 1, len = response.length; i < len; i++) { 
+        this.sports_info[j] = {value: response[i].team_id, text: response[i].name}
+      }
+      console.log(this.sports_info)
     })
   },
   methods: {
@@ -180,8 +199,6 @@ export default {
         alert('Please fill all the fields.')
       } else {
         this.$store.dispatch('events/postEvent', {
-          status: 'Open',
-          result: 'No result',
           oddHome: this.odd_home_selected,
           oddAway: this.odd_away_selected,
           oddDraw: this.odd_draw_selected,
