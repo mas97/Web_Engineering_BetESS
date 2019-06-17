@@ -1,57 +1,92 @@
 Server has started on port 3000
 Database connection successful
-Mon Jun 17 2019 20:42:52 GMT+0000 (UTC) => /sports/, [object Object]
-Mon Jun 17 2019 20:42:57 GMT+0000 (UTC) => /sports/, [object Object]
+Mon Jun 17 2019 22:57:43 GMT+0000 (UTC) => /sports/, [object Object]
+Mon Jun 17 2019 22:57:46 GMT+0000 (UTC) => /sports/, [object Object]
 { command: 'postSport',
-  name: 'Soccer',
-  authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwODA0MTY1fQ.MYi_z_uT-kwb7T4_pM1r09zaaE-dbcSXl9Jk-Nhr1L9WNXQWXtx2wgG8x6WtraIfZI198dXa4e50-CIwALo-5w' }
-eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwODA0MTY1fQ.MYi_z_uT-kwb7T4_pM1r09zaaE-dbcSXl9Jk-Nhr1L9WNXQWXtx2wgG8x6WtraIfZI198dXa4e50-CIwALo-5w
-{ user_id: 1, premium: false, iat: 1560804165 }
+  name: 'S',
+  authorization: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwODEyMjU2fQ.ThjLSXHb7Ef1gS5RKncp3_lgwSL88p2SzevAXOqJ4AI7jEZFMteORBBxr90JQxCGt-mZYB76_x5oMquJdCFdtA' }
+eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJwcmVtaXVtIjpmYWxzZSwiaWF0IjoxNTYwODEyMjU2fQ.ThjLSXHb7Ef1gS5RKncp3_lgwSL88p2SzevAXOqJ4AI7jEZFMteORBBxr90JQxCGt-mZYB76_x5oMquJdCFdtA
+{ user_id: 1, premium: false, iat: 1560812256 }
 ENTRA AQUI
-Mon Jun 17 2019 20:42:59 GMT+0000 (UTC) => /leagues/, [object Object]
-Mon Jun 17 2019 20:43:05 GMT+0000 (UTC) => /leagues/, [object Object]
-{ user_id: 1, premium: false, iat: 1560804165 }
-Mon Jun 17 2019 20:43:08 GMT+0000 (UTC) => /teams/, [object Object]
-Mon Jun 17 2019 20:43:13 GMT+0000 (UTC) => /teams/, [object Object]
-{ user_id: 1, premium: false, iat: 1560804165 }
+Mon Jun 17 2019 22:57:47 GMT+0000 (UTC) => /leagues/, [object Object]
+Mon Jun 17 2019 22:57:49 GMT+0000 (UTC) => /leagues/, [object Object]
+{ user_id: 1, premium: false, iat: 1560812256 }
+Mon Jun 17 2019 22:57:51 GMT+0000 (UTC) => /teams/, [object Object]
+Mon Jun 17 2019 22:57:55 GMT+0000 (UTC) => /teams/, [object Object]
+{ user_id: 1, premium: false, iat: 1560812256 }
 ENTRA AQUI
-Mon Jun 17 2019 20:43:24 GMT+0000 (UTC) => /teams/, [object Object]
-{ user_id: 1, premium: false, iat: 1560804165 }
+Mon Jun 17 2019 22:57:57 GMT+0000 (UTC) => /teams/, [object Object]
+{ user_id: 1, premium: false, iat: 1560812256 }
 ENTRA AQUI
-Mon Jun 17 2019 20:43:31 GMT+0000 (UTC) => /teams/, [object Object]
-Mon Jun 17 2019 20:43:31 GMT+0000 (UTC) => /events/, [object Object]
-Mon Jun 17 2019 20:43:31 GMT+0000 (UTC) => /leagues/, [object Object]
-Mon Jun 17 2019 20:43:31 GMT+0000 (UTC) => /sports/, [object Object]
-Mon Jun 17 2019 20:44:58 GMT+0000 (UTC) => /events/, [object Object]
-Mon Jun 17 2019 20:44:58 GMT+0000 (UTC) => /teams/, [object Object]
-Mon Jun 17 2019 20:44:58 GMT+0000 (UTC) => /leagues/, [object Object]
-Mon Jun 17 2019 20:44:58 GMT+0000 (UTC) => /sports/, [object Object]
-Mon Jun 17 2019 20:47:12 GMT+0000 (UTC) => /events/, [object Object]
-Mon Jun 17 2019 20:47:12 GMT+0000 (UTC) => /teams/, [object Object]
-Mon Jun 17 2019 20:47:12 GMT+0000 (UTC) => /leagues/, [object Object]
-Mon Jun 17 2019 20:47:12 GMT+0000 (UTC) => /sports/, [object Object]
-Mon Jun 17 2019 20:48:43 GMT+0000 (UTC) => /events/, [object Object]
-Mon Jun 17 2019 20:48:43 GMT+0000 (UTC) => /teams/, [object Object]
-Mon Jun 17 2019 20:48:43 GMT+0000 (UTC) => /leagues/, [object Object]
-Mon Jun 17 2019 20:48:43 GMT+0000 (UTC) => /sports/, [object Object]
-Mon Jun 17 2019 22:01:22 GMT+0000 (UTC) => /sports/, [object Object]
-Mon Jun 17 2019 22:01:22 GMT+0000 (UTC) => /events/, [object Object]
-Mon Jun 17 2019 22:01:22 GMT+0000 (UTC) => /teams/, [object Object]
-Mon Jun 17 2019 22:01:22 GMT+0000 (UTC) => /leagues/, [object Object]
-Mon Jun 17 2019 22:02:55 GMT+0000 (UTC) => /events/, [object Object]
-Mon Jun 17 2019 22:02:55 GMT+0000 (UTC) => /teams/, [object Object]
-Mon Jun 17 2019 22:02:55 GMT+0000 (UTC) => /leagues/, [object Object]
-Mon Jun 17 2019 22:02:55 GMT+0000 (UTC) => /sports/, [object Object]
-Mon Jun 17 2019 22:03:17 GMT+0000 (UTC) => /events/, [object Object]
-Mon Jun 17 2019 22:03:17 GMT+0000 (UTC) => /leagues/, [object Object]
-Mon Jun 17 2019 22:03:17 GMT+0000 (UTC) => /teams/, [object Object]
-Mon Jun 17 2019 22:03:17 GMT+0000 (UTC) => /sports/, [object Object]
-Mon Jun 17 2019 22:04:09 GMT+0000 (UTC) => /events/, [object Object]
-{ user_id: 1, premium: false, iat: 1560808989 }
+Mon Jun 17 2019 22:58:07 GMT+0000 (UTC) => /events/, [object Object]
+Mon Jun 17 2019 22:58:07 GMT+0000 (UTC) => /teams/, [object Object]
+Mon Jun 17 2019 22:58:07 GMT+0000 (UTC) => /leagues/, [object Object]
+Mon Jun 17 2019 22:58:07 GMT+0000 (UTC) => /sports/, [object Object]
+Mon Jun 17 2019 22:58:29 GMT+0000 (UTC) => /events/, [object Object]
+{ user_id: 1, premium: false, iat: 1560812256 }
+Mon Jun 17 2019 23:02:00 GMT+0000 (UTC) => /events/, [object Object]
+Mon Jun 17 2019 23:02:00 GMT+0000 (UTC) => /teams/, [object Object]
+Mon Jun 17 2019 23:02:00 GMT+0000 (UTC) => /leagues/, [object Object]
+Mon Jun 17 2019 23:02:00 GMT+0000 (UTC) => /sports/, [object Object]
+Mon Jun 17 2019 23:02:17 GMT+0000 (UTC) => /events/, [object Object]
+Mon Jun 17 2019 23:02:17 GMT+0000 (UTC) => /teams/, [object Object]
+Mon Jun 17 2019 23:02:17 GMT+0000 (UTC) => /leagues/, [object Object]
+Mon Jun 17 2019 23:02:17 GMT+0000 (UTC) => /sports/, [object Object]
+Mon Jun 17 2019 23:02:38 GMT+0000 (UTC) => /events/, [object Object]
+{ user_id: 1, premium: false, iat: 1560812528 }
+Mon Jun 17 2019 23:02:54 GMT+0000 (UTC) => /events/, [object Object]
+{ user_id: 1, premium: false, iat: 1560812528 }
  [x] Received requestEventInfo:1
 string
 [ 'requestEventInfo', '1' ]
 respondendo ao pedido do evento numero 1
- [x] Received closeEvent:1;winHome
+ [x] Received closeEvent:1;draw
 string
-[ 'closeEvent', '1;winHome' ]
+[ 'closeEvent', '1;draw' ]
+ [x] Received requestEventInfo:2
+string
+[ 'requestEventInfo', '2' ]
+respondendo ao pedido do evento numero 2
+ [x] Received closeEvent:2;draw
+string
+[ 'closeEvent', '2;draw' ]
+Mon Jun 17 2019 23:07:09 GMT+0000 (UTC) => /teams/, [object Object]
+Mon Jun 17 2019 23:07:10 GMT+0000 (UTC) => /teams/, [object Object]
+Mon Jun 17 2019 23:07:10 GMT+0000 (UTC) => /events/, [object Object]
+Mon Jun 17 2019 23:07:10 GMT+0000 (UTC) => /leagues/, [object Object]
+Mon Jun 17 2019 23:07:10 GMT+0000 (UTC) => /sports/, [object Object]
+Mon Jun 17 2019 23:08:08 GMT+0000 (UTC) => /sports/, [object Object]
+Mon Jun 17 2019 23:08:08 GMT+0000 (UTC) => /events/, [object Object]
+Mon Jun 17 2019 23:08:08 GMT+0000 (UTC) => /teams/, [object Object]
+Mon Jun 17 2019 23:08:08 GMT+0000 (UTC) => /leagues/, [object Object]
+Mon Jun 17 2019 23:08:29 GMT+0000 (UTC) => /events/, [object Object]
+{ user_id: 1, premium: false, iat: 1560812879 }
+ [x] Received requestEventInfo:3
+string
+[ 'requestEventInfo', '3' ]
+respondendo ao pedido do evento numero 3
+ [x] Received closeEvent:3;winHome
+string
+[ 'closeEvent', '3;winHome' ]
+Mon Jun 17 2019 23:09:54 GMT+0000 (UTC) => /events/, [object Object]
+Mon Jun 17 2019 23:09:54 GMT+0000 (UTC) => /teams/, [object Object]
+Mon Jun 17 2019 23:09:54 GMT+0000 (UTC) => /leagues/, [object Object]
+Mon Jun 17 2019 23:09:54 GMT+0000 (UTC) => /sports/, [object Object]
+Mon Jun 17 2019 23:11:31 GMT+0000 (UTC) => /events/, [object Object]
+Mon Jun 17 2019 23:11:31 GMT+0000 (UTC) => /teams/, [object Object]
+Mon Jun 17 2019 23:11:31 GMT+0000 (UTC) => /leagues/, [object Object]
+Mon Jun 17 2019 23:11:31 GMT+0000 (UTC) => /sports/, [object Object]
+Mon Jun 17 2019 23:11:47 GMT+0000 (UTC) => /events/, [object Object]
+Mon Jun 17 2019 23:11:47 GMT+0000 (UTC) => /teams/, [object Object]
+Mon Jun 17 2019 23:11:47 GMT+0000 (UTC) => /leagues/, [object Object]
+Mon Jun 17 2019 23:11:47 GMT+0000 (UTC) => /sports/, [object Object]
+Mon Jun 17 2019 23:12:12 GMT+0000 (UTC) => /events/, [object Object]
+{ user_id: 1, premium: false, iat: 1560813101 }
+ [x] Received requestEventInfo:4
+string
+[ 'requestEventInfo', '4' ]
+respondendo ao pedido do evento numero 4
+ [x] Received closeEvent:4;winAway
+string
+[ 'closeEvent', '4;winAway' ]
+Mon Jun 17 2019 23:12:32 GMT+0000 (UTC) => /events/, [object Object]

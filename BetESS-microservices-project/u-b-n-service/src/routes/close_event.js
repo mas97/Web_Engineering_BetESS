@@ -7,8 +7,8 @@ let amqp = require('amqplib');
 let jwt = require('jsonwebtoken');
 const fs   = require('fs');
 let publicKEY  = fs.readFileSync( __dirname + '/public.key');
-let global_odds;
-let event_status;
+let global_odds = [];
+let event_status = '';
 
 /* Returns doc w/ unpaid bets */
 function getBets() {
@@ -33,8 +33,6 @@ router.post('/close_event', async (req, res) => {
 
     console.log(req.body);
 
-    let user_id = -1;
-
     if (!req.body.authorization) {
 
         return res.status(401).send('Missing auth token');
@@ -47,7 +45,6 @@ router.post('/close_event', async (req, res) => {
             let decoded = jwt.verify(header_token, publicKEY, ['RS256']);
 
             console.log(decoded);
-            user_id = decoded.user_id;
         } catch (e) {
             console.log(e);
             return res.status(401).send('Invalid authentication token');
@@ -60,14 +57,16 @@ router.post('/close_event', async (req, res) => {
         if (req.body.hasOwnProperty('event_id') && req.body.hasOwnProperty('result')) {
 
             // corpo da msg param id_event
-            let ev_id = req.body['event_id'];
-            let ev_result = req.body['result'];
+            let ev_id = req.body.event_id;
+            let ev_result = req.body.result;
             // vars para dados de cada bet
             let amount = 0;
             let user_id = 0;
             let bets_unpaid;
             let user_balance = -1;
             let result_bet = '';
+
+            console.log('a pedir resultados por mensagem');
 
             try {
                 let requests_queue = 'requests_e_t_s_l_service';
@@ -137,12 +136,12 @@ router.post('/close_event', async (req, res) => {
                 console.log(e);
             }
 
-            while (typeof global_odds === 'undefined' && typeof event_status === 'undefined') {
+            while (global_odds === [] && event_status === '') {
                 await sleep(500);
                 console.log('sleeping');
             }
 
-            console.log('TESTE FINAL ODDS ' + global_odds);
+            console.log('TESTE FINAL ODDS ' + global_odds + ' status: ' + event_status);
 
             // CHAMADAS - MISSING (completar)
             let odd_home = global_odds[0];
@@ -151,14 +150,16 @@ router.post('/close_event', async (req, res) => {
 
             if (event_status === 'open') {
 
+                console.log('status do event open');
+
                 getBets().then(doc => {
                     bets_unpaid = doc;
 
                     for (let bet in bets_unpaid) {
-                        if (bet['event_id'] === ev_id) {
-                            amount = bet['amount'];
-                            user_id = bet['user_id'];
-                            result_bet = ['result'];
+                        if (bet.event_id === ev_id) {
+                            amount = bet.amount;
+                            user_id = bet.user_id;
+                            result_bet = bet.result;
 
                             UserModel.findOne({user_id: user_id}, {balance: 1}).then(doc => {
                                 console.log('aceder ao saldo do user' + doc);
@@ -181,7 +182,7 @@ router.post('/close_event', async (req, res) => {
                                     );
 
                                     BetModel.update(
-                                        {bet_id: bet['bet_id']},
+                                        {bet_id: bet.bet_id},
                                         {paid: true}
                                     );
                                 }
@@ -200,7 +201,7 @@ router.post('/close_event', async (req, res) => {
                                     );
 
                                     BetModel.update(
-                                        {id: bet['bet_id']},
+                                        {id: bet.bet_id},
                                         {paid: true}
                                     );
                                 }
@@ -219,7 +220,7 @@ router.post('/close_event', async (req, res) => {
                                     );
 
                                     BetModel.update(
-                                        {id: bet['bet_id']},
+                                        {id: bet.bet_id},
                                         {paid: true}
                                     );
                                 }

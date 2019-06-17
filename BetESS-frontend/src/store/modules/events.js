@@ -63,11 +63,11 @@ const actions = {
     return new Promise((resolve, reject) => {
         eventsService.closeEvent(payload)
             .then(function (response) {
-                //commit('setEvents', response)
+                commit('setEvents', response)
                 //eventual rerender da página
             })
             .then(() => {
-                resolve('OK')
+                resolve(state.events)
             }, error => {
                 reject(error)
             })

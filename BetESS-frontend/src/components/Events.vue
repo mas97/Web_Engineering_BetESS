@@ -68,7 +68,7 @@
               <div class="row">
                 <div class="col-12 col-sm-8 col-lg-5" style="min-width: 100%;">
                   <ul class="list-group">
-                    <li v-if="$store.state.events.events.length > 0 && $store.state.teams.teams && $store.state.sports.sports && $store.state.leagues.leagues" v-for="event in $store.state.events.events" :key="event.event_id" class="list-group-item d-flex justify-content-between align-items-center" style="color: gray">
+                    <li v-for="event in $store.state.events.events" :key="event.event_id" class="list-group-item d-flex justify-content-between align-items-center" style="color: gray">
                       {{$store.state.teams.teams[event.team_home_id - 1].name}} - {{$store.state.teams.teams[event.team_away_id - 1].name}}
                       <small>{{$store.state.sports.sports[event.sport_id - 1].name}}, {{$store.state.leagues.leagues[event.league_id - 1].name}}</small>
                       <button class="button button1" disabled>
@@ -142,7 +142,7 @@ export default {
         odd_draw_selected: '',
         home_team_selected: null,
         away_team_selected: null,
-        premium_selected: ''
+        premium_selected: false
     }
   },
   created () {
@@ -226,7 +226,10 @@ export default {
         event_id: id,
         result: this.event_result
       }).then(response => {
-        // fazer alguma coisa depois do delete ser feito com sucesso
+        this.$store.dispatch('events/getEvents').then((response) => {
+          //console.log(JSON.stringify(this.$store.state.events))
+          console.log('hsbdchw' + JSON.stringify(response))
+        })
       }).catch((error) => {
         console.log(error)
       })
