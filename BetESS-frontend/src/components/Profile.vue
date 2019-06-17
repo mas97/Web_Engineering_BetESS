@@ -14,8 +14,8 @@
           <header class="cssui-usercard__header">
             <img src="../assets/avatar.png" class="cssui-usercard__avatar" alt="Avatar">
             <div class="cssui-usercard__header-info">
-              <h3 class="cssui-usercard__name">{{$store.state.login.user.name}}<span class="cssui-usercard__name-label"></span></h3>
-              <span class="cssui-usercard__post">BetESS Member - {{$store.state.login.user.premium ? "Premium" : "Not Premium"}}</span>
+              <h3 class="cssui-usercard__name">a<span class="cssui-usercard__name-label"></span></h3>
+              <span class="cssui-usercard__post">BetESS Member - a</span>
             </div>
           </header>
           <div class="cssui-usercard__content">
@@ -31,7 +31,7 @@
                       <i class="cssui-icon icon-earth"></i>
                       <div class="cssui-stats__info cssui-usercard__stats-info">
                         <span class="cssui-stats__name cssui-usercard__stats-name">Username</span>
-                        <span class="cssui-stats__value"><small>{{$store.state.login.user.username}}</small></span>
+                        <span class="cssui-stats__value"><small>a</small></span>
                       </div>
                     </div>
 
@@ -40,7 +40,7 @@
                       <i class="cssui-icon icon-location"></i>
                       <div class="cssui-stats__info cssui-usercard__stats-info">
                         <span class="cssui-stats__name cssui-usercard__stats-name">Email</span>
-                        <span class="cssui-stats__value"><small>{{$store.state.login.user.email}}</small></span>
+                        <span class="cssui-stats__value"><small>a</small></span>
                       </div>
 
                     </div>
@@ -48,7 +48,7 @@
                       <i class="cssui-icon icon-calendar"></i>
                       <div class="cssui-stats__info cssui-usercard__stats-info">
                         <span class="cssui-stats__name cssui-usercard__stats-name">Phone number<button style="font-size:15px" @click="pn = !pn"><i class="fa fa-pencil"></i></button></span>
-                          <span v-if="pn" class="cssui-stats__value"><small>{{$store.state.login.user.phoneno}}</small></span>
+                          <span v-if="pn" class="cssui-stats__value"><small>a</small></span>
                           <div v-else>
                             
                             <input v-model="new_phone" style="width: 120px; height: 45px; border: 2px solid orange; border-radius: 5px;"/>
@@ -73,7 +73,7 @@
                       <i class="cssui-icon icon-man-woman"></i> 
                       <div class="cssui-stats__info cssui-usercard__stats-info">
                         <span class="cssui-stats__name cssui-usercard__stats-name">Balance</span>
-                        <span class="cssui-stats__value"><small>{{$store.state.login.user.balance}}</small></span>
+                        <span class="cssui-stats__value"><small>a</small></span>
                       </div>
                     </div>
 
@@ -83,7 +83,25 @@
                       <i class="cssui-icon icon-man-woman"></i> 
                       <div class="cssui-stats__info cssui-usercard__stats-info">
                         <span class="cssui-stats__name cssui-usercard__stats-name">Premium?</span>
-                        <button type="button" class="btn btn-warning my-2 my-sm-0" v-on:click="upd_premium()" style="margin:10px;">Upgrade</button>
+                        
+                        
+                        <div>
+                          <mdb-btn class="btn btn-outline-warning my-2 my-sm-0" @click.native="modal = true">Upgrade</mdb-btn>
+                          <mdb-modal removeBackdrop side position="top-right" :show="modal" @close="modal = false">
+                              <mdb-modal-header>
+                                  <mdb-modal-title>Upgrade to Premium</mdb-modal-title>
+                              </mdb-modal-header>
+                              <mdb-modal-body>Are you sure you want to upgrade? </mdb-modal-body>
+                              <mdb-modal-footer>
+                                  <mdb-btn color="secondary" @click.native="modal = false">Close</mdb-btn>
+                                  <mdb-btn class="btn btn-warning my-2 my-sm-0" style="margin:10px;" v-on:click="upd_premium(); modal = false;">Save changes</mdb-btn>
+                              </mdb-modal-footer>
+                          </mdb-modal>
+                        </div>                           
+                        
+                        
+                        
+                        <!-- <button type="button" class="btn btn-warning my-2 my-sm-0" v-on:click="upd_premium()" style="margin:10px;">Upgrade</button> -->
                         <h6 style="color:gray;"><small> * being a premium user gives you access to unique events and opportunities, by the simple amount of 50 ESScoins</small></h6>
                       </div>
                     </div>
@@ -104,11 +122,13 @@
 </template>
 
 <script>
+import { mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter, mdbBtn } from 'mdbvue';
 import NavbarToOffcanvas from '../components/NavBarToOffcanvas'
 export default {
   name: 'profile',
   data() {
     return {
+        modal: false,
         /* Vars apenas para controlo de botoes dinamicos */
         pn: true,
         pwd: true,
@@ -146,7 +166,13 @@ export default {
     }
   },
   components: {
-    NavbarToOffcanvas
+    NavbarToOffcanvas,
+    mdbModal,
+    mdbModalHeader,
+    mdbModalTitle,
+    mdbModalBody,
+    mdbModalFooter,
+    mdbBtn
   }  
 }
 

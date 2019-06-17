@@ -18,7 +18,28 @@
               </div>
             </div>
           <h6 style="color:gray;"><small>* The amount will be returned to your bank account.</small></h6>
-          <button type="button" v-on:click="draw()" class="btn btn-submit" style="float:right; margin-bottom:5px; margin-right:-10px; margin-top: 15px;">Submit</button>
+
+
+
+                      <div>
+                        <mdb-btn class="btn btn-outline-warning my-2 my-sm-0" style="float:right; margin-bottom:5px; margin-right:-10px; margin-top: 15px;" @click.native="modal = true">Submit</mdb-btn>
+                        <mdb-modal removeBackdrop side position="top-right" :show="modal" @close="modal = false">
+                            <mdb-modal-header style="color:gray;">
+                                <mdb-modal-title>Draw</mdb-modal-title>
+                            </mdb-modal-header>
+                            <mdb-modal-body style="color:gray;">Are you sure you want to draw this amount to your bank account?</mdb-modal-body>
+                            <mdb-modal-footer>
+                                <mdb-btn color="secondary" @click.native="modal = false">Close</mdb-btn>
+                                <mdb-btn class="btn btn-warning my-2 my-sm-0" v-on:click="draw(); modal = false;">Save changes</mdb-btn>
+                            </mdb-modal-footer>
+                        </mdb-modal>
+                      </div>  
+
+
+
+
+
+          <!-- <button type="button" v-on:click="draw()" class="btn btn-submit" style="float:right; margin-bottom:5px; margin-right:-10px; margin-top: 15px;">Submit</button> -->
           </div>
 
 
@@ -32,7 +53,25 @@
               </div>
             </div>
           <h6 style="color:gray;"><small>* The amount will be withdrawn from your bank account.</small></h6>
-          <button type="button" class="btn btn-submit" style="float:right; margin-bottom:5px; margin-right:-10px; margin-top: 15px;">Submit</button>
+          
+          
+          
+                      <div>
+                        <mdb-btn class="btn btn-outline-warning my-2 my-sm-0" style="float:right; margin-bottom:5px; margin-right:-10px; margin-top: 15px;" @click.native="modal = true">Submit</mdb-btn>
+                        <mdb-modal removeBackdrop side position="top-right" :show="modal" @close="modal = false">
+                            <mdb-modal-header style="color:gray;">
+                                <mdb-modal-title>Deposit</mdb-modal-title>
+                            </mdb-modal-header>
+                            <mdb-modal-body style="color:gray;">Are you sure you want to deposit this amount to BetESS?</mdb-modal-body>
+                            <mdb-modal-footer>
+                                <mdb-btn color="secondary" @click.native="modal = false">Close</mdb-btn>
+                                <mdb-btn class="btn btn-warning my-2 my-sm-0" v-on:click="deposit(), modal = false;">Save changes</mdb-btn>
+                            </mdb-modal-footer>
+                        </mdb-modal>
+                      </div>            
+          
+          
+          <!-- <button type="button" class="btn btn-submit" style="float:right; margin-bottom:5px; margin-right:-10px; margin-top: 15px;">Submit</button> -->
           </div> 
         
         </div>
@@ -65,11 +104,13 @@
 </template>
 
 <script>
+import { mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter, mdbBtn } from 'mdbvue';
 import NavbarToOffcanvas from '../components/NavBarToOffcanvas'
 export default {
   name: 'credits',
   data () {
     return {
+      modal: false,
       draw_amount: 0,
       deposit_amount: 0
     }
@@ -96,7 +137,13 @@ export default {
     }
   },
   components: {
-    NavbarToOffcanvas
+    NavbarToOffcanvas,
+    mdbModal,
+    mdbModalHeader,
+    mdbModalTitle,
+    mdbModalBody,
+    mdbModalFooter,
+    mdbBtn
   }
 }
 
@@ -105,56 +152,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
-.btn {
-  background: #fff;
-  color: #959595;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 3px;
-  letter-spacing: 0.06em;
-  text-decoration: none;
-  outline: none;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-.btn:hover {
-  color: #8b8b8b;
-  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.18), 0 5px 5px rgba(0, 0, 0, 0.12);
-}
-.btn.btn-link {
-  background: #2196F3;
-  color: #d3eafd;
-}
-.btn.btn-link:hover {
-  background: #0d8aee;
-  color: #deeffd;
-}
-.btn.btn-submit {
-  background: white;
-  color: orange;
-  border: solid orange; 
-  border-width: 1px 1px 1px 1px;
-  float: right;
-}
-.btn.btn-submit:hover {
-  background: orange;
-  color: black;
-}
-.btn.btn-cancel {
-  background: #eee;
-}
-.btn.btn-cancel:hover {
-  background: #e1e1e1;
-  color: #8b8b8b;
-}
-
-.btn-box {
-  text-align: center;
-  margin: 50px 0;
-}
-
-
 
 .container-full { 
   background-color: black;

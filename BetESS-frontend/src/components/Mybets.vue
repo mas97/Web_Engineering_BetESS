@@ -16,7 +16,23 @@
             <div class="card-body">
               <h5 class="card-title">{{$store.state.teams.teams[$store.state.events.events[bet.event_id - 1].team_home_id - 1].name}} - {{$store.state.teams.teams[$store.state.events.events[bet.event_id - 1].team_away_id - 1].name}}</h5>
               <h6 class="card-subtitle mb-2 text-muted">{{$store.state.sports.sports[$store.state.events.events[bet.event_id - 1].sport_id - 1].name}}, {{$store.state.leagues.leagues[$store.state.events.events[bet.event_id - 1].league_id - 1].name}}</h6>
-              <a href="#!" v-on:click="cashout()" class="btn btn-outline-warning my-2 my-sm-0">Cashout</a>
+              
+              
+                      <div>
+                        <mdb-btn class="btn btn-outline-warning my-2 my-sm-0" @click.native="modal = true">Cashout</mdb-btn>
+                        <mdb-modal removeBackdrop side position="top-right" :show="modal" @close="modal = false">
+                            <mdb-modal-header>
+                                <mdb-modal-title>Cashout</mdb-modal-title>
+                            </mdb-modal-header>
+                            <mdb-modal-body>Are you sure you want to cashout? You will only receive half of your original bet amount.</mdb-modal-body>
+                            <mdb-modal-footer>
+                                <mdb-btn color="secondary" @click.native="modal = false">Close</mdb-btn>
+                                <mdb-btn class="btn btn-warning my-2 my-sm-0" v-on:click="cashout(); modal = false;">Save changes</mdb-btn>
+                            </mdb-modal-footer>
+                        </mdb-modal>
+                      </div>                  
+              
+              <!-- <a href="#!" v-on:click="cashout()" class="btn btn-outline-warning my-2 my-sm-0">Cashout</a> -->
             </div>
           </div>
         </div>
@@ -63,12 +79,13 @@
 </template>
 
 <script>
+import { mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter, mdbBtn } from 'mdbvue';
 import NavbarToOffcanvas from '../components/NavBarToOffcanvas'
 export default {
   name: 'mybets',
   data () {
     return {
-
+      modal: false
     }
   },
   created () {
@@ -100,7 +117,13 @@ export default {
 
   },
   components: {
-    NavbarToOffcanvas
+    NavbarToOffcanvas,
+    mdbModal,
+    mdbModalHeader,
+    mdbModalTitle,
+    mdbModalBody,
+    mdbModalFooter,
+    mdbBtn
   }
 }
 
