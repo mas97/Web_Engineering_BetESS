@@ -16,42 +16,42 @@ import Teams from '@/components/Teams'
 import Leagues from '@/components/Leagues'
 import Bets from '@/components/Bets'
 import Events from '@/components/Events'
+import store from './store/index'
 
 Vue.use(Router)
 
-/*  
-router.beforeEach((to, from, next) => {
-  if(to.matched.some(record => record.meta.requiresAuth)) {
-      if ($store.dispatch('login/getToken') == null) {
-          next({
-              path: '/signinup',
-              params: { nextUrl: to.fullPath }
-          })
-      } else {
-          let user = JSON.parse($store.dispatch('login/getUser'))
-          if(to.matched.some(record => record.meta.is_admin)) {
-              if(user.is_admin == 1){
-                  next()
-              }
-              else{
-                  next({ name: 'user'})
-              }
-          }else {
-              next()
-          }
-      }
-  } else if(to.matched.some(record => record.meta.guest)) {
-      if($store.dispatch('login/getToken') == null){
-          next()
-      }
-      else{
-          next({ name: 'user'})
-      }
-  }else {
-      next() 
-  }
-})
-*/
+
+// Router.beforeEach((to, from, next) => {
+//   if(to.matched.some(record => record.meta.requiresAuth)) {
+//       if (store.state.accesstoken === '') {
+//           next({
+//               path: '/signinup',
+//               params: { nextUrl: to.fullPath }
+//           })
+//       } else {
+//           if(to.matched.some(record => record.meta.isAdmin)) {
+//               if(store.state.user.isAdmin === true){
+//                   next()
+//               }
+//               else{
+//                   next({ name: 'user'})
+//               }
+//           }else {
+//               next()
+//           }
+//       }
+//   } else if(to.matched.some(record => record.meta.guest)) {
+//       if(store.state.accesstoken === ''){
+//           next()
+//       }
+//       else{
+//           next({ name: 'user'})
+//       }
+//   }else {
+//       next() 
+//   }
+// })
+
 
 export default new Router({
   routes: [

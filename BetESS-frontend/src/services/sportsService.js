@@ -6,6 +6,7 @@ export default {
   postSport (payload) {
     console.log('teste token ' + store.state.accesstoken)
     return betess.post(`sports/`, {
+        command: 'postSport',
         name: payload.name,
         authorization: store.state.accesstoken
     }).then(response => {
@@ -19,8 +20,10 @@ export default {
       return betess.get(`sports/`).then(response => response.data)
   },
   removeSport (payload) {
-      return betess.delete(`sports`, {
-          sport_id: payload.sport_id
+      return betess.post(`sports/`, {
+          sport_id: payload.sport_id,
+          authorization: store.state.accesstoken,
+          command: 'removeSport'
       }).then(response => response.data)
   }
 }

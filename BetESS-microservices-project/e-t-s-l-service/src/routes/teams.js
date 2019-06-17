@@ -28,22 +28,46 @@ router.post('/teams', (req, res) => {
             return res.status(400).send('Request body is missing');
         }
 
-        let model = new TeamModel(req.body);
-        model.save()
-            .then(doc => {
-                if (!doc || doc.length === 0) {
-                    return res.status(500).send(doc);
+        if (req.body.command === 'postTeam') {
+
+            console.log('ENTRA AQUI');
+
+            let model = new TeamModel({
+                name: req.body.name
+            });
+            model.save()
+                .then(doc => {
+                    if (!doc || doc.length === 0) {
+                        return res.status(500).send(doc);
+                    }
+
+                    TeamModel.find({}, { _id: 0, __v:0})
+                        .then(doc => {
+                            return res.json(doc);
+                        });
+
+                })
+                .catch(err => {
+                    return res.status(500).json(err);
+                });
+        }
+
+        if (req.body.command === 'removeTeam') {
+
+            TeamModel.remove({ team_id: req.body.team_id }, function (err) {
+                if (!err) {
+
+                    TeamModel.find({}, { _id: 0, __v:0})
+                        .then(doc => {
+                            return res.json(doc);
+                        });
+
+                } else {
+                    return res.status(400).send('Error removing team.');
                 }
+            });
 
-                TeamModel.find({}, { _id: 0, __v:0})
-                    .then(doc => {
-                        return res.json(doc);
-                    });
-
-            })
-            .catch(err => {
-                return res.status(500).json(err);
-            })
+        }
     }
 });
 
@@ -75,19 +99,6 @@ router.delete('/teams', (req, res) => {
             return res.status(400).send("Missing team id.");
 
         } else {
-
-            TeamModel.remove({ team_id: req.body.team_id }, function (err) {
-                if (!err) {
-
-                    TeamModel.find({}, { _id: 0, __v:0})
-                        .then(doc => {
-                            return res.json(doc);
-                        });
-
-                } else {
-                    return res.status(400).send('Error removing team.');
-                }
-            });
         }
     }
 });

@@ -49,7 +49,7 @@ const actions = {
         return new Promise((resolve, reject) => {
             leaguesService.removeLeague(payload)
                 .then(function (response) {
-                    commit('setLeeagues', response)
+                    commit('setLeagues', response)
                 })
                 .then(() => {
                     resolve(state.leagues)

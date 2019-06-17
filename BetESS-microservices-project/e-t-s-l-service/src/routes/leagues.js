@@ -28,22 +28,44 @@ router.post('/leagues', (req, res) => {
             return res.status(400).send('Request body is missing');
         }
 
-        let model = new LeagueModel(req.body);
-        model.save()
-            .then(doc => {
-                if (!doc || doc.length === 0) {
-                    return res.status(500).send(doc);
+        if (req.body.command === 'postLeague') {
+
+            let model = new LeagueModel({
+                name: req.body.name
+            });
+            model.save()
+                .then(doc => {
+                    if (!doc || doc.length === 0) {
+                        return res.status(500).send(doc);
+                    }
+
+                    LeagueModel.find({}, { _id: 0, __v:0})
+                        .then(doc => {
+                            return res.json(doc);
+                        });
+
+                })
+                .catch(err => {
+                    return res.status(500).json(err);
+                })
+        }
+
+        if (req.body.command === 'removeLeague') {
+
+            LeagueModel.remove({ league_id: req.body.league_id }, function (err) {
+                if (!err) {
+
+                    LeagueModel.find({}, { _id: 0, __v:0})
+                        .then(doc => {
+                            return res.json(doc);
+                        });
+
+                } else {
+                    return res.status(400).send('Error removing league');
                 }
+            });
 
-                LeagueModel.find({}, { _id: 0, __v:0})
-                    .then(doc => {
-                        return res.json(doc);
-                    });
-
-            })
-            .catch(err => {
-                return res.status(500).json(err);
-            })
+        }
     }
 });
 
@@ -76,18 +98,6 @@ router.delete('/leagues', (req, res) => {
 
         } else {
 
-            LeagueModel.remove({ league_id: req.body.league_id }, function (err) {
-                if (!err) {
-
-                    LeagueModel.find({}, { _id: 0, __v:0})
-                        .then(doc => {
-                            return res.json(doc);
-                        });
-
-                } else {
-                    return res.status(400).send('Error removing league');
-                }
-            });
         }
     }
 });

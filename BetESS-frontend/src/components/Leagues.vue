@@ -45,7 +45,7 @@
                             <mdb-modal-body>Are you sure you want to delete this item?</mdb-modal-body>
                             <mdb-modal-footer>
                                 <mdb-btn color="secondary" @click.native="modal = false">Close</mdb-btn>
-                                <mdb-btn color="primary" v-on:click="remove(league.league_id)">Save changes</mdb-btn>
+                                <mdb-btn color="primary" v-on:click="remove(league.league_id); modal = false;">Save changes</mdb-btn>
                             </mdb-modal-footer>
                         </mdb-modal>
                       </div>           

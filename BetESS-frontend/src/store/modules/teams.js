@@ -19,7 +19,18 @@ const state = {
 
 const actions = {
     postTeam ({ commit }, payload) {
-      teamsService.postTeam(payload)
+        return new Promise((resolve, reject) => {
+            teamsService.postTeam(payload)
+                .then(function (response) {
+                    commit('setTeams', response)
+                })
+                .then(() => {
+                    resolve(state.teams)
+                }, error => {
+                    reject(error)
+                })
+        })
+      
     },
     getTeams ({ commit }) {
         return new Promise((resolve, reject) => {

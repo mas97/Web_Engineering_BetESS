@@ -5,7 +5,7 @@ import profileService from '../../services/profileService';
 
 const state = {
   accesstoken: '',
-  premium: false,
+  isAdmin: false,
   user: '',
 }
 
@@ -16,22 +16,19 @@ const getters = {
   user: state => {
       return state.user
   },
-  premium: state => {
-      return state.premium
+  isAdmin: state => {
+      return state.isAdmin
   }
 }
 
 const mutations = {
   setToken (state, response) {
     state.accesstoken = response.token
-    state.premium = response.premium
+    state.isAdmin = response.isAdmin
     console.log('teste mutations ' + response)
-    console.log('teste mutations ' + response.token)
   },
   resetToken (state) {
       state.accesstoken = ''
-      state.premium = false
-      state.username = ''
   },
   setUser (state, response) {
       state.user = response
@@ -63,9 +60,9 @@ const actions = {
           })
       })
   },
-  getUser ( {commit}, payload ) {
+  getUser ( {commit} ) {
       return new Promise((resolve, reject) => {
-          loginService.getUser(payload)
+          loginService.getUser()
             .then(function (response) {
                 console.log(response)
                 commit('setUser', response)
