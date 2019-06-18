@@ -16,7 +16,7 @@
             <div class="card-body">
               <h5 class="card-title">{{$store.state.teams.teams[$store.state.events.events[bet.event_id - 1].team_home_id - 1].name}} - {{$store.state.teams.teams[$store.state.events.events[bet.event_id - 1].team_away_id - 1].name}}</h5>
               <h6 class="card-subtitle mb-2 text-muted">{{$store.state.sports.sports[$store.state.events.events[bet.event_id - 1].sport_id - 1].name}}, {{$store.state.leagues.leagues[$store.state.events.events[bet.event_id - 1].league_id - 1].name}}</h6>
-              
+              <h6 class="card-subtitle mb-2 text-muted">Bet Amount: {{bet.amount}}</h6>
               
                       <div>
                         <mdb-btn v-if="$store.state.events.events[bet.event_id - 1].status !== 'closed'" class="btn btn-outline-warning my-2 my-sm-0" @click.native="modal = true">Cashout</mdb-btn>
@@ -48,7 +48,7 @@
             </div>
           </div>
         </div>
-    
+
         <div class="col-sm-4">
           <div class="card border-warning">
             <div class="card-body">
@@ -77,6 +77,7 @@
   </div>
 
 </template>
+
 
 <script>
 import { mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter, mdbBtn } from 'mdbvue';
@@ -130,8 +131,6 @@ export default {
     mdbBtn
   }
 }
-
-
 </script>
 
 

@@ -94,15 +94,14 @@
                               <mdb-modal-body>Are you sure you want to upgrade? </mdb-modal-body>
                               <mdb-modal-footer>
                                   <mdb-btn color="secondary" @click.native="modal = false">Close</mdb-btn>
-                                  <mdb-btn class="btn btn-warning my-2 my-sm-0" style="margin:10px;" v-on:click="upd_premium(); modal = false;">Save changes</mdb-btn>
+                                  <mdb-btn class="btn btn-warning my-2 my-sm-0" style="margin:10px;" v-on:click="upd_premium(); modal = false;" v-if="this.$store.state.user.premium === false">Save changes</mdb-btn>
                               </mdb-modal-footer>
                           </mdb-modal>
                         </div>                           
                         
                         
-                        
                         <!-- <button type="button" class="btn btn-warning my-2 my-sm-0" v-on:click="upd_premium()" style="margin:10px;">Upgrade</button> -->
-                        <h6 style="color:gray;"><small> * being a premium user gives you access to unique events and opportunities, by the simple amount of 50 ESScoins</small></h6>
+                        <h6 style="color:gray;" v-if="this.$store.state.user.premium === false"><small> * being a premium user gives you access to unique events and opportunities, by the simple amount of 50 ESScoins</small></h6>
                       </div>
                     </div>
 
@@ -114,12 +113,10 @@
         </div>
       </article>
 
-
-
-
     </div>
   </div>
 </template>
+
 
 <script>
 import { mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter, mdbBtn } from 'mdbvue';
@@ -175,13 +172,11 @@ export default {
     mdbBtn
   }  
 }
-
-
 </script>
+
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
 .container-full { 
   background-color: black;
   margin: 0 auto;
@@ -199,7 +194,6 @@ export default {
 hr { display: block; height: 1px;
     border: 0; border-top: 1px solid #ccc;
     margin: 1em 0; padding: 0; }
-
 
 
 /* ------------ user card ------------ */
@@ -463,8 +457,6 @@ a{
   text-decoration: none;
 }
 
-
-
 .melnik909{
   margin-left: 2rem;
 }
@@ -473,5 +465,4 @@ button {
   border: none;
   background-color: transparent;
 }
-
 </style>

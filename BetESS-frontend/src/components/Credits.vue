@@ -20,25 +20,19 @@
           <h6 style="color:gray;"><small>* The amount will be returned to your bank account.</small></h6>
 
 
-
-                      <div>
-                        <mdb-btn class="btn btn-outline-warning my-2 my-sm-0" style="float:right; margin-bottom:5px; margin-right:-10px; margin-top: 15px;" @click.native="modal = true">Submit</mdb-btn>
-                        <mdb-modal removeBackdrop side position="top-right" :show="modal" @close="modal = false">
-                            <mdb-modal-header style="color:gray;">
-                                <mdb-modal-title>Draw</mdb-modal-title>
-                            </mdb-modal-header>
-                            <mdb-modal-body style="color:gray;">Are you sure you want to draw this amount to your bank account?</mdb-modal-body>
-                            <mdb-modal-footer>
-                                <mdb-btn color="secondary" @click.native="modal = false">Close</mdb-btn>
-                                <mdb-btn class="btn btn-warning my-2 my-sm-0" v-on:click="draw(); modal = false;">Save changes</mdb-btn>
-                            </mdb-modal-footer>
-                        </mdb-modal>
-                      </div>  
-
-
-
-
-
+            <div>
+              <mdb-btn class="btn btn-outline-warning my-2 my-sm-0" style="float:right; margin-bottom:5px; margin-right:-10px; margin-top: 15px;" @click.native="modal = true">Submit</mdb-btn>
+              <mdb-modal removeBackdrop side position="top-right" :show="modal" @close="modal = false">
+                  <mdb-modal-header style="color:gray;">
+                      <mdb-modal-title>Draw</mdb-modal-title>
+                  </mdb-modal-header>
+                  <mdb-modal-body style="color:gray;">Are you sure you want to draw this amount to your bank account?</mdb-modal-body>
+                  <mdb-modal-footer>
+                      <mdb-btn color="secondary" @click.native="modal = false">Close</mdb-btn>
+                      <mdb-btn class="btn btn-warning my-2 my-sm-0" v-on:click="draw(); modal = false;">Save changes</mdb-btn>
+                  </mdb-modal-footer>
+              </mdb-modal>
+            </div>  
           <!-- <button type="button" v-on:click="draw()" class="btn btn-submit" style="float:right; margin-bottom:5px; margin-right:-10px; margin-top: 15px;">Submit</button> -->
           </div>
 
@@ -55,53 +49,32 @@
           <h6 style="color:gray;"><small>* The amount will be withdrawn from your bank account.</small></h6>
           
           
-          
-                      <div>
-                        <mdb-btn class="btn btn-outline-warning my-2 my-sm-0" style="float:right; margin-bottom:5px; margin-right:-10px; margin-top: 15px;" @click.native="modal = true">Submit</mdb-btn>
-                        <mdb-modal removeBackdrop side position="top-right" :show="modal" @close="modal = false">
-                            <mdb-modal-header style="color:gray;">
-                                <mdb-modal-title>Deposit</mdb-modal-title>
-                            </mdb-modal-header>
-                            <mdb-modal-body style="color:gray;">Are you sure you want to deposit this amount to BetESS?</mdb-modal-body>
-                            <mdb-modal-footer>
-                                <mdb-btn color="secondary" @click.native="modal = false">Close</mdb-btn>
-                                <mdb-btn class="btn btn-warning my-2 my-sm-0" v-on:click="deposit(), modal = false;">Save changes</mdb-btn>
-                            </mdb-modal-footer>
-                        </mdb-modal>
-                      </div>            
+            <div>
+              <mdb-btn class="btn btn-outline-warning my-2 my-sm-0" style="float:right; margin-bottom:5px; margin-right:-10px; margin-top: 15px;" @click.native="modal = true">Submit</mdb-btn>
+              <mdb-modal removeBackdrop side position="top-right" :show="modal" @close="modal = false">
+                  <mdb-modal-header style="color:gray;">
+                      <mdb-modal-title>Deposit</mdb-modal-title>
+                  </mdb-modal-header>
+                  <mdb-modal-body style="color:gray;">Are you sure you want to deposit this amount to BetESS?</mdb-modal-body>
+                  <mdb-modal-footer>
+                      <mdb-btn color="secondary" @click.native="modal = false">Close</mdb-btn>
+                      <mdb-btn class="btn btn-warning my-2 my-sm-0" v-on:click="deposit(), modal = false;">Save changes</mdb-btn>
+                  </mdb-modal-footer>
+              </mdb-modal>
+            </div>            
           
           
           <!-- <button type="button" class="btn btn-submit" style="float:right; margin-bottom:5px; margin-right:-10px; margin-top: 15px;">Submit</button> -->
-          </div> 
-        
+          </div>         
         </div>
 
         <div class="group">
           <label>Current Balance: {{$store.state.login.user.balance}}</label>
         </div>
-
-        <!-- JÁ FECHAM SOZINHOS, O BUTTON FAZ-LOS DESAPARECER -->
-        <!-- Era fixe pô-los sempre no canto superior direito em baixo do login -->
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-          <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>        
-
-
-
-
     </div>
   </div>
 </template>
+
 
 <script>
 import { mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter, mdbBtn } from 'mdbvue';
@@ -146,9 +119,8 @@ export default {
     mdbBtn
   }
 }
-
-
 </script>
+
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
@@ -283,5 +255,4 @@ label {
   transition: 300ms ease all;
   left: 0%;
 }
-
 </style>
