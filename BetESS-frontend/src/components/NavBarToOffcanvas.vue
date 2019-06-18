@@ -1,5 +1,4 @@
 <template>
-
   <nav class="navbar navbar-expand-md fixed-top navbar-dark" style="background-color: #000000;">  
         <a class="navbar-brand" href="/#/user">
         <img src="@/assets/logo-full.png" width="110" height="50" alt="">
@@ -34,7 +33,6 @@
         </li>
       </ul>
 
-
       <li class="nav-item">
         <a class="nav-link" href="#/notifications" style="color: gray">Notifications <span class="sr-only">(current)</span></a>
       </li>
@@ -42,7 +40,6 @@
       <br/>
 
       <button :to="{ name: 'user' }" v-on:click="logout()" v-if="this.$store.state.login.accesstoken != ''" class="btn btn-outline-warning my-2 my-sm-0" type="submit" style="margin:10px;">Logout</button>
-      <button :to="{ name: 'signinup' }" v-if="this.$store.state.login.accesstoken == ''" class="btn btn-outline-warning my-2 my-sm-0" type="submit" style="margin:10px;">Login</button>
     </div>
   </nav>
 </template>
