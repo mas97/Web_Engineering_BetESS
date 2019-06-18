@@ -7,6 +7,9 @@ const fs   = require('fs');
 let publicKEY  = fs.readFileSync( __dirname + '/public.key');
 
 async function consume_requests(){
+
+    console.log('a ouvir!!!');
+
     try {
         let requests_queue = 'requests_e_t_s_l_service';
         let responses_queue = 'responses_e_t_s_l_service';
@@ -35,6 +38,7 @@ async function consume_requests(){
 
                 EventModel.findOne({event_id: requested_event_id}, { _id: 0, __v:0})
                     .then(async (doc) => {
+                        console.log(doc);
                         if (doc) {
                             console.log("respondendo ao pedido do evento numero " + requested_event_id);
                             await channel.sendToQueue(responses_queue, Buffer.from('responseEventInfo:' + doc.oddHome + ';' + doc.oddDraw + ';' + doc.oddAway + ';' + doc.status));
@@ -43,13 +47,17 @@ async function consume_requests(){
             }
 
             if (splitted_message[0] === 'requestEventStatus'){
+                console.log('entrou aqui!!!');
                 requested_event_id = parseFloat(splitted_message[1]);
+                console.log(requested_event_id);
 
                 EventModel.findOne({event_id: requested_event_id}, { _id: 0, __v:0})
                     .then(async (doc) => {
+                        console.log(doc);
+
                         if (doc) {
                             console.log("respondendo ao pedido de status do evento numero " + requested_event_id);
-                            await channel.sendToQueue(responses_queue, Buffer.from('responseEventStatus:' + doc.status));
+                            await channel.sendToQueue('responses_e_t_s_l_service_event_status', Buffer.from('responseEventStatus:' + doc.status));
                         }
                     });
 
@@ -61,9 +69,13 @@ async function consume_requests(){
                 event_result = data[1];
 
                 EventModel.findOne({ event_id: requested_event_id }, function (err, doc) {
-                    doc.status = 'closed';
-                    doc.result = event_result;
-                    doc.save();
+
+                    if (doc !== null) {
+                        doc.status = 'closed';
+                        doc.result = event_result;
+                        doc.save();
+                    }
+
                 })
             }
 

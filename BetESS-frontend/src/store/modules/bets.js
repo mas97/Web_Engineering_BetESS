@@ -43,6 +43,19 @@ const actions = {
                     reject(error)
                 })
         })
+    },
+    cashout ({ commit }, payload) {
+        return new Promise((resolve, reject) => {
+            betsService.cashout(payload)
+                .then(function (response) {
+                    commit('setBets', response)
+                })
+                .then(() => {
+                    resolve(state.bets)
+                }, error => {
+                    reject(error)
+                })
+        })
     }
   }
 

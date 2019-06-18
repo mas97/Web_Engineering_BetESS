@@ -101,15 +101,14 @@ router.post('/premium', async (req, res) => {
 
                     if (doc.premium) {
 
-                        let user_balance = parseFloat(doc.balance);
+                        let user_balance = doc.balance;
 
                         if (user_balance >= 50) {
 
-                            UserModel.findOne({user_id: user_id}, async function (err, doc) {
-                                doc.premium = true;
-                                doc.balance = user_balance - 50;
-                                doc.save();
-                            });
+                            doc.premium = true;
+                            doc.balance = user_balance - 50;
+                            doc.save();
+
 
                             try {
                                 let requests_queue = 'requests_u_b_n_service_premium';
@@ -123,10 +122,6 @@ router.post('/premium', async (req, res) => {
                                     durable: false
                                 });
 
-                                if (typeof req.body.phoneno === 'undefined') {
-                                    req.body.phoneno = '';
-                                }
-
                                 await channel.sendToQueue(requests_queue, Buffer.from('upgradePremium:' + user_id));
                                 console.log('message sent!');
 
@@ -134,13 +129,13 @@ router.post('/premium', async (req, res) => {
                                 console.log(e);
                             }
 
-                            return res.status(200);
+                            return res.json(doc);
 
                         } else {
                             return res.status(400).send('Insufficient balance');
                         }
                     } else {
-                        return res.status(400).send('Not a premium user');
+                        return res.status(400).send('Already a premium user');
                     }
                 })
     }
@@ -314,21 +309,6 @@ router.post('/users', (req, res) => {
                 })
             } else {
                 return res.status(400).send('Missing phone in body.')
-            }
-        }
-        if (req.body.command === 'upd_premium') {
-
-            if (req.body.premium) {
-
-                UserModel.findOne({user_id: user_id}, function (err, doc) {
-
-                    doc.premium = true;
-                    
-                    doc.save();
-                    return res.json(doc);
-                })
-            } else {
-                return res.status(400).send('Missing premium in body.')
             }
         }
     }

@@ -31,7 +31,7 @@
             <hr id="hr"/>
 
             <div class="row">
-              <div v-for="event in $store.state.events.events" :key="event.event_id" class="col-sm-4">
+              <div v-for="event in events_info" :key="event.event_id" class="col-sm-4">
                 <div class="card border-warning">
                   <div class="card-body">
                     <h5 class="card-title">{{$store.state.teams.teams[event.team_home_id - 1].name}} - {{$store.state.teams.teams[event.team_away_id - 1].name}}</h5>
@@ -110,13 +110,20 @@ export default {
     return {
       bet_amount: '',
       result_selected: '',
-      event_id_selected: ''
+      event_id_selected: '',
+      events_info: []
     }
   },
   created () {
     this.$store.dispatch('events/getEvents').then((response) => {
       //console.log(JSON.stringify(this.$store.state.events))
       console.log('hsbdchw' + JSON.stringify(response))
+      let i, len
+      for (i = 0, len = response.length; i < len; i++) { 
+        if (response[i].status !== 'closed') {
+          this.events_info.push(response[i])
+        }
+      }
     })
     this.$store.dispatch('teams/getTeams').then((response) => {
       //console.log(JSON.stringify(this.$store.state.teams))

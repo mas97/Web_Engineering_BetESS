@@ -19,7 +19,7 @@
               
               
                       <div>
-                        <mdb-btn class="btn btn-outline-warning my-2 my-sm-0" @click.native="modal = true">Cashout</mdb-btn>
+                        <mdb-btn v-if="$store.state.events.events[bet.event_id - 1].status !== 'closed'" class="btn btn-outline-warning my-2 my-sm-0" @click.native="modal = true">Cashout</mdb-btn>
                         <mdb-modal removeBackdrop side position="top-right" :show="modal" @close="modal = false">
                             <mdb-modal-header>
                                 <mdb-modal-title>Cashout</mdb-modal-title>
@@ -27,7 +27,7 @@
                             <mdb-modal-body>Are you sure you want to cashout? You will only receive half of your original bet amount.</mdb-modal-body>
                             <mdb-modal-footer>
                                 <mdb-btn color="secondary" @click.native="modal = false">Close</mdb-btn>
-                                <mdb-btn class="btn btn-warning my-2 my-sm-0" v-on:click="cashout(); modal = false;">Save changes</mdb-btn>
+                                <mdb-btn class="btn btn-warning my-2 my-sm-0" v-on:click="cashout(bet.bet_id); modal = false;">Save changes</mdb-btn>
                             </mdb-modal-footer>
                         </mdb-modal>
                       </div>                  
@@ -114,7 +114,11 @@ export default {
     })
   },
   methods: {
-
+    cashout( id ) {
+      this.$store.dispatch('bets/cashout').then((response) => {
+        
+      })
+    }
   },
   components: {
     NavbarToOffcanvas,

@@ -38,7 +38,7 @@ const actions = {
                     commit('setEvents', response)
                 })
                 .then(() => {
-                    resolve(state.sports)
+                    resolve(state.events)
                 }, error => {
                     reject(error)
                 })
@@ -63,11 +63,12 @@ const actions = {
     return new Promise((resolve, reject) => {
         eventsService.closeEvent(payload)
             .then(function (response) {
-                commit('setEvents', response)
+                
+                //commit('setEvents', response)
                 //eventual rerender da página
             })
             .then(() => {
-                resolve(state.events)
+                resolve('OK')
             }, error => {
                 reject(error)
             })

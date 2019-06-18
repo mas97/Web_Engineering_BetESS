@@ -4,7 +4,6 @@ import store from '@/store/modules/login'
 
 export default {
   postBet (payload) {
-    console.log('teste token ' + store.state.token)
     return betess.post(`bets/`, {
         amount: payload.amount,
         result: payload.result,
@@ -23,6 +22,13 @@ export default {
         authorization: store.state.accesstoken,
         role: payload.role,
         command: 'getBets'
+      }).then(response => response.data)
+  },
+  cashout (payload) {
+      return betess.post(`bets/`, {
+        bet_id: payload.bet_id,
+        authorization: store.state.accesstoken,
+        command: 'cashout'
       }).then(response => response.data)
   }
 }

@@ -107,6 +107,8 @@ router.post('/close_event', async (req, res) => {
                         console.log('teste dentro async ' + odds);
 
                         setInfo(odds, odds_splitted[3]);
+
+                        connection.close();
                     }
                 }, {
                     noAck: true
@@ -140,6 +142,8 @@ router.post('/close_event', async (req, res) => {
                 await sleep(500);
                 console.log('sleeping');
             }
+
+            console.log(global_odds);
 
             console.log('TESTE FINAL ODDS ' + global_odds + ' status: ' + event_status);
 
