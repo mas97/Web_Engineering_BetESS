@@ -1,12 +1,10 @@
 <template>
-
   <div>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <NavbarToOffcanvasAdmin v-if="['calendario'].indexOf($route.name) < 0" ></NavbarToOffcanvasAdmin>
     
     <div class="container-full">
-
 
 
         <div v-if="$store.state.events.events && $store.state.teams.teams && $store.state.sports.sports && $store.state.leagues.leagues" style="width: 25%; float:left">
@@ -117,6 +115,7 @@
   
   </div>
 </template>
+
 
 <script>
 import NavbarToOffcanvasAdmin from '../components/NavBarToOffcanvasAdmin'
@@ -243,9 +242,8 @@ export default {
     NavbarToOffcanvasAdmin
   }
 }
-
-
 </script>
+
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
@@ -581,5 +579,4 @@ label {
 
 #listResults .checkbox-yellow input[type="checkbox"] + label::before
 {background-color: #face00;  border-color: #face00;}
-
 </style>
