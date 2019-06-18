@@ -102,7 +102,7 @@
                       <button class="btn" @click="closeFlag = true"><i class="fa fa-times"></i> Close</button>
                       <span v-if="closeFlag">
                         <input v-model="event_result" style="width: 120px; height: 45px; border: 2px solid orange; border-radius: 5px;"/>
-                        <button id="buttonclose" class="btn-xs" v-on:click="close(event.event_id), closeFlag = false" v-if="$store.state.events.status === 'closed'"><i class="fa fa-check"></i></button>
+                        <button id="buttonclose" class="btn-xs" v-on:click="close(event.event_id), closeFlag = false" v-if="event.status === 'closed'"><i class="fa fa-check"></i></button>
                       </span>
                     </li> 
                   </ul>
