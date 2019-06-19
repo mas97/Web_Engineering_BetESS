@@ -7,8 +7,8 @@ let amqp = require('amqplib');
 let jwt = require('jsonwebtoken');
 const fs   = require('fs');
 let publicKEY  = fs.readFileSync( __dirname + '/public.key');
-let global_odds = [];
-let event_status = '';
+let global_odds;
+let event_status;
 
 /* Returns doc w/ unpaid bets */
 function getBets() {
@@ -84,9 +84,6 @@ router.post('/close_event', async (req, res) => {
                 await channel.sendToQueue(requests_queue, Buffer.from('requestEventInfo:' + ev_id));
                 console.log('message sent!');
 
-                await channel.sendToQueue(requests_queue, Buffer.from('closeEvent:' + ev_id + ';' + ev_result));
-                console.log('message sent!');
-
                 await channel.assertQueue(responses_queue, {
                     durable: false
                 });
@@ -107,40 +104,21 @@ router.post('/close_event', async (req, res) => {
                         console.log('teste dentro async ' + odds);
 
                         setInfo(odds, odds_splitted[3]);
-
-                        connection.close();
                     }
                 }, {
                     noAck: true
                 });
 
-                // await channel.consume(responses_queue, (msg) => {
-                //     console.log(" [x] Received %s", msg.content.toString());
-                //     let message = msg.content.toString();
-                //     let splitted_message = message.split(':');
-                //
-                //     if (splitted_message[0] === 'responseEventInfo') {
-                //         let odds_splitted = splitted_message[1].split(';');
-                //
-                //         odds[0] = parseFloat(odds_splitted[0]);
-                //         odds[1] = parseFloat(odds_splitted[1]);
-                //         odds[2] = parseFloat(odds_splitted[2]);
-                //
-                //         console.log('teste dentro async ' + odds);
-                //
-                //         return Promise.resolve(odds);
-                //     }
-                // }, {
-                //     noAck: true
-                // });
+                while (typeof global_odds === 'undefined' && typeof event_status === 'undefined') {
+                    await sleep(500);
+                    console.log('sleeping');
+                }
+
+                await channel.sendToQueue(requests_queue, Buffer.from('closeEvent:' + ev_id + ';' + ev_result));
+                console.log('message sent!');
 
             } catch (e) {
                 console.log(e);
-            }
-
-            while (global_odds === [] && event_status === '') {
-                await sleep(500);
-                console.log('sleeping');
             }
 
             console.log(global_odds);
@@ -157,77 +135,168 @@ router.post('/close_event', async (req, res) => {
                 console.log('status do event open');
 
                 getBets().then(doc => {
+                    console.log(doc);
                     bets_unpaid = doc;
+                    console.log('bets unpaid' + bets_unpaid);
 
-                    for (let bet in bets_unpaid) {
-                        if (bet.event_id === ev_id) {
-                            amount = bet.amount;
-                            user_id = bet.user_id;
-                            result_bet = bet.result;
+                    for (let i = 0; i < bets_unpaid.length; i++) {
+                        console.log('inicio iteração');
+                        console.log('bet_id: ' + bets_unpaid[i].bet_id);
+                        console.log('event id: ' + ev_id);
+
+                        if (bets_unpaid[i].event_id === ev_id) {
+                            amount = bets_unpaid[i].amount;
+                            user_id = bets_unpaid[i].user_id;
+                            result_bet = bets_unpaid[i].result;
+
+                            // console.log('bet_id: ' + bet.event_id);
+                            // console.log('event id: ' + ev_id);
+                            // console.log('amount: ' + amount);
+                            // console.log('user_id: ' + user_id);
+                            // console.log('result_bet: ' + result_bet);
 
                             UserModel.findOne({user_id: user_id}, {balance: 1}).then(doc => {
                                 console.log('aceder ao saldo do user' + doc);
                                 user_balance = parseFloat(doc);
                             });
 
+                            console.log(result_bet);
+                            console.log(ev_result);
                             if (result_bet === ev_result) {
+
                                 if (ev_result === 'winHome') { // ----------------------------------------------------
                                     let entry = {
                                         status: 'unread',
-                                        balancebet: amount * odd_home // usar odds aqui - substituir odd_home
+                                        balancebet: amount * odd_home,
+                                        event_id: ev_id,
+                                        user_id: user_id
                                     };
                                     let notif = new NotificationModel(entry);
                                     notif.save();
 
-                                    UserModel.update(
-                                        {user_id: user_id},
-                                        // ir buscar o saldo do user : user_balance
-                                        {balance: user_balance + (amount * odd_home)}
-                                    );
+                                    // UserModel.update(
+                                    //     {user_id: user_id},
+                                    //     {balance: user_balance + (amount * odd_home)}
+                                    // );
 
-                                    BetModel.update(
-                                        {bet_id: bet.bet_id},
-                                        {paid: true}
-                                    );
+                                    UserModel.findOne({ user_id: user_id }, function (err, doc) {
+
+                                        if (doc !== null) {
+                                            doc.balance = Number(doc.balance) + amount * odd_home;
+                                            doc.save();
+                                        }
+
+                                    });
+
+                                    // BetModel.update(
+                                    //     {bet_id: bet.bet_id},
+                                    //     {paid: true}
+                                    // );
+
+                                    BetModel.findOne({ bet_id: bets_unpaid[i].bet_id }, function (err, doc) {
+
+                                        if (doc !== null) {
+                                            doc.paid = true;
+                                            doc.save();
+                                        }
+
+                                    });
+
                                 }
                                 if (ev_result === 'winAway') { // ----------------------------------------------------
                                     let entry = {
                                         status: 'unread',
-                                        balancebet: amount * odd_away // usar odds aqui - substituir odd_away
+                                        balancebet: amount * odd_away,
+                                        event_id: ev_id,
+                                        user_id: user_id
                                     };
                                     let notif = new NotificationModel(entry);
                                     notif.save();
 
-                                    UserModel.update(
-                                        {id: user_id},
-                                        // ir buscar o saldo do user : user_balance
-                                        {balance: user_balance + (amount * odd_home)}
-                                    );
+                                    // UserModel.update(
+                                    //     {id: user_id},
+                                    //     // ir buscar o saldo do user : user_balance
+                                    //     {balance: user_balance + (amount * odd_home)}
+                                    // );
 
-                                    BetModel.update(
-                                        {id: bet.bet_id},
-                                        {paid: true}
-                                    );
+                                    UserModel.findOne({ user_id: user_id }, function (err, doc) {
+
+                                        if (doc !== null) {
+                                            doc.balance = Number(doc.balance) + amount * odd_away;
+                                            doc.save();
+                                        }
+
+                                    });
+
+                                    BetModel.findOne({ bet_id: bets_unpaid[i].bet_id }, function (err, doc) {
+
+                                        if (doc !== null) {
+                                            doc.paid = true;
+                                            doc.save();
+                                        }
+
+                                    });
+
                                 }
                                 if (ev_result === 'draw') { // ----------------------------------------------------
                                     let entry = {
                                         status: 'unread',
-                                        balancebet: amount * odd_draw // usar odds aqui - substituir odd_draw
+                                        balancebet: amount * odd_draw ,
+                                        event_id: ev_id,
+                                        user_id: user_id
                                     };
                                     let notif = new NotificationModel(entry);
                                     notif.save();
 
-                                    UserModel.update(
-                                        {id: user_id},
-                                        // ir buscar o saldo do user : user_balance
-                                        {balance: user_balance + (amount * odd_home)}
-                                    );
+                                    // UserModel.update(
+                                    //     {id: user_id},
+                                    //     // ir buscar o saldo do user : user_balance
+                                    //     {balance: user_balance + (amount * odd_home)}
+                                    // );
 
-                                    BetModel.update(
-                                        {id: bet.bet_id},
-                                        {paid: true}
-                                    );
+                                    UserModel.findOne({ user_id: user_id }, function (err, doc) {
+
+                                        if (doc !== null) {
+                                            doc.balance = Number(doc.balance) + amount * odd_draw;
+                                            doc.save();
+                                        }
+
+                                    });
+
+                                    // BetModel.update(
+                                    //     {id: bet.bet_id},
+                                    //     {paid: true}
+                                    // );
+
+                                    BetModel.findOne({ bet_id: bets_unpaid[i].bet_id }, function (err, doc) {
+
+                                        if (doc !== null) {
+                                            doc.paid = true;
+                                            doc.save();
+                                        }
+
+                                    });
                                 }
+                            } else {
+
+                                let entry = {
+                                    status: 'unread',
+                                    balancebet: -amount ,
+                                    event_id: ev_id,
+                                    user_id: user_id
+                                };
+                                let notif = new NotificationModel(entry);
+                                notif.save();
+
+                                BetModel.findOne({ bet_id: bets_unpaid[i].bet_id }, function (err, doc) {
+
+                                    if (doc !== null) {
+                                        doc.paid = true;
+                                        doc.save();
+                                    }
+
+                                });
+
                             }
                         }
                     }

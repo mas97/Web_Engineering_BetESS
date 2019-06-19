@@ -21,16 +21,100 @@ import store from './store/index'
 Vue.use(Router)
 
 
-// Router.beforeEach((to, from, next) => {
+const router = new Router({
+  routes: [
+    {
+      path: '/',
+      name: 'signinup',
+      component: Signinup,
+      meta: { guest: true }
+    },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: Admin,
+      meta: { requiresAuth: true, isAdmin: true }
+    },
+    {
+      path: '/user',
+      name: 'user',
+      component: User,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/bet',
+      name: 'bet',
+      component: Bet,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/mybets',
+      name: 'mybets',
+      component: Mybets,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/notifications',
+      name: 'notifications',
+      component: Notifications,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/credits',
+      name: 'credits',
+      component: Credits,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: Profile,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/sports',
+      name: 'sports',
+      component: Sports,
+      meta: { requiresAuth: true, isAdmin: true }
+    },
+    {
+      path: '/leagues',
+      name: 'leagues',
+      component: Leagues,
+      meta: { requiresAuth: true, isAdmin: true }
+    },
+    {
+      path: '/teams',
+      name: 'teams',
+      component: Teams,
+      meta: { requiresAuth: true, isAdmin: true }
+    },
+    {
+      path: '/bets',
+      name: 'bets',
+      component: Bets,
+      meta: { requiresAuth: true, isAdmin: true }
+    },
+    {
+      path: '/events',
+      name: 'events',
+      component: Events,
+      meta: { requiresAuth: true, isAdmin: true }
+    }
+  ]
+})
+
+// router.beforeEach((to, from, next) => {
 //   if(to.matched.some(record => record.meta.requiresAuth)) {
-//       if (store.state.accesstoken === '') {
+//     console.log(store.state.accesstoken);
+//       if (typeof store.state.accesstoken === 'undefined') {
 //           next({
-//               path: '/signinup',
-//               params: { nextUrl: to.fullPath }
+//               name: 'signinup'
+//               // params: { nextUrl: to.fullPath }
 //           })
 //       } else {
 //           if(to.matched.some(record => record.meta.isAdmin)) {
-//               if(store.state.user.isAdmin === true){
+//               if(store.state.isAdmin === true){
 //                   next()
 //               }
 //               else{
@@ -41,97 +125,20 @@ Vue.use(Router)
 //           }
 //       }
 //   } else if(to.matched.some(record => record.meta.guest)) {
-//       if(store.state.accesstoken === ''){
+//       if(typeof store.state.accesstoken === 'undefined'){
 //           next()
 //       }
 //       else{
+//         if (!store.state.isAdmin){
 //           next({ name: 'user'})
+//         } else {
+//           next({ name: 'admin'})
+//         }
+      
 //       }
-//   }else {
+//   } else {
 //       next() 
 //   }
 // })
 
-
-export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'signinup',
-      component: Signinup,
-      // meta: { guest: true }
-    },
-    {
-      path: '/admin',
-      name: 'admin',
-      component: Admin,
-      // meta: { requiresAuth: true, isAdmin: true }
-    },
-    {
-      path: '/user',
-      name: 'user',
-      component: User,
-      // meta: { requiresAuth: true }
-    },
-    {
-      path: '/bet',
-      name: 'bet',
-      component: Bet,
-      //meta: { requiresAuth: true }
-    },
-    {
-      path: '/mybets',
-      name: 'mybets',
-      component: Mybets,
-      //meta: { requiresAuth: true }
-    },
-    {
-      path: '/notifications',
-      name: 'notifications',
-      component: Notifications,
-      //meta: { requiresAuth: true }
-    },
-    {
-      path: '/credits',
-      name: 'credits',
-      component: Credits,
-      //meta: { requiresAuth: true }
-    },
-    {
-      path: '/profile',
-      name: 'profile',
-      component: Profile,
-      //meta: { requiresAuth: true }
-    },
-    {
-      path: '/sports',
-      name: 'sports',
-      component: Sports,
-      //meta: { requiresAuth: true, isAdmin: true }
-    },
-    {
-      path: '/leagues',
-      name: 'leagues',
-      component: Leagues,
-      //meta: { requiresAuth: true, isAdmin: true }
-    },
-    {
-      path: '/teams',
-      name: 'teams',
-      component: Teams,
-      //meta: { requiresAuth: true, isAdmin: true }
-    },
-    {
-      path: '/bets',
-      name: 'bets',
-      component: Bets,
-      //meta: { requiresAuth: true, isAdmin: true }
-    },
-    {
-      path: '/events',
-      name: 'events',
-      component: Events,
-      //meta: { requiresAuth: true, isAdmin: true }
-    }
-  ]
-})
+export default router

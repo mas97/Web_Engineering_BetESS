@@ -68,8 +68,12 @@ export default {
     	email: '',
 		password: '',
 		name: '',
-		username: ''
+		username: '',
+		self: null
     }
+  },
+  mounted () {
+	  this.self = this
   },
   methods: {
     login () {
@@ -80,12 +84,11 @@ export default {
 		//console.log('teste ' + response)
 		console.log('token ' + response)
 		if (this.email === 'admin@betess.pt') {
-			this.$router.push('admin')
+			this.self.$router.push({path: '/admin'})
 		} else {
 			console.log('teste login')
-			this.$router.push('user')
+			this.self.$router.push({path: '/user'})
 		}
-        this.$router.push('/')
       }).catch((error) => {
         console.log(error)
       })

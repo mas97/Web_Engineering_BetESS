@@ -21,15 +21,15 @@
 
 
             <div>
-              <mdb-btn class="btn btn-outline-warning my-2 my-sm-0" style="float:right; margin-bottom:5px; margin-right:-10px; margin-top: 15px;" @click.native="modal = true">Submit</mdb-btn>
-              <mdb-modal removeBackdrop side position="top-right" :show="modal" @close="modal = false">
+              <mdb-btn class="btn btn-outline-warning my-2 my-sm-0" style="float:right; margin-bottom:5px; margin-right:-10px; margin-top: 15px;" @click.native="modalDraw = true">Submit</mdb-btn>
+              <mdb-modal removeBackdrop side position="top-right" :show="modalDraw" @close="modalDraw = false">
                   <mdb-modal-header style="color:gray;">
                       <mdb-modal-title>Draw</mdb-modal-title>
                   </mdb-modal-header>
                   <mdb-modal-body style="color:gray;">Are you sure you want to draw this amount to your bank account?</mdb-modal-body>
                   <mdb-modal-footer>
-                      <mdb-btn color="secondary" @click.native="modal = false">Close</mdb-btn>
-                      <mdb-btn class="btn btn-warning my-2 my-sm-0" v-on:click="draw(); modal = false;">Save changes</mdb-btn>
+                      <mdb-btn color="secondary" @click.native="modalDraw = false">Close</mdb-btn>
+                      <mdb-btn class="btn btn-warning my-2 my-sm-0" v-on:click="draw(); modalDraw = false;">Save changes</mdb-btn>
                   </mdb-modal-footer>
               </mdb-modal>
             </div>  
@@ -84,6 +84,7 @@ export default {
   data () {
     return {
       modal: false,
+      modalDraw: false,
       draw_amount: '',
       deposit_amount: ''
     }

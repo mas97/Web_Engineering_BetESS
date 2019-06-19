@@ -132,9 +132,9 @@ const actions = {
     })
    },
    /* aqui também é necessário payload? */
-   upd_premium ( {commit}, payload ) {
+   upd_premium ( {commit} ) {
     return new Promise((resolve, reject) => {
-        profileService.upd_premium(payload)
+        profileService.upd_premium()
           .then(function (response) {
               console.log(response)
               commit('setUser', response)

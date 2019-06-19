@@ -4,6 +4,14 @@ import store from '@/store/modules/login'
 
 export default {
     draw (payload) {
+        console.log(payload.command)
+        console.log(payload.command)
+        console.log(payload.command)
+        console.log(payload.command)
+        console.log(payload.command)
+        console.log(payload.command)
+        console.log(payload.command)
+        console.log(payload.command)
         return betess.post(`users/`, {
             authorization: store.state.accesstoken,
             command: 'draw',

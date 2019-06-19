@@ -79,7 +79,7 @@
 
                     <!-- botão upgrade SE nao premim, visto SE premium -->
                     <!-- SE premium, apagar texto -->
-                    <div class="cssui-stats cssui-usercard__stats-item">
+                    <div v-if="this.$store.state.login.user.premium === false" class="cssui-stats cssui-usercard__stats-item">
                       <i class="cssui-icon icon-man-woman"></i> 
                       <div class="cssui-stats__info cssui-usercard__stats-info">
                         <span class="cssui-stats__name cssui-usercard__stats-name">Premium?</span>
@@ -94,14 +94,14 @@
                               <mdb-modal-body>Are you sure you want to upgrade? </mdb-modal-body>
                               <mdb-modal-footer>
                                   <mdb-btn color="secondary" @click.native="modal = false">Close</mdb-btn>
-                                  <mdb-btn class="btn btn-warning my-2 my-sm-0" style="margin:10px;" v-on:click="upd_premium(); modal = false;" v-if="this.$store.state.user.premium === false">Save changes</mdb-btn>
+                                  <mdb-btn class="btn btn-warning my-2 my-sm-0" style="margin:10px;" v-on:click="upd_premium(); modal = false;">Save changes</mdb-btn>
                               </mdb-modal-footer>
                           </mdb-modal>
                         </div>                           
                         
                         
                         <!-- <button type="button" class="btn btn-warning my-2 my-sm-0" v-on:click="upd_premium()" style="margin:10px;">Upgrade</button> -->
-                        <h6 style="color:gray;" v-if="this.$store.state.user.premium === false"><small> * being a premium user gives you access to unique events and opportunities, by the simple amount of 50 ESScoins</small></h6>
+                        <h6 style="color:gray;"><small> * being a premium user gives you access to unique events and opportunities, by the simple amount of 50 ESScoins</small></h6>
                       </div>
                     </div>
 

@@ -12,7 +12,8 @@ let notificationSchema = new mongoose.Schema({
     },
     time: {
         type: Date,
-        required: true
+        required: true,
+        default: Date.now
     },
     user_id: {
         type: Number,

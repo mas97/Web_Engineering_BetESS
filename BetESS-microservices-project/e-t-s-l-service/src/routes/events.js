@@ -46,23 +46,6 @@ async function consume_requests(){
                     });
             }
 
-            if (splitted_message[0] === 'requestEventStatus'){
-                console.log('entrou aqui!!!');
-                requested_event_id = parseFloat(splitted_message[1]);
-                console.log(requested_event_id);
-
-                EventModel.findOne({event_id: requested_event_id}, { _id: 0, __v:0})
-                    .then(async (doc) => {
-                        console.log(doc);
-
-                        if (doc) {
-                            console.log("respondendo ao pedido de status do evento numero " + requested_event_id);
-                            await channel.sendToQueue('responses_e_t_s_l_service_event_status', Buffer.from('responseEventStatus:' + doc.status));
-                        }
-                    });
-
-            }
-
             if (splitted_message[0] === 'closeEvent') {
                 data = splitted_message[1].split(';');
                 requested_event_id = parseFloat(data[0]);
@@ -76,7 +59,7 @@ async function consume_requests(){
                         doc.save();
                     }
 
-                })
+                });
             }
 
         }, {

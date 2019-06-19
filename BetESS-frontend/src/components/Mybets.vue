@@ -116,7 +116,9 @@ export default {
   },
   methods: {
     cashout( id ) {
-      this.$store.dispatch('bets/cashout').then((response) => {
+      this.$store.dispatch('bets/cashout', {
+        bet_id: id
+      }).then((response) => {
         
       })
     }

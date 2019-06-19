@@ -225,6 +225,17 @@ router.post('/bets', async (req, res) => {
 
                             BetModel.find({}, { _id: 0, __v:0})
                                 .then(doc => {
+
+                                    UserModel.findOne({ user_id: user_id }, function (err, doc) {
+
+                                        if (doc !== null) {
+                                            console.log('alterando o balance');
+                                            doc.balance = doc.balance - bet_amount;
+                                            doc.save();
+                                        }
+
+                                    });
+
                                     return res.json(doc);
                                 });
                         })

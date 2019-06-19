@@ -22,20 +22,19 @@
                 <th>Bet Amount</th>
                 <th>Expected Result</th>
                 <th>Paid</th>
-                <th>User</th>
+                <th>User id</th>
               </tr>
 
               
-              <tr v-if="$store.state.bets.bets.length > 0 && $store.state.events.events && $store.state.teams.teams && $store.state.sports.sports && $store.state.leagues.leagues"
-                  v-for="bet in $store.state.bets.bets" :key="bet.bet_id">
+              <tr v-for="bet in $store.state.bets.bets" :key="bet.bet_id">
                 
-                <td>{{$store.state.events.events[bet.event_id - 1].teams.teams[event.team_home_id - 1].name}} - {{$store.state.events.events[bet.event_id - 1].teams.teams[event.team_away_id - 1].name}}</td>
-                <td>{{$store.state.events.events[bet.event_id - 1].sports.sports[event.sport_id - 1].name}}</td>  
-                <td>{{$store.state.events.events[bet.event_id - 1].leagues.leagues[event.league_id - 1].name}}</td>
+                <td>{{getBetHomeTeamName(bet.bet_id)}} - {{getBetAwayTeamName(bet.bet_id)}}</td>
+                <td>{{getBetSportName( bet.bet_id )}}</td>  
+                <td>{{getBetLeagueName ( bet.bet_id )}}</td>
                 <td>{{bet.amount}}</td>
                 <td>{{bet.result}}</td>
                 <td class="text-warning">{{bet.paid ? "Yes" : "No"}}</td>
-                <td>{{$store.state.login.user.username}}</td>
+                <td>{{bet.user_id}}</td>
 
               </tr>
             </table>
@@ -60,29 +59,65 @@ export default {
 
   },
   created () {
-    this.$store.dispatch('bets/getBets').then((response) => {
+    this.$store.dispatch('bets/getBets', {
       role: 'admin'
-      //console.log(JSON.stringify(this.$store.state.events))
-      console.log('hsbdchw' + JSON.stringify(response))
+    }).then((response) => {
+      // console.log(JSON.stringify(this.$store.state.bets))
+      // console.log('hsbdchw' + JSON.stringify(response))
+
     })
     this.$store.dispatch('events/getEvents').then((response) => {
-      //console.log(JSON.stringify(this.$store.state.events))
-      c//onsole.log(JSON.stringify(response))
+      // console.log(JSON.stringify(this.$store.state.events))
+      //console.log(JSON.stringify(response))
     })
     this.$store.dispatch('teams/getTeams').then((response) => {
-      //console.log(JSON.stringify(this.$store.state.teams))
+      // console.log(JSON.stringify(this.$store.state.teams))
       //console.log(JSON.stringify(response))
     })
     this.$store.dispatch('leagues/getLeagues').then((response) => {
-      //console.log(JSON.stringify(this.$store.state.leagues))
+      // console.log(JSON.stringify(this.$store.state.leagues))
       //console.log(JSON.stringify(response))
     })
     this.$store.dispatch('sports/getSports').then((response) => {
-      //console.log(JSON.stringify(this.$store.state.sports))
+      // console.log(JSON.stringify(this.$store.state.sports))
       //console.log(JSON.stringify(response))
     })
   },
   methods: {
+
+    getBetHomeTeamName ( id ) {
+      let event_id, team_home_name, team_home_id
+      console.log(this.$store.state.bets.bets)
+      event_id = this.$store.state.bets.bets[id - 1].event_id
+      team_home_id = this.$store.state.events.events[event_id - 1].team_home_id
+      team_home_name = this.$store.state.teams.teams[team_home_id - 1].name
+      console.log(team_home_name)
+      return team_home_name
+    },
+    getBetAwayTeamName ( id ) {
+      let event_id, team_home, team_away_name, team_away_id
+      event_id = this.$store.state.bets.bets[id - 1].event_id
+      team_away_id = this.$store.state.events.events[event_id - 1].team_away_id
+      team_away_name = this.$store.state.teams.teams[team_away_id - 1].name
+      console.log(team_away_name)
+      return team_away_name
+    },
+    getBetSportName ( id ) {
+      let event_id, sport_id, sport_name
+      event_id = this.$store.state.bets.bets[id - 1].event_id
+      sport_id = this.$store.state.events.events[event_id - 1].sport_id
+      sport_name = this.$store.state.sports.sports[sport_id - 1].name
+
+      return sport_name
+    },
+    getBetLeagueName ( id ) {
+      let event_id, league_id, league_name
+      event_id = this.$store.state.bets.bets[id - 1].event_id
+      league_id = this.$store.state.events.events[event_id - 1].league_id
+      league_name = this.$store.state.leagues.leagues[league_id - 1].name
+
+      return league_name
+    }
 
   },
   components: {

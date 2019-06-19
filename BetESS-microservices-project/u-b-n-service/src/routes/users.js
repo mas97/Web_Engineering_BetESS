@@ -99,7 +99,10 @@ router.post('/premium', async (req, res) => {
                 .then(async doc => {
                     console.log(doc);
 
-                    if (doc.premium) {
+                    let premium = doc.premium;
+                    console.log('premium: ' + premium);
+
+                    if (!premium) {
 
                         let user_balance = doc.balance;
 
@@ -246,19 +249,24 @@ router.post('/users', (req, res) => {
 
         if (req.body.command === 'draw') {
 
-            if (req.body.balance) {
+            console.log(req.body);
+
+            if (req.body.hasOwnProperty('balance')) {
 
                 UserModel.findOne({user_id: user_id}, function (err, doc) {
 
                     let withdraw_amount = req.body.balance;
+                    console.log(withdraw_amount);
 
                     if (withdraw_amount > doc.balance) {
                         return res.status(400).send('Not enough credits')
                     } else {
-                        doc.balance = doc.balance - withdraw_amount;
+                        doc.balance = Number(doc.balance) - Number(withdraw_amount);
+                        console.log(doc.balance);
                     }
 
                     doc.save();
+                    console.log(doc);
                     return res.json(doc);
                 })
             } else {
@@ -268,11 +276,11 @@ router.post('/users', (req, res) => {
 
         if (req.body.command === 'deposit') {
 
-            if (req.body.balance) {
+            if (req.body.hasOwnProperty('balance')) {
 
                 UserModel.findOne({user_id: user_id}, function (err, doc) {
 
-                    doc.balance = doc.balance + req.body.amount;
+                    doc.balance = Number(doc.balance) + Number(req.body.balance);
 
                     doc.save();
                     return res.json(doc);
@@ -281,24 +289,10 @@ router.post('/users', (req, res) => {
                 return res.status(400).send('Missing balance in body.')
             }
         }
-        if (req.body.command === 'upd_pwd') {
 
-            if (req.body.password) {
-
-                UserModel.findOne({user_id: user_id}, function (err, doc) {
-
-                    doc.password =  req.body.password;
-                    
-                    doc.save();
-                    return res.json(doc);
-                })
-            } else {
-                return res.status(400).send('Missing password in body.')
-            }
-        }
         if (req.body.command === 'upd_phone') {
 
-            if (req.body.phoneno) {
+            if (req.body.hasOwnProperty('phoneno')) {
 
                 UserModel.findOne({user_id: user_id}, function (err, doc) {
 

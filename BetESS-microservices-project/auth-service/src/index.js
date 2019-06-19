@@ -49,7 +49,7 @@ async function consume_requests(){
 
                 let user_id = parseFloat(splitted_message[1]);
 
-                authModel.findOne({user_id: user_id}, function (err, doc) {
+                authModel.findOne({userAuth_id: user_id}, function (err, doc) {
                     doc.premium = true;
                     doc.save();
                 });
@@ -74,7 +74,8 @@ app.post('/token', (req, res) => {
 
     authModel.findOne({email: reqData.email}, {_id: 0, __v: 0})
         .then(doc => {
-            if (doc.length === 0) {
+            console.log(doc);
+            if (doc === null) {
                 return res.status(500).send(doc);
             } else {
                 let password = reqData.password;
@@ -128,11 +129,15 @@ app.post('/userAuth', async (req, res) => {
 
             if (req.body.hasOwnProperty('password')) {
 
+                console.log(req.body);
+
                 // req.body.password = await bcrypt.hash(req.body.password, 10);
 
-                authModel.findOne({user_id: user_id}, function (err, doc) {
+                authModel.findOne({userAuth_id: user_id}, function (err, doc) {
                     doc.password = req.body.password;
                     doc.save();
+
+                    return res.json(doc);
                 });
 
             }
@@ -153,10 +158,21 @@ app.post('/register', async (req, res) => {
     }
 
     // req.body.password = await bcrypt.hash(req.body.password, 10);
-    let model = new authModel({
-        password: req.body.password,
-        email: req.body.email
-    });
+
+    let model = null;
+
+    if (req.body.email === 'admin@betess.pt') {
+        model = new authModel({
+            password: req.body.password,
+            email: req.body.email,
+            isAdmin: true
+        });
+    } else {
+        model = new authModel({
+            password: req.body.password,
+            email: req.body.email
+        });
+    }
 
     try {
         let requests_queue = 'requests_u_b_n_service_new_user';

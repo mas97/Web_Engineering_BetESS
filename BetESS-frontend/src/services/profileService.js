@@ -26,11 +26,9 @@ export default {
         })
     },
     /* provavelmente tirar "premium: payload.premium"*/
-    upd_premium (payload) {
-        return betess.post(`users/`, {
+    upd_premium () {
+        return betess.post(`premium/`, {
             authorization: store.state.accesstoken,
-            command: 'upd_premium',
-            premium: payload.premium
         }).then(response => response.data)
         .catch((error) => {
             alert(error.message)
