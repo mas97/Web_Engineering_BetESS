@@ -59,28 +59,29 @@ export default {
 
   },
   created () {
-    this.$store.dispatch('bets/getBets', {
-      role: 'admin'
-    }).then((response) => {
-      // console.log(JSON.stringify(this.$store.state.bets))
-      // console.log('hsbdchw' + JSON.stringify(response))
-
-    })
-    this.$store.dispatch('events/getEvents').then((response) => {
-      // console.log(JSON.stringify(this.$store.state.events))
-      //console.log(JSON.stringify(response))
-    })
-    this.$store.dispatch('teams/getTeams').then((response) => {
-      // console.log(JSON.stringify(this.$store.state.teams))
-      //console.log(JSON.stringify(response))
-    })
-    this.$store.dispatch('leagues/getLeagues').then((response) => {
-      // console.log(JSON.stringify(this.$store.state.leagues))
-      //console.log(JSON.stringify(response))
-    })
     this.$store.dispatch('sports/getSports').then((response) => {
       // console.log(JSON.stringify(this.$store.state.sports))
       //console.log(JSON.stringify(response))
+      this.$store.dispatch('leagues/getLeagues').then((response) => {
+        // console.log(JSON.stringify(this.$store.state.leagues))
+        //console.log(JSON.stringify(response))
+        this.$store.dispatch('teams/getTeams').then((response) => {
+          // console.log(JSON.stringify(this.$store.state.teams))
+          //console.log(JSON.stringify(response))
+          this.$store.dispatch('events/getEvents').then((response) => {
+            // console.log(JSON.stringify(this.$store.state.events))
+            //console.log(JSON.stringify(response))
+            this.$store.dispatch('bets/getBets', {
+              role: 'admin'
+            }).then((response) => {
+              // console.log(JSON.stringify(this.$store.state.bets))
+              // console.log('hsbdchw' + JSON.stringify(response))
+
+            })
+          })
+        })
+      })
+
     })
   },
   methods: {

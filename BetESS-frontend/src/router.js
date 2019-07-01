@@ -105,36 +105,33 @@ const router = new Router({
 })
 
 // router.beforeEach((to, from, next) => {
-//   if(to.matched.some(record => record.meta.requiresAuth)) {
-//     console.log(store.state.accesstoken);
-//       if (typeof store.state.accesstoken === 'undefined') {
+//   if(to.matched.some(record => {console.log(record.meta); return record.meta.requiresAuth})) {
+//     console.log(store.state.login.accesstoken)
+//       if ( !store.state.login.accesstoken) {
 //           next({
 //               name: 'signinup'
 //               // params: { nextUrl: to.fullPath }
 //           })
-//       } else {
-//           if(to.matched.some(record => record.meta.isAdmin)) {
-//               if(store.state.isAdmin === true){
-//                   next()
-//               }
-//               else{
-//                   next({ name: 'user'})
-//               }
-//           }else {
+//       } else if(to.matched.some(record => record.meta.isAdmin)) {
+//           if(store.state.login.isAdmin === true){
 //               next()
 //           }
-//       }
-//   } else if(to.matched.some(record => record.meta.guest)) {
-//       if(typeof store.state.accesstoken === 'undefined'){
+//           else{
+//               next({ name: 'user'})
+//           }
+//       }else {
 //           next()
 //       }
-//       else{
-//         if (!store.state.isAdmin){
+//   } else if(to.matched.some(record => record.meta.guest)) {
+//       if( store.state.login.accesstoken){
+//         if (!store.state.login.isAdmin){
 //           next({ name: 'user'})
 //         } else {
 //           next({ name: 'admin'})
 //         }
-      
+//       }
+//       else {
+//         next()
 //       }
 //   } else {
 //       next() 
